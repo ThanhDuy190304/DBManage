@@ -1,0 +1,61 @@
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# VS Code directory
+.vscode/
+
+# Visual Studio working folder
+.vs/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Others
+*.log
+*.tlog
+*.cache
+*.dbmdl
+*.pdb
+*.opendb
+*.VC.db
+*.vsscc
+*.vssscc
+
+# IIS Express
+.vsconfig
+*.iisexpress/
+
+# NuGet
+*.nupkg
+.nuget/
+
+# Rider IDE
+.idea/
+
+# DotCover
+*.dotCover
+
+# JetBrains
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Other OS files
+.DS_Store
