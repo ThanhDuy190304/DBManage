@@ -45,8 +45,8 @@ namespace SchoolManagerApp.src.Views
         private void InitializeComponent()
         {
             this.createButtonPanel = new System.Windows.Forms.Panel();
-            this.tablePanel = new System.Windows.Forms.Panel();
             this.CreateRoleButton = new SchoolManagerApp.Controls.CTButton();
+            this.tablePanel = new System.Windows.Forms.Panel();
             this.createButtonPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,14 +58,6 @@ namespace SchoolManagerApp.src.Views
             this.createButtonPanel.Name = "createButtonPanel";
             this.createButtonPanel.Size = new System.Drawing.Size(1199, 70);
             this.createButtonPanel.TabIndex = 1;
-            // 
-            // tablePanel
-            // 
-            this.tablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tablePanel.Location = new System.Drawing.Point(0, 70);
-            this.tablePanel.Name = "tablePanel";
-            this.tablePanel.Size = new System.Drawing.Size(1199, 402);
-            this.tablePanel.TabIndex = 0;
             // 
             // CreateRoleButton
             // 
@@ -97,6 +89,15 @@ namespace SchoolManagerApp.src.Views
             this.CreateRoleButton.UseVisualStyleBackColor = false;
             this.CreateRoleButton.Click += new System.EventHandler(this.CreateRoleButton_Click);
             // 
+            // tablePanel
+            // 
+            this.tablePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tablePanel.Location = new System.Drawing.Point(0, 70);
+            this.tablePanel.Name = "tablePanel";
+            this.tablePanel.Size = new System.Drawing.Size(1199, 402);
+            this.tablePanel.TabIndex = 0;
+            this.tablePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tablePanel_Paint);
+            // 
             // RolesPage
             // 
             this.Controls.Add(this.tablePanel);
@@ -109,6 +110,11 @@ namespace SchoolManagerApp.src.Views
         }
 
         private void CreateRoleButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tablePanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
