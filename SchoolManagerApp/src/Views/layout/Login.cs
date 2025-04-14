@@ -25,11 +25,13 @@ namespace SchoolManagerApp.src.Views.layout
             this.Load += Login_Load;
 
             // Cho phép đăng nhập bằng phím Enter
-            this.userNameTextBox.KeyDown += (s, e) => {
+            this.userNameTextBox.KeyDown += (s, e) =>
+            {
                 if (e.KeyCode == Keys.Enter) LoginButton.PerformClick();
             };
 
-            this.passrordTextBox.KeyDown += (s, e) => {
+            this.passrordTextBox.KeyDown += (s, e) =>
+            {
                 if (e.KeyCode == Keys.Enter) LoginButton.PerformClick();
             };
         }
@@ -134,7 +136,7 @@ namespace SchoolManagerApp.src.Views.layout
             LoginButton.Refresh();
 
             string username = this.userNameTextBox.TextValue;
-            string password = this.passrordTextBox.TextValue; 
+            string password = this.passrordTextBox.TextValue;
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
@@ -150,10 +152,6 @@ namespace SchoolManagerApp.src.Views.layout
 
                 if (loginSuccess)
                 {
-                    // Đăng nhập thành công
-                    MessageBox.Show("Đăng nhập thành công!", "Thông báo",
-                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     // Mở form chính
                     var mainForm = new Main();
                     mainForm.Show();
@@ -172,7 +170,7 @@ namespace SchoolManagerApp.src.Views.layout
                 MessageBox.Show($"Lỗi khi đăng nhập: {ex.Message}", "Lỗi",
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
         }
 
         // Hàm giả lập kiểm tra đăng nhập (thay bằng code thực tế của bạn)

@@ -56,9 +56,14 @@ namespace SchoolManagerApp.src.Views.partials
             {
                 control.Visible = true;
             }
-            this.BackColor = Color.Black;
+            this.BackColor = Color.WhiteSmoke;
             this.Width = expandedWidth;
             rightArrow.Visible = false;
+        }
+
+        private void sidebar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

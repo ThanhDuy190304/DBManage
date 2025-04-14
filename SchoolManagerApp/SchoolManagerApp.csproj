@@ -120,8 +120,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\Views\controls\CTTextBox.cs">
+    <Compile Include="src\Views\controls\CTTextBoxIcon.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Views\controls\CTTextBoxIcon.Designer.cs">
+      <DependentUpon>CTTextBoxIcon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\controls\CTTextBox.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\Views\controls\CTTextBox.Designer.cs">
       <DependentUpon>CTTextBox.cs</DependentUpon>
@@ -143,6 +149,12 @@
     </Compile>
     <Compile Include="src\Views\layout\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\partials\createARoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\partials\createARoleForm.Designer.cs">
+      <DependentUpon>createARoleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\RolesPage.cs">
       <SubType>UserControl</SubType>
@@ -170,6 +182,9 @@
     <Compile Include="src\Views\UsersPage.Designer.cs">
       <DependentUpon>UsersPage.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="src\Views\controls\CTTextBox.resx">
+      <DependentUpon>CTTextBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\layout\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,9 +194,17 @@
     <EmbeddedResource Include="src\Views\layout\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\partials\createARoleForm.resx">
+      <DependentUpon>createARoleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\RolesPage.resx">
       <DependentUpon>RolesPage.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="src\Controllers\RoleController.cs" />
+    <Compile Include="src\Models\MockRole.cs" />
+    <Compile Include="src\Models\Role.cs" />
+    <Compile Include="src\Service\BaseService.cs" />
+    <Compile Include="src\Service\RoleService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -211,8 +234,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="src\Controllers\.gitkeep" />
-    <None Include="src\Models\.gitkeep" />
-    <None Include="src\Service\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

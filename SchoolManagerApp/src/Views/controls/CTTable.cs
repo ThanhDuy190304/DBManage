@@ -21,7 +21,6 @@ namespace SchoolManagerApp.Controls
         public CTTable(Dictionary<string, int> columnDefinitions, List<string[]> data)
         {
             this.dataRows = new List<CTTableRow>();
-            this.FlowDirection = FlowDirection.TopDown;
             InitializeComponents();
             AddHeaderRow(columnDefinitions);
             AddDataRows(columnDefinitions, data);
@@ -30,12 +29,15 @@ namespace SchoolManagerApp.Controls
         private void InitializeComponents()
         {
             this.AutoScroll = true;
-            this.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            this.WrapContents = false;
+            this.Height = 300;
+            this.FlowDirection = FlowDirection.TopDown;
+            this.Font = new Font("Calibri", 10, FontStyle.Regular);
         }
 
         private void AddHeaderRow(Dictionary<string, int> columnDefinitions)
         {
-            this.headerRow = new CTTableRow(Color.LightGray, Color.Black, 40);
+            this.headerRow = new CTTableRow(Color.Navy, Color.White, 40);
             foreach (var col in columnDefinitions)
             {
                 Label label = new Label()
@@ -57,21 +59,27 @@ namespace SchoolManagerApp.Controls
         private void AddDataRows(Dictionary<string, int> columnDefinitions, List<string[]> data)
         {
 
-            foreach (var rowData in data)
+            for (int i = 0; i < data.Count; i++)
             {
-                CTTableRow row = new CTTableRow(Color.White, Color.Black, 35);
-                int i = 0;
+                var rowData = data[i]; // Lấy dữ liệu dòng
+                Color rowColor = (i % 2 == 0) ? Color.White : Color.Lavender;
+
+                CTTableRow row = new CTTableRow(rowColor, Color.Black, 35);
+
+                int j = 0;
                 foreach (var col in columnDefinitions)
                 {
                     Label cell = new Label()
                     {
-                        Text = rowData[i],
+                        Text = rowData[j],
                         TextAlign = ContentAlignment.MiddleLeft,
                         AutoSize = false
                     };
                     row.AddCell(cell, col.Value);
-                    i++;
+                    j++; // Tăng j để lấy đúng cột trong rowData
                 }
+
+                // Nút thao tác
                 IconButton trashButton = new IconButton()
                 {
                     IconChar = IconChar.Trash,
@@ -84,6 +92,7 @@ namespace SchoolManagerApp.Controls
                 };
                 trashButton.FlatAppearance.BorderSize = 0;
                 trashButton.Size = new Size(24, 24);
+
                 IconButton editButton = new IconButton()
                 {
                     IconChar = IconChar.UserEdit,
@@ -110,15 +119,15 @@ namespace SchoolManagerApp.Controls
                 actionPanel.Controls.Add(editButton);
                 actionPanel.Controls.Add(trashButton);
 
-                // Align icons in panel
-                editButton.Location = new Point(5, 5);
-                trashButton.Location = new Point(10, 5);
                 row.AddCell(actionPanel, 80);
 
-                // Add to table
                 dataRows.Add(row);
                 this.Controls.Add(row);
             }
+
         }
+
     }
+
+
 }

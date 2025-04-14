@@ -28,36 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.sidebar1 = new SchoolManagerApp.src.Views.partials.sidebar();
             this.contentPanel = new System.Windows.Forms.Panel();
+            this.sidebar1 = new SchoolManagerApp.src.Views.partials.sidebar();
             this.SuspendLayout();
-            // 
-            // sidebar1
-            // 
-            this.sidebar1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.sidebar1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidebar1.Location = new System.Drawing.Point(0, 0);
-            this.sidebar1.Name = "sidebar1";
-            this.sidebar1.Size = new System.Drawing.Size(245, 481);
-            this.sidebar1.TabIndex = 0;
-            this.sidebar1.Load += new System.EventHandler(this.sidebar_Load);
             // 
             // contentPanel
             // 
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(245, 0);
+            this.contentPanel.Location = new System.Drawing.Point(0, 0);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(991, 481);
-            this.contentPanel.TabIndex = 1;
-            this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.contentPanel_Paint);
+            this.contentPanel.Size = new System.Drawing.Size(1170, 436);
+            this.contentPanel.TabIndex = 0;
+            // 
+            // sidebar1
+            // 
+            this.sidebar1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.sidebar1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sidebar1.Location = new System.Drawing.Point(-1, -1);
+            this.sidebar1.Name = "sidebar1";
+            this.sidebar1.Size = new System.Drawing.Size(243, 439);
+            this.sidebar1.TabIndex = 1;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1236, 481);
-            this.Controls.Add(this.contentPanel);
+            this.ClientSize = new System.Drawing.Size(1170, 436);
             this.Controls.Add(this.sidebar1);
+            this.Controls.Add(this.contentPanel);
             this.Name = "Main";
             this.Text = "Main";
             this.ResumeLayout(false);
@@ -66,7 +64,7 @@
 
         #endregion
 
-        private partials.sidebar sidebar1;
         private System.Windows.Forms.Panel contentPanel;
+        private partials.sidebar sidebar1;
     }
 }

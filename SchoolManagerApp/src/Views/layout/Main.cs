@@ -28,14 +28,6 @@ namespace SchoolManagerApp.src.Views.layout
             contentPanel.Controls.Add(page);
         }
 
-        private void sidebar_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void contentPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
     }
 }

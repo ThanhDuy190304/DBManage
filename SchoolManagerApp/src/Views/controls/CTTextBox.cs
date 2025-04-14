@@ -1,10 +1,8 @@
-﻿using FontAwesome.Sharp;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,22 +10,35 @@ using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.controls
 {
-    public partial class CTTextBox : Control
+    [DefaultEvent("_TextChanged")]
+    public partial class CTTextBox : UserControl
     {
-        private int borderSize = 0;
-        private int borderRadius = 0;
+        private Color borderColor = Color.MediumSlateBlue;
+        private int borderSize = 2;
+        private bool underlinedStyle = false;
+        private Color borderFocusColor = Color.HotPink;
+        private bool isFocused = false;
 
-        private Color borderColor = Color.Gainsboro;
-        private Color originBorderColor = Color.Gainsboro;
-        private Color focusBorderColor = Color.Blue;
+        public CTTextBox()
+        {
+            InitializeComponent();
+        }
 
-        private IconPictureBox iconPictureBox;
-        private TextBox textBox;
-
-        [Category("Custom Style")]
+        public event EventHandler _TextChanged;
+        [Category("Custom Styles")]
+        public Color BorderColor
+        {
+            get { return borderColor; }
+            set
+            {
+                borderColor = value;
+                this.Invalidate();
+            }
+        }
+        [Category("Custom Styles")]
         public int BorderSize
         {
-            get { return this.borderSize; }
+            get { return borderSize; }
             set
             {
                 borderSize = value;
@@ -35,167 +46,166 @@ namespace SchoolManagerApp.src.Views.controls
             }
         }
 
-        [Category("Custom Style")]
-        public int BorderRadius
+        [Category("Custom Styles")]
+        public bool UnderlinedStyle
         {
-            get { return this.borderRadius; }
+            get { return underlinedStyle; }
             set
             {
-                if (value <= this.Height)
-                {
-                    borderRadius = value;
-                }
-                else borderRadius = this.Height;
+                underlinedStyle = value;
                 this.Invalidate();
             }
         }
 
-        [Category("Custom Style")]
-        public Color BorderColor
+        [Category("Custom Styles")]
+        public bool PasswordChar
         {
-            get { return this.borderColor; }
+            get { return textBox1.UseSystemPasswordChar; }
+            set { textBox1.UseSystemPasswordChar = value; }
+        }
+
+        [Category("Custom Styles")]
+        public bool Multiline
+        {
+            get { return textBox1.Multiline; }
+            set { textBox1.Multiline = value; }
+        }
+
+        [Category("Custom Styles")]
+        public override Color BackColor
+        {
+            get { return base.BackColor; }
             set
             {
-                this.originBorderColor = value;
-                this.borderColor = value;
-                this.Invalidate();
+                base.BackColor = value;
+                textBox1.BackColor = value;
             }
         }
 
-        [Category("Custom Style")]
-        public Color FocusBorderColor
+        [Category("Custom Styles")]
+        public override Color ForeColor
         {
-            get { return this.focusBorderColor; }
+            get { return base.ForeColor; }
             set
             {
-                this.focusBorderColor = value;
-                this.Invalidate();
+                base.ForeColor = value;
+                textBox1.ForeColor = value;
             }
         }
 
-        [Category("Custom Style")]
-        public Color TextForeColor
+        [Category("Custom Styles")]
+        public override Font Font
         {
-            get { return this.textBox.ForeColor; }
+            get { return base.Font; }
             set
             {
-                this.textBox.ForeColor = value;
+                base.Font = value;
+                textBox1.Font = value;
+                if (this.DesignMode)
+                    UpdateControlHeight();
             }
         }
 
-        [Category("Custom Style")]
-        public Color TextBackColor
+        [Category("Custom Styles")]
+        public string Texts
         {
-            get { return this.textBox.BackColor; }
-            set
+            get { return textBox1.Text; }
+            set { textBox1.Text = value; }
+        }
+
+        [Category("Custom Styles")]
+        public Color BorderFocusColor
+        {
+            get { return borderFocusColor; }
+            set { borderFocusColor = value; }
+        }
+
+        //Overridden methods
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Graphics graph = e.Graphics;
+
+            //Draw border
+            using (Pen penBorder = new Pen(borderColor, borderSize))
             {
-                this.textBox.BackColor = value;
+                penBorder.Alignment = System.Drawing.Drawing2D.PenAlignment.Inset;
+                if (isFocused) penBorder.Color = borderFocusColor;
+
+                if (underlinedStyle) //Line Style
+                    graph.DrawLine(penBorder, 0, this.Height - 1, this.Width, this.Height - 1);
+                else //Normal Style
+                    graph.DrawRectangle(penBorder, 0, 0, this.Width - 0.5F, this.Height - 0.5F);
             }
         }
 
-        [Category("Custom Style")]
-        public string TextValue
+        protected override void OnResize(EventArgs e)
         {
-            get { return this.textBox.Text; }
-            set { this.textBox.Text = value; }
+            base.OnResize(e);
+            if (this.DesignMode)
+                UpdateControlHeight();
         }
 
-        [Category("Custom Style")]
-        public bool UseSystemPasswordChar
+        protected override void OnLoad(EventArgs e)
         {
-            get { return textBox.UseSystemPasswordChar; }
-            set { textBox.UseSystemPasswordChar = value; }
+            base.OnLoad(e);
+            UpdateControlHeight();
         }
 
-        [Category("Custom Style")]
-        public IconChar IconChar
+        //Private methods
+        private void UpdateControlHeight()
         {
-            get { return this.iconPictureBox.IconChar; }
-            set
+            if (textBox1.Multiline == false)
             {
-                this.iconPictureBox.IconChar = value;
-                this.Invalidate();
+                int txtHeight = TextRenderer.MeasureText("Text", this.Font).Height + 1;
+                textBox1.Multiline = true;
+                textBox1.MinimumSize = new Size(0, txtHeight);
+                textBox1.Multiline = false;
+
+                this.Height = textBox1.Height + this.Padding.Top + this.Padding.Bottom;
             }
         }
 
-        [Category("Custom Style")]
-        public int IconSize
+        //TextBox events
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            get { return this.iconPictureBox.IconSize; }
-            set
-            {
-                this.iconPictureBox.IconSize = value;
-                this.Invalidate();
-            }
+            if (_TextChanged != null)
+                _TextChanged.Invoke(sender, e);
         }
 
-        [Category("Custom Style")]
-        public Color IconColor
+        private void textBox1_Click(object sender, EventArgs e)
         {
-            get { return this.iconPictureBox.IconColor; }
-            set
-            {
-                this.iconPictureBox.IconColor = value;
-                this.Invalidate();
-            }
+            this.OnClick(e);
         }
 
-
-
-        public CTTextBox()
+        private void textBox1_MouseEnter(object sender, EventArgs e)
         {
-            // Chỉ khởi tạo khi KHÔNG ở chế độ Designer
-            if (!DesignMode)
-            {
-                InitializeComponents();
-            }
+            this.OnMouseEnter(e);
         }
 
-        private void InitializeComponents()
+        private void textBox1_MouseLeave(object sender, EventArgs e)
         {
-            this.Size = new Size(200, 40);
-
-            // 1. Tạo panel với cấu hình an toàn cho Designer
-            FlowLayoutPanel panel = new FlowLayoutPanel();
-
-            panel.FlowDirection = FlowDirection.LeftToRight;
-            panel.AutoSize = true;
-            panel.WrapContents = false;
-            panel.Padding = new Padding(5);
-
-            // Giải pháp thay thế Color.Transparent
-            panel.BackColor = Color.FromArgb(0, 255, 255, 255); // Màu trắng trong suốt
-
-            // 2. Cấu hình TextBox
-            this.textBox = new TextBox();
-            textBox.BorderStyle = BorderStyle.None;
-            textBox.ForeColor = Color.Black;
-            textBox.BackColor = Color.White; // Thay Gray thành White để dễ nhìn
-            textBox.Size = new Size(200, 30);
-            // 3. Cấu hình Icon
-            this.iconPictureBox = new IconPictureBox();
-            iconPictureBox.IconChar = IconChar.User;
-            iconPictureBox.IconSize = 20;
-            iconPictureBox.IconColor = Color.LightGray;
-            iconPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
-
-            // 4. Thêm controls vào panel
-            panel.Controls.Add(iconPictureBox);
-            panel.Controls.Add(textBox);
-
-            // 5. Thêm panel vào control cha
-            this.Controls.Add(panel);
-
-            // 6. Sự kiện
-            textBox.Enter += (s, e) => {
-                borderColor = focusBorderColor;
-                Invalidate();
-            };
-
-            textBox.Leave += (s, e) => {
-                borderColor = originBorderColor;
-                Invalidate();
-            };
+            this.OnMouseLeave(e);
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.OnKeyPress(e);
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            isFocused = true;
+            this.Invalidate();
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            isFocused = false;
+            this.Invalidate();
+        }
+
+        ///::::+
     }
 }

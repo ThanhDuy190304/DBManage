@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctTextBox11 = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.ctTextBox11 = new SchoolManagerApp.src.Views.controls.CTTextBoxIcon();
             this.SuspendLayout();
             // 
             // ctTextBox11
@@ -61,6 +61,6 @@
 
         #endregion
 
-        private controls.CTTextBox ctTextBox11;
+        private controls.CTTextBoxIcon ctTextBox11;
     }
 }

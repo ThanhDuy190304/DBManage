@@ -30,9 +30,9 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.ExitButton = new FontAwesome.Sharp.IconButton();
-            this.userNameTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.userNameTextBox = new SchoolManagerApp.src.Views.controls.CTTextBoxIcon();
             this.LoginButton = new SchoolManagerApp.Controls.CTButton();
-            this.passrordTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.passrordTextBox = new SchoolManagerApp.src.Views.controls.CTTextBoxIcon();
             this.SuspendLayout();
             // 
             // label2
@@ -161,9 +161,9 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private controls.CTTextBox passrordTextBox;
+        private controls.CTTextBoxIcon passrordTextBox;
         private Controls.CTButton LoginButton;
         private FontAwesome.Sharp.IconButton ExitButton;
-        private controls.CTTextBox userNameTextBox;
+        private controls.CTTextBoxIcon userNameTextBox;
     }
 }
