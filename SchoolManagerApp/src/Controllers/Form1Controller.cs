@@ -12,25 +12,13 @@ namespace SchoolManagerApp.src.Controllers
 {
     public class Form1Controller
     {
-        private DatabaseService _databaseService;
+        private readonly DatabaseService _db;
 
-        public Form1Controller()
+        public Form1Controller(string username, string password)
         {
-            _databaseService = new DatabaseService();
+            _db = new DatabaseService(username, password);
         }
 
-        public void LoadData(DataGridView dataGridView)
-        {
-            try
-            {
-                string query = "SELECT * FROM DONVI";
-                DataTable dataTable = _databaseService.ExecuteQuery(query);
-                dataGridView.DataSource = dataTable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message + "\nInner Exception: " + ex.InnerException?.Message);
-            }
-        }
+        public bool Login() => _db.TestConnection();
     }
 }

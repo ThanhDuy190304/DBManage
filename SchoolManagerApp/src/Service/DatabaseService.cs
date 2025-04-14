@@ -10,24 +10,26 @@ namespace SchoolManagerApp.src.Service
 {
     public class DatabaseService
     {
-        private string _connectionString = "User Id=admin;Password=Admin123;Data Source=localhost:1521/QL_NoiBo";
+        private string _connectionString;
 
-        public DataTable ExecuteQuery(string query)
+        public DatabaseService(string username, string password)
+        {
+            _connectionString = $"User Id={username};Password={password};Data Source=localhost:1521/QL_NoiBo";
+        }
+
+        public bool TestConnection()
         {
             try
             {
-                using (OracleConnection connection = new OracleConnection(_connectionString))
+                using (var conn = new OracleConnection(_connectionString))
                 {
-                    OracleCommand cmd = new OracleCommand(query, connection);
-                    OracleDataAdapter adapter = new OracleDataAdapter(cmd);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    return dataTable;
+                    conn.Open();
+                    return true;
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception("An error occurred while executing the query: " + ex.Message);
+                return false;
             }
         }
     }

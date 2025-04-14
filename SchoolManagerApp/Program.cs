@@ -1,22 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SchoolManagerApp.src.Controllers;
 
 namespace SchoolManagerApp
 {
-    internal static class Program
+    class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
+        // "admin";  "Admin123";
+
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Console.Write("Enter username: ");
+            string username = Console.ReadLine();
+
+            Console.Write("Enter password: ");
+            string password = Console.ReadLine();    
+
+            var controller = new Form1Controller(username, password);
+
+            Console.WriteLine("\ninnnnnn ...");
+
+            if (controller.Login())
+                Console.WriteLine("ok!");
+            else
+                Console.WriteLine("no ok");
+
+            Console.ReadLine();
         }
+      
     }
+
 }
