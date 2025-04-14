@@ -200,7 +200,7 @@
     <EmbeddedResource Include="src\Views\RolesPage.resx">
       <DependentUpon>RolesPage.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="src\Controllers\RoleController.cs" />
+    <Compile Include="src\Controller\RoleController.cs" />
     <Compile Include="src\Models\MockRole.cs" />
     <Compile Include="src\Models\Role.cs" />
     <Compile Include="src\Service\BaseService.cs" />
@@ -233,7 +233,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="src\Controllers\.gitkeep" />
+    <None Include="src\Controller\.gitkeep" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
