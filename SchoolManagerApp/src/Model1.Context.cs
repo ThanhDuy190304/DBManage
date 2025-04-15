@@ -9,6 +9,7 @@
 
 namespace SchoolManagerApp.src
 {
+    using SchoolManagerApp.src.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -16,7 +17,7 @@ namespace SchoolManagerApp.src
     public partial class Model : DbContext
     {
         public Model()
-            : base("name=Model")
+            : base("name=Models")
         {
         }
     
@@ -31,5 +32,7 @@ namespace SchoolManagerApp.src
         public virtual DbSet<MOMON> MOMONs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<SINHVIEN> SINHVIENs { get; set; }
+
+        public virtual DbSet<UserRolePrivs> UserRolePrivs { get; set; }
     }
 }

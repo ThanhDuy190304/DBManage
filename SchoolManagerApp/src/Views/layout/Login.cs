@@ -1,7 +1,9 @@
-﻿using System;
+﻿using SchoolManagerApp.src.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -14,6 +16,8 @@ namespace SchoolManagerApp.src.Views.layout
 {
     public partial class Login : Form
     {
+        private AuthController authController = new AuthController();
+
         public Login()
         {
             InitializeComponent();
@@ -148,21 +152,14 @@ namespace SchoolManagerApp.src.Views.layout
             try
             {
                 // Giả lập quá trình đăng nhập (thay bằng code thực tế của bạn)
-                bool loginSuccess = AuthenticateUser(username, password);
-
+                bool loginSuccess = this.authController.Login(username, password);
                 if (loginSuccess)
                 {
-                    // Mở form chính
-                    var mainForm = new Main();
-                    mainForm.Show();
-
-                    // Đóng form đăng nhập
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng", "Lỗi đăng nhập",
-                                  MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (this.authController.IsCurrentUserDba())
+                    {
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -171,13 +168,6 @@ namespace SchoolManagerApp.src.Views.layout
                               MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
-
-        // Hàm giả lập kiểm tra đăng nhập (thay bằng code thực tế của bạn)
-        private bool AuthenticateUser(string username, string password)
-        {
-            // Ở đây chỉ là ví dụ, bạn cần thay bằng logic kiểm tra thực tế
-            return username == "admin" && password == "1";
         }
     }
 }

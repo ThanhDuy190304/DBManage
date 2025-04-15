@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace SchoolManagerApp.src.Service
 {
-    internal class BaseService
+    internal abstract class BaseService<T>
     {
-        public interface IBaseService<T> where T : class
+        protected readonly DatabaseService _dbService;
+        protected BaseService()
         {
-            Task<IEnumerable<T>> GetAllAsync();
-            Task<T> CreateAsync(T entity);
-            Task<bool> DeleteAsync(int id);
+            _dbService = DatabaseService.GetInstance("", "");
         }
+        public abstract Task<IEnumerable<T>> GetAll();
+        //public abstract Task<T> Create(T entity);
+        public abstract Task<bool> Delete(string id);
     }
 }

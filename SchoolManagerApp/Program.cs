@@ -1,10 +1,11 @@
 ﻿// Program.cs
 // Program.cs
-#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
+//#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
 
 using System;
 using System.Windows.Forms;
 using SchoolManagerApp.src.Controller;
+using SchoolManagerApp.src.Views.layout;
 
 namespace SchoolManagerApp
 {
@@ -21,9 +22,9 @@ namespace SchoolManagerApp
             Console.Write("Enter password: ");
             string password = Console.ReadLine();
 
-            var controller = new LoginController(username, password);
+            var controller = new AuthController();
 
-            if (controller.Login())
+            if (controller.Login(username, password))
                 Console.WriteLine("Login thành công!");
             else
                 Console.WriteLine("Login thất bại!");
@@ -34,7 +35,12 @@ namespace SchoolManagerApp
             // GUI mode (WinForms)
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new src.Views.layout.Login()); // hoặc Form chính
+
+            var loginForm = new Login();
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Main());
+            }
 #endif
         }
     }

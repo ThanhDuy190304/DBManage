@@ -196,6 +196,8 @@ namespace SchoolManagerApp.src.Views.controls
                 borderColor = originBorderColor;
                 Invalidate();
             };
+
+            
         }
     }
 }

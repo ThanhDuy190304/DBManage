@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SchoolManagerApp.src.Models;
 using SchoolManagerApp.src.Service;
+using SchoolManagerApp.src.utils;
 
 namespace SchoolManagerApp
 {
@@ -16,21 +17,37 @@ namespace SchoolManagerApp
             _roleService = new RoleService();
         }
 
-        public async Task<List<Role>> GetAllRolesAsync()
+        public async Task<IEnumerable<UserRolePrivs>> GetAll()
         {
-            var roles = await _roleService.GetAllAsync();
-            return roles.ToList();
+            try
+            {
+                var roles = await _roleService.GetAll();
+                return roles;
+            }
+            catch (BaseError)
+            {
+                throw; // Ném lại lỗi custom
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định: " + ex.Message);
+            }
         }
 
-        public async Task<Role> AddRoleAsync(string roleName)
+        public async Task<bool> DeleteRole(string roleName)
         {
-            var newRole = new Role { Name = roleName };
-            return await _roleService.CreateAsync(newRole);
-        }
-
-        public async Task<bool> DeleteRoleAsync(int roleId)
-        {
-            return await _roleService.DeleteAsync(roleId);
+            try
+            {
+                return await _roleService.Delete(roleName);
+            }
+            catch (BaseError)
+            {
+                throw; // Ném lại lỗi custom
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định: " + ex.Message);
+            }
         }
     }
 }

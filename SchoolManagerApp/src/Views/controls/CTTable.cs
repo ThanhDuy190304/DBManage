@@ -18,6 +18,9 @@ namespace SchoolManagerApp.Controls
         private CTTableRow headerRow;
         private List<CTTableRow> dataRows;
 
+        public delegate void DeleteActionHandler(string id);
+        public event DeleteActionHandler OnDeleteClicked;
+
         public CTTable(Dictionary<string, int> columnDefinitions, List<string[]> data)
         {
             this.dataRows = new List<CTTableRow>();
@@ -56,7 +59,9 @@ namespace SchoolManagerApp.Controls
             this.Controls.Add(headerRow);
         }
 
-        private void AddDataRows(Dictionary<string, int> columnDefinitions, List<string[]> data)
+        private void AddDataRows(
+            Dictionary<string, int> columnDefinitions, 
+            List<string[]> data)
         {
 
             for (int i = 0; i < data.Count; i++)
@@ -92,6 +97,7 @@ namespace SchoolManagerApp.Controls
                 };
                 trashButton.FlatAppearance.BorderSize = 0;
                 trashButton.Size = new Size(24, 24);
+                trashButton.Click += (s, e) => OnDeleteClicked?.Invoke(rowData[0]);
 
                 IconButton editButton = new IconButton()
                 {

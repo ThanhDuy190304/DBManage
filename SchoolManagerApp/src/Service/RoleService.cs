@@ -3,46 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SchoolManagerApp.src.Models;
-using static SchoolManagerApp.src.Service.BaseService;
+using Dapper;
+using Oracle.ManagedDataAccess.Client;
+using SchoolManagerApp.src.utils;
 
 namespace SchoolManagerApp.src.Service
 {
-    public class RoleService : IBaseService<Role>
+    internal class RoleService : BaseService<UserRolePrivs>
     {
-        private readonly List<Role> _roleStore;
-
-        public RoleService()
+        override
+        public async Task<IEnumerable<UserRolePrivs>> GetAll()
         {
-        
-            _roleStore = new List<Role>
+            try
             {
-                new Role { Id = 1, Name = "Admin" },
-                new Role { Id = 2, Name = "User" },
-                new Role { Id = 3, Name = "Manager" },
-                new Role { Id = 4, Name = "Editor" }
-            };
-        }
-
-        public async Task<IEnumerable<Role>> GetAllAsync()
-        {
-            return await Task.FromResult(_roleStore);
-        }
-
-        public async Task<Role> CreateAsync(Role entity)
-        {
-            _roleStore.Add(entity);  
-            return await Task.FromResult(entity);
-        }
-
-        public async Task<bool> DeleteAsync(int id)
-        {
-            var role = _roleStore.FirstOrDefault(r => r.Id == id);
-            if (role != null)
-            {
-                _roleStore.Remove(role);  
-                return await Task.FromResult(true);
+                string query = "SELECT * FROM user_role_privs";
+                return await _dbService.Connection.QueryAsync<UserRolePrivs>(query);
             }
-            return await Task.FromResult(false);
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Không thể khởi tạo kết nối: " + ex.Message);
+            }
         }
+
+        override
+        public async Task<bool> Delete(string name)
+        {
+            string query = $"DROP ROLE {name}";
+            try
+            {
+                await _dbService.Connection.ExecuteAsync(query);
+                return true;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Không thể khởi tạo kết nối: " + ex.Message);
+            }
+
+        }
+
     }
 }

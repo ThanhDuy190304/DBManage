@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using SchoolManagerApp.Controls;
 using SchoolManagerApp.src.Views.partials;
@@ -10,9 +11,9 @@ namespace SchoolManagerApp.src.Views
     {
         private Panel createButtonPanel;
         private CTButton CreateRoleButton;
-
         private Panel tablePanel;
 
+        private RoleController roleController = new RoleController();
         public RolesPage()
         {
             InitializeComponent();
@@ -20,44 +21,67 @@ namespace SchoolManagerApp.src.Views
             this.Padding = new Padding(12);
         }
 
-        private void InitializeCustomTable()
+        private async void InitializeCustomTable()
         {
-            // Mock cột: tên cột + độ rộng
-            var columnDefinitions = new Dictionary<string, int>()
+            try
             {
-                { "STT", 50 },
-                { "Tên role", 150 },
-                { "Số lượng users", 150 },
-                { "Người cấp", 120 },
-                { "Ngày tạo", 120 },
-                { "Ngày update", 120 }
-            };
+                var roles = await roleController.GetAll();
 
-            // Mock dữ liệu
-            var data = new List<string[]>();
-            for (int i = 1; i <= 20; i++)
-            {
-                data.Add(new string[]
+                var columnDefinitions = new Dictionary<string, int>()
                 {
-            i.ToString(),
-            "ROLE_" + (i % 5 == 0 ? "ADMIN" : "USER" + i),
-            (5 + i % 3).ToString() + " users",
-            "SYSTEM",
-            "2024-01-01",
-            "2025-04-" + (i % 30 + 1).ToString("D2")
-                });
+                    { "GRANTED_ROLE", 150 },
+                    { "USERNAME", 150 },
+                    { "ADMIN_OPTION", 100 },
+                    { "DELEGATE_OPTION", 110 },
+                    { "DEFAULT_ROLE", 100 },
+                    { "OS_GRANTED", 100 },
+                    { "COMMON", 100 },
+                    { "INHERITED", 100 },
+                };
+
+                var data = roles.Select(r => new string[]
+                {
+                    r.GRANTED_ROLE,
+                    r.USERNAME,
+                    r.ADMIN_OPTION?.ToString() ?? "",
+                    r.DELEGATE_OPTION?.ToString() ?? "",
+                    r.DEFAULT_ROLE?.ToString() ?? "",
+                    r.OS_GRANTED?.ToString() ?? "",
+                    r.COMMON?.ToString() ?? "",
+                    r.INHERITED?.ToString() ?? ""
+                }).ToList();
+
+                var table = new CTTable(columnDefinitions, data);
+                table.OnDeleteClicked += roleName =>
+                {
+                    DeleteARole(roleName);
+                };
+                table.Dock = DockStyle.Fill;
+                this.tablePanel.Controls.Add(table);
             }
-
-            var table = new CTTable(columnDefinitions, data);
-            table.Dock = DockStyle.Fill;
-            this.tablePanel.Controls.Add(table);
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}", "Lỗi",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
+        private async void DeleteARole(string roleName)
+        {
+            try
+            {
+                await roleController.DeleteRole(roleName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xóa role: {ex.Message}", "Lỗi",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void InitializeComponent()
         {
             this.createButtonPanel = new System.Windows.Forms.Panel();
-            this.tablePanel = new System.Windows.Forms.Panel();
             this.CreateRoleButton = new SchoolManagerApp.Controls.CTButton();
+            this.tablePanel = new System.Windows.Forms.Panel();
             this.createButtonPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,17 +91,8 @@ namespace SchoolManagerApp.src.Views
             this.createButtonPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.createButtonPanel.Location = new System.Drawing.Point(0, 0);
             this.createButtonPanel.Name = "createButtonPanel";
-            this.createButtonPanel.Size = new System.Drawing.Size(903, 70);
+            this.createButtonPanel.Size = new System.Drawing.Size(1042, 70);
             this.createButtonPanel.TabIndex = 1;
-            // 
-            // tablePanel
-            // 
-            this.tablePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tablePanel.Location = new System.Drawing.Point(34, 113);
-            this.tablePanel.Name = "tablePanel";
-            this.tablePanel.Size = new System.Drawing.Size(831, 317);
-            this.tablePanel.TabIndex = 0;
-            this.tablePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tablePanel_Paint);
             // 
             // CreateRoleButton
             // 
@@ -98,7 +113,7 @@ namespace SchoolManagerApp.src.Views
             this.CreateRoleButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.CreateRoleButton.IconSize = 24;
             this.CreateRoleButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CreateRoleButton.Location = new System.Drawing.Point(781, 27);
+            this.CreateRoleButton.Location = new System.Drawing.Point(890, 27);
             this.CreateRoleButton.Name = "CreateRoleButton";
             this.CreateRoleButton.Size = new System.Drawing.Size(119, 40);
             this.CreateRoleButton.TabIndex = 0;
@@ -109,13 +124,22 @@ namespace SchoolManagerApp.src.Views
             this.CreateRoleButton.UseVisualStyleBackColor = false;
             this.CreateRoleButton.Click += new System.EventHandler(this.CreateRoleButton_Click);
             // 
+            // tablePanel
+            // 
+            this.tablePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tablePanel.Location = new System.Drawing.Point(54, 113);
+            this.tablePanel.Name = "tablePanel";
+            this.tablePanel.Size = new System.Drawing.Size(955, 317);
+            this.tablePanel.TabIndex = 0;
+            this.tablePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tablePanel_Paint);
+            // 
             // RolesPage
             // 
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Controls.Add(this.tablePanel);
             this.Controls.Add(this.createButtonPanel);
             this.Name = "RolesPage";
-            this.Size = new System.Drawing.Size(903, 472);
+            this.Size = new System.Drawing.Size(1042, 472);
             this.createButtonPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
