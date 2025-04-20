@@ -69,7 +69,18 @@ namespace SchoolManagerApp.src.Views
         {
             try
             {
-                await roleController.DeleteRole(roleName);
+                bool result = await roleController.DeleteRole(roleName);
+                if (result)
+                {
+                    MessageBox.Show("Role đã được xóa thành công.", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);  // Thông báo xóa thành công
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xóa role.", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);  // Thông báo nếu không thể xóa
+                }
+               
             }
             catch (Exception ex)
             {
@@ -148,7 +159,13 @@ namespace SchoolManagerApp.src.Views
         private void CreateRoleButton_Click(object sender, EventArgs e)
         {
             createARoleForm createARoleForm = new createARoleForm();
+            createARoleForm.FormClosed += (s, args) =>
+            {
+                MessageBox.Show("Form đã đóng!", "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                InitializeCustomTable();
+            };
             createARoleForm.ShowDialog();
+            
         }
 
         private void tablePanel_Paint(object sender, PaintEventArgs e)

@@ -39,6 +39,7 @@ namespace SchoolManagerApp
             try
             {
                 return await _roleService.Delete(roleName);
+
             }
             catch (BaseError)
             {
@@ -47,6 +48,36 @@ namespace SchoolManagerApp
             catch (Exception ex)
             {
                 throw new ServerError("Lỗi không xác định: " + ex.Message);
+            }
+        }
+        public async Task<bool> CreateRole(string roleName)
+        {
+            try
+            {
+                return await _roleService.CreateRole(roleName);
+            }
+            catch (BaseError)
+            {
+                throw; // Ném lại lỗi custom
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định khi tạo role: " + ex.Message);
+            }
+        }
+        public async Task<bool> GrantPermission(string roleName, string objectType, string objectName, string privilege)
+        {
+            try
+            {
+                return await _roleService.GrantPermission(roleName, objectType, objectName, privilege);
+            }
+            catch (BaseError)
+            {
+                throw; // Ném lại lỗi custom
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định khi cấp quyền: " + ex.Message);
             }
         }
     }
