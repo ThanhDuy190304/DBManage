@@ -1,11 +1,12 @@
 ﻿// Program.cs
 // Program.cs
-//#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
+#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
 
 using System;
 using System.Windows.Forms;
 using SchoolManagerApp.src.Controller;
 using SchoolManagerApp.src.Views.layout;
+using SchoolManagerApp.Tests;
 
 namespace SchoolManagerApp
 {
@@ -17,20 +18,18 @@ namespace SchoolManagerApp
 #if CONSOLE_TEST
             // Console mode để test backend
             Console.Write("Enter username: ");
-            string username = Console.ReadLine();
+            string username = "admin"; //Console.ReadLine();
 
             Console.Write("Enter password: ");
-            string password = Console.ReadLine();
+            string password = "Admin123"; // Console.ReadLine();
 
             var controller = new AuthController();
 
             if (controller.Login(username, password))
                 Console.WriteLine("Login thành công!");
             else
-                Console.WriteLine("Login thất bại!");
-
-            Console.ReadLine();
-
+                Console.WriteLine("Login thất bại!");            
+            TestUserController.Main(null).GetAwaiter().GetResult();  
 #else
             // GUI mode (WinForms)
             Application.EnableVisualStyles();
