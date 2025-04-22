@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{33C21E9A-EE62-40C4-B814-0A7D5E1BA4C6}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>SchoolManagerApp</RootNamespace>
     <AssemblyName>SchoolManagerApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -105,6 +105,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Controller\AuthController.cs" />
     <Compile Include="src\Controller\UserController.cs" />
+    <Compile Include="src\Models\UserPrivs.cs" />
     <Compile Include="src\Models\UserRolePrivs.cs" />
     <Compile Include="src\utils\Error.cs" />
     <Compile Include="src\utils\ErrorMapper.cs" />
@@ -171,6 +172,7 @@
       <DependentUpon>UsersPage.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Test\TestUserController.cs" />
+    <Compile Include="TestUserController.cs" />
     <EmbeddedResource Include="src\Views\controls\CTTextBox.resx">
       <DependentUpon>CTTextBox.cs</DependentUpon>
     </EmbeddedResource>
