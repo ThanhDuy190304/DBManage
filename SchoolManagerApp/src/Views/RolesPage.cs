@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using SchoolManagerApp.Controls;
 using SchoolManagerApp.src.Views.partials;
@@ -161,7 +162,7 @@ namespace SchoolManagerApp.src.Views
             this.ReloadButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ReloadButton.IconSize = 24;
             this.ReloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReloadButton.Location = new System.Drawing.Point(54, 28);
+            this.ReloadButton.Location = new System.Drawing.Point(141, 27);
             this.ReloadButton.Name = "ReloadButton";
             this.ReloadButton.Size = new System.Drawing.Size(99, 40);
             this.ReloadButton.TabIndex = 1;
@@ -194,7 +195,31 @@ namespace SchoolManagerApp.src.Views
 
         private void CreateRoleButton_Click(object sender, EventArgs e)
         {
-            createARoleForm createARoleForm = new createARoleForm();
+            async Task<bool> HandleCreateRole(string roleName, string password)
+            {
+                try
+                {
+                    bool result = await roleController.CreateRole(roleName, password);
+                    if (result)
+                    {
+                        MessageBox.Show("Role đã được tạo thành công.", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không thể tạo role.", "Thông báo",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi tạo role: {ex.Message}", "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            createForm createARoleForm = new createForm("Tạo 1 role", HandleCreateRole);
             createARoleForm.ShowDialog();
         }
 

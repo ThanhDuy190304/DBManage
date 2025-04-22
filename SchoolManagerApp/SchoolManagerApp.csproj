@@ -125,6 +125,12 @@
     <Compile Include="src\Views\controls\CTTextBox.Designer.cs">
       <DependentUpon>CTTextBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\forms\updateFieldForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\updateFieldForm.Designer.cs">
+      <DependentUpon>updateFieldForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\layout\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,11 +150,11 @@
     <Compile Include="src\Views\layout\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\createARoleForm.cs">
+    <Compile Include="src\Views\forms\createForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\createARoleForm.Designer.cs">
-      <DependentUpon>createARoleForm.cs</DependentUpon>
+    <Compile Include="src\Views\forms\createForm.Designer.cs">
+      <DependentUpon>createForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\RolesPage.cs">
       <SubType>UserControl</SubType>
@@ -185,8 +191,8 @@
     <EmbeddedResource Include="src\Views\layout\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\createARoleForm.resx">
-      <DependentUpon>createARoleForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\forms\createForm.resx">
+      <DependentUpon>createForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\RolesPage.resx">
       <DependentUpon>RolesPage.cs</DependentUpon>

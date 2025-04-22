@@ -11,48 +11,29 @@ using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.partials
 {
-    public partial class createARoleForm : Form
+    public partial class createForm : Form
 
     {
-        private readonly RoleController roleController;
-        public createARoleForm()
+        private readonly Func<string, string, Task<bool>> onCreateCallback;
+        public createForm(string title, Func<string, string, Task<bool>> onCreate)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            roleController = new RoleController();
+            this.createLabel.Text = title;
+            this.onCreateCallback = onCreate;
         }
 
-        private async void LoginButton_Click(object sender, EventArgs e)
+        private async void CreateButton_Click(object sender, EventArgs e)
         {
-            string roleName = ctTextBox1.Texts;  
-
-            if (string.IsNullOrEmpty(roleName))
+            string name = textNameBox.Texts;
+            string password = textPasswordBox.Texts;
+            if (string.IsNullOrEmpty(name))
             {
                 MessageBox.Show("Vui lòng nhập tên role", "Thông báo",
                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            try
-            {
-                bool result = await roleController.CreateRole(roleName);
-                if (result)
-                {
-                    MessageBox.Show("Role đã được tạo thành công.", "Thông báo", 
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Không thể tạo role.");
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi tạo role: {ex.Message}", "Lỗi",
-                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            await this.onCreateCallback(name, password);
         }
 
         private void iconExitButton_Click(object sender, EventArgs e)
@@ -69,5 +50,6 @@ namespace SchoolManagerApp.src.Views.partials
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+       
     }
 }

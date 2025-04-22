@@ -84,11 +84,11 @@ namespace SchoolManagerApp
                 throw new ServerError("Lỗi không xác định: " + ex.Message);
             }
         }
-        public async Task<bool> CreateRole(string roleName)
+        public async Task<bool> CreateRole(string roleName, string password)
         {
             try
             {
-                return await _roleService.CreateRole(roleName);
+                return await _roleService.CreateRole(roleName, password);
             }
             catch (BaseError)
             {

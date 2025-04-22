@@ -84,9 +84,11 @@ namespace SchoolManagerApp.src.Service
             }
 
         }
-        public async Task<bool> CreateRole(string roleName)
+        public async Task<bool> CreateRole(string roleName, string password)
         {
-            string query = $"CREATE ROLE {roleName}";
+            string query = string.IsNullOrWhiteSpace(password)
+                  ? $"CREATE ROLE {roleName}"
+                  : $"CREATE ROLE {roleName} IDENTIFIED BY \"{password}\"";
             try
             {
                 await _dbService.Connection.ExecuteAsync(query);
