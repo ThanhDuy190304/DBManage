@@ -1,6 +1,6 @@
 ﻿// Program.cs
 // Program.cs
-#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
+//#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
 
 using System;
 using System.Threading.Tasks;
@@ -35,11 +35,14 @@ namespace SchoolManagerApp
             // GUI mode (WinForms)
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
+            AuthController authController = new AuthController();
             var loginForm = new Login();
+            loginForm.SetAuthController(authController);
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                Application.Run(new Main());
+                Main main = new Main();
+                main.SetAuthController(authController);
+                Application.Run(main);
             }
 #endif
         }

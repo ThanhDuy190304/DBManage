@@ -9,10 +9,11 @@ namespace SchoolManagerApp.src.Views
 {
     public partial class RolesPage : UserControl
     {
-        private Panel createButtonPanel;
+        private Panel buttonPanel;
         private CTButton CreateRoleButton;
-        private Panel tablePanel;
+        private CTButton ReloadButton;
 
+        private Panel tablePanel;
         private RoleController roleController = new RoleController();
         public RolesPage()
         {
@@ -23,32 +24,34 @@ namespace SchoolManagerApp.src.Views
 
         private async void InitializeCustomTable()
         {
+
+
             try
             {
                 var roles = await roleController.GetAll();
 
                 var columnDefinitions = new Dictionary<string, int>()
                 {
-                    { "GRANTED_ROLE", 150 },
-                    { "USERNAME", 150 },
-                    { "ADMIN_OPTION", 100 },
-                    { "DELEGATE_OPTION", 110 },
-                    { "DEFAULT_ROLE", 100 },
-                    { "OS_GRANTED", 100 },
+                    { "ROLE", 150 },
+                    { "ROLE_ID", 100 },
+                    { "PASSWORD_REQUIRED", 150 },
+                    { "AUTHENTICATION_TYPE", 150 },
                     { "COMMON", 100 },
+                    { "ORACLE_MAINTAINED", 150 },
                     { "INHERITED", 100 },
+                    { "IMPLICIT", 100 },
                 };
 
                 var data = roles.Select(r => new string[]
                 {
-                    r.GRANTED_ROLE,
-                    r.USERNAME,
-                    r.ADMIN_OPTION?.ToString() ?? "",
-                    r.DELEGATE_OPTION?.ToString() ?? "",
-                    r.DEFAULT_ROLE?.ToString() ?? "",
-                    r.OS_GRANTED?.ToString() ?? "",
+                    r.ROLE,
+                    r.ROLE_ID,
+                    r.PASSWORD_REQUIRED?.ToString() ?? "",
+                    r.AUTHENTICATION_TYPE?.ToString() ?? "",
                     r.COMMON?.ToString() ?? "",
-                    r.INHERITED?.ToString() ?? ""
+                    r.ORACLE_MAINTAINED?.ToString() ?? "",
+                    r.INHERITED?.ToString() ?? "",
+                    r.IMPLICIT?.ToString() ?? ""
                 }).ToList();
 
                 var table = new CTTable(columnDefinitions, data);
@@ -73,14 +76,14 @@ namespace SchoolManagerApp.src.Views
                 if (result)
                 {
                     MessageBox.Show("Role đã được xóa thành công.", "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);  // Thông báo xóa thành công
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     MessageBox.Show("Không thể xóa role.", "Thông báo",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);  // Thông báo nếu không thể xóa
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -90,20 +93,22 @@ namespace SchoolManagerApp.src.Views
         }
         private void InitializeComponent()
         {
-            this.createButtonPanel = new System.Windows.Forms.Panel();
+            this.buttonPanel = new System.Windows.Forms.Panel();
             this.CreateRoleButton = new SchoolManagerApp.Controls.CTButton();
+            this.ReloadButton = new SchoolManagerApp.Controls.CTButton();
             this.tablePanel = new System.Windows.Forms.Panel();
-            this.createButtonPanel.SuspendLayout();
+            this.buttonPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // createButtonPanel
+            // buttonPanel
             // 
-            this.createButtonPanel.Controls.Add(this.CreateRoleButton);
-            this.createButtonPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.createButtonPanel.Location = new System.Drawing.Point(0, 0);
-            this.createButtonPanel.Name = "createButtonPanel";
-            this.createButtonPanel.Size = new System.Drawing.Size(1042, 70);
-            this.createButtonPanel.TabIndex = 1;
+            this.buttonPanel.Controls.Add(this.CreateRoleButton);
+            this.buttonPanel.Controls.Add(this.ReloadButton);
+            this.buttonPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonPanel.Location = new System.Drawing.Point(0, 0);
+            this.buttonPanel.Name = "buttonPanel";
+            this.buttonPanel.Size = new System.Drawing.Size(1042, 70);
+            this.buttonPanel.TabIndex = 1;
             // 
             // CreateRoleButton
             // 
@@ -115,6 +120,7 @@ namespace SchoolManagerApp.src.Views
             this.CreateRoleButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CreateRoleButton.FlatAppearance.BorderSize = 0;
             this.CreateRoleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreateRoleButton.Font = new System.Drawing.Font("Calibri", 12F);
             this.CreateRoleButton.ForeColor = System.Drawing.Color.Green;
             this.CreateRoleButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
             this.CreateRoleButton.HoverIconColor = System.Drawing.Color.Green;
@@ -124,9 +130,9 @@ namespace SchoolManagerApp.src.Views
             this.CreateRoleButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.CreateRoleButton.IconSize = 24;
             this.CreateRoleButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CreateRoleButton.Location = new System.Drawing.Point(890, 27);
+            this.CreateRoleButton.Location = new System.Drawing.Point(859, 27);
             this.CreateRoleButton.Name = "CreateRoleButton";
-            this.CreateRoleButton.Size = new System.Drawing.Size(119, 40);
+            this.CreateRoleButton.Size = new System.Drawing.Size(150, 40);
             this.CreateRoleButton.TabIndex = 0;
             this.CreateRoleButton.Text = "Tạo 1 role mới";
             this.CreateRoleButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -135,23 +141,53 @@ namespace SchoolManagerApp.src.Views
             this.CreateRoleButton.UseVisualStyleBackColor = false;
             this.CreateRoleButton.Click += new System.EventHandler(this.CreateRoleButton_Click);
             // 
+            // ReloadButton
+            // 
+            this.ReloadButton.BackColor = System.Drawing.Color.White;
+            this.ReloadButton.BackgroundColor = System.Drawing.Color.White;
+            this.ReloadButton.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.BorderRadius = 8;
+            this.ReloadButton.BorderSize = 2;
+            this.ReloadButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ReloadButton.FlatAppearance.BorderSize = 0;
+            this.ReloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReloadButton.Font = new System.Drawing.Font("Calibri", 12F);
+            this.ReloadButton.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.ReloadButton.HoverIconColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.HoverTextColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.IconChar = FontAwesome.Sharp.IconChar.RotateForward;
+            this.ReloadButton.IconColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ReloadButton.IconSize = 24;
+            this.ReloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ReloadButton.Location = new System.Drawing.Point(54, 28);
+            this.ReloadButton.Name = "ReloadButton";
+            this.ReloadButton.Size = new System.Drawing.Size(99, 40);
+            this.ReloadButton.TabIndex = 1;
+            this.ReloadButton.Text = "Reload";
+            this.ReloadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ReloadButton.TextColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ReloadButton.UseVisualStyleBackColor = false;
+            this.ReloadButton.Click += new System.EventHandler(this.ReloadButton_Click);
+            // 
             // tablePanel
             // 
             this.tablePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tablePanel.Location = new System.Drawing.Point(54, 113);
+            this.tablePanel.Location = new System.Drawing.Point(54, 135);
             this.tablePanel.Name = "tablePanel";
             this.tablePanel.Size = new System.Drawing.Size(955, 317);
             this.tablePanel.TabIndex = 0;
-            this.tablePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tablePanel_Paint);
             // 
             // RolesPage
             // 
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.Controls.Add(this.tablePanel);
-            this.Controls.Add(this.createButtonPanel);
+            this.Controls.Add(this.buttonPanel);
             this.Name = "RolesPage";
-            this.Size = new System.Drawing.Size(1042, 472);
-            this.createButtonPanel.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(1042, 517);
+            this.buttonPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -159,18 +195,18 @@ namespace SchoolManagerApp.src.Views
         private void CreateRoleButton_Click(object sender, EventArgs e)
         {
             createARoleForm createARoleForm = new createARoleForm();
-            createARoleForm.FormClosed += (s, args) =>
-            {
-                MessageBox.Show("Form đã đóng!", "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                InitializeCustomTable();
-            };
             createARoleForm.ShowDialog();
-            
         }
 
-        private void tablePanel_Paint(object sender, PaintEventArgs e)
+        private void ReloadButton_Click(object sender, EventArgs e)
         {
+            ReloadPage();
+        }
 
+        private void ReloadPage()
+        {
+            tablePanel.Controls.Clear();
+            InitializeCustomTable();
         }
     }
 }

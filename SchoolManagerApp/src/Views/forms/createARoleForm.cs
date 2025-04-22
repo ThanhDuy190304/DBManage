@@ -14,28 +14,12 @@ namespace SchoolManagerApp.src.Views.partials
     public partial class createARoleForm : Form
 
     {
-        private readonly RoleController _roleController;
+        private readonly RoleController roleController;
         public createARoleForm()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            _roleController = new RoleController();
-        }
-
-        private async  void createARole_Load(object sender, EventArgs e)
-        {
-            var roles = await _roleController.GetAll();
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            roleController = new RoleController();
         }
 
         private async void LoginButton_Click(object sender, EventArgs e)
@@ -44,34 +28,34 @@ namespace SchoolManagerApp.src.Views.partials
 
             if (string.IsNullOrEmpty(roleName))
             {
-                MessageBox.Show("Vui lòng nhập tên role!");
+                MessageBox.Show("Vui lòng nhập tên role", "Thông báo",
+                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             try
             {
-                bool result = await _roleController.CreateRole(roleName);
-
+                bool result = await roleController.CreateRole(roleName);
                 if (result)
                 {
-                    MessageBox.Show("Role đã được tạo thành công.");
+                    MessageBox.Show("Role đã được tạo thành công.", "Thông báo", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     MessageBox.Show("Không thể tạo role.");
 
                 }
-                this.FindForm()?.Close();
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tạo role: " + ex.Message);
+                MessageBox.Show($"Lỗi khi tạo role: {ex.Message}", "Lỗi",
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
-        private void iconExitButtot_Click(object sender, EventArgs e)
+        private void iconExitButton_Click(object sender, EventArgs e)
         {
             this.FindForm()?.Close();
         }
@@ -79,7 +63,7 @@ namespace SchoolManagerApp.src.Views.partials
         {
             if (keyData == Keys.Escape)
             {
-                iconExitButtot_Click(null, null); 
+                iconExitButton_Click(null, null); 
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);

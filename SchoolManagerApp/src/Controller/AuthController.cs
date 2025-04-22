@@ -9,7 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SchoolManagerApp.src.Controller
 {
-    internal class AuthController
+    public class AuthController
     {
         private DatabaseService _dbService;
 

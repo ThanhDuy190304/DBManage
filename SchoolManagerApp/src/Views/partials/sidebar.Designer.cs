@@ -34,6 +34,7 @@
             this.UsersPage = new SchoolManagerApp.Controls.CTButton();
             this.RolesPage = new SchoolManagerApp.Controls.CTButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.ctButton1 = new SchoolManagerApp.Controls.CTButton();
             this.SuspendLayout();
             // 
             // panel1
@@ -156,12 +157,45 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "DBA";
             // 
+            // ctButton1
+            // 
+            this.ctButton1.BackColor = System.Drawing.Color.Transparent;
+            this.ctButton1.BackgroundColor = System.Drawing.Color.Transparent;
+            this.ctButton1.BorderColor = System.Drawing.Color.Gray;
+            this.ctButton1.BorderRadius = 20;
+            this.ctButton1.BorderSize = 2;
+            this.ctButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ctButton1.FlatAppearance.BorderSize = 0;
+            this.ctButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ctButton1.Font = new System.Drawing.Font("Calibri", 12F);
+            this.ctButton1.ForeColor = System.Drawing.Color.Black;
+            this.ctButton1.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.ctButton1.HoverIconColor = System.Drawing.Color.Blue;
+            this.ctButton1.HoverTextColor = System.Drawing.Color.Blue;
+            this.ctButton1.IconChar = FontAwesome.Sharp.IconChar.DoorOpen;
+            this.ctButton1.IconColor = System.Drawing.Color.Black;
+            this.ctButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ctButton1.IconSize = 20;
+            this.ctButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ctButton1.Location = new System.Drawing.Point(55, 325);
+            this.ctButton1.Name = "ctButton1";
+            this.ctButton1.Padding = new System.Windows.Forms.Padding(6);
+            this.ctButton1.Size = new System.Drawing.Size(118, 41);
+            this.ctButton1.TabIndex = 7;
+            this.ctButton1.Text = "Đăng xuất";
+            this.ctButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ctButton1.TextColor = System.Drawing.Color.Black;
+            this.ctButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ctButton1.UseVisualStyleBackColor = false;
+            this.ctButton1.Click += new System.EventHandler(this.Logout_Click);
+            // 
             // sidebar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.ctButton1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rightArrow);
             this.Controls.Add(this.leftArrow);
@@ -170,7 +204,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "sidebar";
             this.Size = new System.Drawing.Size(243, 392);
-            this.Load += new System.EventHandler(this.sidebar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,5 +216,6 @@
         private FontAwesome.Sharp.IconButton leftArrow;
         private FontAwesome.Sharp.IconButton rightArrow;
         private System.Windows.Forms.Label label1;
+        private Controls.CTButton ctButton1;
     }
 }

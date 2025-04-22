@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.contentPanel = new System.Windows.Forms.Panel();
-            this.sidebar1 = new SchoolManagerApp.src.Views.partials.sidebar();
+            this.sidebar = new SchoolManagerApp.src.Views.partials.sidebar();
             this.SuspendLayout();
             // 
             // contentPanel
@@ -40,21 +40,21 @@
             this.contentPanel.Size = new System.Drawing.Size(1170, 436);
             this.contentPanel.TabIndex = 0;
             // 
-            // sidebar1
+            // sidebar
             // 
-            this.sidebar1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.sidebar1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sidebar1.Location = new System.Drawing.Point(-1, -1);
-            this.sidebar1.Name = "sidebar1";
-            this.sidebar1.Size = new System.Drawing.Size(243, 439);
-            this.sidebar1.TabIndex = 1;
+            this.sidebar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.sidebar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sidebar.Location = new System.Drawing.Point(-1, -1);
+            this.sidebar.Name = "sidebar";
+            this.sidebar.Size = new System.Drawing.Size(243, 439);
+            this.sidebar.TabIndex = 1;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 436);
-            this.Controls.Add(this.sidebar1);
+            this.Controls.Add(this.sidebar);
             this.Controls.Add(this.contentPanel);
             this.Name = "Main";
             this.Text = "Main";
@@ -65,6 +65,6 @@
         #endregion
 
         private System.Windows.Forms.Panel contentPanel;
-        private partials.sidebar sidebar1;
+        private partials.sidebar sidebar;
     }
 }

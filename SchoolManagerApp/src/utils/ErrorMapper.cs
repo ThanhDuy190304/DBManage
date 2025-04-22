@@ -27,6 +27,9 @@ namespace SchoolManagerApp.src.utils
 
                 case 01950:
                     return new PermissionDeniedError("Bạn không có quyền thực hiện thao tác này"); // ORA-01950
+                
+                case 01031:
+                    return new PermissionDeniedError("Bạn không có quyền thực hiện thao tác này"); // ORA-01031 
 
                 case 12541:
                     return new ServerError("Không thể kết nối đến cơ sở dữ liệu (ORA-12541)."); // No listener

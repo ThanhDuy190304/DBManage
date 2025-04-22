@@ -16,13 +16,12 @@ namespace SchoolManagerApp.src.Views.layout
 {
     public partial class Login : Form
     {
-        private AuthController authController = new AuthController();
-
+        internal AuthController _authController;
         public Login()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.DoubleBuffered = true;  // Quan trọng nhất
+            this.DoubleBuffered = true;  
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
                          ControlStyles.AllPaintingInWmPaint |
                          ControlStyles.UserPaint, true);
@@ -43,6 +42,10 @@ namespace SchoolManagerApp.src.Views.layout
         private void Login_Load(object sender, EventArgs e)
         {
             SetRoundedRegion(30);
+        }
+        public void SetAuthController(AuthController authController)
+        {
+            _authController = authController;
         }
 
         private void SetRoundedRegion(int radius)
@@ -152,10 +155,10 @@ namespace SchoolManagerApp.src.Views.layout
             try
             {
                 // Giả lập quá trình đăng nhập (thay bằng code thực tế của bạn)
-                bool loginSuccess = this.authController.Login(username, password);
+                bool loginSuccess = this._authController.Login(username, password);
                 if (loginSuccess)
                 {
-                    if (this.authController.IsCurrentUserDba())
+                    if (this._authController.IsCurrentUserDba())
                     {
                         this.DialogResult = DialogResult.OK;
                         this.Close();

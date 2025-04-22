@@ -75,7 +75,6 @@
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(270, 48);
             this.flowLayoutPanel1.TabIndex = 2;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // roleNameLabel
             // 
@@ -89,8 +88,7 @@
             this.roleNameLabel.Size = new System.Drawing.Size(73, 22);
             this.roleNameLabel.TabIndex = 1;
             this.roleNameLabel.Text = "Tên role:";
-            this.roleNameLabel.Click += new System.EventHandler(this.label1_Click);
-            // 
+           // 
             // LoginButton
             // 
             this.LoginButton.BackColor = System.Drawing.Color.AliceBlue;
@@ -138,7 +136,7 @@
             this.iconButton1.Size = new System.Drawing.Size(41, 23);
             this.iconButton1.TabIndex = 6;
             this.iconButton1.UseVisualStyleBackColor = false;
-            this.iconButton1.Click += new System.EventHandler(this.iconExitButtot_Click);
+            this.iconButton1.Click += new System.EventHandler(this.iconExitButton_Click);
             // 
             // createARoleForm
             // 
@@ -151,7 +149,6 @@
             this.Controls.Add(this.createARoleLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "createARoleForm";
-            this.Load += new System.EventHandler(this.createARole_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

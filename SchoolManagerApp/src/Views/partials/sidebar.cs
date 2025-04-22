@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SchoolManagerApp.src.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace SchoolManagerApp.src.Views.partials
     {
         private int expandedWidth = 250;
         private int collapsedWidth = 40;
+        public event Action OnLogout;
         public sidebar()
         {
             InitializeComponent();
@@ -61,9 +63,10 @@ namespace SchoolManagerApp.src.Views.partials
             rightArrow.Visible = false;
         }
 
-        private void sidebar_Load(object sender, EventArgs e)
-        {
 
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            OnLogout?.Invoke();
         }
     }
 }
