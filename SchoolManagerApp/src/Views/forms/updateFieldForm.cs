@@ -16,5 +16,7 @@ namespace SchoolManagerApp.src.Views.forms
         {
             InitializeComponent();
         }
+
+     
     }
 }

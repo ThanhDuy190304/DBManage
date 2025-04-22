@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{33C21E9A-EE62-40C4-B814-0A7D5E1BA4C6}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>SchoolManagerApp</RootNamespace>
     <AssemblyName>SchoolManagerApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -108,6 +108,7 @@
     <Compile Include="src\Models\DBA_TAB_PRIVS .cs" />
     <Compile Include="src\Models\DBA_ROLES.cs" />
     <Compile Include="src\Models\UserRolePrivs.cs" />
+    <Compile Include="src\Models\UserPrivs.cs" />
     <Compile Include="src\utils\Error.cs" />
     <Compile Include="src\utils\ErrorMapper.cs" />
     <Compile Include="src\Views\controls\CTButton.cs">
@@ -179,8 +180,12 @@
       <DependentUpon>UsersPage.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Test\TestUserController.cs" />
+    <Compile Include="TestUserController.cs" />
     <EmbeddedResource Include="src\Views\controls\CTTextBox.resx">
       <DependentUpon>CTTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\updateFieldForm.resx">
+      <DependentUpon>updateFieldForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\layout\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

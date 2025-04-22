@@ -29,8 +29,8 @@ namespace SchoolManagerApp
             if (controllerAuth.Login(username, password))
                 Console.WriteLine("Login thành công!");
             else
-                Console.WriteLine("Login thất bại!");            
-            TestUserController.Main(null).GetAwaiter().GetResult();  
+                Console.WriteLine("Login thất bại!");
+            Task.Run(async () => await TestUserService.Main(null)).GetAwaiter().GetResult();
 #else
             // GUI mode (WinForms)
             Application.EnableVisualStyles();

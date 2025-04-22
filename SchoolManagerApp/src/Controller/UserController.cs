@@ -17,7 +17,7 @@ namespace SchoolManagerApp.src.Controller
             _userService = new UserService();
         }
 
-        public async Task<IEnumerable<UserRolePrivs>> GetAll()
+        public async Task<IEnumerable<UserPrivs>> GetAll()
         {
             try
             {
@@ -32,6 +32,31 @@ namespace SchoolManagerApp.src.Controller
             catch (Exception ex)
             {
                 throw new ServerError("Lỗi không xác định: " + ex.Message);
+            }
+        }
+
+        public async Task<UserPrivs> GetByUsername(string username)
+        {
+            try
+            {
+                var user = await _userService.GetByUsername(username);
+
+                // Kiểm tra nếu không tìm thấy người dùng
+                if (user == null)
+                {
+                    throw new NotFoundError("Người dùng không tồn tại.");
+                }
+
+                // Trả về dữ liệu người dùng nếu tìm thấy
+                return user;
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định khi lấy dữ liệu người dùng: " + ex.Message);
             }
         }
 
