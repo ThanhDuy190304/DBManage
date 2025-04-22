@@ -26,7 +26,7 @@ namespace SchoolManagerApp
             }
             catch (BaseError)
             {
-                throw; // Ném lại lỗi custom
+                throw; 
             }
             catch (Exception ex)
             {
@@ -43,7 +43,7 @@ namespace SchoolManagerApp
             }
             catch (BaseError)
             {
-                throw; // Ném lại lỗi custom
+                throw; 
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace SchoolManagerApp
             }
             catch (BaseError)
             {
-                throw; // Ném lại lỗi custom
+                throw;
             }
             catch (Exception ex)
             {
@@ -73,7 +73,7 @@ namespace SchoolManagerApp
             }
             catch (BaseError)
             {
-                throw; // Ném lại lỗi custom
+                throw;
             }
             catch (Exception ex)
             {
