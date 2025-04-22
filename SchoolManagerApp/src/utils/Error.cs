@@ -25,7 +25,10 @@ namespace SchoolManagerApp.src.utils
     {
         public ConflictError(string message = "Tài nguyên đã tồn tại.") : base(message) { }
     }
-
+    internal class InvalidDataError : BaseError
+    {
+        public InvalidDataError(string message = "Dữ liệu được cung cấp không hợp lệ") : base(message) { }
+    }
     internal class PermissionDeniedError : BaseError
     {
         public PermissionDeniedError(string message = "Bạn không có quyền thực hiện thao tác này.") : base(message) { }
