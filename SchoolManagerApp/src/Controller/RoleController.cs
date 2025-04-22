@@ -65,6 +65,30 @@ namespace SchoolManagerApp
                 throw new ServerError("Lỗi không xác định khi tạo role: " + ex.Message);
             }
         }
+        public async Task ShowRolePermissions(string roleName)
+        {
+            try
+            {
+                var permissions = await _roleService.GetRolePermissions(roleName);
+
+                if (permissions != null && permissions.Any())
+                {
+                    Console.WriteLine($"Quyền của role {roleName}:");
+                    foreach (var permission in permissions)
+                    {
+                        Console.WriteLine($"- {permission.TABLE_NAME}: {permission.PRIVILEGE}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Role {roleName} không có quyền nào.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy quyền của role: " + ex.Message);
+            }
+        }
         public async Task<bool> GrantPermission(string roleName, string objectType, string objectName, string privilege)
         {
             try
@@ -78,6 +102,21 @@ namespace SchoolManagerApp
             catch (Exception ex)
             {
                 throw new ServerError("Lỗi không xác định khi cấp quyền: " + ex.Message);
+            }
+        }
+        public async Task<bool> RevokePermission(string roleName, string objectType, string objectName, string privilege)
+        {
+            try
+            {
+                return await _roleService.RevokePermission(roleName, objectType, objectName, privilege);
+            }
+            catch (BaseError)
+            {
+                throw; // Ném lại lỗi custom
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định khi thu hồi quyền: " + ex.Message);
             }
         }
     }

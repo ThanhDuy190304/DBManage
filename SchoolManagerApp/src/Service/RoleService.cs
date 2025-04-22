@@ -65,6 +65,30 @@ namespace SchoolManagerApp.src.Service
                 throw new ServerError("Không thể tạo role: " + ex.Message);
             }
         }
+        public async Task<IEnumerable<dynamic>> GetRolePermissions(string roleName)
+        {
+            string query = @"
+                SELECT GRANTEE, TABLE_NAME, PRIVILEGE
+                FROM DBA_TAB_PRIVS
+                WHERE GRANTEE = :roleName AND (TABLE_NAME IS NOT NULL)";
+    
+            try
+            {
+                // Thực thi câu lệnh truy vấn để lấy quyền của role
+                var permissions = await _dbService.Connection.QueryAsync<dynamic>(query, new { roleName });
+
+                // Trả về danh sách quyền của role
+                return permissions;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Không thể lấy quyền của role: " + ex.Message);
+            }
+        }
         public async Task<bool> GrantPermission(string roleName, string objectType, string objectName, string privilege)
         {
             string query = "";
@@ -91,6 +115,34 @@ namespace SchoolManagerApp.src.Service
             catch (Exception ex)
             {
                 throw new ServerError("Không thể cấp quyền: " + ex.Message);
+            }
+        }
+        public async Task<bool> RevokePermission(string roleName, string objectType, string objectName, string privilege)
+        {
+            string query = "";
+
+            if (objectType.ToUpper() == "TABLE" || objectType.ToUpper() == "VIEW")
+            {
+
+                query = $"REVOKE {privilege} ON {objectName} FROM {roleName}";
+            }
+            else
+            {
+                throw new ServerError("Object type must be either 'TABLE' or 'VIEW'");
+            }
+
+            try
+            {
+                await _dbService.Connection.ExecuteAsync(query);
+                return true;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Không thể thu hồi quyền: " + ex.Message);
             }
         }
 

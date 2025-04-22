@@ -146,6 +146,7 @@
     <Compile Include="src\SINHVIEN.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="src\Test\TestRoleController.cs" />
     <Compile Include="src\utils\Error.cs" />
     <Compile Include="src\utils\ErrorMapper.cs" />
     <Compile Include="src\Views\controls\CTTextBoxIcon.cs">
