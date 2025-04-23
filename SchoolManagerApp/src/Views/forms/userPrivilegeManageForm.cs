@@ -3,18 +3,20 @@ using SchoolManagerApp.src.Controller;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace SchoolManagerApp.src.Views.forms
 {
-    public class userPrivilegeManageForm : Form
+    public class UserPrivilegeManageForm : Form
     {
         private string _userName;
         private Panel buttonPanel;
-        private CTButton RevokeButton;
+        private CTButton RevokePrivilgeButton;
         private CTButton GrantPrivilegeButton;
         private CTButton ReloadButton;
         private Panel panelManage;
@@ -24,9 +26,11 @@ namespace SchoolManagerApp.src.Views.forms
         private Panel TablePrivilegeManagePanel;
         private Panel GrantedRolePanel;
         private Label GrantedRoleLabel;
+        private CTButton RevokeRoleButton;
+        private CTButton GrantRoleButton;
         private UserController _userController = new UserController();
 
-        public userPrivilegeManageForm(string name)
+        public UserPrivilegeManageForm(string name)
         {
             InitializeComponent();
             this._userName = name;
@@ -194,7 +198,9 @@ namespace SchoolManagerApp.src.Views.forms
         private void InitializeComponent()
         {
             this.buttonPanel = new System.Windows.Forms.Panel();
-            this.RevokeButton = new SchoolManagerApp.Controls.CTButton();
+            this.RevokeRoleButton = new SchoolManagerApp.Controls.CTButton();
+            this.GrantRoleButton = new SchoolManagerApp.Controls.CTButton();
+            this.RevokePrivilgeButton = new SchoolManagerApp.Controls.CTButton();
             this.GrantPrivilegeButton = new SchoolManagerApp.Controls.CTButton();
             this.ReloadButton = new SchoolManagerApp.Controls.CTButton();
             this.panelManage = new System.Windows.Forms.Panel();
@@ -211,45 +217,109 @@ namespace SchoolManagerApp.src.Views.forms
             // 
             // buttonPanel
             // 
-            this.buttonPanel.Controls.Add(this.RevokeButton);
+            this.buttonPanel.Controls.Add(this.RevokeRoleButton);
+            this.buttonPanel.Controls.Add(this.GrantRoleButton);
+            this.buttonPanel.Controls.Add(this.RevokePrivilgeButton);
             this.buttonPanel.Controls.Add(this.GrantPrivilegeButton);
             this.buttonPanel.Controls.Add(this.ReloadButton);
             this.buttonPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonPanel.Location = new System.Drawing.Point(0, 0);
             this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(1108, 70);
+            this.buttonPanel.Size = new System.Drawing.Size(1108, 133);
             this.buttonPanel.TabIndex = 6;
             // 
-            // RevokeButton
+            // RevokeRoleButton
             // 
-            this.RevokeButton.BackColor = System.Drawing.Color.White;
-            this.RevokeButton.BackgroundColor = System.Drawing.Color.White;
-            this.RevokeButton.BorderColor = System.Drawing.Color.Red;
-            this.RevokeButton.BorderRadius = 8;
-            this.RevokeButton.BorderSize = 2;
-            this.RevokeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.RevokeButton.FlatAppearance.BorderSize = 0;
-            this.RevokeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RevokeButton.Font = new System.Drawing.Font("Calibri", 12F);
-            this.RevokeButton.ForeColor = System.Drawing.Color.Red;
-            this.RevokeButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.RevokeButton.HoverIconColor = System.Drawing.Color.Red;
-            this.RevokeButton.HoverTextColor = System.Drawing.Color.Red;
-            this.RevokeButton.IconChar = FontAwesome.Sharp.IconChar.Ban;
-            this.RevokeButton.IconColor = System.Drawing.Color.Red;
-            this.RevokeButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.RevokeButton.IconSize = 24;
-            this.RevokeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.RevokeButton.Location = new System.Drawing.Point(715, 27);
-            this.RevokeButton.Name = "RevokeButton";
-            this.RevokeButton.Size = new System.Drawing.Size(113, 40);
-            this.RevokeButton.TabIndex = 2;
-            this.RevokeButton.Text = "Xóa quyền";
-            this.RevokeButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.RevokeButton.TextColor = System.Drawing.Color.Red;
-            this.RevokeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.RevokeButton.UseVisualStyleBackColor = false;
-            this.RevokeButton.Click += new System.EventHandler(this.RevokeButton_Click);
+            this.RevokeRoleButton.BackColor = System.Drawing.Color.White;
+            this.RevokeRoleButton.BackgroundColor = System.Drawing.Color.White;
+            this.RevokeRoleButton.BorderColor = System.Drawing.Color.Red;
+            this.RevokeRoleButton.BorderRadius = 8;
+            this.RevokeRoleButton.BorderSize = 2;
+            this.RevokeRoleButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RevokeRoleButton.FlatAppearance.BorderSize = 0;
+            this.RevokeRoleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RevokeRoleButton.Font = new System.Drawing.Font("Calibri", 12F);
+            this.RevokeRoleButton.ForeColor = System.Drawing.Color.Red;
+            this.RevokeRoleButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.RevokeRoleButton.HoverIconColor = System.Drawing.Color.Red;
+            this.RevokeRoleButton.HoverTextColor = System.Drawing.Color.Red;
+            this.RevokeRoleButton.IconChar = FontAwesome.Sharp.IconChar.Ban;
+            this.RevokeRoleButton.IconColor = System.Drawing.Color.Red;
+            this.RevokeRoleButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.RevokeRoleButton.IconSize = 24;
+            this.RevokeRoleButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RevokeRoleButton.Location = new System.Drawing.Point(715, 76);
+            this.RevokeRoleButton.Name = "RevokeRoleButton";
+            this.RevokeRoleButton.Size = new System.Drawing.Size(113, 40);
+            this.RevokeRoleButton.TabIndex = 4;
+            this.RevokeRoleButton.Text = "Xóa role";
+            this.RevokeRoleButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.RevokeRoleButton.TextColor = System.Drawing.Color.Red;
+            this.RevokeRoleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.RevokeRoleButton.UseVisualStyleBackColor = false;
+            this.RevokeRoleButton.Click += new System.EventHandler(this.RevokeRoleButton_Click);
+            // 
+            // GrantRoleButton
+            // 
+            this.GrantRoleButton.BackColor = System.Drawing.Color.White;
+            this.GrantRoleButton.BackgroundColor = System.Drawing.Color.White;
+            this.GrantRoleButton.BorderColor = System.Drawing.Color.Green;
+            this.GrantRoleButton.BorderRadius = 8;
+            this.GrantRoleButton.BorderSize = 2;
+            this.GrantRoleButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.GrantRoleButton.FlatAppearance.BorderSize = 0;
+            this.GrantRoleButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GrantRoleButton.Font = new System.Drawing.Font("Calibri", 12F);
+            this.GrantRoleButton.ForeColor = System.Drawing.Color.Green;
+            this.GrantRoleButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.GrantRoleButton.HoverIconColor = System.Drawing.Color.Green;
+            this.GrantRoleButton.HoverTextColor = System.Drawing.Color.Green;
+            this.GrantRoleButton.IconChar = FontAwesome.Sharp.IconChar.PlusSquare;
+            this.GrantRoleButton.IconColor = System.Drawing.Color.Green;
+            this.GrantRoleButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.GrantRoleButton.IconSize = 24;
+            this.GrantRoleButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.GrantRoleButton.Location = new System.Drawing.Point(859, 76);
+            this.GrantRoleButton.Name = "GrantRoleButton";
+            this.GrantRoleButton.Size = new System.Drawing.Size(150, 40);
+            this.GrantRoleButton.TabIndex = 3;
+            this.GrantRoleButton.Text = "Cấp role mới";
+            this.GrantRoleButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.GrantRoleButton.TextColor = System.Drawing.Color.Green;
+            this.GrantRoleButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.GrantRoleButton.UseVisualStyleBackColor = false;
+            this.GrantRoleButton.Click += new System.EventHandler(this.GrantRoleButton_Click);
+            // 
+            // RevokePrivilgeButton
+            // 
+            this.RevokePrivilgeButton.BackColor = System.Drawing.Color.White;
+            this.RevokePrivilgeButton.BackgroundColor = System.Drawing.Color.White;
+            this.RevokePrivilgeButton.BorderColor = System.Drawing.Color.Red;
+            this.RevokePrivilgeButton.BorderRadius = 8;
+            this.RevokePrivilgeButton.BorderSize = 2;
+            this.RevokePrivilgeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RevokePrivilgeButton.FlatAppearance.BorderSize = 0;
+            this.RevokePrivilgeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RevokePrivilgeButton.Font = new System.Drawing.Font("Calibri", 12F);
+            this.RevokePrivilgeButton.ForeColor = System.Drawing.Color.Red;
+            this.RevokePrivilgeButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.RevokePrivilgeButton.HoverIconColor = System.Drawing.Color.Red;
+            this.RevokePrivilgeButton.HoverTextColor = System.Drawing.Color.Red;
+            this.RevokePrivilgeButton.IconChar = FontAwesome.Sharp.IconChar.Ban;
+            this.RevokePrivilgeButton.IconColor = System.Drawing.Color.Red;
+            this.RevokePrivilgeButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.RevokePrivilgeButton.IconSize = 24;
+            this.RevokePrivilgeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RevokePrivilgeButton.Location = new System.Drawing.Point(715, 27);
+            this.RevokePrivilgeButton.Name = "RevokePrivilgeButton";
+            this.RevokePrivilgeButton.Size = new System.Drawing.Size(113, 40);
+            this.RevokePrivilgeButton.TabIndex = 2;
+            this.RevokePrivilgeButton.Text = "Xóa quyền";
+            this.RevokePrivilgeButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.RevokePrivilgeButton.TextColor = System.Drawing.Color.Red;
+            this.RevokePrivilgeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.RevokePrivilgeButton.UseVisualStyleBackColor = false;
+            this.RevokePrivilgeButton.Click += new System.EventHandler(this.RevokePrivilgeButton_Click);
             // 
             // GrantPrivilegeButton
             // 
@@ -321,16 +391,16 @@ namespace SchoolManagerApp.src.Views.forms
             this.panelManage.Controls.Add(this.TablePrivilegeLabel);
             this.panelManage.Controls.Add(this.ColPrivilegeLabel);
             this.panelManage.Controls.Add(this.TablePrivilegeManagePanel);
-            this.panelManage.Location = new System.Drawing.Point(153, 95);
+            this.panelManage.Location = new System.Drawing.Point(150, 151);
             this.panelManage.Name = "panelManage";
-            this.panelManage.Size = new System.Drawing.Size(796, 391);
+            this.panelManage.Size = new System.Drawing.Size(796, 386);
             this.panelManage.TabIndex = 7;
             // 
             // GrantedRolePanel
             // 
             this.GrantedRolePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GrantedRolePanel.Controls.Add(this.GrantedRoleLabel);
-            this.GrantedRolePanel.Location = new System.Drawing.Point(18, 88);
+            this.GrantedRolePanel.Location = new System.Drawing.Point(18, 86);
             this.GrantedRolePanel.Name = "GrantedRolePanel";
             this.GrantedRolePanel.Size = new System.Drawing.Size(760, 215);
             this.GrantedRolePanel.TabIndex = 5;
@@ -349,7 +419,7 @@ namespace SchoolManagerApp.src.Views.forms
             // ColPrivilegeManagePanel
             // 
             this.ColPrivilegeManagePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ColPrivilegeManagePanel.Location = new System.Drawing.Point(18, 364);
+            this.ColPrivilegeManagePanel.Location = new System.Drawing.Point(18, 362);
             this.ColPrivilegeManagePanel.Name = "ColPrivilegeManagePanel";
             this.ColPrivilegeManagePanel.Size = new System.Drawing.Size(760, 215);
             this.ColPrivilegeManagePanel.TabIndex = 4;
@@ -379,7 +449,7 @@ namespace SchoolManagerApp.src.Views.forms
             // TablePrivilegeManagePanel
             // 
             this.TablePrivilegeManagePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TablePrivilegeManagePanel.Location = new System.Drawing.Point(18, 70);
+            this.TablePrivilegeManagePanel.Location = new System.Drawing.Point(18, 68);
             this.TablePrivilegeManagePanel.Name = "TablePrivilegeManagePanel";
             this.TablePrivilegeManagePanel.Size = new System.Drawing.Size(760, 215);
             this.TablePrivilegeManagePanel.TabIndex = 3;
@@ -410,7 +480,7 @@ namespace SchoolManagerApp.src.Views.forms
             InitializeGrantedRoleManager(this._userName);
         }
 
-        private async void GrantHandle(
+        private async void GrantPrivilegeHandle(
            string name,
            string objectType,
            string objectName,
@@ -436,11 +506,38 @@ namespace SchoolManagerApp.src.Views.forms
             var grantForm = new GrantPrivilegeForm(this._userName);
             grantForm.OnGrantClicked += (name, objectType, objectName, privilege, columns, withGrantOption) =>
             {
-                GrantHandle(name, objectType, objectName, privilege, columns, withGrantOption);
+                GrantPrivilegeHandle(name, objectType, objectName, privilege, columns, withGrantOption);
             };
             grantForm.ShowDialog();
         }
-        private async void RevokeHandle(string name, string objectName, string privilege)
+
+        private async void GrantRoleHandle(string userName, string roleName, bool withGrantOption)
+        {
+            try
+            {
+                await _userController.GrantRole(userName, roleName, withGrantOption);
+                MessageBox.Show("Role được cấp thành công.", "Thông báo",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi cấp role: {ex.Message}", "Lỗi",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GrantRoleButton_Click(object sender, EventArgs e)
+        {
+            var grantForm = new GrantRoleForm(this._userName);
+            grantForm.OnGrantRoleClicked += (userName, roleName, withGrantOption) =>
+            {
+                GrantRoleHandle(userName, roleName, withGrantOption);
+            };
+            grantForm.ShowDialog();
+        }
+
+
+        private async void RevokePrivilegeHandle(string name, string objectName, string privilege)
         {
             try
             {
@@ -454,16 +551,41 @@ namespace SchoolManagerApp.src.Views.forms
                              MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void RevokeButton_Click(object sender, EventArgs e)
+        private void RevokePrivilgeButton_Click(object sender, EventArgs e)
         {
-            var revokeForm = new revokeForm(this._userName);
+            var revokeForm = new RevokePrivilgeForm(this._userName);
             revokeForm.OnRevokeClicked += (name, objectName, privilege) =>
             {
-                RevokeHandle(name, objectName, privilege);
+                RevokePrivilegeHandle(name, objectName, privilege);
             };
             revokeForm.ShowDialog();
         }
 
-      
+        private async void RevokeRoleHandle(string userName, string roleName)
+        {
+            try
+            {
+                await _userController.RevokeRole(userName, roleName);
+                MessageBox.Show("Role đã thu hồi thành công.", "Thông báo",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi thu hồi role: {ex.Message}", "Lỗi",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void RevokeRoleButton_Click(object sender, EventArgs e)
+        {
+            var revokeForm = new RevokeRoleOfUser(this._userName);
+            revokeForm.OnRevokeRoleClicked += (userName, roleName) =>
+            {
+                RevokeRoleHandle(userName, roleName);
+            };
+            revokeForm.ShowDialog();
+        }
+
+        
     }
 }

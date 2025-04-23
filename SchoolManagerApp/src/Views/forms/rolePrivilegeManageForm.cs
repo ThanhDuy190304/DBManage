@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.forms
 {
-    public partial class rolePrivilegeManageForm : Form
+    public partial class RolePrivilegeManageForm : Form
     {
         private string roleName;
         private RoleController roleController = new RoleController();
-        public rolePrivilegeManageForm(string name)
+        public RolePrivilegeManageForm(string name)
         {
             InitializeComponent();
             this.roleName = name;
@@ -155,7 +155,7 @@ namespace SchoolManagerApp.src.Views.forms
 
         private void RevokeButton_Click(object sender, EventArgs e)
         {
-            var revokeForm = new revokeForm(this.roleName);
+            var revokeForm = new RevokePrivilgeForm(this.roleName);
             revokeForm.OnRevokeClicked += (name, objectName, privilege) =>
             {
                 RevokeHandle(name, objectName, privilege);

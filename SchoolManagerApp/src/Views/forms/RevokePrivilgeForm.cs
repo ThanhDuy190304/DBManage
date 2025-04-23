@@ -11,13 +11,13 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskBand;
 
 namespace SchoolManagerApp.src.Views.forms
 {
-    public partial class revokeForm : Form
+    public partial class RevokePrivilgeForm : Form
     {
         private string name;
         public delegate void RevokeActionHandler(string name, string objectName, string privilege);
         public event RevokeActionHandler OnRevokeClicked;
 
-        public revokeForm(string name)
+        public RevokePrivilgeForm(string name)
         {
             this.name = name;
             InitializeComponent();
@@ -25,7 +25,5 @@ namespace SchoolManagerApp.src.Views.forms
                 OnRevokeClicked?.Invoke(this.name, this.ObjectNameTextBox.Texts, this.PirivilegeComboBox.Texts);
 
         }
-
-       
     }
 }

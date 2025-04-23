@@ -139,11 +139,11 @@
     <Compile Include="src\Views\controls\CTTextBox.Designer.cs">
       <DependentUpon>CTTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\alterPasswordForm.cs">
+    <Compile Include="src\Views\forms\AlterPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\alterPasswordForm.Designer.cs">
-      <DependentUpon>alterPasswordForm.cs</DependentUpon>
+    <Compile Include="src\Views\forms\AlterPasswordForm.Designer.cs">
+      <DependentUpon>AlterPasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\forms\GrantPrivilegeForm.cs">
       <SubType>Form</SubType>
@@ -151,19 +151,31 @@
     <Compile Include="src\Views\forms\GrantPrivilegeForm.Designer.cs">
       <DependentUpon>GrantPrivilegeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\revokeForm.cs">
+    <Compile Include="src\Views\forms\GrantRoleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\revokeForm.Designer.cs">
-      <DependentUpon>revokeForm.cs</DependentUpon>
+    <Compile Include="src\Views\forms\GrantRoleForm.Designer.cs">
+      <DependentUpon>GrantRoleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\rolePrivilegeManageForm.cs">
+    <Compile Include="src\Views\forms\RevokePrivilgeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\rolePrivilegeManageForm.Designer.cs">
-      <DependentUpon>rolePrivilegeManageForm.cs</DependentUpon>
+    <Compile Include="src\Views\forms\RevokePrivilgeForm.Designer.cs">
+      <DependentUpon>RevokePrivilgeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\userPrivilegeManageForm.cs">
+    <Compile Include="src\Views\forms\RevokeRoleOfUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\RevokeRoleOfUser.Designer.cs">
+      <DependentUpon>RevokeRoleOfUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\forms\RolePrivilegeManageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\RolePrivilegeManageForm.Designer.cs">
+      <DependentUpon>RolePrivilegeManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\forms\UserPrivilegeManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Views\layout\Form1.cs">
@@ -185,11 +197,11 @@
     <Compile Include="src\Views\layout\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\createForm.cs">
+    <Compile Include="src\Views\forms\CreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\createForm.Designer.cs">
-      <DependentUpon>createForm.cs</DependentUpon>
+    <Compile Include="src\Views\forms\CreateForm.Designer.cs">
+      <DependentUpon>CreateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\RolesPage.cs">
       <SubType>UserControl</SubType>
@@ -217,20 +229,26 @@
     <EmbeddedResource Include="src\Views\controls\CTTextBox.resx">
       <DependentUpon>CTTextBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\alterPasswordForm.resx">
-      <DependentUpon>alterPasswordForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\forms\AlterPasswordForm.resx">
+      <DependentUpon>AlterPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\forms\GrantPrivilegeForm.resx">
       <DependentUpon>GrantPrivilegeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\revokeForm.resx">
-      <DependentUpon>revokeForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\forms\GrantRoleForm.resx">
+      <DependentUpon>GrantRoleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\rolePrivilegeManageForm.resx">
-      <DependentUpon>rolePrivilegeManageForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\forms\RevokePrivilgeForm.resx">
+      <DependentUpon>RevokePrivilgeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\userPrivilegeManageForm.resx">
-      <DependentUpon>userPrivilegeManageForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\forms\RevokeRoleOfUser.resx">
+      <DependentUpon>RevokeRoleOfUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\RolePrivilegeManageForm.resx">
+      <DependentUpon>RolePrivilegeManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\UserPrivilegeManageForm.resx">
+      <DependentUpon>UserPrivilegeManageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\layout\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -241,8 +259,8 @@
     <EmbeddedResource Include="src\Views\layout\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\createForm.resx">
-      <DependentUpon>createForm.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\forms\CreateForm.resx">
+      <DependentUpon>CreateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\RolesPage.resx">
       <DependentUpon>RolesPage.cs</DependentUpon>

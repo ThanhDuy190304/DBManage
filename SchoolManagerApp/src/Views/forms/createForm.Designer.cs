@@ -1,6 +1,6 @@
 ﻿namespace SchoolManagerApp.src.Views.partials
 {
-    partial class createForm
+    partial class CreateForm
     {
         /// <summary> 
         /// Required designer variable.

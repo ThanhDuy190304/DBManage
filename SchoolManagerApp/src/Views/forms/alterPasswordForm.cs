@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.forms
 {
-    public partial class alterPasswordForm : Form
+    public partial class AlterPasswordForm : Form
     {
         private readonly Func<string, Task<bool>> onTurnOffAuthCallback;
         private readonly Func<string, string, Task<bool>> alterPasswordCallback;
         private string name;
 
-        public alterPasswordForm(string name, Func<string, Task<bool>> onTurnOffAuth, Func<string, string, Task<bool>> alterPassword)
+        public AlterPasswordForm(string name, Func<string, Task<bool>> onTurnOffAuth, Func<string, string, Task<bool>> alterPassword)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;

@@ -118,13 +118,13 @@ namespace SchoolManagerApp.src.Views
 
         private void ShowAlterPasswordForm(string roleName)
         {
-            var alterPasswordForm = new alterPasswordForm(roleName, TurnOffAuthByPass, UpdatePassword);
+            var alterPasswordForm = new AlterPasswordForm(roleName, TurnOffAuthByPass, UpdatePassword);
             alterPasswordForm.ShowDialog();
         }
 
         private void ShowPrivilegeManageForm(string roleName)
         {
-            var rolePrivilegeManageForm = new rolePrivilegeManageForm(roleName);
+            var rolePrivilegeManageForm = new RolePrivilegeManageForm(roleName);
             rolePrivilegeManageForm.ShowDialog();
         }
         private async void DeleteARole(string roleName)
@@ -277,7 +277,7 @@ namespace SchoolManagerApp.src.Views
                     return false;
                 }
             }
-            createForm createARoleForm = new createForm("Tạo 1 role", HandleCreateRole);
+            CreateForm createARoleForm = new CreateForm("Tạo 1 role", HandleCreateRole);
             createARoleForm.ShowDialog();
         }
 

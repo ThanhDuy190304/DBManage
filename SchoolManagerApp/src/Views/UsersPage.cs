@@ -33,21 +33,19 @@ namespace SchoolManagerApp.src.Views
                 var columnDefinitions = new Dictionary<string, int>()
                 {
                     { "USERNAME", 150 },
-                    { "ACCOUNT_STATUS", 150 },
-                    { "ACCOUNT_CREATED", 180 },
-                    { "SYSTEM_PRIVILEGES", 200 },
-                    { "OBJECT_PRIVILEGES", 200 },
-                    { "ROLES", 200 }
+                    { "USER_ID", 100 },
+                    { "PASSWORD", 150 },
+                    { "CREATED", 120 },
+                    { "LAST_LOGIN", 150 },
                 };
 
                 var data = users.Select(u => new string[]
                 {
-                    u.USERNAME,
-                    u.ACCOUNT_STATUS,
-                    u.ACCOUNT_CREATED.ToString("yyyy-MM-dd HH:mm:ss"),
-                    u.SYSTEM_PRIVILEGES ?? "",
-                    u.OBJECT_PRIVILEGES ?? "",
-                    u.ROLES ?? ""
+                u.USERNAME,
+                u.USER_ID,
+                u.PASSWORD,
+                u.CREATED,
+                u.LAST_LOGIN.ToString("yyyy-MM-dd HH:mm:ss")
                 }).ToList();
 
                 var table = new CTTable(columnDefinitions, data);
@@ -74,12 +72,12 @@ namespace SchoolManagerApp.src.Views
         }
         private void ShowAlterPasswordForm(string userName)
         {
-            var alterPasswordForm = new alterPasswordForm(userName, null, UpdatePassword);
+            var alterPasswordForm = new AlterPasswordForm(userName, null, UpdatePassword);
             alterPasswordForm.ShowDialog();
         }
         private void ShowPrivilegeManageForm(string userName)
         {
-            var userPrivilegeManageForm = new userPrivilegeManageForm(userName);
+            var userPrivilegeManageForm = new UserPrivilegeManageForm(userName);
             userPrivilegeManageForm.ShowDialog();
         }
 
@@ -153,7 +151,7 @@ namespace SchoolManagerApp.src.Views
                     return false;
                 }
             }
-            createForm createARoleForm = new createForm("Tạo 1 user", HandleCreateRole);
+            CreateForm createARoleForm = new CreateForm("Tạo 1 user", HandleCreateRole);
             createARoleForm.ShowDialog();
         }
 

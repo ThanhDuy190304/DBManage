@@ -54,6 +54,7 @@ namespace SchoolManagerApp.src.Controller
 
         public async Task<IEnumerable<DBA_ROLE_PRIVS>> GetRoleByName(string grantee)
         {
+
             try
             {
                 var roles = await _userService.GetRoleByName(grantee);
@@ -194,6 +195,38 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
+        public async Task<bool> RevokeRole(string userName, string roleName)
+        {
+            try
+            {
+                var result = await _userService.RevokeRole(userName, roleName);
+                return result;
+                         }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError(ex.Message);
+            }
+        }
 
+        public async Task<bool> GrantRole(string userName, string roleName, bool withGrantOption)
+        {
+            try
+            {
+                var result = await _userService.GrantRole(userName, roleName, withGrantOption);
+                return result;
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError(ex.Message);
+            }
+        }
     }
 }

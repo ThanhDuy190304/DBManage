@@ -1,6 +1,6 @@
 ﻿namespace SchoolManagerApp.src.Views.forms
 {
-    partial class alterPasswordForm
+    partial class AlterPasswordForm
     {
         /// <summary>
         /// Required designer variable.

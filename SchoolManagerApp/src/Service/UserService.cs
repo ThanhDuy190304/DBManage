@@ -52,8 +52,6 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-
-
         public async Task<IEnumerable<DBA_ROLE_PRIVS>> GetRoleByName(string grantee)
         {
             try
@@ -148,6 +146,42 @@ namespace SchoolManagerApp.src.Service
         public async Task<bool> RevokeTablePrivilege(string userName, string objectName, string privilege)
         {
             return await _privilegeService.RevokeTablePrivilege(userName, objectName, privilege);
+        }
+
+        public async Task<bool> RevokeRole(string userName, string roleName)
+        {
+            try
+            {
+                var query = $"REVOKE {roleName} FROM {userName}";
+                await _dbService.Connection.ExecuteAsync(query);
+                return true;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError(ex.Message);
+            }
+        }
+        public async Task<bool> GrantRole(string userName, string roleName, bool withGrantOption = false)
+        {
+            try
+            {
+                var grantOption = withGrantOption ? "WITH ADMIN OPTION" : string.Empty;
+                var query = $"GRANT {roleName} TO {userName} {grantOption}";
+                await _dbService.Connection.ExecuteAsync(query);
+                return true;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError(ex.Message);
+            }
         }
     }
 

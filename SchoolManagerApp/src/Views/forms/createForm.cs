@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.partials
 {
-    public partial class createForm : Form
+    public partial class CreateForm : Form
 
     {
         private readonly Func<string, string, Task<bool>> onCreateCallback;
-        public createForm(string title, Func<string, string, Task<bool>> onCreate)
+        public CreateForm(string title, Func<string, string, Task<bool>> onCreate)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;

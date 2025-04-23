@@ -1,6 +1,6 @@
 ﻿namespace SchoolManagerApp.src.Views.forms
 {
-    partial class revokeForm
+    partial class RevokePrivilgeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -40,11 +40,11 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Calibri", 13F);
-            this.titleLabel.Location = new System.Drawing.Point(214, 29);
+            this.titleLabel.Location = new System.Drawing.Point(190, 30);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(112, 22);
+            this.titleLabel.Size = new System.Drawing.Size(175, 22);
             this.titleLabel.TabIndex = 2;
-            this.titleLabel.Text = "Thu hồi quyền";
+            this.titleLabel.Text = "Thu hồi quyền của role";
             // 
             // ChoosePrivilegeLabel
             // 
@@ -139,7 +139,7 @@
             this.PirivilegeComboBox.TabIndex = 1;
             this.PirivilegeComboBox.Texts = "";
             // 
-            // revokeForm
+            // RevokePrivilgeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -150,8 +150,8 @@
             this.Controls.Add(this.ChoosePrivilegeLabel);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.PirivilegeComboBox);
-            this.Name = "revokeForm";
-            this.Text = "RevokeForm";
+            this.Name = "RevokePrivilgeForm";
+            this.Text = "RevokePrivilgeForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

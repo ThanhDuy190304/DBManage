@@ -1,6 +1,6 @@
 ﻿namespace SchoolManagerApp.src.Views.forms
 {
-    partial class rolePrivilegeManageForm
+    partial class RolePrivilegeManageForm
     {
         /// <summary>
         /// Required designer variable.
