@@ -10,6 +10,8 @@ namespace SchoolManagerApp.src.Service
 {
     internal class RoleService : BaseService<DBA_ROLES>
     {
+        private readonly DBA_PrivilegeService _privilegeService;
+
         override
         public async Task<IEnumerable<DBA_ROLES>> GetAll()
         {
@@ -30,35 +32,11 @@ namespace SchoolManagerApp.src.Service
 
         public async Task<IEnumerable<DBA_TAB_PRIVS>> GetPrivilegeOnTableByName(string roleName)
         {
-            try
-            {
-                string query = $"SELECT * FROM DBA_TAB_PRIVS WHERE GRANTEE = '{roleName}'";
-                return await _dbService.Connection.QueryAsync<DBA_TAB_PRIVS>(query);
-            }
-            catch (OracleException ex)
-            {
-                throw ErrorMapper.MapOracleException(ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError(ex.Message);
-            }
+            return await _privilegeService.GetPrivilegeOnTableByName(roleName);
         }
         public async Task<IEnumerable<DBA_COL_PRIVS>> GetPrivilegeOnColByName(string roleName)
         {
-            try
-            {
-                string query = $"SELECT * FROM DBA_COL_PRIVS WHERE GRANTEE = '{roleName}'";
-                return await _dbService.Connection.QueryAsync<DBA_COL_PRIVS>(query);
-            }
-            catch (OracleException ex)
-            {
-                throw ErrorMapper.MapOracleException(ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError(ex.Message);
-            }
+            return await _privilegeService.GetPrivilegeOnColByName(roleName);
         }
 
 
@@ -149,64 +127,13 @@ namespace SchoolManagerApp.src.Service
             string[] columns = null,
             bool withGrantOption = false)
         {
-            try
-            {
-                string privilegeClause = privilege;
-
-                // Chỉ SELECT & UPDATE mới hỗ trợ cấp theo cột
-                if ((privilege.ToUpper() == "SELECT" || privilege.ToUpper() == "UPDATE")
-                    && columns != null && columns.Length > 0)
-                {
-                    string columnList = string.Join(", ", columns);
-                    privilegeClause = $"{privilege} ({columnList})";
-                }
-                string formattedObject = objectName.ToUpper();
-                string query = "";
-
-                if (objectType.ToUpper() == "TABLE" || objectType.ToUpper() == "VIEW")
-                {
-                    query = $"GRANT {privilegeClause} ON {formattedObject} TO {roleName}";
-                }
-                else if ((objectType.ToUpper() == "PROCEDURE" || objectType.ToUpper() == "FUNCTION")
-                         && privilege.ToUpper() == "EXECUTE")
-                {
-                    query = $"GRANT EXECUTE ON {formattedObject} TO {roleName}";
-                }
-                if (withGrantOption)
-                {
-                    query += " WITH GRANT OPTION";
-                }
-
-                await _dbService.Connection.ExecuteAsync(query);
-                return true;
-            }
-            catch (OracleException ex)
-            {
-                throw ErrorMapper.MapOracleException(ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError("Không thể cấp quyền: " + ex.Message);
-            }
+            return await _privilegeService.GrantPermission(roleName, objectType, objectName, privilege, columns, withGrantOption);
+        
         }
 
-        public async Task<bool> RevokeTablePrivilege(string roleName, string tableName, string privilege)
-        {          
-            try
-            {
-                string query = $"REVOKE {privilege} ON {tableName} FROM {roleName}";
-                await _dbService.Connection.ExecuteAsync(query);
-                return true;
-
-            }
-            catch (OracleException ex)
-            {
-                throw ErrorMapper.MapOracleException(ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError(ex.Message);
-            }
+        public async Task<bool> RevokeTablePrivilege(string roleName, string objectName, string privilege)
+        {
+            return await _privilegeService.RevokeTablePrivilege(roleName, objectName, privilege);
         }
     }
 }

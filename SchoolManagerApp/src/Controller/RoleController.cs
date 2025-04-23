@@ -155,11 +155,11 @@ namespace SchoolManagerApp
             }
         }
 
-        public async Task<bool> RevokeTablePrivilege(string roleName, string tableName, string privilege) 
+        public async Task<bool> RevokeTablePrivilege(string roleName, string objectName, string privilege) 
         {
             try
             {
-                return await _roleService.RevokeTablePrivilege(roleName, tableName, privilege);
+                return await _roleService.RevokeTablePrivilege(roleName, objectName, privilege);
             }
             catch (BaseError)
             {

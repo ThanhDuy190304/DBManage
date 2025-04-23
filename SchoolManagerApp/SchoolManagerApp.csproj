@@ -111,6 +111,7 @@
     <Compile Include="src\Models\DBA_ROLES.cs" />
     <Compile Include="src\Models\UserRolePrivs.cs" />
     <Compile Include="src\Models\UserPrivs.cs" />
+    <Compile Include="src\Service\DBA_PrivilegeService.cs" />
     <Compile Include="src\utils\Error.cs" />
     <Compile Include="src\utils\ErrorMapper.cs" />
     <Compile Include="src\Views\controls\CTButton.cs">
@@ -205,9 +206,7 @@
     <Compile Include="src\Views\UsersPage.Designer.cs">
       <DependentUpon>UsersPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Test\TestUserController.cs" />
     <Compile Include="src\Test\TestRoleController.cs" />
-    <Compile Include="TestUserController.cs" />
     <EmbeddedResource Include="src\Views\controls\CTTextBox.resx">
       <DependentUpon>CTTextBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -252,6 +251,9 @@
     </Compile>
     <EmbeddedResource Include="src\Views\partials\sidebar.resx">
       <DependentUpon>sidebar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\UsersPage.resx">
+      <DependentUpon>UsersPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>

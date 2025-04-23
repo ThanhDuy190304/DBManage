@@ -14,7 +14,6 @@ namespace SchoolManagerApp.src.Service
             _dbService = DatabaseService.GetInstance("", "");
         }
         public abstract Task<IEnumerable<T>> GetAll();
-        //public abstract Task<T> Create(T entity);
         public abstract Task<bool> Delete(string id);
     }
 }

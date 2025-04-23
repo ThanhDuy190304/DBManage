@@ -26,8 +26,6 @@ namespace SchoolManagerApp.src.Views
 
         private async void InitializeCustomTable()
         {
-
-
             try
             {
                 var roles = await roleController.GetAll();

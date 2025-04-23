@@ -22,6 +22,7 @@ namespace SchoolManagerApp.src.Views.layout
         {
             InitializeComponent();
             sidebar.OnLogout += HandleLogOut;
+            sidebar.OnPageChange = LoadPage;
             LoadPage(new RolesPage());
         }
 

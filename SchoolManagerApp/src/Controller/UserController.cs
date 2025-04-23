@@ -113,89 +113,79 @@ namespace SchoolManagerApp.src.Controller
                 throw new ServerError("Lỗi không xác định: " + ex.Message);
             }
         }
-        public async Task<bool> GrantRoleToUser(string roleName, string username)
-        {
-            try
-            {
- 
-                return await _userService.GrantRoleToUser(roleName, username);
-            }
-            catch (BaseError)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError("Lỗi không xác định: " + ex.Message);
-            }
-        }
-        public async Task<bool> GrantSystemPrivileges(string username, string privilegesInput, bool withAdminOption)
-        {
-            try
-            {
-                
-                var privileges = privilegesInput
-                    .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                    .Select(p => p.Trim().ToUpper())
-                    .ToList();
 
-                
-                return await _userService.GrantSystemPrivilegesToUser(username, privileges, withAdminOption);
-            }
-            catch (BaseError)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError("Lỗi không xác định khi cấp quyền hệ thống: " + ex.Message);
-            }
-        }
-        public async Task<bool> RevokeRole(string roleName, string username)
+        public async Task<IEnumerable<DBA_TAB_PRIVS>> GetPrivilegeOnTableByName(string userName)
         {
             try
             {
-    
-                return await _userService.RevokeRoleFromUser(roleName, username);
-            }
-            catch (BaseError)
-            {
-                throw; 
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError("Lỗi không xác định: " + ex.Message);
-            }
-        }
-        public async Task<List<string>> GetUserPrivileges(string username)
-        {
-            try
-            {
-   
-                var privileges = await _userService.GetUserPrivileges(username);
+                var privileges = await _userService.GetPrivilegeOnTableByName(userName);
                 return privileges;
             }
-            catch (Exception ex)
-            {
-                return new List<string>(); 
-            }
-        }
-        public async Task<bool> RevokePrivileges(string privilegeType, string username, List<string> privileges)
-        {
-            try
-            {
-
-                return await _userService.RevokePrivilegesFromUser(privileges, username, privilegeType);
-            }
             catch (BaseError)
             {
-                throw; 
+                throw;
             }
             catch (Exception ex)
             {
                 throw new ServerError("Lỗi không xác định: " + ex.Message);
             }
         }
+
+        public async Task<IEnumerable<DBA_COL_PRIVS>> GetPrivilegeOnColByName(string userName)
+        {
+            try
+            {
+                var privileges = await _userService.GetPrivilegeOnColByName(userName);
+                return privileges;
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định: " + ex.Message);
+            }
+        }
+
+        public async Task<bool> GrantPermission(
+            string userName,
+            string objectType,
+            string objectName,
+            string privilege,
+            string[] columns = null,
+            bool withGrantOption = false)
+        {
+            try
+            {
+                return await _userService.GrantPermission(userName, objectType, objectName, privilege, columns, withGrantOption);
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định khi cấp quyền: " + ex.Message);
+            }
+        }
+
+        public async Task<bool> RevokeTablePrivilege(string userName, string objectName, string privilege)
+        {
+            try
+            {
+                return await _userService.RevokeTablePrivilege(userName, objectName, privilege);
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định khi cấp quyền: " + ex.Message);
+            }
+        }
+
 
     }
 }
