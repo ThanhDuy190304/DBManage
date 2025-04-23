@@ -32,7 +32,7 @@
             this.ExitButton = new FontAwesome.Sharp.IconButton();
             this.userNameTextBox = new SchoolManagerApp.src.Views.controls.CTTextBoxIcon();
             this.LoginButton = new SchoolManagerApp.Controls.CTButton();
-            this.passrordTextBox = new SchoolManagerApp.src.Views.controls.CTTextBoxIcon();
+            this.passwordTextBox = new SchoolManagerApp.src.Views.controls.CTTextBoxIcon();
             this.SuspendLayout();
             // 
             // label2
@@ -118,27 +118,27 @@
             this.LoginButton.UseVisualStyleBackColor = false;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
-            // passrordTextBox
+            // passwordTextBox
             // 
-            this.passrordTextBox.BackColor = System.Drawing.Color.Azure;
-            this.passrordTextBox.BorderColor = System.Drawing.Color.Gray;
-            this.passrordTextBox.BorderRadius = 20;
-            this.passrordTextBox.BorderSize = 2;
-            this.passrordTextBox.FocusBorderColor = System.Drawing.Color.MediumPurple;
-            this.passrordTextBox.Font = new System.Drawing.Font("Calibri", 14F);
-            this.passrordTextBox.ForeColor = System.Drawing.Color.Black;
-            this.passrordTextBox.IconChar = FontAwesome.Sharp.IconChar.Lock;
-            this.passrordTextBox.IconColor = System.Drawing.Color.Gray;
-            this.passrordTextBox.IconSize = 24;
-            this.passrordTextBox.Location = new System.Drawing.Point(47, 150);
-            this.passrordTextBox.Name = "passrordTextBox";
-            this.passrordTextBox.Padding = new System.Windows.Forms.Padding(95, 15, 95, 15);
-            this.passrordTextBox.Size = new System.Drawing.Size(291, 40);
-            this.passrordTextBox.TabIndex = 3;
-            this.passrordTextBox.TextBackColor = System.Drawing.Color.Azure;
-            this.passrordTextBox.TextForeColor = System.Drawing.Color.Gray;
-            this.passrordTextBox.TextValue = "";
-            this.passrordTextBox.UseSystemPasswordChar = true;
+            this.passwordTextBox.BackColor = System.Drawing.Color.Azure;
+            this.passwordTextBox.BorderColor = System.Drawing.Color.Gray;
+            this.passwordTextBox.BorderRadius = 20;
+            this.passwordTextBox.BorderSize = 2;
+            this.passwordTextBox.FocusBorderColor = System.Drawing.Color.MediumPurple;
+            this.passwordTextBox.Font = new System.Drawing.Font("Calibri", 14F);
+            this.passwordTextBox.ForeColor = System.Drawing.Color.Black;
+            this.passwordTextBox.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            this.passwordTextBox.IconColor = System.Drawing.Color.Gray;
+            this.passwordTextBox.IconSize = 24;
+            this.passwordTextBox.Location = new System.Drawing.Point(47, 150);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Padding = new System.Windows.Forms.Padding(95, 15, 95, 15);
+            this.passwordTextBox.Size = new System.Drawing.Size(291, 40);
+            this.passwordTextBox.TabIndex = 3;
+            this.passwordTextBox.TextBackColor = System.Drawing.Color.Azure;
+            this.passwordTextBox.TextForeColor = System.Drawing.Color.Gray;
+            this.passwordTextBox.TextValue = "";
+            this.passwordTextBox.UseSystemPasswordChar = true;
             // 
             // Login
             // 
@@ -149,7 +149,7 @@
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.LoginButton);
-            this.Controls.Add(this.passrordTextBox);
+            this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
@@ -161,7 +161,7 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private controls.CTTextBoxIcon passrordTextBox;
+        private controls.CTTextBoxIcon passwordTextBox;
         private Controls.CTButton LoginButton;
         private FontAwesome.Sharp.IconButton ExitButton;
         private controls.CTTextBoxIcon userNameTextBox;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SchoolManagerApp.Controls;
+using SchoolManagerApp.src.Views.forms;
 using SchoolManagerApp.src.Views.partials;
 
 namespace SchoolManagerApp.src.Views
@@ -60,6 +61,14 @@ namespace SchoolManagerApp.src.Views
                 {
                     DeleteARole(roleName);
                 };
+                table.OnShieldClicked += roleName =>
+                {
+                    ShowAlterPasswordForm(roleName);
+                };
+                table.OnClipBoardCheckClicked += roleName =>
+                {
+                    ShowPrivilegeManageForm(roleName);
+                };
                 table.Dock = DockStyle.Fill;
                 this.tablePanel.Controls.Add(table);
             }
@@ -69,11 +78,62 @@ namespace SchoolManagerApp.src.Views
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private async Task<bool> UpdatePassword(string roleName, string password)
+        {
+            bool result = false;
+            try
+            {
+                result = await roleController.UpdatePassword(roleName, password);
+                if (result)
+                {
+                    MessageBox.Show("Cập nhật mật khẩu thành công.", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi cập nhật mật khẩu: {ex.Message}", "Lỗi",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
+        }
+
+        private async Task<bool> TurnOffAuthByPass(string roleName)
+        {
+            bool result = false;
+            try
+            {
+                result = await roleController.RemoveAuthentication(roleName);
+                if (result)
+                {
+                    MessageBox.Show("Đã tắt xác thực.", "Thông báo",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tắt xác thực: {ex.Message}", "Lỗi",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return result;
+        }
+
+        private void ShowAlterPasswordForm(string roleName)
+        {
+            var alterPasswordForm = new alterPasswordForm(roleName, TurnOffAuthByPass, UpdatePassword);
+            alterPasswordForm.ShowDialog();
+        }
+
+        private void ShowPrivilegeManageForm(string roleName)
+        {
+            var rolePrivilegeManageForm = new rolePrivilegeManageForm(roleName);
+            rolePrivilegeManageForm.ShowDialog();
+        }
         private async void DeleteARole(string roleName)
         {
             try
             {
-                bool result = await roleController.DeleteRole(roleName);
+                bool result = await roleController.Delete(roleName);
                 if (result)
                 {
                     MessageBox.Show("Role đã được xóa thành công.", "Thông báo",
@@ -199,7 +259,7 @@ namespace SchoolManagerApp.src.Views
             {
                 try
                 {
-                    bool result = await roleController.CreateRole(roleName, password);
+                    bool result = await roleController.Create(roleName, password);
                     if (result)
                     {
                         MessageBox.Show("Role đã được tạo thành công.", "Thông báo",
@@ -225,13 +285,10 @@ namespace SchoolManagerApp.src.Views
 
         private void ReloadButton_Click(object sender, EventArgs e)
         {
-            ReloadPage();
-        }
-
-        private void ReloadPage()
-        {
             tablePanel.Controls.Clear();
             InitializeCustomTable();
         }
+
+      
     }
 }

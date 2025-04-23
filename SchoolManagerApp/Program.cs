@@ -6,8 +6,9 @@ using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SchoolManagerApp.src.Controller;
+using SchoolManagerApp.src.Test;
 using SchoolManagerApp.src.Views.layout;
-using SchoolManagerApp.Tests;
+
 
 namespace SchoolManagerApp
 {
@@ -25,12 +26,12 @@ namespace SchoolManagerApp
             string password = "Admin123"; // Console.ReadLine();
 
             var controllerAuth = new AuthController();
-            
+
             if (controllerAuth.Login(username, password))
                 Console.WriteLine("Login thành công!");
             else
                 Console.WriteLine("Login thất bại!");
-            Task.Run(async () => await TestUserService.Main(null)).GetAwaiter().GetResult();
+            TestRoleController.Main(null).GetAwaiter().GetResult();
 #else
             // GUI mode (WinForms)
             Application.EnableVisualStyles();
@@ -48,4 +49,3 @@ namespace SchoolManagerApp
         }
     }
 }
-

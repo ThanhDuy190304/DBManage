@@ -21,6 +21,13 @@ namespace SchoolManagerApp.Controls
         public delegate void DeleteActionHandler(string id);
         public event DeleteActionHandler OnDeleteClicked;
 
+        public delegate void ShieldActionHandler(string id);
+        public event ShieldActionHandler OnShieldClicked;
+
+        public delegate void ClipBoardCheckActionHandler(string id);
+        public event ClipBoardCheckActionHandler OnClipBoardCheckClicked;
+
+
         public CTTable(Dictionary<string, int> columnDefinitions, List<string[]> data)
         {
             this.dataRows = new List<CTTableRow>();
@@ -54,7 +61,7 @@ namespace SchoolManagerApp.Controls
             }
 
             Label emptyActionHeader = new Label();
-            int actionColumnWidth = 80;
+            int actionColumnWidth = 120;
             headerRow.AddCell(emptyActionHeader, actionColumnWidth);
             this.Controls.Add(headerRow);
         }
@@ -99,9 +106,25 @@ namespace SchoolManagerApp.Controls
                 trashButton.Size = new Size(24, 24);
                 trashButton.Click += (s, e) => OnDeleteClicked?.Invoke(rowData[0]);
 
-                IconButton editButton = new IconButton()
+                IconButton clipboardCheckButton = new IconButton()
                 {
-                    IconChar = IconChar.UserEdit,
+                    IconChar = IconChar.ClipboardCheck,
+                    IconColor = Color.DarkSlateGray,
+                    IconSize = 20,
+                    FlatStyle = FlatStyle.Flat,
+                    BackColor = Color.Transparent,
+                    Text = "",
+                    Cursor = Cursors.Hand,
+                    Padding = new Padding(0),
+                    Margin = new Padding(4)
+                };
+                clipboardCheckButton.FlatAppearance.BorderSize = 0;
+                clipboardCheckButton.Size = new Size(24, 24);
+                clipboardCheckButton.Click += (s, e) => OnClipBoardCheckClicked?.Invoke(rowData[0]);
+
+                IconButton shieldButton = new IconButton()
+                {
+                    IconChar = IconChar.ShieldAlt,
                     IconColor = Color.Blue,
                     IconSize = 20,
                     FlatStyle = FlatStyle.Flat,
@@ -111,8 +134,9 @@ namespace SchoolManagerApp.Controls
                     Padding = new Padding(0),
                     Margin = new Padding(4)
                 };
-                editButton.FlatAppearance.BorderSize = 0;
-                editButton.Size = new Size(24, 24);
+                shieldButton.FlatAppearance.BorderSize = 0;
+                shieldButton.Size = new Size(24, 24);
+                shieldButton.Click += (s, e) => OnShieldClicked?.Invoke(rowData[0]);
 
                 FlowLayoutPanel actionPanel = new FlowLayoutPanel()
                 {
@@ -122,10 +146,11 @@ namespace SchoolManagerApp.Controls
                     Margin = new Padding(0),
                     FlowDirection = FlowDirection.LeftToRight
                 };
-                actionPanel.Controls.Add(editButton);
+                actionPanel.Controls.Add(shieldButton);
+                actionPanel.Controls.Add(clipboardCheckButton);
                 actionPanel.Controls.Add(trashButton);
 
-                row.AddCell(actionPanel, 80);
+                row.AddCell(actionPanel, 120);
 
                 dataRows.Add(row);
                 this.Controls.Add(row);

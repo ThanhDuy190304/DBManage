@@ -31,12 +31,12 @@
             this.createLabel = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.nameLabel = new System.Windows.Forms.Label();
+            this.textNameBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelPassword = new System.Windows.Forms.Label();
-            this.confirmButton = new SchoolManagerApp.Controls.CTButton();
-            this.textNameBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.textPasswordBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.confirmButton = new SchoolManagerApp.Controls.CTButton();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
@@ -67,11 +67,30 @@
             this.nameLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.nameLabel.Font = new System.Drawing.Font("Calibri", 13F);
             this.nameLabel.Location = new System.Drawing.Point(7, 10);
-            this.nameLabel.Margin = new System.Windows.Forms.Padding(3, 6, 0, 0);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(3, 6, 32, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(85, 22);
+            this.nameLabel.Size = new System.Drawing.Size(54, 22);
             this.nameLabel.TabIndex = 1;
-            this.nameLabel.Text = "Username";
+            this.nameLabel.Text = "Name";
+            // 
+            // textNameBox
+            // 
+            this.textNameBox.BackColor = System.Drawing.SystemColors.Window;
+            this.textNameBox.BorderColor = System.Drawing.Color.Gray;
+            this.textNameBox.BorderFocusColor = System.Drawing.Color.MediumSlateBlue;
+            this.textNameBox.BorderSize = 2;
+            this.textNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNameBox.ForeColor = System.Drawing.Color.DimGray;
+            this.textNameBox.Location = new System.Drawing.Point(97, 8);
+            this.textNameBox.Margin = new System.Windows.Forms.Padding(4);
+            this.textNameBox.Multiline = false;
+            this.textNameBox.Name = "textNameBox";
+            this.textNameBox.Padding = new System.Windows.Forms.Padding(7);
+            this.textNameBox.PasswordChar = false;
+            this.textNameBox.Size = new System.Drawing.Size(146, 31);
+            this.textNameBox.TabIndex = 0;
+            this.textNameBox.Texts = "";
+            this.textNameBox.UnderlinedStyle = false;
             // 
             // iconButton1
             // 
@@ -114,6 +133,25 @@
             this.labelPassword.TabIndex = 1;
             this.labelPassword.Text = "Password";
             // 
+            // textPasswordBox
+            // 
+            this.textPasswordBox.BackColor = System.Drawing.SystemColors.Window;
+            this.textPasswordBox.BorderColor = System.Drawing.Color.Gray;
+            this.textPasswordBox.BorderFocusColor = System.Drawing.Color.MediumSlateBlue;
+            this.textPasswordBox.BorderSize = 2;
+            this.textPasswordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPasswordBox.ForeColor = System.Drawing.Color.DimGray;
+            this.textPasswordBox.Location = new System.Drawing.Point(97, 8);
+            this.textPasswordBox.Margin = new System.Windows.Forms.Padding(4);
+            this.textPasswordBox.Multiline = false;
+            this.textPasswordBox.Name = "textPasswordBox";
+            this.textPasswordBox.Padding = new System.Windows.Forms.Padding(7);
+            this.textPasswordBox.PasswordChar = false;
+            this.textPasswordBox.Size = new System.Drawing.Size(151, 31);
+            this.textPasswordBox.TabIndex = 0;
+            this.textPasswordBox.Texts = "";
+            this.textPasswordBox.UnderlinedStyle = false;
+            // 
             // confirmButton
             // 
             this.confirmButton.BackColor = System.Drawing.Color.AliceBlue;
@@ -144,44 +182,6 @@
             this.confirmButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.confirmButton.UseVisualStyleBackColor = false;
             this.confirmButton.Click += new System.EventHandler(this.CreateButton_Click);
-            // 
-            // textNameBox
-            // 
-            this.textNameBox.BackColor = System.Drawing.SystemColors.Window;
-            this.textNameBox.BorderColor = System.Drawing.Color.Gray;
-            this.textNameBox.BorderFocusColor = System.Drawing.Color.MediumSlateBlue;
-            this.textNameBox.BorderSize = 2;
-            this.textNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textNameBox.ForeColor = System.Drawing.Color.DimGray;
-            this.textNameBox.Location = new System.Drawing.Point(96, 8);
-            this.textNameBox.Margin = new System.Windows.Forms.Padding(4);
-            this.textNameBox.Multiline = false;
-            this.textNameBox.Name = "textNameBox";
-            this.textNameBox.Padding = new System.Windows.Forms.Padding(7);
-            this.textNameBox.PasswordChar = false;
-            this.textNameBox.Size = new System.Drawing.Size(146, 31);
-            this.textNameBox.TabIndex = 0;
-            this.textNameBox.Texts = "";
-            this.textNameBox.UnderlinedStyle = false;
-            // 
-            // textPasswordBox
-            // 
-            this.textPasswordBox.BackColor = System.Drawing.SystemColors.Window;
-            this.textPasswordBox.BorderColor = System.Drawing.Color.Gray;
-            this.textPasswordBox.BorderFocusColor = System.Drawing.Color.MediumSlateBlue;
-            this.textPasswordBox.BorderSize = 2;
-            this.textPasswordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textPasswordBox.ForeColor = System.Drawing.Color.DimGray;
-            this.textPasswordBox.Location = new System.Drawing.Point(97, 8);
-            this.textPasswordBox.Margin = new System.Windows.Forms.Padding(4);
-            this.textPasswordBox.Multiline = false;
-            this.textPasswordBox.Name = "textPasswordBox";
-            this.textPasswordBox.Padding = new System.Windows.Forms.Padding(7);
-            this.textPasswordBox.PasswordChar = false;
-            this.textPasswordBox.Size = new System.Drawing.Size(151, 31);
-            this.textPasswordBox.TabIndex = 0;
-            this.textPasswordBox.Texts = "";
-            this.textPasswordBox.UnderlinedStyle = false;
             // 
             // createForm
             // 

@@ -35,12 +35,12 @@ namespace SchoolManagerApp
             }
         }
 
-        public async Task<IEnumerable<DBA_TAB_PRIVS>> GetByName(string roleName)
+        public async Task<IEnumerable<DBA_TAB_PRIVS>> GetPrivilegeOnTableByName(string roleName)
         {
             try
             {
-                var role = await _roleService.GetByName(roleName);
-                return role;
+                var privileges = await _roleService.GetPrivilegeOnTableByName(roleName);
+                return privileges;
             }
             catch (BaseError)
             {
@@ -52,11 +52,12 @@ namespace SchoolManagerApp
             }
         }
 
-        public async Task<bool> UpdateRole(string roleName, string fieldName, string value)
+        public async Task<IEnumerable<DBA_COL_PRIVS>> GetPrivilegeOnColByName(string roleName)
         {
             try
             {
-                return await _roleService.UpdateRole(roleName, fieldName, value);
+                var privileges = await _roleService.GetPrivilegeOnColByName(roleName);
+                return privileges;
             }
             catch (BaseError)
             {
@@ -68,7 +69,40 @@ namespace SchoolManagerApp
             }
         }
 
-        public async Task<bool> DeleteRole(string roleName)
+
+        public async Task<bool> UpdatePassword(string roleName, string password)
+        {
+            try
+            {
+                return await _roleService.UpdatePassword(roleName, password);
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định khi cập nhật mật khẩu: " + ex.Message);
+            }
+        }
+
+        public async Task<bool> RemoveAuthentication(string roleName)
+        {
+            try
+            {
+                return await _roleService.RemoveAuthentication(roleName);
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định khi cập nhật mật khẩu: " + ex.Message);
+            }
+        }
+
+        public async Task<bool> Delete(string roleName)
         {
             try
             {
@@ -84,11 +118,11 @@ namespace SchoolManagerApp
                 throw new ServerError("Lỗi không xác định: " + ex.Message);
             }
         }
-        public async Task<bool> CreateRole(string roleName, string password)
+        public async Task<bool> Create(string roleName, string password)
         {
             try
             {
-                return await _roleService.CreateRole(roleName, password);
+                return await _roleService.Create(roleName, password);
             }
             catch (BaseError)
             {
@@ -121,11 +155,11 @@ namespace SchoolManagerApp
             }
         }
 
-        public async Task<bool> RevokeTablePrivilegeForRole(string roleName, string tableName, string privilege)
+        public async Task<bool> RevokeTablePrivilege(string roleName, string tableName, string privilege) 
         {
             try
             {
-                return await _roleService.RevokeTablePrivilegeForRole(roleName, tableName, privilege);
+                return await _roleService.RevokeTablePrivilege(roleName, tableName, privilege);
             }
             catch (BaseError)
             {
@@ -136,5 +170,6 @@ namespace SchoolManagerApp
                 throw new ServerError("Lỗi không xác định khi cấp quyền: " + ex.Message);
             }
         }
+        
     }
 }

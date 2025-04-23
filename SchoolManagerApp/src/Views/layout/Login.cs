@@ -21,7 +21,7 @@ namespace SchoolManagerApp.src.Views.layout
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.DoubleBuffered = true;  
+            this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
                          ControlStyles.AllPaintingInWmPaint |
                          ControlStyles.UserPaint, true);
@@ -33,21 +33,36 @@ namespace SchoolManagerApp.src.Views.layout
                 if (e.KeyCode == Keys.Enter) LoginButton.PerformClick();
             };
 
-            this.passrordTextBox.KeyDown += (s, e) =>
+            this.passwordTextBox.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter) LoginButton.PerformClick();
             };
+
+            this.KeyPreview = true;
+            this.KeyDown += LoginForm_KeyDown;
+
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
             SetRoundedRegion(30);
+            userNameTextBox.Focus();
+            this.AcceptButton = LoginButton;
+            this.CancelButton = ExitButton;
         }
         public void SetAuthController(AuthController authController)
         {
             _authController = authController;
         }
 
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoginButton.PerformClick();
+                e.Handled = true;
+            }
+        }
         private void SetRoundedRegion(int radius)
         {
             Rectangle bounds = new Rectangle(0, 0, this.Width, this.Height);
@@ -143,7 +158,7 @@ namespace SchoolManagerApp.src.Views.layout
             LoginButton.Refresh();
 
             string username = this.userNameTextBox.TextValue;
-            string password = this.passrordTextBox.TextValue;
+            string password = this.passwordTextBox.TextValue;
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
@@ -172,5 +187,7 @@ namespace SchoolManagerApp.src.Views.layout
             }
 
         }
+
+
     }
 }

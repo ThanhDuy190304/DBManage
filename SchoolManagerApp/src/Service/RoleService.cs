@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using SchoolManagerApp.src.Models;
 using Dapper;
@@ -29,11 +28,11 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<IEnumerable<DBA_TAB_PRIVS>> GetByName(string roleName)
+        public async Task<IEnumerable<DBA_TAB_PRIVS>> GetPrivilegeOnTableByName(string roleName)
         {
             try
             {
-                string query = $"SELECT * FROM DBA_TAB_PRIVS WHERE ROLE = {roleName}";
+                string query = $"SELECT * FROM DBA_TAB_PRIVS WHERE GRANTEE = '{roleName}'";
                 return await _dbService.Connection.QueryAsync<DBA_TAB_PRIVS>(query);
             }
             catch (OracleException ex)
@@ -45,15 +44,12 @@ namespace SchoolManagerApp.src.Service
                 throw new ServerError(ex.Message);
             }
         }
-
-        public async Task<bool> UpdateRole(string roleName, string fieldName, string value)
+        public async Task<IEnumerable<DBA_COL_PRIVS>> GetPrivilegeOnColByName(string roleName)
         {
             try
             {
-                string query = $@"UPDATE DBA_ROLES SET {fieldName} = :value WHERE ROLE = :roleName";
-                var parameters = new { value, roleName };
-                int rowsAffected = await _dbService.Connection.ExecuteAsync(query, parameters);
-                return rowsAffected > 0;
+                string query = $"SELECT * FROM DBA_COL_PRIVS WHERE GRANTEE = '{roleName}'";
+                return await _dbService.Connection.QueryAsync<DBA_COL_PRIVS>(query);
             }
             catch (OracleException ex)
             {
@@ -62,6 +58,47 @@ namespace SchoolManagerApp.src.Service
             catch (Exception ex)
             {
                 throw new ServerError(ex.Message);
+            }
+        }
+
+
+        public async Task<bool> UpdatePassword(string roleName, string newPassword)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(newPassword))
+                {
+                    throw new InvalidDataError("Mật khẩu mới không được trống.");
+                }
+                string query = $"ALTER ROLE {roleName} IDENTIFIED BY  {newPassword}";
+                await _dbService.Connection.ExecuteAsync(query);
+                return true;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError(ex.Message);
+            }
+        }
+
+        public async Task<bool> RemoveAuthentication(string roleName)
+        {
+            try
+            {
+                string query = $"ALTER ROLE {roleName} NOT IDENTIFIED";
+                await _dbService.Connection.ExecuteAsync(query);
+                return true;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi khi bỏ xác thực cho role: " + ex.Message);
             }
         }
 
@@ -84,7 +121,7 @@ namespace SchoolManagerApp.src.Service
             }
 
         }
-        public async Task<bool> CreateRole(string roleName, string password)
+        public async Task<bool> Create(string roleName, string password)
         {
             string query = string.IsNullOrWhiteSpace(password)
                   ? $"CREATE ROLE {roleName}"
@@ -103,7 +140,7 @@ namespace SchoolManagerApp.src.Service
                 throw new ServerError(ex.Message);
             }
         }
-        
+
         public async Task<bool> GrantPermission(
             string roleName,
             string objectType,
@@ -153,13 +190,14 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> RevokeTablePrivilegeForRole(string roleName, string tableName, string privilege)
-        {
+        public async Task<bool> RevokeTablePrivilege(string roleName, string tableName, string privilege)
+        {          
             try
             {
                 string query = $"REVOKE {privilege} ON {tableName} FROM {roleName}";
-                int rowsAffected = await _dbService.Connection.ExecuteAsync(query);
-                return rowsAffected > 0;
+                await _dbService.Connection.ExecuteAsync(query);
+                return true;
+
             }
             catch (OracleException ex)
             {
@@ -170,6 +208,5 @@ namespace SchoolManagerApp.src.Service
                 throw new ServerError(ex.Message);
             }
         }
-
     }
 }
