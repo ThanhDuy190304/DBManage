@@ -9,7 +9,7 @@ using SchoolManagerApp.src.utils;
 
 namespace SchoolManagerApp.src.Service
 {
-    internal class UserService : BaseService<UserPrivs>
+    internal class UserService : BaseService<DBA_USERS>
     {
         private DBA_PrivilegeService _privilegeService;
         public UserService()
@@ -17,28 +17,32 @@ namespace SchoolManagerApp.src.Service
             _privilegeService = new DBA_PrivilegeService(_dbService);
         }
         override
-        public async Task<IEnumerable<UserPrivs>> GetAll()
+         public async Task<IEnumerable<DBA_USERS>> GetAll()
         {
             try
             {
-                string query = @"
-            SELECT 
-            u.USERNAME, 
-            u.ACCOUNT_STATUS, 
-            u.CREATED AS ACCOUNT_CREATED,
-            sys_privs.PRIVILEGE AS SYSTEM_PRIVILEGES,
-            tab_privs.PRIVILEGE AS OBJECT_PRIVILEGES,
-            r.GRANTED_ROLE AS ROLES
-        FROM DBA_USERS u
-        LEFT JOIN DBA_SYS_PRIVS sys_privs ON u.USERNAME = sys_privs.GRANTEE
-        LEFT JOIN DBA_TAB_PRIVS tab_privs ON u.USERNAME = tab_privs.GRANTEE
-        LEFT JOIN DBA_ROLE_PRIVS r ON u.USERNAME = r.GRANTEE
-        WHERE ORACLE_MAINTAINED = 'N'
-        ORDER BY u.USERNAME";
+                string query = "SELECT * FROM DBA_USERS WHERE ORACLE_MAINTAINED = 'N'";
+                return await _dbService.Connection.QueryAsync<DBA_USERS>(query);
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError(ex.Message);
+            }
+        }
+        public async Task<DBA_USERS> GetByUsername(string username)
+        {
+            try
+            {
+   
+                string query = "SELECT * FROM DBA_USERS WHERE ORACLE_MAINTAINED = 'N' AND USERNAME = :username";
 
-                var userPrivsList = await _dbService.Connection.QueryAsync<UserPrivs>(query);
+                var user = await _dbService.Connection.QueryFirstOrDefaultAsync<DBA_USERS>(query, new { username });
 
-                return userPrivsList;
+                return user;
             }
             catch (OracleException ex)
             {
@@ -49,28 +53,15 @@ namespace SchoolManagerApp.src.Service
                 throw new ServerError("Không thể khởi tạo kết nối: " + ex.Message);
             }
         }
-        public async Task<UserPrivs> GetByUsername(string username)
+
+
+
+        public async Task<IEnumerable<DBA_ROLE_PRIVS>> GetRoleByName(string grantee)
         {
             try
             {
-                string query = @"
-        SELECT 
-            u.USERNAME, 
-            u.ACCOUNT_STATUS, 
-            u.CREATED AS ACCOUNT_CREATED,
-            sys_privs.PRIVILEGE AS SYSTEM_PRIVILEGES,
-            tab_privs.PRIVILEGE AS OBJECT_PRIVILEGES,
-            r.GRANTED_ROLE AS ROLES
-        FROM DBA_USERS u
-        LEFT JOIN DBA_SYS_PRIVS sys_privs ON u.USERNAME = sys_privs.GRANTEE
-        LEFT JOIN DBA_TAB_PRIVS tab_privs ON u.USERNAME = tab_privs.GRANTEE
-        LEFT JOIN DBA_ROLE_PRIVS r ON u.USERNAME = r.GRANTEE
-        WHERE u.USERNAME = :username
-        ORDER BY u.USERNAME";
-
-                var userPrivs = await _dbService.Connection.QueryFirstOrDefaultAsync<UserPrivs>(query, new { username });
-
-                return userPrivs;
+                string query = $"SELECT * FROM DBA_ROLE_PRIVS WHERE GRANTEE = '{grantee}'";
+                return await _dbService.Connection.QueryAsync<DBA_ROLE_PRIVS>(query);
             }
             catch (OracleException ex)
             {
@@ -78,7 +69,7 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError("Không thể khởi tạo kết nối: " + ex.Message);
+                throw new ServerError(ex.Message);
             }
         }
 

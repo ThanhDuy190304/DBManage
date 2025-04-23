@@ -107,10 +107,11 @@
     <Compile Include="src\Controller\UserController.cs" />
     <Compile Include="src\Controller\RoleController.cs" />
     <Compile Include="src\Models\DBA_COL_PRIVS.cs" />
+    <Compile Include="src\Models\DBA_ROLE_PRIVS.cs" />
     <Compile Include="src\Models\DBA_TAB_PRIVS .cs" />
     <Compile Include="src\Models\DBA_ROLES.cs" />
     <Compile Include="src\Models\UserRolePrivs.cs" />
-    <Compile Include="src\Models\UserPrivs.cs" />
+    <Compile Include="src\Models\DBA_USERS.cs" />
     <Compile Include="src\Service\DBA_PrivilegeService.cs" />
     <Compile Include="src\utils\Error.cs" />
     <Compile Include="src\utils\ErrorMapper.cs" />

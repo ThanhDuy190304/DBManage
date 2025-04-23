@@ -17,17 +17,16 @@ namespace SchoolManagerApp.src.Controller
             _userService = new UserService();
         }
 
-        public async Task<IEnumerable<UserPrivs>> GetAll()
+        public async Task<IEnumerable<DBA_USERS>> GetAll()
         {
             try
             {
-
                 var users = await _userService.GetAll();
                 return users;
             }
             catch (BaseError)
             {
-                throw; 
+                throw;
             }
             catch (Exception ex)
             {
@@ -35,7 +34,7 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<UserPrivs> GetByUsername(string username)
+        public async Task<DBA_USERS> GetByUsername(string username)
         {
             try
             {
@@ -60,6 +59,30 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
+        public async Task<IEnumerable<DBA_ROLE_PRIVS>> GetRoleByName(string grantee)
+        {
+            try
+            {
+                var roles = await _userService.GetRoleByName(grantee);
+
+                // Kiểm tra nếu không tìm thấy vai trò
+                if (roles == null || !roles.Any())
+                {
+                    throw new NotFoundError("Không có vai trò nào được cấp cho người dùng.");
+                }
+
+                // Trả về danh sách vai trò của người dùng
+                return roles;
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định khi lấy vai trò: " + ex.Message);
+            }
+        }
 
         public async Task<bool> CreateUser(string username, string password)
         {
