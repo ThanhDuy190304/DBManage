@@ -105,6 +105,7 @@
             this.ReloadButton.TextColor = System.Drawing.Color.RoyalBlue;
             this.ReloadButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ReloadButton.UseVisualStyleBackColor = false;
+            this.ReloadButton.Click += new System.EventHandler(this.ReloadButton_Click);
             // 
             // tablePanel
             // 

@@ -1,14 +1,9 @@
 ﻿using SchoolManagerApp.Controls;
-using SchoolManagerApp.src.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls.Primitives;
+
 using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.forms
@@ -48,8 +43,6 @@ namespace SchoolManagerApp.src.Views.forms
             // 1. Thêm nút Reload (nếu có)
             this.buttonPanel.Dock = DockStyle.Top;
             this.panelManage.Controls.Add(this.buttonPanel);
-
-         
 
             // Khởi tạo dữ liệu
             InitializeTablePrivilegeManager(this.roleName);

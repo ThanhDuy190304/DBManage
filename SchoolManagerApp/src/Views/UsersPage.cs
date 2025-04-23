@@ -162,5 +162,7 @@ namespace SchoolManagerApp.src.Views
             tablePanel.Controls.Clear();
             InitializeCustomTable();
         }
+
+       
     }
 }

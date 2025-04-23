@@ -198,12 +198,12 @@ namespace SchoolManagerApp.src.Views.forms
             this.GrantPrivilegeButton = new SchoolManagerApp.Controls.CTButton();
             this.ReloadButton = new SchoolManagerApp.Controls.CTButton();
             this.panelManage = new System.Windows.Forms.Panel();
+            this.GrantedRolePanel = new System.Windows.Forms.Panel();
+            this.GrantedRoleLabel = new System.Windows.Forms.Label();
             this.ColPrivilegeManagePanel = new System.Windows.Forms.Panel();
             this.TablePrivilegeLabel = new System.Windows.Forms.Label();
             this.ColPrivilegeLabel = new System.Windows.Forms.Label();
             this.TablePrivilegeManagePanel = new System.Windows.Forms.Panel();
-            this.GrantedRolePanel = new System.Windows.Forms.Panel();
-            this.GrantedRoleLabel = new System.Windows.Forms.Label();
             this.buttonPanel.SuspendLayout();
             this.panelManage.SuspendLayout();
             this.GrantedRolePanel.SuspendLayout();
@@ -249,6 +249,7 @@ namespace SchoolManagerApp.src.Views.forms
             this.RevokeButton.TextColor = System.Drawing.Color.Red;
             this.RevokeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.RevokeButton.UseVisualStyleBackColor = false;
+            this.RevokeButton.Click += new System.EventHandler(this.RevokeButton_Click);
             // 
             // GrantPrivilegeButton
             // 
@@ -279,6 +280,7 @@ namespace SchoolManagerApp.src.Views.forms
             this.GrantPrivilegeButton.TextColor = System.Drawing.Color.Green;
             this.GrantPrivilegeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.GrantPrivilegeButton.UseVisualStyleBackColor = false;
+            this.GrantPrivilegeButton.Click += new System.EventHandler(this.GrantPrivilegeButton_Click);
             // 
             // ReloadButton
             // 
@@ -309,6 +311,7 @@ namespace SchoolManagerApp.src.Views.forms
             this.ReloadButton.TextColor = System.Drawing.Color.RoyalBlue;
             this.ReloadButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ReloadButton.UseVisualStyleBackColor = false;
+            this.ReloadButton.Click += new System.EventHandler(this.ReloadButton_Click);
             // 
             // panelManage
             // 
@@ -322,6 +325,26 @@ namespace SchoolManagerApp.src.Views.forms
             this.panelManage.Name = "panelManage";
             this.panelManage.Size = new System.Drawing.Size(796, 391);
             this.panelManage.TabIndex = 7;
+            // 
+            // GrantedRolePanel
+            // 
+            this.GrantedRolePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GrantedRolePanel.Controls.Add(this.GrantedRoleLabel);
+            this.GrantedRolePanel.Location = new System.Drawing.Point(18, 88);
+            this.GrantedRolePanel.Name = "GrantedRolePanel";
+            this.GrantedRolePanel.Size = new System.Drawing.Size(760, 215);
+            this.GrantedRolePanel.TabIndex = 5;
+            // 
+            // GrantedRoleLabel
+            // 
+            this.GrantedRoleLabel.AutoSize = true;
+            this.GrantedRoleLabel.Font = new System.Drawing.Font("Calibri", 13F);
+            this.GrantedRoleLabel.Location = new System.Drawing.Point(322, 96);
+            this.GrantedRoleLabel.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
+            this.GrantedRoleLabel.Name = "GrantedRoleLabel";
+            this.GrantedRoleLabel.Size = new System.Drawing.Size(116, 22);
+            this.GrantedRoleLabel.TabIndex = 6;
+            this.GrantedRoleLabel.Text = "Role được cấp";
             // 
             // ColPrivilegeManagePanel
             // 
@@ -361,26 +384,6 @@ namespace SchoolManagerApp.src.Views.forms
             this.TablePrivilegeManagePanel.Size = new System.Drawing.Size(760, 215);
             this.TablePrivilegeManagePanel.TabIndex = 3;
             // 
-            // GrantedRolePanel
-            // 
-            this.GrantedRolePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.GrantedRolePanel.Controls.Add(this.GrantedRoleLabel);
-            this.GrantedRolePanel.Location = new System.Drawing.Point(18, 88);
-            this.GrantedRolePanel.Name = "GrantedRolePanel";
-            this.GrantedRolePanel.Size = new System.Drawing.Size(760, 215);
-            this.GrantedRolePanel.TabIndex = 5;
-            // 
-            // GrantedRoleLabel
-            // 
-            this.GrantedRoleLabel.AutoSize = true;
-            this.GrantedRoleLabel.Font = new System.Drawing.Font("Calibri", 13F);
-            this.GrantedRoleLabel.Location = new System.Drawing.Point(322, 96);
-            this.GrantedRoleLabel.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            this.GrantedRoleLabel.Name = "GrantedRoleLabel";
-            this.GrantedRoleLabel.Size = new System.Drawing.Size(116, 22);
-            this.GrantedRoleLabel.TabIndex = 6;
-            this.GrantedRoleLabel.Text = "Role được cấp";
-            // 
             // userPrivilegeManageForm
             // 
             this.ClientSize = new System.Drawing.Size(1108, 484);
@@ -396,5 +399,71 @@ namespace SchoolManagerApp.src.Views.forms
             this.ResumeLayout(false);
 
         }
+
+        private void ReloadButton_Click(object sender, EventArgs e)
+        {
+            this.TablePrivilegeManagePanel.Controls.Clear();
+            this.ColPrivilegeManagePanel.Controls.Clear();
+            this.GrantedRolePanel.Controls.Clear();
+            InitializeTablePrivilegeManager(this._userName);
+            InitializeColPrivilegeManager(this._userName);
+            InitializeGrantedRoleManager(this._userName);
+        }
+
+        private async void GrantHandle(
+           string name,
+           string objectType,
+           string objectName,
+           string privilege,
+           string[] columns,
+           bool withGrantOption)
+        {
+            try
+            {
+                await _userController.GrantPermission(name, objectType, objectName, privilege, columns, withGrantOption);
+                MessageBox.Show("Quyền được cấp thành công.", "Thông báo",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi cấp quyền: {ex.Message}", "Lỗi",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void GrantPrivilegeButton_Click(object sender, EventArgs e)
+        {
+
+            var grantForm = new GrantPrivilegeForm(this._userName);
+            grantForm.OnGrantClicked += (name, objectType, objectName, privilege, columns, withGrantOption) =>
+            {
+                GrantHandle(name, objectType, objectName, privilege, columns, withGrantOption);
+            };
+            grantForm.ShowDialog();
+        }
+        private async void RevokeHandle(string name, string objectName, string privilege)
+        {
+            try
+            {
+                await _userController.RevokeTablePrivilege(name, objectName, privilege);
+                MessageBox.Show("Quyền đã thu hồi thành công.", "Thông báo",
+                                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi thu hồi quyền: {ex.Message}", "Lỗi",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void RevokeButton_Click(object sender, EventArgs e)
+        {
+            var revokeForm = new revokeForm(this._userName);
+            revokeForm.OnRevokeClicked += (name, objectName, privilege) =>
+            {
+                RevokeHandle(name, objectName, privilege);
+            };
+            revokeForm.ShowDialog();
+        }
+
+      
     }
 }
