@@ -39,14 +39,6 @@ namespace SchoolManagerApp.src.Controller
             try
             {
                 var user = await _userService.GetByUsername(username);
-
-                // Kiểm tra nếu không tìm thấy người dùng
-                if (user == null)
-                {
-                    throw new NotFoundError("Người dùng không tồn tại.");
-                }
-
-                // Trả về dữ liệu người dùng nếu tìm thấy
                 return user;
             }
             catch (BaseError)
@@ -61,17 +53,10 @@ namespace SchoolManagerApp.src.Controller
 
         public async Task<IEnumerable<DBA_ROLE_PRIVS>> GetRoleByName(string grantee)
         {
+
             try
             {
                 var roles = await _userService.GetRoleByName(grantee);
-
-                // Kiểm tra nếu không tìm thấy vai trò
-                if (roles == null || !roles.Any())
-                {
-                    throw new NotFoundError("Không có vai trò nào được cấp cho người dùng.");
-                }
-
-                // Trả về danh sách vai trò của người dùng
                 return roles;
             }
             catch (BaseError)
