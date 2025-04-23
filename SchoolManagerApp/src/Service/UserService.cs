@@ -11,8 +11,11 @@ namespace SchoolManagerApp.src.Service
 {
     internal class UserService : BaseService<UserPrivs>
     {
-        private readonly DBA_PrivilegeService _privilegeService;
-
+        private DBA_PrivilegeService _privilegeService;
+        public UserService()
+        {
+            _privilegeService = new DBA_PrivilegeService(_dbService);
+        }
         override
         public async Task<IEnumerable<UserPrivs>> GetAll()
         {

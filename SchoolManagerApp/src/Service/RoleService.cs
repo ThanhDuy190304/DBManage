@@ -11,7 +11,10 @@ namespace SchoolManagerApp.src.Service
     internal class RoleService : BaseService<DBA_ROLES>
     {
         private readonly DBA_PrivilegeService _privilegeService;
-
+        public RoleService()
+        {
+            _privilegeService = new DBA_PrivilegeService(_dbService);
+        }
         override
         public async Task<IEnumerable<DBA_ROLES>> GetAll()
         {
@@ -36,6 +39,7 @@ namespace SchoolManagerApp.src.Service
         }
         public async Task<IEnumerable<DBA_COL_PRIVS>> GetPrivilegeOnColByName(string roleName)
         {
+
             return await _privilegeService.GetPrivilegeOnColByName(roleName);
         }
 
