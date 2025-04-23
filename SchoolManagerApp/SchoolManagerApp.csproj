@@ -110,7 +110,6 @@
     <Compile Include="src\Models\DBA_ROLE_PRIVS.cs" />
     <Compile Include="src\Models\DBA_TAB_PRIVS .cs" />
     <Compile Include="src\Models\DBA_ROLES.cs" />
-    <Compile Include="src\Models\UserRolePrivs.cs" />
     <Compile Include="src\Models\DBA_USERS.cs" />
     <Compile Include="src\Service\DBA_PrivilegeService.cs" />
     <Compile Include="src\utils\Error.cs" />
