@@ -204,7 +204,7 @@
             this.Controls.Add(this.buttonPanel);
             this.Controls.Add(this.panelManage);
             this.Name = "rolePrivilegeManageForm";
-            this.Text = "Quản lý quyền";
+            this.Text = "Quản lý quyền role";
             this.panelManage.ResumeLayout(false);
             this.panelManage.PerformLayout();
             this.buttonPanel.ResumeLayout(false);

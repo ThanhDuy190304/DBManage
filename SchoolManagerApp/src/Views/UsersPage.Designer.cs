@@ -109,7 +109,7 @@
             // tablePanel
             // 
             this.tablePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tablePanel.Location = new System.Drawing.Point(44, 100);
+            this.tablePanel.Location = new System.Drawing.Point(35, 130);
             this.tablePanel.Name = "tablePanel";
             this.tablePanel.Size = new System.Drawing.Size(955, 317);
             this.tablePanel.TabIndex = 3;

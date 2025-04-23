@@ -37,6 +37,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.1.66\lib\net461\Dapper.dll</HintPath>
@@ -110,7 +113,6 @@
     <Compile Include="src\Models\DBA_ROLE_PRIVS.cs" />
     <Compile Include="src\Models\DBA_TAB_PRIVS .cs" />
     <Compile Include="src\Models\DBA_ROLES.cs" />
-    <Compile Include="src\Models\UserRolePrivs.cs" />
     <Compile Include="src\Models\DBA_USERS.cs" />
     <Compile Include="src\Service\DBA_PrivilegeService.cs" />
     <Compile Include="src\utils\Error.cs" />
@@ -159,6 +161,9 @@
     </Compile>
     <Compile Include="src\Views\forms\rolePrivilegeManageForm.Designer.cs">
       <DependentUpon>rolePrivilegeManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\forms\userPrivilegeManageForm.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Views\layout\Form1.cs">
       <SubType>Form</SubType>
@@ -223,6 +228,9 @@
     <EmbeddedResource Include="src\Views\forms\rolePrivilegeManageForm.resx">
       <DependentUpon>rolePrivilegeManageForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\userPrivilegeManageForm.resx">
+      <DependentUpon>userPrivilegeManageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\layout\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +264,7 @@
     <EmbeddedResource Include="src\Views\UsersPage.resx">
       <DependentUpon>UsersPage.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
       <SubType>Designer</SubType>
     </None>

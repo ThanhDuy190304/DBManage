@@ -12,6 +12,9 @@ namespace SchoolManagerApp.src.Models
         public string GRANTEE { get; set; }
         public string GRANTED_ROLE { get; set; }
         public string ADMIN_OPTION { get; set; }
-        public DateTime? DEFAULT_ROLE { get; set; }
+        public string DEFAULT_OPTION { get; set; }
+        public string DEFAULT_ROLE { get; set; }
+        public string COMMON { get; set; }
+        public string INHERITED { get; set; }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using SchoolManagerApp.src.Models;
 using Dapper;
@@ -37,7 +36,6 @@ namespace SchoolManagerApp.src.Service
         {
             try
             {
-   
                 string query = "SELECT * FROM DBA_USERS WHERE ORACLE_MAINTAINED = 'N' AND USERNAME = :username";
 
                 var user = await _dbService.Connection.QueryFirstOrDefaultAsync<DBA_USERS>(query, new { username });

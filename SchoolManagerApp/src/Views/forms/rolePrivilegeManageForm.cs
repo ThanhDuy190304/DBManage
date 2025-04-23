@@ -200,5 +200,7 @@ namespace SchoolManagerApp.src.Views.forms
             };
             grantForm.ShowDialog();
         }
+
+       
     }
 }
