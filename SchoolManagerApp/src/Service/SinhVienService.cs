@@ -4,6 +4,7 @@ using SchoolManagerApp.src.Models;
 using SchoolManagerApp.src.utils;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SchoolManagerApp.src.Service
@@ -30,22 +31,22 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> UpdateSinhVien(SinhVien sv)
+        public async Task<bool> UpdateSinhVien(SinhVien sv, List<string> columnsToUpdate)
         {
-            string query = "UPDATE ADMIN.SINHVIEN SET DCHI = :DCHI, DT = :DT WHERE MASV = :MASV";
-
             try
             {
-                var rowsAffected = await _dbService.Connection.ExecuteAsync(query, sv);
-                Console.WriteLine($"Số dòng được cập nhật: {rowsAffected}");
+                string setClause = string.Join(", ", columnsToUpdate.Select(col => $"{col} = :{col}"));
 
+                string query = $"UPDATE ADMIN.SINHVIEN SET {setClause} WHERE MASV = :MASV ";
+
+                var rowsAffected = await _dbService.Connection.ExecuteAsync(query, sv);
+                await _dbService.Connection.ExecuteAsync("COMMIT");
                 if (rowsAffected == 0)
                 {
-                    Console.WriteLine("Cảnh báo: Không có bản ghi nào được cập nhật. Kiểm tra lại MASV");
                     return false;
                 }
 
-                await _dbService.Connection.ExecuteAsync("COMMIT");
+
                 return true;
             }
             catch (OracleException ex)
@@ -54,21 +55,6 @@ namespace SchoolManagerApp.src.Service
                 throw ErrorMapper.MapOracleException(ex);
             }
         }
-
-        public async Task<bool> UpdateTinhTrang(string masv, string tinhtrang)
-        {
-            string query = "UPDATE ADMIN.SINHVIEN SET TINHTRANG = :TINHTRANG WHERE MASV = :MASV";
-            try
-            {
-                await _dbService.Connection.ExecuteAsync(query, new { MASV = masv, TINHTRANG = tinhtrang });
-                return true;
-            }
-            catch (OracleException ex)
-            {
-                throw ErrorMapper.MapOracleException(ex);
-            }
-        }
-
         public async Task<bool> Insert(SinhVien sv)
         {
             string query = @"INSERT INTO ADMIN.SINHVIEN (MASV, HOTEN, DCHI, DT, MAKHOA, TINHTRANG) 
@@ -84,7 +70,6 @@ namespace SchoolManagerApp.src.Service
                 throw ErrorMapper.MapOracleException(ex);
             }
         }
-
         public async Task<bool> Delete(string masv)
         {
  
