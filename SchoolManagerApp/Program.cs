@@ -1,6 +1,6 @@
 ﻿// Program.cs
 // Program.cs
-//#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
+#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
 
 using System;
 using System.Threading.Tasks;
@@ -20,10 +20,10 @@ namespace SchoolManagerApp
 #if CONSOLE_TEST
             // Login
             Console.Write("Enter username: ");
-            string username = "admin"; //Console.ReadLine();
+            string username = "NV003"; //Console.ReadLine();
 
             Console.Write("Enter password: ");
-            string password = "Admin123"; // Console.ReadLine();
+            string password = "nv003"; // Console.ReadLine();
 
             var controllerAuth = new AuthController();
 
@@ -31,7 +31,9 @@ namespace SchoolManagerApp
                 Console.WriteLine("Login thành công!");
             else
                 Console.WriteLine("Login thất bại!");
-            TestRoleController.Main(null).GetAwaiter().GetResult();
+            var test = new TestCau4(username, password); // user, password
+            test.RunAllTests().GetAwaiter().GetResult();
+            // NV PDT = NV003
 #else
             // GUI mode (WinForms)
             Application.EnableVisualStyles();
