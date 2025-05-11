@@ -10,8 +10,15 @@ namespace SchoolManagerApp.src.Models
 
         public string CREATED { get; set; }
 
+        public DateTimeOffset EXPIRY_DAY { get; set; }
+
         public DateTimeOffset LAST_LOGIN { get; set; }
 
-        public string PASSWORD { get; set; }
+        public DateTimeOffset PASSWORD_CHANGE_DATE { get; set; }
+
+        public string AUTHENTICATION_TYPE { get; set; }
+
+        public string ACCOUNT_STATUS { get; set; }
+
     }
 }

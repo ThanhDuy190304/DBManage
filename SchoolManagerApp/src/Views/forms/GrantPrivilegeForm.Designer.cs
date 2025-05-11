@@ -233,6 +233,7 @@
             this.Controls.Add(this.PirivilegeComboBox);
             this.Controls.Add(this.titleLabel);
             this.Name = "GrantPrivilegeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GrantPrivilegeForm";
             this.ResumeLayout(false);
             this.PerformLayout();

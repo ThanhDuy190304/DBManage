@@ -17,6 +17,7 @@ namespace SchoolManagerApp.src.Views.partials
         private int collapsedWidth = 40;
         public event Action OnLogout;
         public Action<UserControl> OnPageChange;
+        public event Action<bool> OnSidebarCollapsedChanged;
 
         public sidebar()
         {
@@ -52,6 +53,7 @@ namespace SchoolManagerApp.src.Views.partials
             this.Width = collapsedWidth;
             rightArrow.BringToFront();
             rightArrow.Visible = true;
+            OnSidebarCollapsedChanged?.Invoke(true);
         }
 
         private void rightArrow_Click(object sender, EventArgs e)
@@ -63,6 +65,7 @@ namespace SchoolManagerApp.src.Views.partials
             this.BackColor = Color.WhiteSmoke;
             this.Width = expandedWidth;
             rightArrow.Visible = false;
+            OnSidebarCollapsedChanged?.Invoke(false);
         }
 
 

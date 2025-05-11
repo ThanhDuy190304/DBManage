@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 using System.Windows.Forms;
 
@@ -19,7 +20,7 @@ namespace SchoolManagerApp.Controls
             this.AutoSize = true;
             this.Padding = this.Margin = new Padding(0);
         }
-      
+
         public void AddCell(Control cell, int width)
         {
             cell.Width = width;
@@ -27,5 +28,6 @@ namespace SchoolManagerApp.Controls
             cell.Margin = new Padding(2);
             this.Controls.Add(cell);
         }
+
     }
 }

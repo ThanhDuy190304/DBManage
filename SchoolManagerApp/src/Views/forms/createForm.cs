@@ -11,7 +11,6 @@ namespace SchoolManagerApp.src.Views.partials
         public CreateForm(string title, Func<string, string, Task<bool>> onCreate)
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
             this.createLabel.Text = title;
             this.onCreateCallback = onCreate;
         }

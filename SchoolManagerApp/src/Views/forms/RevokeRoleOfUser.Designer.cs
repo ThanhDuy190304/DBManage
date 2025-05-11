@@ -113,6 +113,7 @@
             this.Controls.Add(this.RoleLabel);
             this.Controls.Add(this.titleLabel);
             this.Name = "RevokeRoleOfUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RevokeRoleOfUser";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -20,7 +20,6 @@ namespace SchoolManagerApp.src.Views.layout
         public Login()
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
                          ControlStyles.AllPaintingInWmPaint |
@@ -46,7 +45,7 @@ namespace SchoolManagerApp.src.Views.layout
         private void Login_Load(object sender, EventArgs e)
         {
             SetRoundedRegion(30);
-            userNameTextBox.Focus();
+            userNameTextBox.Select();
             this.AcceptButton = LoginButton;
             this.CancelButton = ExitButton;
         }
@@ -187,7 +186,6 @@ namespace SchoolManagerApp.src.Views.layout
             }
 
         }
-
 
     }
 }

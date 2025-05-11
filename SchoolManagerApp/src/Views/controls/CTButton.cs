@@ -23,6 +23,7 @@ namespace SchoolManagerApp.Controls
         private Color originalIconColor;
         private Color hoverIconColor = Color.Blue;
 
+
         [Category("Custom Style")]
         public int BorderSize
         {

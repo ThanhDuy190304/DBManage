@@ -28,113 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ColPrivilegeLabel = new System.Windows.Forms.Label();
-            this.TablePrivilegeLabel = new System.Windows.Forms.Label();
             this.TablePrivilegeManagePanel = new System.Windows.Forms.Panel();
-            this.panelManage = new System.Windows.Forms.Panel();
+            this.tabRolePrivilegesControl = new System.Windows.Forms.TabControl();
+            this.tabTablePrivileges = new System.Windows.Forms.TabPage();
+            this.tabColumnPrivigleges = new System.Windows.Forms.TabPage();
             this.ColPrivilegeManagePanel = new System.Windows.Forms.Panel();
-            this.buttonPanel = new System.Windows.Forms.Panel();
-            this.RevokeButton = new SchoolManagerApp.Controls.CTButton();
             this.GrantPrivilegeButton = new SchoolManagerApp.Controls.CTButton();
+            this.RevokeButton = new SchoolManagerApp.Controls.CTButton();
             this.ReloadButton = new SchoolManagerApp.Controls.CTButton();
-            this.panelManage.SuspendLayout();
-            this.buttonPanel.SuspendLayout();
+            this.tabRolePrivilegesControl.SuspendLayout();
+            this.tabTablePrivileges.SuspendLayout();
+            this.tabColumnPrivigleges.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // ColPrivilegeLabel
-            // 
-            this.ColPrivilegeLabel.AutoSize = true;
-            this.ColPrivilegeLabel.Font = new System.Drawing.Font("Calibri", 13F);
-            this.ColPrivilegeLabel.Location = new System.Drawing.Point(14, 328);
-            this.ColPrivilegeLabel.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            this.ColPrivilegeLabel.Name = "ColPrivilegeLabel";
-            this.ColPrivilegeLabel.Size = new System.Drawing.Size(119, 22);
-            this.ColPrivilegeLabel.TabIndex = 1;
-            this.ColPrivilegeLabel.Text = "Quyền trên cột";
-            // 
-            // TablePrivilegeLabel
-            // 
-            this.TablePrivilegeLabel.AutoSize = true;
-            this.TablePrivilegeLabel.Font = new System.Drawing.Font("Calibri", 13F);
-            this.TablePrivilegeLabel.Location = new System.Drawing.Point(14, 29);
-            this.TablePrivilegeLabel.Margin = new System.Windows.Forms.Padding(3, 8, 3, 8);
-            this.TablePrivilegeLabel.Name = "TablePrivilegeLabel";
-            this.TablePrivilegeLabel.Size = new System.Drawing.Size(130, 22);
-            this.TablePrivilegeLabel.TabIndex = 2;
-            this.TablePrivilegeLabel.Text = "Quyền trên bảng";
             // 
             // TablePrivilegeManagePanel
             // 
-            this.TablePrivilegeManagePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.TablePrivilegeManagePanel.Location = new System.Drawing.Point(18, 70);
+            this.TablePrivilegeManagePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TablePrivilegeManagePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TablePrivilegeManagePanel.Location = new System.Drawing.Point(124, 20);
             this.TablePrivilegeManagePanel.Name = "TablePrivilegeManagePanel";
-            this.TablePrivilegeManagePanel.Size = new System.Drawing.Size(760, 215);
+            this.TablePrivilegeManagePanel.Padding = new System.Windows.Forms.Padding(4);
+            this.TablePrivilegeManagePanel.Size = new System.Drawing.Size(773, 251);
             this.TablePrivilegeManagePanel.TabIndex = 3;
             // 
-            // panelManage
+            // tabRolePrivilegesControl
             // 
-            this.panelManage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.panelManage.Controls.Add(this.ColPrivilegeManagePanel);
-            this.panelManage.Controls.Add(this.TablePrivilegeLabel);
-            this.panelManage.Controls.Add(this.ColPrivilegeLabel);
-            this.panelManage.Controls.Add(this.TablePrivilegeManagePanel);
-            this.panelManage.Location = new System.Drawing.Point(190, 93);
-            this.panelManage.Name = "panelManage";
-            this.panelManage.Size = new System.Drawing.Size(796, 391);
-            this.panelManage.TabIndex = 4;
+            this.tabRolePrivilegesControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabRolePrivilegesControl.Controls.Add(this.tabTablePrivileges);
+            this.tabRolePrivilegesControl.Controls.Add(this.tabColumnPrivigleges);
+            this.tabRolePrivilegesControl.Font = new System.Drawing.Font("Calibri", 13F);
+            this.tabRolePrivilegesControl.Location = new System.Drawing.Point(37, 65);
+            this.tabRolePrivilegesControl.Name = "tabRolePrivilegesControl";
+            this.tabRolePrivilegesControl.SelectedIndex = 0;
+            this.tabRolePrivilegesControl.Size = new System.Drawing.Size(1042, 326);
+            this.tabRolePrivilegesControl.TabIndex = 5;
+            // 
+            // tabTablePrivileges
+            // 
+            this.tabTablePrivileges.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabTablePrivileges.Controls.Add(this.TablePrivilegeManagePanel);
+            this.tabTablePrivileges.Location = new System.Drawing.Point(4, 30);
+            this.tabTablePrivileges.Name = "tabTablePrivileges";
+            this.tabTablePrivileges.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTablePrivileges.Size = new System.Drawing.Size(1034, 292);
+            this.tabTablePrivileges.TabIndex = 0;
+            this.tabTablePrivileges.Text = "Quyền trên bảng/ view";
+            this.tabTablePrivileges.UseVisualStyleBackColor = true;
+            // 
+            // tabColumnPrivigleges
+            // 
+            this.tabColumnPrivigleges.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabColumnPrivigleges.Controls.Add(this.ColPrivilegeManagePanel);
+            this.tabColumnPrivigleges.Location = new System.Drawing.Point(4, 30);
+            this.tabColumnPrivigleges.Name = "tabColumnPrivigleges";
+            this.tabColumnPrivigleges.Padding = new System.Windows.Forms.Padding(3);
+            this.tabColumnPrivigleges.Size = new System.Drawing.Size(1034, 292);
+            this.tabColumnPrivigleges.TabIndex = 1;
+            this.tabColumnPrivigleges.Text = "Quyền trên cột";
+            this.tabColumnPrivigleges.UseVisualStyleBackColor = true;
             // 
             // ColPrivilegeManagePanel
             // 
-            this.ColPrivilegeManagePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ColPrivilegeManagePanel.Location = new System.Drawing.Point(18, 364);
+            this.ColPrivilegeManagePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ColPrivilegeManagePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ColPrivilegeManagePanel.Location = new System.Drawing.Point(140, 22);
             this.ColPrivilegeManagePanel.Name = "ColPrivilegeManagePanel";
-            this.ColPrivilegeManagePanel.Size = new System.Drawing.Size(760, 215);
+            this.ColPrivilegeManagePanel.Padding = new System.Windows.Forms.Padding(4);
+            this.ColPrivilegeManagePanel.Size = new System.Drawing.Size(771, 248);
             this.ColPrivilegeManagePanel.TabIndex = 4;
-            // 
-            // buttonPanel
-            // 
-            this.buttonPanel.Controls.Add(this.RevokeButton);
-            this.buttonPanel.Controls.Add(this.GrantPrivilegeButton);
-            this.buttonPanel.Controls.Add(this.ReloadButton);
-            this.buttonPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonPanel.Location = new System.Drawing.Point(0, 0);
-            this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(1108, 70);
-            this.buttonPanel.TabIndex = 5;
-            // 
-            // RevokeButton
-            // 
-            this.RevokeButton.BackColor = System.Drawing.Color.White;
-            this.RevokeButton.BackgroundColor = System.Drawing.Color.White;
-            this.RevokeButton.BorderColor = System.Drawing.Color.Red;
-            this.RevokeButton.BorderRadius = 8;
-            this.RevokeButton.BorderSize = 2;
-            this.RevokeButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.RevokeButton.FlatAppearance.BorderSize = 0;
-            this.RevokeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RevokeButton.Font = new System.Drawing.Font("Calibri", 12F);
-            this.RevokeButton.ForeColor = System.Drawing.Color.Red;
-            this.RevokeButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.RevokeButton.HoverIconColor = System.Drawing.Color.Red;
-            this.RevokeButton.HoverTextColor = System.Drawing.Color.Red;
-            this.RevokeButton.IconChar = FontAwesome.Sharp.IconChar.Ban;
-            this.RevokeButton.IconColor = System.Drawing.Color.Red;
-            this.RevokeButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.RevokeButton.IconSize = 24;
-            this.RevokeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.RevokeButton.Location = new System.Drawing.Point(715, 27);
-            this.RevokeButton.Name = "RevokeButton";
-            this.RevokeButton.Size = new System.Drawing.Size(113, 40);
-            this.RevokeButton.TabIndex = 2;
-            this.RevokeButton.Text = "Xóa quyền";
-            this.RevokeButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.RevokeButton.TextColor = System.Drawing.Color.Red;
-            this.RevokeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.RevokeButton.UseVisualStyleBackColor = false;
-            this.RevokeButton.Click += new System.EventHandler(this.RevokeButton_Click);
             // 
             // GrantPrivilegeButton
             // 
+            this.GrantPrivilegeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.GrantPrivilegeButton.BackColor = System.Drawing.Color.White;
             this.GrantPrivilegeButton.BackgroundColor = System.Drawing.Color.White;
             this.GrantPrivilegeButton.BorderColor = System.Drawing.Color.Green;
@@ -153,7 +124,7 @@
             this.GrantPrivilegeButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.GrantPrivilegeButton.IconSize = 24;
             this.GrantPrivilegeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.GrantPrivilegeButton.Location = new System.Drawing.Point(859, 27);
+            this.GrantPrivilegeButton.Location = new System.Drawing.Point(929, 19);
             this.GrantPrivilegeButton.Name = "GrantPrivilegeButton";
             this.GrantPrivilegeButton.Size = new System.Drawing.Size(150, 40);
             this.GrantPrivilegeButton.TabIndex = 0;
@@ -164,8 +135,41 @@
             this.GrantPrivilegeButton.UseVisualStyleBackColor = false;
             this.GrantPrivilegeButton.Click += new System.EventHandler(this.GrantPrivilegeButton_Click);
             // 
+            // RevokeButton
+            // 
+            this.RevokeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RevokeButton.BackColor = System.Drawing.Color.White;
+            this.RevokeButton.BackgroundColor = System.Drawing.Color.White;
+            this.RevokeButton.BorderColor = System.Drawing.Color.Red;
+            this.RevokeButton.BorderRadius = 8;
+            this.RevokeButton.BorderSize = 2;
+            this.RevokeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RevokeButton.FlatAppearance.BorderSize = 0;
+            this.RevokeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RevokeButton.Font = new System.Drawing.Font("Calibri", 12F);
+            this.RevokeButton.ForeColor = System.Drawing.Color.Red;
+            this.RevokeButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.RevokeButton.HoverIconColor = System.Drawing.Color.Red;
+            this.RevokeButton.HoverTextColor = System.Drawing.Color.Red;
+            this.RevokeButton.IconChar = FontAwesome.Sharp.IconChar.Ban;
+            this.RevokeButton.IconColor = System.Drawing.Color.Red;
+            this.RevokeButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.RevokeButton.IconSize = 24;
+            this.RevokeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RevokeButton.Location = new System.Drawing.Point(785, 19);
+            this.RevokeButton.Name = "RevokeButton";
+            this.RevokeButton.Size = new System.Drawing.Size(113, 40);
+            this.RevokeButton.TabIndex = 2;
+            this.RevokeButton.Text = "Xóa quyền";
+            this.RevokeButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.RevokeButton.TextColor = System.Drawing.Color.Red;
+            this.RevokeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.RevokeButton.UseVisualStyleBackColor = false;
+            this.RevokeButton.Click += new System.EventHandler(this.RevokeButton_Click);
+            // 
             // ReloadButton
             // 
+            this.ReloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ReloadButton.BackColor = System.Drawing.Color.White;
             this.ReloadButton.BackgroundColor = System.Drawing.Color.White;
             this.ReloadButton.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -184,7 +188,7 @@
             this.ReloadButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ReloadButton.IconSize = 24;
             this.ReloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReloadButton.Location = new System.Drawing.Point(141, 27);
+            this.ReloadButton.Location = new System.Drawing.Point(980, 416);
             this.ReloadButton.Name = "ReloadButton";
             this.ReloadButton.Size = new System.Drawing.Size(99, 40);
             this.ReloadButton.TabIndex = 1;
@@ -195,32 +199,34 @@
             this.ReloadButton.UseVisualStyleBackColor = false;
             this.ReloadButton.Click += new System.EventHandler(this.ReloadButton_Click);
             // 
-            // rolePrivilegeManageForm
+            // RolePrivilegeManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1108, 484);
-            this.Controls.Add(this.buttonPanel);
-            this.Controls.Add(this.panelManage);
-            this.Name = "rolePrivilegeManageForm";
+            this.ClientSize = new System.Drawing.Size(1138, 468);
+            this.Controls.Add(this.tabRolePrivilegesControl);
+            this.Controls.Add(this.GrantPrivilegeButton);
+            this.Controls.Add(this.RevokeButton);
+            this.Controls.Add(this.ReloadButton);
+            this.Name = "RolePrivilegeManageForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý quyền role";
-            this.panelManage.ResumeLayout(false);
-            this.panelManage.PerformLayout();
-            this.buttonPanel.ResumeLayout(false);
+            this.tabRolePrivilegesControl.ResumeLayout(false);
+            this.tabTablePrivileges.ResumeLayout(false);
+            this.tabColumnPrivigleges.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Label ColPrivilegeLabel;
-        private System.Windows.Forms.Label TablePrivilegeLabel;
         private System.Windows.Forms.Panel TablePrivilegeManagePanel;
-        private System.Windows.Forms.Panel panelManage;
-        private System.Windows.Forms.Panel ColPrivilegeManagePanel;
-        private System.Windows.Forms.Panel buttonPanel;
         private Controls.CTButton GrantPrivilegeButton;
         private Controls.CTButton ReloadButton;
         private Controls.CTButton RevokeButton;
+        private System.Windows.Forms.TabControl tabRolePrivilegesControl;
+        private System.Windows.Forms.TabPage tabTablePrivileges;
+        private System.Windows.Forms.TabPage tabColumnPrivigleges;
+        private System.Windows.Forms.Panel ColPrivilegeManagePanel;
     }
 }

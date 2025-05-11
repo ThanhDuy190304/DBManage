@@ -228,5 +228,40 @@ namespace SchoolManagerApp.src.Controller
                 throw new ServerError(ex.Message);
             }
         }
+        
+        public async Task <bool> LockAccount (string userName)
+        {
+            try
+            {
+                var result = await _userService.LockAccount(userName);
+                return result;
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError(ex.Message);
+            }
+        }
+
+        public async Task<bool> UnLockAccount(string userName)
+        {
+            try
+            {
+                var result = await _userService.UnLockAccount(userName);
+                return result;
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError(ex.Message);
+            }
+        }
+    
     }
 }

@@ -159,6 +159,7 @@
             // 
             // ctButton1
             // 
+            this.ctButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.ctButton1.BackColor = System.Drawing.Color.Transparent;
             this.ctButton1.BackgroundColor = System.Drawing.Color.Transparent;
             this.ctButton1.BorderColor = System.Drawing.Color.Gray;

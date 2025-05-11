@@ -42,9 +42,9 @@
             this.titleLabel.Font = new System.Drawing.Font("Calibri", 13F);
             this.titleLabel.Location = new System.Drawing.Point(190, 30);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(175, 22);
+            this.titleLabel.Size = new System.Drawing.Size(112, 22);
             this.titleLabel.TabIndex = 2;
-            this.titleLabel.Text = "Thu hồi quyền của role";
+            this.titleLabel.Text = "Thu hồi quyền";
             // 
             // ChoosePrivilegeLabel
             // 
@@ -151,6 +151,7 @@
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.PirivilegeComboBox);
             this.Name = "RevokePrivilgeForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RevokePrivilgeForm";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -19,7 +19,6 @@ namespace SchoolManagerApp.src.Views.forms
         public AlterPasswordForm(string name, Func<string, Task<bool>> onTurnOffAuth, Func<string, string, Task<bool>> alterPassword)
         {
             InitializeComponent();
-            this.StartPosition = FormStartPosition.CenterScreen;
             this.onTurnOffAuthCallback = onTurnOffAuth;
             this.alterPasswordCallback = alterPassword;
             this.name = name;

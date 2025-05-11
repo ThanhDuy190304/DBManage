@@ -23,6 +23,7 @@ namespace SchoolManagerApp.src.Views.layout
             InitializeComponent();
             sidebar.OnLogout += HandleLogOut;
             sidebar.OnPageChange = LoadPage;
+            sidebar.OnSidebarCollapsedChanged += HandleSidebarResize;
             LoadPage(new RolesPage());
         }
 
@@ -52,7 +53,11 @@ namespace SchoolManagerApp.src.Views.layout
             }
         }
 
-
-
+        private void HandleSidebarResize(bool isCollapsed)
+        {
+            int sidebarWidth = isCollapsed ? 40 : 250;
+            contentPanel.Location = new Point(sidebarWidth, 0);
+            contentPanel.Width = this.ClientSize.Width - sidebarWidth;
+        }
     }
 }

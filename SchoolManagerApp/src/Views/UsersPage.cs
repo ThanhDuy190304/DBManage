@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SchoolManagerApp.src.Views.forms;
 using System.Windows.Forms;
+using FontAwesome.Sharp;
 
 namespace SchoolManagerApp.src.Views
 {
@@ -34,21 +35,67 @@ namespace SchoolManagerApp.src.Views
                 {
                     { "USERNAME", 150 },
                     { "USER_ID", 100 },
-                    { "PASSWORD", 150 },
-                    { "CREATED", 120 },
+                    { "CREATED", 150 },
+                    { "EXPIRY_DAY", 150 },
                     { "LAST_LOGIN", 150 },
+                    { "PASSWORD_CHANGE_DATE", 170 },
+                    { "AUTHENTICATION_TYPE", 170 },
+                    { "ACCOUNT_STATUS", 150 },
                 };
 
                 var data = users.Select(u => new string[]
                 {
                 u.USERNAME,
                 u.USER_ID,
-                u.PASSWORD,
                 u.CREATED,
-                u.LAST_LOGIN.ToString("yyyy-MM-dd HH:mm:ss")
+                u.EXPIRY_DAY.ToString("yyyy-MM-dd HH:mm:ss"),
+                u.LAST_LOGIN.ToString("yyyy-MM-dd HH:mm:ss"),
+                u.PASSWORD_CHANGE_DATE.ToString("yyyy-MM-dd HH:mm:ss"),
+                u.AUTHENTICATION_TYPE,
+                u.ACCOUNT_STATUS
                 }).ToList();
 
-                var table = new CTTable(columnDefinitions, data);
+
+                var table = new CTTable(columnDefinitions, data, row =>
+                {
+                    var toggle = new IconButton()
+                    {
+                        IconChar = row[7] == "OPEN" ? IconChar.ToggleOn : IconChar.ToggleOff,
+                        IconColor = row[7] == "OPEN" ? Color.Green : Color.Gray,
+                        IconSize = 24,
+                        FlatStyle = FlatStyle.Flat,
+                        BackColor = Color.Transparent,
+                        Cursor = Cursors.Hand,
+                        Size = new Size(30, 24)
+                    };
+                    toggle.FlatAppearance.BorderSize = 0;
+
+                    toggle.Click += async (s, e) =>
+                    {
+                        bool isLocked = row[7] != "OPEN";
+                        toggle.IconChar = isLocked ? IconChar.ToggleOn : IconChar.ToggleOff;
+                        toggle.IconColor = isLocked ? Color.Green : Color.Gray;
+
+                        if (isLocked)
+                            await _userController.UnLockAccount(row[0]);
+                        else
+                            await _userController.LockAccount(row[0]);
+
+                        row[7] = isLocked ? "OPEN" : "LOCKED";
+                    };
+
+                    var panel = new FlowLayoutPanel()
+                    {
+                        Width = 80,
+                        Height = 30,
+                        Margin = new Padding(0),
+                        FlowDirection = FlowDirection.LeftToRight
+                    };
+                    panel.Controls.Add(toggle);
+                    return panel;
+                });
+
+
                 table.OnDeleteClicked += userName =>
                 {
                     DeleteAUser(userName);

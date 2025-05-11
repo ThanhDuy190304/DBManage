@@ -47,6 +47,6 @@ namespace SchoolManagerApp.src.Views.forms
             return columns.Length > 0 ? columns : null;
         }
 
-
+    
     }
 }

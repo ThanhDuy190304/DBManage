@@ -170,7 +170,7 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Tạo xác thực bằng mật khẩu";
             // 
-            // alterPasswordForm
+            // AlterPasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -182,7 +182,8 @@
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.flowLayoutPanel5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "alterPasswordForm";
+            this.Name = "AlterPasswordForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "updateFieldForm";
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();

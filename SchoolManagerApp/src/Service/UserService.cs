@@ -183,6 +183,43 @@ namespace SchoolManagerApp.src.Service
                 throw new ServerError(ex.Message);
             }
         }
+
+        public async Task<bool> LockAccount(string userName)
+        {
+            try
+            {
+                var query = $"ALTER USER {userName} ACCOUNT LOCK";
+                await _dbService.Connection.ExecuteAsync(query);
+                return true;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError(ex.Message);
+            }
+        }
+
+        public async Task<bool> UnLockAccount(string userName)
+        {
+            try
+            {
+                var query = $"ALTER USER {userName} ACCOUNT UNLOCK";
+                await _dbService.Connection.ExecuteAsync(query);
+                return true;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError(ex.Message);
+            }
+        }
+
     }
 
 

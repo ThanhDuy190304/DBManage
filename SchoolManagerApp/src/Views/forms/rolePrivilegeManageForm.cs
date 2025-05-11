@@ -16,34 +16,7 @@ namespace SchoolManagerApp.src.Views.forms
         {
             InitializeComponent();
             this.roleName = name;
-
-            // Thiết lập panel chính
-            this.panelManage.AutoScroll = true;
-            this.panelManage.Dock = DockStyle.Fill;
-
-            // Xóa tất cả controls hiện có để sắp xếp lại
-            this.panelManage.Controls.Clear();
-
-            // 3. Thêm Panel chứa bảng quyền trên bảng
-            this.TablePrivilegeManagePanel.Dock = DockStyle.Top;
-            this.panelManage.Controls.Add(this.TablePrivilegeManagePanel);
-
-            // 4. Thêm Label quyền trên cột
-            this.ColPrivilegeLabel.Dock = DockStyle.Top;
-            this.panelManage.Controls.Add(this.ColPrivilegeLabel);
-
-            // 5. Thêm Panel chứa bảng quyền trên cột
-            this.ColPrivilegeManagePanel.Dock = DockStyle.Top;
-            this.panelManage.Controls.Add(this.ColPrivilegeManagePanel);
-
-            // 2. Thêm Label quyền trên bảng (sẽ nằm dưới nút)
-            this.TablePrivilegeLabel.Dock = DockStyle.Top;
-            this.panelManage.Controls.Add(this.TablePrivilegeLabel);
-
-            // 1. Thêm nút Reload (nếu có)
-            this.buttonPanel.Dock = DockStyle.Top;
-            this.panelManage.Controls.Add(this.buttonPanel);
-
+        
             // Khởi tạo dữ liệu
             InitializeTablePrivilegeManager(this.roleName);
             InitializeColPrivilegeManager(this.roleName);
@@ -57,7 +30,7 @@ namespace SchoolManagerApp.src.Views.forms
                 {
                     { "GRANTEE", 100 },
                     { "OWNER", 100 },
-                    { "TABLE_NAME", 150 },
+                    { "TABLE_NAME", 200 },
                     { "GRANTOR", 150 },
                     { "PRIVILEGE", 100 },
                     { "GRANTABLE", 100 },
@@ -77,9 +50,9 @@ namespace SchoolManagerApp.src.Views.forms
                     p.INHERITED
                 }).ToList();
 
-                var table = new CTTable(columnDefinitions, data);
+                var table = new CTTable(columnDefinitions, data, null, false);
                 table.Dock = DockStyle.Fill;
-                this.ColPrivilegeManagePanel.Controls.Add(table);
+                this.TablePrivilegeManagePanel.Controls.Add(table);
             }
             catch (Exception ex)
             {
@@ -97,7 +70,7 @@ namespace SchoolManagerApp.src.Views.forms
             {
                 { "GRANTEE", 100 },
                 { "OWNER", 100 },
-                { "TABLE_NAME", 150 },
+                { "TABLE_NAME", 200 },
                 { "COLUMN_NAME", 150 },
                 { "PRIVILEGE", 100 },
                 { "GRANTABLE", 100 },
@@ -116,10 +89,10 @@ namespace SchoolManagerApp.src.Views.forms
                 p.COMMON,
                 p.INHERITED
                 }).ToList();
-                var table = new CTTable(columnDefinitions, data);
+                var table = new CTTable(columnDefinitions, data, null, false);
                 table.Dock = DockStyle.Fill;
                 
-                this.TablePrivilegeManagePanel.Controls.Add(table);
+                this.ColPrivilegeManagePanel.Controls.Add(table);
             }
             catch (Exception ex)
             {
@@ -194,6 +167,5 @@ namespace SchoolManagerApp.src.Views.forms
             grantForm.ShowDialog();
         }
 
-       
     }
 }

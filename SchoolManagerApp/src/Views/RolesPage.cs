@@ -11,11 +11,10 @@ namespace SchoolManagerApp.src.Views
 {
     public partial class RolesPage : UserControl
     {
-        private Panel buttonPanel;
-        private CTButton CreateRoleButton;
         private CTButton ReloadButton;
 
         private Panel tablePanel;
+        private CTButton CreateRoleButton;
         private RoleController roleController = new RoleController();
         public RolesPage()
         {
@@ -152,25 +151,25 @@ namespace SchoolManagerApp.src.Views
         }
         private void InitializeComponent()
         {
-            this.buttonPanel = new System.Windows.Forms.Panel();
+            this.tablePanel = new System.Windows.Forms.Panel();
             this.CreateRoleButton = new SchoolManagerApp.Controls.CTButton();
             this.ReloadButton = new SchoolManagerApp.Controls.CTButton();
-            this.tablePanel = new System.Windows.Forms.Panel();
-            this.buttonPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonPanel
+            // tablePanel
             // 
-            this.buttonPanel.Controls.Add(this.CreateRoleButton);
-            this.buttonPanel.Controls.Add(this.ReloadButton);
-            this.buttonPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.buttonPanel.Location = new System.Drawing.Point(0, 0);
-            this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(1042, 70);
-            this.buttonPanel.TabIndex = 1;
+            this.tablePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tablePanel.Location = new System.Drawing.Point(51, 109);
+            this.tablePanel.Name = "tablePanel";
+            this.tablePanel.Size = new System.Drawing.Size(963, 343);
+            this.tablePanel.TabIndex = 0;
+            this.tablePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tablePanel_Paint);
             // 
             // CreateRoleButton
             // 
+            this.CreateRoleButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateRoleButton.BackColor = System.Drawing.Color.White;
             this.CreateRoleButton.BackgroundColor = System.Drawing.Color.White;
             this.CreateRoleButton.BorderColor = System.Drawing.Color.Green;
@@ -189,7 +188,7 @@ namespace SchoolManagerApp.src.Views
             this.CreateRoleButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.CreateRoleButton.IconSize = 24;
             this.CreateRoleButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CreateRoleButton.Location = new System.Drawing.Point(859, 27);
+            this.CreateRoleButton.Location = new System.Drawing.Point(864, 17);
             this.CreateRoleButton.Name = "CreateRoleButton";
             this.CreateRoleButton.Size = new System.Drawing.Size(150, 40);
             this.CreateRoleButton.TabIndex = 0;
@@ -202,6 +201,7 @@ namespace SchoolManagerApp.src.Views
             // 
             // ReloadButton
             // 
+            this.ReloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ReloadButton.BackColor = System.Drawing.Color.White;
             this.ReloadButton.BackgroundColor = System.Drawing.Color.White;
             this.ReloadButton.BorderColor = System.Drawing.Color.RoyalBlue;
@@ -220,7 +220,7 @@ namespace SchoolManagerApp.src.Views
             this.ReloadButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ReloadButton.IconSize = 24;
             this.ReloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReloadButton.Location = new System.Drawing.Point(141, 27);
+            this.ReloadButton.Location = new System.Drawing.Point(915, 474);
             this.ReloadButton.Name = "ReloadButton";
             this.ReloadButton.Size = new System.Drawing.Size(99, 40);
             this.ReloadButton.TabIndex = 1;
@@ -231,22 +231,14 @@ namespace SchoolManagerApp.src.Views
             this.ReloadButton.UseVisualStyleBackColor = false;
             this.ReloadButton.Click += new System.EventHandler(this.ReloadButton_Click);
             // 
-            // tablePanel
-            // 
-            this.tablePanel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tablePanel.Location = new System.Drawing.Point(54, 135);
-            this.tablePanel.Name = "tablePanel";
-            this.tablePanel.Size = new System.Drawing.Size(955, 317);
-            this.tablePanel.TabIndex = 0;
-            // 
             // RolesPage
             // 
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.Controls.Add(this.CreateRoleButton);
             this.Controls.Add(this.tablePanel);
-            this.Controls.Add(this.buttonPanel);
+            this.Controls.Add(this.ReloadButton);
             this.Name = "RolesPage";
-            this.Size = new System.Drawing.Size(1042, 517);
-            this.buttonPanel.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(1054, 517);
             this.ResumeLayout(false);
 
         }
@@ -287,6 +279,9 @@ namespace SchoolManagerApp.src.Views
             InitializeCustomTable();
         }
 
-      
+        private void tablePanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
