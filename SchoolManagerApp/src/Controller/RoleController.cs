@@ -170,6 +170,6 @@ namespace SchoolManagerApp
                 throw new ServerError("Lỗi không xác định khi cấp quyền: " + ex.Message);
             }
         }
-        
     }
+
 }

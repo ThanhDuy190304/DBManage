@@ -19,7 +19,7 @@ namespace SchoolManagerApp.src.Service
         private static readonly object _lock = new object();
         private OracleConnection _connection;
 
-        private DatabaseService(string username, string password)
+        public DatabaseService(string username, string password)
         {
             string connectSQL = $"User Id={username};Password={password};Data Source=localhost:1521/QL_NoiBo";
             _connection = new OracleConnection(connectSQL);
@@ -49,6 +49,7 @@ namespace SchoolManagerApp.src.Service
                 if (_connection.State != ConnectionState.Open)
                 {
                     _connection.Open();
+                    Console.WriteLine($"Current schema: {_connection.ExecuteScalar<string>("SELECT SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') FROM DUAL")}");
                 }
             }
             catch (OracleException ex)

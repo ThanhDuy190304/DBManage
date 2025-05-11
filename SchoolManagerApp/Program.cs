@@ -1,11 +1,15 @@
 ﻿// Program.cs
 // Program.cs
-//#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
+#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
 
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dapper;
+using Oracle.ManagedDataAccess.Client;
 using SchoolManagerApp.src.Controller;
+using SchoolManagerApp.src.Service;
 using SchoolManagerApp.src.Test;
 using SchoolManagerApp.src.Views.layout;
 
@@ -31,7 +35,15 @@ namespace SchoolManagerApp
                 Console.WriteLine("Login thành công!");
             else
                 Console.WriteLine("Login thất bại!");
-            TestRoleController.Main(null).GetAwaiter().GetResult();
+            var testNhanVien = new TestNhanVienController("NV011", "123"); // user, password
+            testNhanVien.RunAllTests().GetAwaiter().GetResult();
+
+            
+            //var testMomon = new TestMomonController("NVPDT002", "123");
+            //testMomon.RunAllTests().GetAwaiter().GetResult();
+
+
+
 #else
             // GUI mode (WinForms)
             Application.EnableVisualStyles();
