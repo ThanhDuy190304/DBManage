@@ -124,5 +124,18 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
+        // Danh sách sinh viên giáo viên phụ trách
+        public async Task<IEnumerable<DangKy>> GetListStudentOfGV()
+        {
+            try
+            {
+                string query = "select m.magv, d.mamm, d.masv, m.HK, m.NAM From ADMIN.DANGKY d Join ADMIN.MOMON m On m.mamm = d.mamm";
+                return await _dbService.Connection.QueryAsync<DangKy>(query);
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+        }
     }
 }

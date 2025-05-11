@@ -29,7 +29,8 @@ namespace SchoolManagerApp.src.Test
 
             //await TestSelectPoint();
             //await TestGetClass();
-            await TestGetSinhVIen();
+            //await TestGetSinhVIen();
+            await TestGetListStudentOfGV();
 
             Console.WriteLine("===== KET THUC TEST =====\n");
         }
@@ -82,6 +83,23 @@ namespace SchoolManagerApp.src.Test
             catch (Exception ex)
             {
                 Console.WriteLine("[FAIL] SELECT danh sach SV: " + ex.Message + "\n");
+            }
+        }
+
+        // Danh sách sinh viên giáo viên phụ trách
+        private async Task TestGetListStudentOfGV()
+        {
+            try
+            {
+                var result = await _controller.GetListStudentOfGV();
+                foreach (var item in result)
+                {
+                    Console.WriteLine($"MASV: {item.MASV}, MAMM: {item.MAMM}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[FAIL] SELECT danh sach SV cua Gv phu trach: " + ex.Message + "\n");
             }
         }
     }

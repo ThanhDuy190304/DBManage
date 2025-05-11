@@ -56,6 +56,7 @@ namespace SchoolManagerApp.src.Service
                 throw ErrorMapper.MapOracleException(ex);
             }
         }
+
         public bool IsUserDBA()
         {
             OpenConnection();
@@ -70,6 +71,21 @@ namespace SchoolManagerApp.src.Service
                 _connection.Close();
             }
             _instance = null;
+        }
+        public void ExecuteSetUserRole()
+        {
+            try
+            {
+                OpenConnection();
+                string query = "BEGIN ADMIN.user_role_pkg.set_user_role; END;";
+                _connection.Execute(query);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi thực thi thủ tục: " + ex.Message);
+                throw;
+            }
         }
         public OracleConnection Connection => _connection;
     }

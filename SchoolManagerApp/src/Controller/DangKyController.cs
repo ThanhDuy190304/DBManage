@@ -81,5 +81,18 @@ namespace SchoolManagerApp.src.Controller
                 throw new Exception("Không thể lấy danh sách điểm của sinh viên: " + ex.Message);
             }
         }
+
+        // Danh sách sinh viên giáo viên phụ trách
+        public async Task<IEnumerable<DangKy>> GetListStudentOfGV()
+        {
+            try
+            {
+                return await _svService.GetListStudentOfGV();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Không thể lấy danh sách sinh viên của giáo viên phụ trách: " + ex.Message);
+            }
+        }
     }
 }

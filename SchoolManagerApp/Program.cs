@@ -20,10 +20,10 @@ namespace SchoolManagerApp
 #if CONSOLE_TEST
             // Login
             Console.Write("Enter username: ");
-            string username = "NV003"; //Console.ReadLine();
+            string username = "NV001"; //Console.ReadLine();
 
             Console.Write("Enter password: ");
-            string password = "nv003"; // Console.ReadLine();
+            string password = "123"; // Console.ReadLine();
 
             var controllerAuth = new AuthController();
 
