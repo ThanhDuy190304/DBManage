@@ -56,8 +56,8 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-
-        public async Task<int> UpdateHocPhan(string maSV, string maMM, double diemTH, double diemQT, double diemCK, double diemTK)
+        // update diem của NV PKT
+        public async Task<int> UpdateHocPhan(string maSV, string maMM, double? diemTH, double? diemQT, double? diemCK, double? diemTK)
         {
             try
             {
@@ -68,6 +68,7 @@ namespace SchoolManagerApp.src.Controller
                 throw ErrorMapper.MapOracleException(ex);
             }
         }
+
 
         // Danh sách lớp giáo viên phụ trách
         public async Task<IEnumerable<MoMon>> GetListClass()

@@ -15,7 +15,7 @@ namespace SchoolManagerApp.src.Test
         private readonly DangKyController _controller;
         private readonly SinhVienController _controllerSV;
 
-
+     
         public TestCau4(string username, string password)
         {
             var dbService = DatabaseService.GetInstance(username, password); // tạo kết nối mới theo user
@@ -26,11 +26,17 @@ namespace SchoolManagerApp.src.Test
         public async Task RunAllTests()
         {
             Console.WriteLine("===== TEST CHO USER: " + " =====\n");
-
+            // SV001 123
             //await TestSelectPoint();
+
+            // NV001 123
             //await TestGetClass();
-            //await TestGetSinhVIen();
-            await TestGetListStudentOfGV();
+
+            // NV002 123
+            await TestUpdatePoint();
+
+            // NV001 123
+            //await TestGetListStudentOfGV();
 
             Console.WriteLine("===== KET THUC TEST =====\n");
         }
@@ -49,6 +55,21 @@ namespace SchoolManagerApp.src.Test
             catch (Exception ex)
             {
                 Console.WriteLine("[FAIL] SELECT danh sach SV: " + ex.Message + "\n");
+            }
+        }
+
+        // NVPKT update điểm của sinh viên
+
+        private async Task TestUpdatePoint()
+        {
+            try
+            {
+                var result = await _controller.UpdateHocPhan("SV001", "MM001", 9.0, null, null, null);
+                Console.WriteLine("[SUCCESS] UPDATE diem thanh cong: " + result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[FAIL] UPDATE diem: " + ex.Message + "\n");
             }
         }
 

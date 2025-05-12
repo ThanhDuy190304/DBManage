@@ -20,7 +20,7 @@ namespace SchoolManagerApp
 #if CONSOLE_TEST
             // Login
             Console.Write("Enter username: ");
-            string username = "NV001"; //Console.ReadLine();
+            string username = "NV002"; //Console.ReadLine();
 
             Console.Write("Enter password: ");
             string password = "123"; // Console.ReadLine();
@@ -33,7 +33,7 @@ namespace SchoolManagerApp
                 Console.WriteLine("Login thất bại!");
             var test = new TestCau4(username, password); // user, password
             test.RunAllTests().GetAwaiter().GetResult();
-            // NV PDT = NV003
+
 #else
             // GUI mode (WinForms)
             Application.EnableVisualStyles();

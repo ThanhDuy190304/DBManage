@@ -76,28 +76,57 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-
-        public async Task<int> UpdateHocPhan(string maSV, string maMM, double diemTH, double diemQT, double diemCK, double diemTK)
+        // update diem của NV PKT
+        public async Task<int> UpdateHocPhan(string maSV, string maMM, double? diemTH, double? diemQT, double? diemCK, double? diemTK)
         {
             try
             {
-                string query = @"
-            UPDATE ADMIN.DANGKY
-            SET DIEMTH = :DIEMTH,
-                DIEMQT = :DIEMQT,
-                DIEMCK = :DIEMCK,
-                DIEMTK = :DIEMTK
-            WHERE MASV = :MASV AND MAMM = :MAMM";
+                string query = "UPDATE ADMIN.DANGKY SET ";
 
-                var parameters = new
+                var parameters = new DynamicParameters();
+                parameters.Add("MASV", maSV);
+                parameters.Add("MAMM", maMM);
+
+                bool hasUpdateClause = false;
+
+                if (diemTH.HasValue)
                 {
-                    MASV = maSV,
-                    MAMM = maMM,
-                    DIEMTH = diemTH,
-                    DIEMQT = diemQT,
-                    DIEMCK = diemCK,
-                    DIEMTK = diemTK
-                };
+                    query += "DIEMTH = :DIEMTH, ";
+                    parameters.Add("DIEMTH", diemTH.Value);
+                    hasUpdateClause = true;
+                }
+
+                if (diemQT.HasValue)
+                {
+                    query += "DIEMQT = :DIEMQT, ";
+                    parameters.Add("DIEMQT", diemQT.Value);
+                    hasUpdateClause = true;
+                }
+
+                if (diemCK.HasValue)
+                {
+                    query += "DIEMCK = :DIEMCK, ";
+                    parameters.Add("DIEMCK", diemCK.Value);
+                    hasUpdateClause = true;
+                }
+
+                if (diemTK.HasValue)
+                {
+                    query += "DIEMTK = :DIEMTK, ";
+                    parameters.Add("DIEMTK", diemTK.Value);
+                    hasUpdateClause = true;
+                }
+
+                if (hasUpdateClause)
+                {
+                    query = query.Substring(0, query.Length - 2);
+                }
+                else
+                {
+                    throw new InvalidOperationException("Không có trường nào để cập nhật.");
+                }
+
+                query += " WHERE MASV = :MASV AND MAMM = :MAMM";
 
                 return await _dbService.Connection.ExecuteAsync(query, parameters);
             }
@@ -106,6 +135,7 @@ namespace SchoolManagerApp.src.Service
                 throw ErrorMapper.MapOracleException(ex);
             }
         }
+
 
 
 
