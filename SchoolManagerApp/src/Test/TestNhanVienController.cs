@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
@@ -7,6 +9,7 @@ using SchoolManagerApp.src.Controller;
 using SchoolManagerApp.src.Models;
 using SchoolManagerApp.src.Service;
 using SchoolManagerApp.src.utils;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SchoolManagerApp.src.Test
 {
@@ -27,11 +30,13 @@ namespace SchoolManagerApp.src.Test
         public async Task RunAllTests()
         {
             Console.WriteLine("===== TEST CHO USER: " + _username + " =====\n");
-
+            //NVCB
             await TestSelectByRole();
+            await TestUpdateSoDienThoai();
+            //TRGDV 
             await TestSelectNhanVienTrongDonVi(); 
+            //NV TCHC
             await TestSelectTatCaNhanVien(); 
-            await TestUpdateSoDienThoai(); 
             await TestInsertUpdateDeleteNhanVien();
 
             Console.WriteLine("===== KET THUC TEST =====\n");
@@ -41,17 +46,8 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var vaiTros = await _nhanVienService.CheckRole(_username);
-
-                if (vaiTros.Contains("ROLE_NVCB") || vaiTros.Contains("ROLE_TRGDV") || vaiTros.Contains("ROLE_NV_TCHC"))
-                {
-                    var result = await _controller.GetThongTinCaNhan(_username);
-                    Console.WriteLine("[PASS] SELECT THONG TIN CA NHAN: " + (result != null ? result.HOTEN : "Khong tim thay") + "\n");
-                }
-                else
-                {
-                    throw new InvalidDataError("Vai trò không hợp lệ hoặc không được hỗ trợ.");
-                }
+                var result = await _controller.GETPersonalInformationForNVCB(_username);
+                Console.WriteLine("[PASS] SELECT THONG TIN CA NHAN CUA NHANVIEN: " + (result != null ? result.HOTEN : "Khong tim thay") + "\n");
             }
             catch (Exception ex)
             {
@@ -64,15 +60,19 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var vaiTros = await _nhanVienService.CheckRole(_username);
-                if (vaiTros.Contains("ROLE_TRGDV"))
+                 var result = await _controller.GETEmployeesInManagedUnitTRGDV(_username);
+                if (result.Any())
                 {
-                    var result = await _controller.GetNhanVienTrongDonVi(_username);
-                    Console.WriteLine("[PASS] SELECT NHANVIEN TRONG DON VI: " + (result.Any() ? result.First().HOTEN : "Khong tim thay") + "\n");
+                    Console.WriteLine("[PASS] SELECT NHANVIEN TRONG DON VI:");
+                    foreach (var nhanVien in result)
+                    {
+                        Console.WriteLine($"MANV: {nhanVien.MANV}, HOTEN: {nhanVien.HOTEN}, PHAI: {nhanVien.PHAI}, NGSINH: {nhanVien.NGSINH:yyyy-MM-dd}, LUONG: {nhanVien.LUONG}, PHUCAP: {nhanVien.PHUCAP}, DT: {nhanVien.DT}, VAITRO: {nhanVien.VAITRO}, MADV: {nhanVien.MADV}");
+                    }
+                    Console.WriteLine();
                 }
                 else
                 {
-                    Console.WriteLine("[PASS] Khong co quyen xem NHANVIEN trong don vi (khong phai ROLE_TRGDV)\n");
+                    Console.WriteLine("[PASS] SELECT NHANVIEN TRONG DON VI: Khong tim thay\n");
                 }
             }
             catch (Exception ex)
@@ -86,16 +86,9 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var vaiTros = await _nhanVienService.CheckRole(_username);
-                if (vaiTros.Contains("ROLE_NV_TCHC"))
-                {
-                    var result = await _controller.GetAllNhanVien(_username);
-                    Console.WriteLine("[PASS] SELECT TAT CA NHANVIEN: " + (result.Any() ? result.First().HOTEN : "Khong tim thay") + "\n");
-                }
-                else
-                {
-                    Console.WriteLine("[PASS] Khong co quyen xem TAT CA NHANVIEN (khong phai ROLE_NV_TCHC)\n");
-                }
+                var result = await _controller.GETAllEmployees(_username);
+                Console.WriteLine("[PASS] SELECT TAT CA NHANVIEN: " + (result.Any() ? result.First().HOTEN : "Khong tim thay") + "\n");
+
             }
             catch (Exception ex)
             {
@@ -108,16 +101,9 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var vaiTros = await _nhanVienService.CheckRole(_username);
-                if (vaiTros.Contains("ROLE_NVCB") || vaiTros.Contains("ROLE_TRGDV") || vaiTros.Contains("ROLE_NV_TCHC"))
-                {
-                    var ok = await _controller.UpdateSoDienThoai(_username, "0911111111");
-                    Console.WriteLine(ok ? "[PASS] UPDATE SO DIEN THOAI\n" : "[FAIL] UPDATE SO DIEN THOAI khong thanh cong\n");
-                }
-                else
-                {
-                    Console.WriteLine("[PASS] Khong co quyen cap nhat SO DIEN THOAI (khong phai ROLE_NVCB, ROLE_TRGDV, ROLE_NV_TCHC)\n");
-                }
+                var ok = await _controller.UpdatePhoneNumberForNVCB(_username, "0911111111");
+                Console.WriteLine(ok ? "[PASS] UPDATE SO DIEN THOAI\n" : "[FAIL] UPDATE SO DIEN THOAI khong thanh cong\n");
+
             }
             catch (Exception ex)
             {
@@ -130,24 +116,32 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var vaiTros = await _nhanVienService.CheckRole(_username);
-                if (vaiTros.Contains("ROLE_NV_TCHC"))
-                {
-                    var nhanVien = new NHANVIEN { MANV = "NV0016", HOTEN = "Pham Van D", PHAI = "M", NGSINH = DateTime.Parse("1990-04-04"), LUONG = 5500, PHUCAP = 1100, DT = "0933333333", VAITRO = "NVCB", MADV = "CNTT" };
-                    var ok = await _controller.InsertNhanVien(_username, nhanVien);
-                    Console.WriteLine(ok ? "[PASS] INSERT NHANVIEN\n" : "[FAIL] INSERT NHANVIEN khong thanh cong\n");
+                var nhanVien = new NHANVIEN { MANV = "NV0016", HOTEN = "Pham Van D", PHAI = "M", NGSINH = DateTime.Parse("1990-04-04"), LUONG = 5500, PHUCAP = 1100, DT = "0933333333", VAITRO = "NVCB", MADV = "CNTT" };
+                var ok = await _controller.InsertNewEmployee(_username, nhanVien);
+                Console.WriteLine(ok ? "[PASS] INSERT NHANVIEN\n" : "[FAIL] INSERT NHANVIEN khong thanh cong\n");
 
-                    nhanVien.LUONG = 6000;
-                    ok = await _controller.UpdateNhanVien(_username, nhanVien);
-                    Console.WriteLine(ok ? "[PASS] UPDATE NHANVIEN\n" : "[FAIL] UPDATE NHANVIEN khong thanh cong\n");
+                // Cập nhật 1 trường (HOTEN) với ExpandoObject
+                dynamic updateFields1 = new ExpandoObject();
+                updateFields1.HOTEN = "Pham Van E";
+                ok = await _controller.UpdateEmployeeDetails(_username, "NV0016", updateFields1);
+                Console.WriteLine(ok ? "[PASS] UPDATE NHANVIEN (HOTEN)\n" : "[FAIL] UPDATE NHANVIEN (HOTEN) khong thanh cong\n");
 
-                    ok = await _controller.DeleteNhanVien(_username, "NV0016");
-                    Console.WriteLine(ok ? "[PASS] DELETE NHANVIEN\n" : "[FAIL] DELETE NHANVIEN khong thanh cong\n");
-                }
-                else
-                {
-                    Console.WriteLine("[PASS] Khong co quyen Insert/Update/Delete NHANVIEN (khong phai ROLE_NV_TCHC)\n");
-                }
+                // Cập nhật 2 trường (HOTEN và DT) với ExpandoObject
+                dynamic updateFields2 = new ExpandoObject();
+                updateFields2.HOTEN = "Pham Van F";
+                updateFields2.DT = "0944444444";
+                ok = await _controller.UpdateEmployeeDetails(_username, "NV0016", updateFields2);
+                Console.WriteLine(ok ? "[PASS] UPDATE NHANVIEN (HOTEN, DT)\n" : "[FAIL] UPDATE NHANVIEN (HOTEN, DT) khong thanh cong\n");
+
+                // Cập nhật 2 trường khác (LUONG và PHAI) với ExpandoObject
+                dynamic updateFields3 = new ExpandoObject();
+                updateFields3.LUONG = 6000;
+                updateFields3.PHAI = "F";
+                ok = await _controller.UpdateEmployeeDetails(_username, "NV0016", updateFields3);
+                Console.WriteLine(ok ? "[PASS] UPDATE NHANVIEN (LUONG, PHAI)\n" : "[FAIL] UPDATE NHANVIEN (LUONG, PHAI) khong thanh cong\n");
+
+                ok = await _controller.DeleteEmployee(_username, "NV0016");
+                Console.WriteLine(ok ? "[PASS] DELETE NHANVIEN\n" : "[FAIL] DELETE NHANVIEN khong thanh cong\n");
             }
             catch (Exception ex)
             {

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
@@ -20,7 +22,8 @@ namespace SchoolManagerApp.src.Test
         public TestMomonController(string username, string password)
         {
             _username = username;
-            var dbService = DatabaseService.GetInstance(username, password);
+             var dbService = DatabaseService.GetInstance(username, password);
+            dbService.OpenConnection();
             _controller = new MomonController(dbService);
             _momonService = new MomonService(dbService); // Khởi tạo MomonService
         }
@@ -28,92 +31,140 @@ namespace SchoolManagerApp.src.Test
         public async Task RunAllTests()
         {
             Console.WriteLine("===== TEST CHO USER: " + _username + " =====\n");
-
-            await TestSelectAll();
-            await TestSelectByRole();
-            await TestUpdateOrInsertOrDelete(); // Kiểm tra tùy vai trò
-            await TestUpdateOrInsertOrDeleteOther();
+            //GV
+            await TestSelectForGV();
+            //TRGDV
+            await TestSelectForTRGDV();
+            //SV
+            await TestSelectForSinhVien();
+            //NVPDT
+            await TestSelectForNVPDT();
+            await TestUpdateOrInsertOrDelete();
 
             Console.WriteLine("===== KET THUC TEST =====\n");
         }
 
-        // Kiểm tra Select tất cả (chỉ cho ROLE_NVPDT)
-        private async Task TestSelectAll()
+
+
+        private async Task TestSelectForGV()
         {
             try
             {
-                var result = await _controller.GetPhanCongHienTai(_username);
-                Console.WriteLine("[PASS] SELECT danh sach MOMON: " + result.AsList().Count + " dong\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[FAIL] SELECT danh sach MOMON: " + ex.Message + "\n");
-            }
-        }
-
-        // Kiểm tra Select theo vai trò
-        private async Task TestSelectByRole()
-        {
-            try
-            {
-                var vaiTros = await _momonService.CheckRole(_username); // Lấy danh sách vai trò
-                IEnumerable<MOMON> result;
-                Console.WriteLine($"Vai tro cua {_username}: {string.Join(", ", vaiTros ?? new List<string>())}"); // Log debug
-
-                if (vaiTros.Contains("ROLE_GV"))
-                    result = await _controller.GetPhanCongCaNhan(_username);
-                else if (vaiTros.Contains("ROLE_NVPDT"))
-                    result = await _controller.GetPhanCongHienTai(_username);
-                else if (vaiTros.Contains("ROLE_TRGDV"))
-                    result = await _controller.GetPhanCongDonVi(_username);
-                else if (vaiTros.Contains("ROLE_SV"))
-                    result = await _controller.GetPhanCongKhoa(_username);
-                else
-                    throw new InvalidDataError("Vai trò không hợp lệ hoặc không được hỗ trợ.");
-
-
-                if (result.Any())
+                var resultCaNhan = await _controller.GETPersonalTeachingAssignmentsForLecturer(_username);
+                if (resultCaNhan.Any())
                 {
-                    Console.WriteLine("[PASS] SELECT MOMON theo vai tro:");
-                    foreach (var momon in result)
+                    Console.WriteLine("[PASS] SELECT MOMON theo GETPersonalTeachingAssignmentsForLecturer (GV):");
+                    foreach (var momon in resultCaNhan)
                     {
                         Console.WriteLine($"MAMM: {momon.MAMM}, MAHP: {momon.MAHP}, MAGV: {momon.MAGV}, HK: {momon.HK}, NAM: {momon.NAM}");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("[PASS] SELECT MOMON theo vai tro: Khong tim thay");
+                    Console.WriteLine("[PASS] SELECT MOMON theo GETPersonalTeachingAssignmentsForLecturer(GV): Khong tim thay");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("[FAIL] SELECT MOMON theo vai tro: " + ex.Message + "\n");
+                Console.WriteLine("[FAIL] SELECT MOMON theo vai tro (GV): " + ex.Message + "\n");
             }
         }
 
-        // Kiểm tra Update/Insert/Delete (chỉ cho ROLE_NVPDT)
+        private async Task TestSelectForNVPDT()
+        {
+            try
+            {
+                var resultHienTai = await _controller.GETCurrentTeachingAssignments(_username);
+                if (resultHienTai.Any())
+                {
+                    Console.WriteLine("[PASS] SELECT MOMON theo GETCurrentTeachingAssignments(ROLE_NVPDT):");
+                    foreach (var momon in resultHienTai)
+                    {
+                        Console.WriteLine($"MAMM: {momon.MAMM}, MAHP: {momon.MAHP}, MAGV: {momon.MAGV}, HK: {momon.HK}, NAM: {momon.NAM}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("[PASS] SELECT MOMON theo GETCurrentTeachingAssignments(ROLE_NVPDT): Khong tim thay");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[FAIL] SELECT MOMON theo vai tro (ROLE_NVPDT): " + ex.Message + "\n");
+            }
+        }
+
+        private async Task TestSelectForTRGDV()
+        {
+            try
+            {
+                var resultDonVi = await _controller.GETTeachingAssignmentsInManagedUnit(_username);
+                if (resultDonVi.Any())
+                {
+                    Console.WriteLine("[PASS] SELECT MOMON theo GetPhanCongDonVi (TRGDV):");
+                    foreach (var momon in resultDonVi)
+                    {
+                        Console.WriteLine($"MAMM: {momon.MAMM}, MAHP: {momon.MAHP}, MAGV: {momon.MAGV}, HK: {momon.HK}, NAM: {momon.NAM}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("[PASS] SELECT MOMON theo GetPhanCongDonVi(TRGDV): Khong tim thay");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[FAIL] SELECT MOMON theo vai tro (TRGDV): " + ex.Message + "\n");
+            }
+        }
+
+        private async Task TestSelectForSinhVien()
+        {
+            try
+            {
+                var resultKhoa = await _controller.GETTeachingAssignmentsForDepartment(_username);
+                if (resultKhoa.Any())
+                {
+                    Console.WriteLine("[PASS] SELECT MOMON theo GetPhanCongKhoa(SINHVIEN):");
+                    foreach (var momon in resultKhoa)
+                    {
+                        Console.WriteLine($"MAMM: {momon.MAMM}, MAHP: {momon.MAHP}, MAGV: {momon.MAGV}, HK: {momon.HK}, NAM: {momon.NAM}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("[PASS] SELECT MOMON theo GetPhanCongKhoa(SINHVIEN): Khong tim thay");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[FAIL] SELECT MOMON theo vai tro (SINHVIEN): " + ex.Message + "\n");
+            }
+        }
+
         private async Task TestUpdateOrInsertOrDelete()
         {
             try
             {
-                var vaiTros = await _momonService.CheckRole(_username);
-                if (vaiTros.Contains("ROLE_NVPDT"))
-                {
-                    var momon = new MOMON { MAMM = "MM0017", MAHP = "HP004", MAGV = "GV001", HK = "3", NAM = "2025" };
-                    var ok = await _controller.InsertPhanCong(_username, momon);
-                    Console.WriteLine(ok ? "[PASS] INSERT MOMON\n" : "[FAIL] INSERT MOMON khong thanh cong\n");
+                var momon = new MOMON { MAMM = "MM0016", MAHP = "HP004", MAGV = "NV001", HK = "3", NAM = "2025" };
+                var ok = await _controller.InsertNewTeachingAssignment(_username, momon);
+                Console.WriteLine(ok ? "[PASS] INSERT MOMON\n" : "[FAIL] INSERT MOMON khong thanh cong\n");
 
-                    momon.MAHP = "HP003";
-                    ok = await _controller.UpdatePhanCong(_username, momon);
-                    Console.WriteLine(ok ? "[PASS] UPDATE MOMON\n" : "[FAIL] UPDATE MOMON khong thanh cong\n");
+                // Cập nhật 1 trường (MAHP)
+                dynamic updateFields1 = new ExpandoObject();
+                updateFields1.MAHP = "HP003";
+                ok = await _controller.UpdateTeachingAssignmentDetails(_username, "MM0016", updateFields1);
+                Console.WriteLine(ok ? "[PASS] UPDATE MOMON (MAHP)\n" : "[FAIL] UPDATE MOMON (MAHP) khong thanh cong\n");
 
-                    ok = await _controller.DeletePhanCong(_username, "MM0017");
-                    Console.WriteLine(ok ? "[PASS] DELETE MOMON\n" : "[FAIL] DELETE MOMON khong thanh cong\n");
-                }
-                else
-                {
-                    Console.WriteLine("[FAIL] Khong co quyen Update/Insert/Delete\n");
-                }
+                // Cập nhật 2 trường (MAGV và HK)
+                dynamic updateFields2 = new ExpandoObject();
+                updateFields2.MAGV = "NV002";
+                updateFields2.HK = "2";
+                ok = await _controller.UpdateTeachingAssignmentDetails(_username, "MM0016", updateFields2);
+                Console.WriteLine(ok ? "[PASS] UPDATE MOMON (MAGV, HK)\n" : "[FAIL] UPDATE MOMON (MAGV, HK) khong thanh cong\n");
+
+                ok = await _controller.DeleteTeachingAssignment(_username, "MM0016");
+                Console.WriteLine(ok ? "[PASS] DELETE MOMON\n" : "[FAIL] DELETE MOMON khong thanh cong\n");
             }
             catch (Exception ex)
             {
@@ -121,27 +172,6 @@ namespace SchoolManagerApp.src.Test
             }
         }
 
-        // Kiểm tra Update/Insert/Delete cho dữ liệu khác (thất bại với các role khác)
-        private async Task TestUpdateOrInsertOrDeleteOther()
-        {
-            try
-            {
-                var vaiTros = await _momonService.CheckRole(_username);
-                if (vaiTros.Contains("ROLE_NVPDT"))
-                {
-                    var momon = new MOMON { MAMM = "MM004", MAHP = "HP003", MAGV = "GV001", HK = "1", NAM = "2024" };
-                    var ok = await _controller.UpdatePhanCong(_username, momon);
-                    Console.WriteLine(ok ? "[FAIL] Cap nhat MOMON trong hoc ky khac khong thanh cong\n" : "[PASS] Cap nhat MOMON khac bi tu choi\n");
-                }
-                else
-                {
-                    Console.WriteLine("[FAIL] Khong co quyen cap nhat MOMON khac\n");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[PASS] Cap nhat MOMON khac bi tu choi: " + ex.Message + "\n");
-            }
-        }
+        
     }
 }

@@ -6,6 +6,7 @@ using Dapper;
 using Oracle.ManagedDataAccess.Client;
 using SchoolManagerApp.src.Models;
 using SchoolManagerApp.src.utils;
+using System.Dynamic;
 
 namespace SchoolManagerApp.src.Service
 {
@@ -18,30 +19,11 @@ namespace SchoolManagerApp.src.Service
             _dbService = dbService ?? throw new ArgumentNullException(nameof(dbService));
         }
 
-        // Kiểm tra vai trò của người dùng
-        public async Task<IEnumerable<string>> CheckRole(string username)
-        {
-            try
-            {
-                string query = "SELECT GRANTED_ROLE FROM DBA_ROLE_PRIVS WHERE GRANTEE = :username";
-                return await _dbService.Connection.QueryAsync<string>(query, new { username = username.ToUpper() });
-            }
-            catch (OracleException ex)
-            {
-                throw ErrorMapper.MapOracleException(ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError("Lỗi khi kiểm tra vai trò: " + ex.Message);
-            }
-        }
+      
 
         // --------------------------- Chức năng cho ROLE_NVCB (Nhân viên cơ bản) ---------------------------
-        public async Task<NHANVIEN> GetThongTinCaNhan(string username)
+        public async Task<NHANVIEN> GETPersonalInformationForNVCB(string username)
         {
-            var vaiTros = await CheckRole(username);
-            Console.WriteLine($"Vai tro cua {username}: {string.Join(", ", vaiTros ?? new List<string>())}");
-
             try
             {
                 string query = "SELECT * FROM ADMIN.V_THONGTINCANHAN_NHANVIEN";
@@ -57,17 +39,13 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> UpdateSoDienThoai(string username, string newDT)
+        public async Task<bool> UpdatePhoneNumberForNVCB(string username, string newDT)
         {
-            var vaiTros = await CheckRole(username);
-            Console.WriteLine($"Vai tro cua {username}: {string.Join(", ", vaiTros ?? new List<string>())}");
 
             try
             {
                 string query = "UPDATE ADMIN.V_THONGTINCANHAN_NHANVIEN SET DT = :newDT";
-                Console.WriteLine($"Executing query: {query} with newDT: {newDT}, username: {username}");
                 int rowsAffected = await _dbService.Connection.ExecuteAsync(query, new { newDT });
-                Console.WriteLine($"Rows affected: {rowsAffected}");
                 return rowsAffected > 0;
             }
             catch (OracleException ex)
@@ -81,33 +59,9 @@ namespace SchoolManagerApp.src.Service
         }
 
         // --------------------------- Chức năng cho ROLE_TRGDV (Trưởng đơn vị) ---------------------------
-        public async Task<NHANVIEN> GetThongTinCaNhanTrgDv(string username)
+
+        public async Task<IEnumerable<NHANVIEN>> GETEmployeesInManagedUnitTRGDV(string username)
         {
-            var vaiTros = await CheckRole(username);
-            Console.WriteLine($"Vai tro cua {username}: {string.Join(", ", vaiTros ?? new List<string>())}");
-
-           
-
-            try
-            {
-                string query = "SELECT * FROM ADMIN.V_THONGTINCANHAN_NHANVIEN";
-                return (await _dbService.Connection.QueryAsync<NHANVIEN>(query)).FirstOrDefault();
-            }
-            catch (OracleException ex)
-            {
-                throw ErrorMapper.MapOracleException(ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError($"Lỗi khi lấy thông tin cá nhân cho {username}: " + ex.Message);
-            }
-        }
-
-        public async Task<IEnumerable<NHANVIEN>> GetNhanVienTrongDonVi(string username)
-        {
-            var vaiTros = await CheckRole(username);
-            Console.WriteLine($"Vai tro cua {username}: {string.Join(", ", vaiTros ?? new List<string>())}");
-
             
 
             try
@@ -126,13 +80,8 @@ namespace SchoolManagerApp.src.Service
         }
 
         // --------------------------- Chức năng cho ROLE_NV_TCHC (Nhân viên tổ chức hành chính) ---------------------------
-        public async Task<IEnumerable<NHANVIEN>> GetAllNhanVien(string username)
+        public async Task<IEnumerable<NHANVIEN>> GETAllEmployees(string username)
         {
-            var vaiTros = await CheckRole(username);
-            Console.WriteLine($"Vai tro cua {username}: {string.Join(", ", vaiTros ?? new List<string>())}");
-
-   
-
             try
             {
                 string query = "SELECT * FROM ADMIN.NHANVIEN";
@@ -148,15 +97,8 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> InsertNhanVien(string username, NHANVIEN nhanVien)
+        public async Task<bool> InsertNewEmployee(string username, NHANVIEN nhanVien)
         {
-            var vaiTros = await CheckRole(username);
-            Console.WriteLine($"Vai tro cua {username}: {string.Join(", ", vaiTros ?? new List<string>())}");
-
-            if (!vaiTros.Contains("ROLE_NV_TCHC"))
-            {
-                throw new InvalidDataError("Chỉ nhân viên tổ chức hành chính (ROLE_NV_TCHC) mới có quyền thêm nhân viên.");
-            }
 
             try
             {
@@ -176,21 +118,32 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> UpdateNhanVien(string username, NHANVIEN nhanVien)
+        public async Task<bool> UpdateEmployeeDetails(string username, string manv, dynamic fieldsToUpdate)
         {
-            var vaiTros = await CheckRole(username);
-            Console.WriteLine($"Vai tro cua {username}: {string.Join(", ", vaiTros ?? new List<string>())}");
-
-            
-
             try
             {
+                var expandoDict = (IDictionary<string, object>)fieldsToUpdate;
+                var setClauses = new List<string>();
+                var parameters = new DynamicParameters();
+                parameters.Add("MANV", manv);
+
+                foreach (var field in expandoDict)
+                {
+                    string columnName = field.Key.ToUpper();
+                    if (!IsValidColumn(columnName))
+                    {
+                        throw new ArgumentException($"Trường {columnName} không hợp lệ.");
+                    }
+                    setClauses.Add($"{columnName} = :{columnName}");
+                    parameters.Add(columnName, field.Value);
+                }
+
                 string query = @"
-                    UPDATE ADMIN.NHANVIEN 
-                    SET HOTEN = :HOTEN, PHAI = :PHAI, NGSINH = :NGSINH, LUONG = :LUONG, PHUCAP = :PHUCAP, 
-                        DT = :DT, VAITRO = :VAITRO, MADV = :MADV
-                    WHERE MANV = :MANV";
-                int rowsAffected = await _dbService.Connection.ExecuteAsync(query, nhanVien);
+                            UPDATE ADMIN.NHANVIEN 
+                            SET " + string.Join(", ", setClauses) + @"
+                            WHERE MANV = :MANV";
+
+                int rowsAffected = await _dbService.Connection.ExecuteAsync(query, parameters);
                 return rowsAffected > 0;
             }
             catch (OracleException ex)
@@ -203,13 +156,14 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> DeleteNhanVien(string username, string maNv)
+        private bool IsValidColumn(string columnName)
         {
-            var vaiTros = await CheckRole(username);
-            Console.WriteLine($"Vai tro cua {username}: {string.Join(", ", vaiTros ?? new List<string>())}");
+            var validColumns = new HashSet<string> { "MANV", "HOTEN", "PHAI", "NGSINH", "LUONG", "PHUCAP", "DT", "VAITRO", "MADV" };
+            return validColumns.Contains(columnName);
+        }
 
-          
-
+        public async Task<bool> DeleteEmployee(string username, string maNv)
+        {
             try
             {
                 string query = "DELETE FROM ADMIN.NHANVIEN WHERE MANV = :MaNv";

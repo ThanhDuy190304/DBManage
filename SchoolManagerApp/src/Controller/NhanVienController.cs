@@ -17,11 +17,11 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho RL_NVCB
-        public async Task<NHANVIEN> GetThongTinCaNhan(string username)
+        public async Task<NHANVIEN> GETPersonalInformationForNVCB(string username)
         {
             try
             {
-                return await _nhanVienService.GetThongTinCaNhan(username);
+                return await _nhanVienService.GETPersonalInformationForNVCB(username);
             }
             catch (BaseError)
             {
@@ -33,11 +33,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> UpdateSoDienThoai(string username, string newDT)
+        public async Task<bool> UpdatePhoneNumberForNVCB(string username, string newDT)
         {
             try
             {
-                return await _nhanVienService.UpdateSoDienThoai(username, newDT);
+                return await _nhanVienService.UpdatePhoneNumberForNVCB(username, newDT);
             }
             catch (BaseError)
             {
@@ -50,27 +50,13 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho RL_TRGDV
-        public async Task<NHANVIEN> GetThongTinCaNhanTrgDv(string username)
-        {
-            try
-            {
-                return await _nhanVienService.GetThongTinCaNhanTrgDv(username);
-            }
-            catch (BaseError)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError("Lỗi không xác định: " + ex.Message);
-            }
-        }
+       
 
-        public async Task<IEnumerable<NHANVIEN>> GetNhanVienTrongDonVi(string username)
+        public async Task<IEnumerable<NHANVIEN>> GETEmployeesInManagedUnitTRGDV(string username)
         {
             try
             {
-                return await _nhanVienService.GetNhanVienTrongDonVi(username);
+                return await _nhanVienService.GETEmployeesInManagedUnitTRGDV(username);
             }
             catch (BaseError)
             {
@@ -83,11 +69,11 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho RL_NV_TCHC
-        public async Task<IEnumerable<NHANVIEN>> GetAllNhanVien(string username)
+        public async Task<IEnumerable<NHANVIEN>> GETAllEmployees(string username)
         {
             try
             {
-                return await _nhanVienService.GetAllNhanVien(username);
+                return await _nhanVienService.GETAllEmployees(username);
             }
             catch (BaseError)
             {
@@ -99,11 +85,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> InsertNhanVien(string username, NHANVIEN nhanVien)
+        public async Task<bool> InsertNewEmployee(string username, NHANVIEN nhanVien)
         {
             try
             {
-                return await _nhanVienService.InsertNhanVien(username, nhanVien);
+                return await _nhanVienService.InsertNewEmployee(username, nhanVien);
             }
             catch (BaseError)
             {
@@ -115,11 +101,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> UpdateNhanVien(string username, NHANVIEN nhanVien)
+        public async Task<bool> UpdateEmployeeDetails(string username, string manv, dynamic fieldsToUpdate)
         {
             try
             {
-                return await _nhanVienService.UpdateNhanVien(username, nhanVien);
+                return await _nhanVienService.UpdateEmployeeDetails(username, manv, fieldsToUpdate);
             }
             catch (BaseError)
             {
@@ -131,11 +117,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> DeleteNhanVien(string username, string maNv)
+        public async Task<bool> DeleteEmployee(string username, string maNv)
         {
             try
             {
-                return await _nhanVienService.DeleteNhanVien(username, maNv);
+                return await _nhanVienService.DeleteEmployee(username, maNv);
             }
             catch (BaseError)
             {

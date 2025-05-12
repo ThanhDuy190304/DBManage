@@ -12,7 +12,7 @@ using Dapper;
 
 namespace SchoolManagerApp.src.Service
 {
-    public class DatabaseService
+    public class DatabaseService 
     {
 
         private static DatabaseService _instance;

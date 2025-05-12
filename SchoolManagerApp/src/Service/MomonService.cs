@@ -15,32 +15,13 @@ namespace SchoolManagerApp.src.Service
 
         public MomonService(DatabaseService dbService)
         {
-            _dbService = dbService ?? throw new ArgumentNullException(nameof(dbService));
+            _dbService = dbService;
         }
 
-        // Kiểm tra vai trò của người dùng
-        public async Task<IEnumerable<string>> CheckRole(string username)
-        {
-            try
-            {
-                string query = "SELECT GRANTED_ROLE FROM DBA_ROLE_PRIVS WHERE GRANTEE = :username";
-                return await _dbService.Connection.QueryAsync<string>(query, new { username = username.ToUpper() });
-            }
-            catch (OracleException ex)
-            {
-                throw ErrorMapper.MapOracleException(ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError("Lỗi khi kiểm tra vai trò: " + ex.Message);
-            }
-        }
 
         // --------------------------- Chức năng cho ROLE_GV (Giảng viên) ---------------------------
-        public async Task<IEnumerable<MOMON>> GetPhanCongCaNhan(string username)
+        public async Task<IEnumerable<MOMON>> GETPersonalTeachingAssignmentsForLecturer(string username)
         {
-            var vaiTros = await CheckRole(username);
-            
 
             try
             {
@@ -58,10 +39,8 @@ namespace SchoolManagerApp.src.Service
         }
 
         // --------------------------- Chức năng cho ROLE_NVPDT (Nhân viên phòng đào tạo) ---------------------------
-        public async Task<IEnumerable<MOMON>> GetPhanCongHienTai(string username)
+        public async Task<IEnumerable<MOMON>> GETCurrentTeachingAssignments(string username)
         {
-            var vaiTros = await CheckRole(username);
-          
 
             try
             {
@@ -78,11 +57,8 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> InsertPhanCong(string username, MOMON momon)
+        public async Task<bool> InsertNewTeachingAssignment(string username, MOMON momon)
         {
-            var vaiTros = await CheckRole(username);
-      
-
             try
             {
                 string query = @"
@@ -101,19 +77,33 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> UpdatePhanCong(string username, MOMON momon)
+        public async Task<bool> UpdateTeachingAssignmentDetails(string username, string maMm, dynamic fieldsToUpdate)
         {
-            var vaiTros = await CheckRole(username);
-     
-
             try
             {
+                var expandoDict = (IDictionary<string, object>)fieldsToUpdate;
+                var setClauses = new List<string>();
+                var parameters = new DynamicParameters();
+                parameters.Add("MAMM", maMm);
+
+                foreach (var field in expandoDict)
+                {
+                    string columnName = field.Key.ToUpper();
+                    if (!IsValidColumn(columnName))
+                    {
+                        throw new ArgumentException($"Trường {columnName} không hợp lệ.");
+                    }
+                    setClauses.Add($"{columnName} = :{columnName}");
+                    parameters.Add(columnName, field.Value);
+                }
+
                 string query = @"
                     UPDATE ADMIN.V_HocKi_NamHoc_HienTai_MOMON 
-                    SET MAHP = :MAHP, MAGV = :MAGV, HK = :HK, NAM = :NAM
+                    SET " + string.Join(", ", setClauses) + @"
                     WHERE MAMM = :MAMM";
-                await _dbService.Connection.ExecuteAsync(query, momon);
-                return true;
+
+                int rowsAffected = await _dbService.Connection.ExecuteAsync(query, parameters);
+                return rowsAffected > 0;
             }
             catch (OracleException ex)
             {
@@ -124,11 +114,15 @@ namespace SchoolManagerApp.src.Service
                 throw new ServerError("Lỗi khi cập nhật phân công: " + ex.Message);
             }
         }
-
-        public async Task<bool> DeletePhanCong(string username, string maMm)
+        private bool IsValidColumn(string columnName)
         {
-            var vaiTros = await CheckRole(username);
-           
+            var validColumns = new HashSet<string> { "MAMM", "MAHP", "MAGV", "HK", "NAM" };
+            return validColumns.Contains(columnName);
+        }
+
+        public async Task<bool> DeleteTeachingAssignment(string username, string maMm)
+        {
+
 
             try
             {
@@ -147,11 +141,8 @@ namespace SchoolManagerApp.src.Service
         }
 
         // --------------------------- Chức năng cho ROLE_TRGDV (Trưởng đơn vị) ---------------------------
-        public async Task<IEnumerable<MOMON>> GetPhanCongDonVi(string username)
+        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsInManagedUnit(string username)
         {
-            var vaiTros = await CheckRole(username);
-        
-
             try
             {
                 string query = "SELECT * FROM ADMIN.v_phancong_trong_donvi_momon";
@@ -168,10 +159,8 @@ namespace SchoolManagerApp.src.Service
         }
 
         // --------------------------- Chức năng cho ROLE_SV (Sinh viên) ---------------------------
-        public async Task<IEnumerable<MOMON>> GetPhanCongKhoa(string username)
+        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsForDepartment(string username)
         {
-            var vaiTros = await CheckRole(username);
-      
 
             try
             {

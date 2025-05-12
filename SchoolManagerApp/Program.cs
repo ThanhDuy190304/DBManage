@@ -24,10 +24,10 @@ namespace SchoolManagerApp
 #if CONSOLE_TEST
             // Login
             Console.Write("Enter username: ");
-            string username = "admin"; //Console.ReadLine();
+            string username = "NV012"; //Console.ReadLine();
 
             Console.Write("Enter password: ");
-            string password = "Admin123"; // Console.ReadLine();
+            string password = "123"; // Console.ReadLine();
 
             var controllerAuth = new AuthController();
 
@@ -35,12 +35,20 @@ namespace SchoolManagerApp
                 Console.WriteLine("Login thành công!");
             else
                 Console.WriteLine("Login thất bại!");
-            var testNhanVien = new TestNhanVienController("NV011", "123"); // user, password
-            testNhanVien.RunAllTests().GetAwaiter().GetResult();
+            //Test NVCB -- NV008
+            //Test TRGDV -- NV001
+            //Test NV TCHC -- NV011
+            //var testNhanVien = new TestNhanVienController(username, password);
+            //testNhanVien.RunAllTests().GetAwaiter().GetResult();
 
-            
-            //var testMomon = new TestMomonController("NVPDT002", "123");
-            //testMomon.RunAllTests().GetAwaiter().GetResult();
+
+
+            //Test GV -- NV006
+            //Test NVPDT -- NV012
+            //Test TRGDV -- NV005
+            //Test SV -- SV001
+            var testMOMON = new TestMomonController(username, password);
+            testMOMON.RunAllTests().GetAwaiter().GetResult();
 
 
 
