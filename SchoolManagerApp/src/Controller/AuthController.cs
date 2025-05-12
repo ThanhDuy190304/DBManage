@@ -18,7 +18,8 @@ namespace SchoolManagerApp.src.Controller
             try
             {
                 _dbService = DatabaseService.GetInstance(username, password);
-                _dbService.OpenConnection();
+                //_dbService.OpenConnection();
+                _dbService.ExecuteSetUserRole();
                 return true;
             }
             catch (BaseError)
@@ -30,6 +31,7 @@ namespace SchoolManagerApp.src.Controller
                 throw new ServerError("Lỗi không xác định: " + ex.Message);
             }
         }
+
 
         public bool IsCurrentUserDba()
         {
