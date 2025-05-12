@@ -37,14 +37,40 @@ namespace SchoolManagerApp
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             AuthController authController = new AuthController();
-            var loginForm = new Login();
-            loginForm.SetAuthController(authController);
-            if (loginForm.ShowDialog() == DialogResult.OK)
+            while (true)
             {
-                Main main = new Main();
-                main.SetAuthController(authController);
-                Application.Run(main);
+                var loginForm = new Login();
+                loginForm.SetAuthController(authController);
+
+                if (loginForm.ShowDialog() != DialogResult.OK)
+                    break;
+
+                string role = loginForm.CurrentUserRole;
+                BaseMain mainForm = null;
+
+                if (role.Equals("DBA", StringComparison.OrdinalIgnoreCase))
+                {
+                    mainForm = new DBAMain();
+                }
+                else if (role.Equals("ROLE_NVCB", StringComparison.OrdinalIgnoreCase))
+                {
+                    mainForm = new NVCBMain();
+                }
+                else if (role.Equals("ROLE_SV", StringComparison.OrdinalIgnoreCase))
+                {
+                }
+
+                if (mainForm == null)
+                {
+                    MessageBox.Show("Không xác định được vai trò người dùng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    continue;
+                }
+
+                mainForm.SetAuthController(authController);
+                loginForm.Hide(); // Ẩn login
+                mainForm.ShowDialog(); // Khi mainForm đóng thì quay lại login
             }
+
 #endif
         }
     }

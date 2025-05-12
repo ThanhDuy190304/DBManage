@@ -31,14 +31,27 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public bool IsCurrentUserDba()
+        public string IsCurrentUserRole()
         {
             if (_dbService == null)
             {
                 throw new ServerError("Chưa đăng nhập.");
             }
+            if (_dbService.IsUserDBA())
+            {
+                return "DBA";
+            }
 
-            return _dbService.IsUserDBA();
+            else if (_dbService.IsUserSinhVien())
+            {
+                return "ROLE_SV";
+            }
+            else if (_dbService.IsUserNVCB())
+            {
+                return "ROLE_NVCB";
+            }
+            
+            return null;            
         }
 
 

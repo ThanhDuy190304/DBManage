@@ -1,6 +1,6 @@
 ﻿namespace SchoolManagerApp.src.Views.layout
 {
-    partial class Form1
+    partial class NVCBMain
     {
         /// <summary>
         /// Required designer variable.
@@ -45,15 +45,18 @@
             this.ctTextBox11.Size = new System.Drawing.Size(315, 36);
             this.ctTextBox11.TabIndex = 0;
             this.ctTextBox11.Text = "ctTextBox11";
+            this.ctTextBox11.TextBackColor = System.Drawing.Color.White;
             this.ctTextBox11.TextForeColor = System.Drawing.Color.Black;
+            this.ctTextBox11.TextValue = "";
+            this.ctTextBox11.UseSystemPasswordChar = false;
             // 
-            // Form1
+            // NVCBMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ctTextBox11);
-            this.Name = "Form1";
+            this.Name = "NVCBMain";
             this.Text = "Form1";
             this.ResumeLayout(false);
 

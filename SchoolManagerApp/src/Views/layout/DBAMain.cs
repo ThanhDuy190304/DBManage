@@ -14,11 +14,9 @@ using SchoolManagerApp.src.Controller;
 
 namespace SchoolManagerApp.src.Views.layout
 {
-    public partial class Main : Form
+    public partial class DBAMain : BaseMain
     {
-        private AuthController _authController;
-
-        public Main()
+        public DBAMain()
         {
             InitializeComponent();
             sidebar.OnLogout += HandleLogOut;
@@ -27,11 +25,7 @@ namespace SchoolManagerApp.src.Views.layout
             LoadPage(new RolesPage());
         }
 
-        public void SetAuthController(AuthController authController)
-        {
-            _authController = authController;
-        }
-
+     
         private void LoadPage(UserControl page)
         {
             contentPanel.Controls.Clear();
@@ -41,16 +35,7 @@ namespace SchoolManagerApp.src.Views.layout
 
         private void HandleLogOut()
         {
-            this.Hide();
-            _authController.Logout();
-            var loginForm = new Login();
-            loginForm.SetAuthController(_authController);
-            if (loginForm.ShowDialog() == DialogResult.OK)
-            {
-                var newMain = new Main();
-                newMain.SetAuthController(_authController);
-                newMain.Show();
-            }
+            LogOut();
         }
 
         private void HandleSidebarResize(bool isCollapsed)

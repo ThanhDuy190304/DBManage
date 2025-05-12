@@ -1,6 +1,6 @@
 ﻿namespace SchoolManagerApp.src.Views.layout
 {
-    partial class Main
+    partial class DBAMain
     {
         /// <summary>
         /// Required designer variable.

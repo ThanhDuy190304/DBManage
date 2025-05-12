@@ -178,12 +178,15 @@
     <Compile Include="src\Views\forms\UserPrivilegeManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\layout\Form1.cs">
+    <Compile Include="src\Views\layout\BaseMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\layout\NVCBMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Service\DatabaseService.cs" />
-    <Compile Include="src\Views\layout\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="src\Views\layout\NVCBMain.Designer.cs">
+      <DependentUpon>NVCBMain.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\layout\Login.cs">
       <SubType>Form</SubType>
@@ -191,11 +194,11 @@
     <Compile Include="src\Views\layout\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\layout\Main.cs">
+    <Compile Include="src\Views\layout\DBAMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\layout\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="src\Views\layout\DBAMain.Designer.cs">
+      <DependentUpon>DBAMain.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\forms\CreateForm.cs">
       <SubType>Form</SubType>
@@ -250,14 +253,14 @@
     <EmbeddedResource Include="src\Views\forms\UserPrivilegeManageForm.resx">
       <DependentUpon>UserPrivilegeManageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\layout\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\layout\NVCBMain.resx">
+      <DependentUpon>NVCBMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\layout\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\layout\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\layout\DBAMain.resx">
+      <DependentUpon>DBAMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\forms\CreateForm.resx">
       <DependentUpon>CreateForm.cs</DependentUpon>

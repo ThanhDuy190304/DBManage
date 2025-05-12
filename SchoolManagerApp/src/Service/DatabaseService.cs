@@ -58,8 +58,18 @@ namespace SchoolManagerApp.src.Service
         }
         public bool IsUserDBA()
         {
-            OpenConnection();
             string query = "SELECT COUNT(1) FROM SESSION_ROLES WHERE ROLE = 'DBA'";
+            return _connection.ExecuteScalar<int>(query) > 0;
+        }
+        public bool IsUserNVCB()
+        {
+            string query = "SELECT COUNT(1) FROM SESSION_ROLES WHERE ROLE = 'ROLE_NVCB'";
+            return _connection.ExecuteScalar<int>(query) > 0;
+        }
+
+        public bool IsUserSinhVien()
+        {
+            string query = "SELECT COUNT(1) FROM SESSION_ROLES WHERE ROLE = 'ROLE_SV'";
             return _connection.ExecuteScalar<int>(query) > 0;
         }
 
