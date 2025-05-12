@@ -31,13 +31,13 @@ namespace SchoolManagerApp.src.Test
         public async Task RunAllTests()
         {
             Console.WriteLine("===== TEST CHO USER: " + _username + " =====\n");
-            //GV
+            //GV -- NV006
             await TestSelectForGV();
-            //TRGDV
+            //TRGDV -- NV005
             await TestSelectForTRGDV();
-            //SV
+            //SV -- SV001
             await TestSelectForSinhVien();
-            //NVPDT
+            //NVPDT -- NV012
             await TestSelectForNVPDT();
             await TestUpdateOrInsertOrDelete();
 
@@ -50,7 +50,7 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var resultCaNhan = await _controller.GETPersonalTeachingAssignmentsForLecturer(_username);
+                var resultCaNhan = await _controller.GETPersonalTeachingAssignmentsForLecturer();
                 if (resultCaNhan.Any())
                 {
                     Console.WriteLine("[PASS] SELECT MOMON theo GETPersonalTeachingAssignmentsForLecturer (GV):");
@@ -74,7 +74,7 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var resultHienTai = await _controller.GETCurrentTeachingAssignments(_username);
+                var resultHienTai = await _controller.GETCurrentTeachingAssignments();
                 if (resultHienTai.Any())
                 {
                     Console.WriteLine("[PASS] SELECT MOMON theo GETCurrentTeachingAssignments(ROLE_NVPDT):");
@@ -98,7 +98,7 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var resultDonVi = await _controller.GETTeachingAssignmentsInManagedUnit(_username);
+                var resultDonVi = await _controller.GETTeachingAssignmentsInManagedUnit();
                 if (resultDonVi.Any())
                 {
                     Console.WriteLine("[PASS] SELECT MOMON theo GetPhanCongDonVi (TRGDV):");
@@ -122,7 +122,7 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var resultKhoa = await _controller.GETTeachingAssignmentsForDepartment(_username);
+                var resultKhoa = await _controller.GETTeachingAssignmentsForDepartment();
                 if (resultKhoa.Any())
                 {
                     Console.WriteLine("[PASS] SELECT MOMON theo GetPhanCongKhoa(SINHVIEN):");
@@ -147,23 +147,23 @@ namespace SchoolManagerApp.src.Test
             try
             {
                 var momon = new MOMON { MAMM = "MM0016", MAHP = "HP004", MAGV = "NV001", HK = "3", NAM = "2025" };
-                var ok = await _controller.InsertNewTeachingAssignment(_username, momon);
+                var ok = await _controller.InsertNewTeachingAssignment( momon);
                 Console.WriteLine(ok ? "[PASS] INSERT MOMON\n" : "[FAIL] INSERT MOMON khong thanh cong\n");
 
                 // Cập nhật 1 trường (MAHP)
                 dynamic updateFields1 = new ExpandoObject();
                 updateFields1.MAHP = "HP003";
-                ok = await _controller.UpdateTeachingAssignmentDetails(_username, "MM0016", updateFields1);
+                ok = await _controller.UpdateTeachingAssignmentDetails( "MM0016", updateFields1);
                 Console.WriteLine(ok ? "[PASS] UPDATE MOMON (MAHP)\n" : "[FAIL] UPDATE MOMON (MAHP) khong thanh cong\n");
 
                 // Cập nhật 2 trường (MAGV và HK)
                 dynamic updateFields2 = new ExpandoObject();
                 updateFields2.MAGV = "NV002";
                 updateFields2.HK = "2";
-                ok = await _controller.UpdateTeachingAssignmentDetails(_username, "MM0016", updateFields2);
+                ok = await _controller.UpdateTeachingAssignmentDetails( "MM0016", updateFields2);
                 Console.WriteLine(ok ? "[PASS] UPDATE MOMON (MAGV, HK)\n" : "[FAIL] UPDATE MOMON (MAGV, HK) khong thanh cong\n");
 
-                ok = await _controller.DeleteTeachingAssignment(_username, "MM0016");
+                ok = await _controller.DeleteTeachingAssignment( "MM0016");
                 Console.WriteLine(ok ? "[PASS] DELETE MOMON\n" : "[FAIL] DELETE MOMON khong thanh cong\n");
             }
             catch (Exception ex)

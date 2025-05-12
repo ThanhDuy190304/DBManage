@@ -17,11 +17,11 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho RL_NVCB
-        public async Task<NHANVIEN> GETPersonalInformationForNVCB(string username)
+        public async Task<NHANVIEN> GETPersonalInformationForNVCB()
         {
             try
             {
-                return await _nhanVienService.GETPersonalInformationForNVCB(username);
+                return await _nhanVienService.GETPersonalInformationForNVCB();
             }
             catch (BaseError)
             {
@@ -33,11 +33,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> UpdatePhoneNumberForNVCB(string username, string newDT)
+        public async Task<bool> UpdatePhoneNumberForNVCB( string newDT)
         {
             try
             {
-                return await _nhanVienService.UpdatePhoneNumberForNVCB(username, newDT);
+                return await _nhanVienService.UpdatePhoneNumberForNVCB( newDT);
             }
             catch (BaseError)
             {
@@ -52,11 +52,11 @@ namespace SchoolManagerApp.src.Controller
         // Chức năng cho RL_TRGDV
        
 
-        public async Task<IEnumerable<NHANVIEN>> GETEmployeesInManagedUnitTRGDV(string username)
+        public async Task<IEnumerable<NHANVIEN>> GETEmployeesInManagedUnitTRGDV()
         {
             try
             {
-                return await _nhanVienService.GETEmployeesInManagedUnitTRGDV(username);
+                return await _nhanVienService.GETEmployeesInManagedUnitTRGDV();
             }
             catch (BaseError)
             {
@@ -69,11 +69,11 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho RL_NV_TCHC
-        public async Task<IEnumerable<NHANVIEN>> GETAllEmployees(string username)
+        public async Task<IEnumerable<NHANVIEN>> GETAllEmployees()
         {
             try
             {
-                return await _nhanVienService.GETAllEmployees(username);
+                return await _nhanVienService.GETAllEmployees();
             }
             catch (BaseError)
             {
@@ -85,11 +85,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> InsertNewEmployee(string username, NHANVIEN nhanVien)
+        public async Task<bool> InsertNewEmployee( NHANVIEN nhanVien)
         {
             try
             {
-                return await _nhanVienService.InsertNewEmployee(username, nhanVien);
+                return await _nhanVienService.InsertNewEmployee( nhanVien);
             }
             catch (BaseError)
             {
@@ -101,11 +101,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> UpdateEmployeeDetails(string username, string manv, dynamic fieldsToUpdate)
+        public async Task<bool> UpdateEmployeeDetails( string manv, dynamic fieldsToUpdate)
         {
             try
             {
-                return await _nhanVienService.UpdateEmployeeDetails(username, manv, fieldsToUpdate);
+                return await _nhanVienService.UpdateEmployeeDetails( manv, fieldsToUpdate);
             }
             catch (BaseError)
             {
@@ -117,11 +117,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> DeleteEmployee(string username, string maNv)
+        public async Task<bool> DeleteEmployee( string maNv)
         {
             try
             {
-                return await _nhanVienService.DeleteEmployee(username, maNv);
+                return await _nhanVienService.DeleteEmployee( maNv);
             }
             catch (BaseError)
             {

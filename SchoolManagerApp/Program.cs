@@ -24,7 +24,7 @@ namespace SchoolManagerApp
 #if CONSOLE_TEST
             // Login
             Console.Write("Enter username: ");
-            string username = "NV012"; //Console.ReadLine();
+            string username = "NV006"; //Console.ReadLine();
 
             Console.Write("Enter password: ");
             string password = "123"; // Console.ReadLine();

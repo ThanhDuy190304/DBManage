@@ -20,7 +20,7 @@ namespace SchoolManagerApp.src.Service
 
 
         // --------------------------- Chức năng cho ROLE_GV (Giảng viên) ---------------------------
-        public async Task<IEnumerable<MOMON>> GETPersonalTeachingAssignmentsForLecturer(string username)
+        public async Task<IEnumerable<MOMON>> GETPersonalTeachingAssignmentsForLecturer()
         {
 
             try
@@ -34,12 +34,12 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi lấy phân công cá nhân cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi lấy phân công cá nhân cho : " + ex.Message);
             }
         }
 
         // --------------------------- Chức năng cho ROLE_NVPDT (Nhân viên phòng đào tạo) ---------------------------
-        public async Task<IEnumerable<MOMON>> GETCurrentTeachingAssignments(string username)
+        public async Task<IEnumerable<MOMON>> GETCurrentTeachingAssignments()
         {
 
             try
@@ -53,11 +53,11 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi lấy danh sách phân công hiện tại cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi lấy danh sách phân công hiện tại cho : " + ex.Message);
             }
         }
 
-        public async Task<bool> InsertNewTeachingAssignment(string username, MOMON momon)
+        public async Task<bool> InsertNewTeachingAssignment( MOMON momon)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> UpdateTeachingAssignmentDetails(string username, string maMm, dynamic fieldsToUpdate)
+        public async Task<bool> UpdateTeachingAssignmentDetails( string maMm, dynamic fieldsToUpdate)
         {
             try
             {
@@ -120,7 +120,7 @@ namespace SchoolManagerApp.src.Service
             return validColumns.Contains(columnName);
         }
 
-        public async Task<bool> DeleteTeachingAssignment(string username, string maMm)
+        public async Task<bool> DeleteTeachingAssignment( string maMm)
         {
 
 
@@ -141,7 +141,7 @@ namespace SchoolManagerApp.src.Service
         }
 
         // --------------------------- Chức năng cho ROLE_TRGDV (Trưởng đơn vị) ---------------------------
-        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsInManagedUnit(string username)
+        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsInManagedUnit()
         {
             try
             {
@@ -154,12 +154,12 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi lấy phân công trong đơn vị cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi lấy phân công trong đơn vị cho : " + ex.Message);
             }
         }
 
         // --------------------------- Chức năng cho ROLE_SV (Sinh viên) ---------------------------
-        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsForDepartment(string username)
+        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsForDepartment()
         {
 
             try
@@ -173,7 +173,7 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi lấy phân công liên quan đến khoa cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi lấy phân công liên quan đến khoa cho : " + ex.Message);
             }
         }
     }

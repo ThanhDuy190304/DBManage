@@ -30,12 +30,12 @@ namespace SchoolManagerApp.src.Test
         public async Task RunAllTests()
         {
             Console.WriteLine("===== TEST CHO USER: " + _username + " =====\n");
-            //NVCB
+            //NVCB -- NV008
             await TestSelectByRole();
             await TestUpdateSoDienThoai();
-            //TRGDV 
-            await TestSelectNhanVienTrongDonVi(); 
-            //NV TCHC
+            //TRGDV -- NV001
+            await TestSelectNhanVienTrongDonVi();
+            //NV TCHC -- NV011
             await TestSelectTatCaNhanVien(); 
             await TestInsertUpdateDeleteNhanVien();
 
@@ -46,7 +46,7 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var result = await _controller.GETPersonalInformationForNVCB(_username);
+                var result = await _controller.GETPersonalInformationForNVCB();
                 Console.WriteLine("[PASS] SELECT THONG TIN CA NHAN CUA NHANVIEN: " + (result != null ? result.HOTEN : "Khong tim thay") + "\n");
             }
             catch (Exception ex)
@@ -60,7 +60,7 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                 var result = await _controller.GETEmployeesInManagedUnitTRGDV(_username);
+                 var result = await _controller.GETEmployeesInManagedUnitTRGDV();
                 if (result.Any())
                 {
                     Console.WriteLine("[PASS] SELECT NHANVIEN TRONG DON VI:");
@@ -86,7 +86,7 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var result = await _controller.GETAllEmployees(_username);
+                var result = await _controller.GETAllEmployees();
                 Console.WriteLine("[PASS] SELECT TAT CA NHANVIEN: " + (result.Any() ? result.First().HOTEN : "Khong tim thay") + "\n");
 
             }
@@ -101,7 +101,7 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var ok = await _controller.UpdatePhoneNumberForNVCB(_username, "0911111111");
+                var ok = await _controller.UpdatePhoneNumberForNVCB( "0911111111");
                 Console.WriteLine(ok ? "[PASS] UPDATE SO DIEN THOAI\n" : "[FAIL] UPDATE SO DIEN THOAI khong thanh cong\n");
 
             }
@@ -117,30 +117,30 @@ namespace SchoolManagerApp.src.Test
             try
             {
                 var nhanVien = new NHANVIEN { MANV = "NV0016", HOTEN = "Pham Van D", PHAI = "M", NGSINH = DateTime.Parse("1990-04-04"), LUONG = 5500, PHUCAP = 1100, DT = "0933333333", VAITRO = "NVCB", MADV = "CNTT" };
-                var ok = await _controller.InsertNewEmployee(_username, nhanVien);
+                var ok = await _controller.InsertNewEmployee( nhanVien);
                 Console.WriteLine(ok ? "[PASS] INSERT NHANVIEN\n" : "[FAIL] INSERT NHANVIEN khong thanh cong\n");
 
                 // Cập nhật 1 trường (HOTEN) với ExpandoObject
                 dynamic updateFields1 = new ExpandoObject();
                 updateFields1.HOTEN = "Pham Van E";
-                ok = await _controller.UpdateEmployeeDetails(_username, "NV0016", updateFields1);
+                ok = await _controller.UpdateEmployeeDetails( "NV0016", updateFields1);
                 Console.WriteLine(ok ? "[PASS] UPDATE NHANVIEN (HOTEN)\n" : "[FAIL] UPDATE NHANVIEN (HOTEN) khong thanh cong\n");
 
                 // Cập nhật 2 trường (HOTEN và DT) với ExpandoObject
                 dynamic updateFields2 = new ExpandoObject();
                 updateFields2.HOTEN = "Pham Van F";
                 updateFields2.DT = "0944444444";
-                ok = await _controller.UpdateEmployeeDetails(_username, "NV0016", updateFields2);
+                ok = await _controller.UpdateEmployeeDetails( "NV0016", updateFields2);
                 Console.WriteLine(ok ? "[PASS] UPDATE NHANVIEN (HOTEN, DT)\n" : "[FAIL] UPDATE NHANVIEN (HOTEN, DT) khong thanh cong\n");
 
                 // Cập nhật 2 trường khác (LUONG và PHAI) với ExpandoObject
                 dynamic updateFields3 = new ExpandoObject();
                 updateFields3.LUONG = 6000;
                 updateFields3.PHAI = "F";
-                ok = await _controller.UpdateEmployeeDetails(_username, "NV0016", updateFields3);
+                ok = await _controller.UpdateEmployeeDetails( "NV0016", updateFields3);
                 Console.WriteLine(ok ? "[PASS] UPDATE NHANVIEN (LUONG, PHAI)\n" : "[FAIL] UPDATE NHANVIEN (LUONG, PHAI) khong thanh cong\n");
 
-                ok = await _controller.DeleteEmployee(_username, "NV0016");
+                ok = await _controller.DeleteEmployee( "NV0016");
                 Console.WriteLine(ok ? "[PASS] DELETE NHANVIEN\n" : "[FAIL] DELETE NHANVIEN khong thanh cong\n");
             }
             catch (Exception ex)

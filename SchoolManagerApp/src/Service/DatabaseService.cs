@@ -12,14 +12,14 @@ using Dapper;
 
 namespace SchoolManagerApp.src.Service
 {
-    public class DatabaseService 
+    public class DatabaseService
     {
 
         private static DatabaseService _instance;
         private static readonly object _lock = new object();
         private OracleConnection _connection;
 
-        public DatabaseService(string username, string password)
+        private DatabaseService(string username, string password)
         {
             string connectSQL = $"User Id={username};Password={password};Data Source=localhost:1521/QL_NoiBo";
             _connection = new OracleConnection(connectSQL);
@@ -49,7 +49,6 @@ namespace SchoolManagerApp.src.Service
                 if (_connection.State != ConnectionState.Open)
                 {
                     _connection.Open();
-                    Console.WriteLine($"Current schema: {_connection.ExecuteScalar<string>("SELECT SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA') FROM DUAL")}");
                 }
             }
             catch (OracleException ex)
@@ -57,6 +56,7 @@ namespace SchoolManagerApp.src.Service
                 throw ErrorMapper.MapOracleException(ex);
             }
         }
+
         public bool IsUserDBA()
         {
             OpenConnection();
@@ -71,6 +71,21 @@ namespace SchoolManagerApp.src.Service
                 _connection.Close();
             }
             _instance = null;
+        }
+        public void ExecuteSetUserRole()
+        {
+            try
+            {
+                OpenConnection();
+                string query = "BEGIN ADMIN.user_role_pkg.set_user_role; END;";
+                _connection.Execute(query);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi thực thi thủ tục: " + ex.Message);
+                throw;
+            }
         }
         public OracleConnection Connection => _connection;
     }

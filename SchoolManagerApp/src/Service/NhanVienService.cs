@@ -22,7 +22,7 @@ namespace SchoolManagerApp.src.Service
       
 
         // --------------------------- Chức năng cho ROLE_NVCB (Nhân viên cơ bản) ---------------------------
-        public async Task<NHANVIEN> GETPersonalInformationForNVCB(string username)
+        public async Task<NHANVIEN> GETPersonalInformationForNVCB()
         {
             try
             {
@@ -35,11 +35,11 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi lấy thông tin cá nhân cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi lấy thông tin cá nhân cho : " + ex.Message);
             }
         }
 
-        public async Task<bool> UpdatePhoneNumberForNVCB(string username, string newDT)
+        public async Task<bool> UpdatePhoneNumberForNVCB( string newDT)
         {
 
             try
@@ -54,13 +54,13 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi cập nhật số điện thoại cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi cập nhật số điện thoại cho : " + ex.Message);
             }
         }
 
         // --------------------------- Chức năng cho ROLE_TRGDV (Trưởng đơn vị) ---------------------------
 
-        public async Task<IEnumerable<NHANVIEN>> GETEmployeesInManagedUnitTRGDV(string username)
+        public async Task<IEnumerable<NHANVIEN>> GETEmployeesInManagedUnitTRGDV()
         {
             
 
@@ -75,12 +75,12 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi lấy danh sách nhân viên trong đơn vị cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi lấy danh sách nhân viên trong đơn vị cho : " + ex.Message);
             }
         }
 
         // --------------------------- Chức năng cho ROLE_NV_TCHC (Nhân viên tổ chức hành chính) ---------------------------
-        public async Task<IEnumerable<NHANVIEN>> GETAllEmployees(string username)
+        public async Task<IEnumerable<NHANVIEN>> GETAllEmployees()
         {
             try
             {
@@ -93,11 +93,11 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi lấy danh sách tất cả nhân viên cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi lấy danh sách tất cả nhân viên cho : " + ex.Message);
             }
         }
 
-        public async Task<bool> InsertNewEmployee(string username, NHANVIEN nhanVien)
+        public async Task<bool> InsertNewEmployee( NHANVIEN nhanVien)
         {
 
             try
@@ -114,11 +114,11 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi thêm nhân viên cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi thêm nhân viên cho : " + ex.Message);
             }
         }
 
-        public async Task<bool> UpdateEmployeeDetails(string username, string manv, dynamic fieldsToUpdate)
+        public async Task<bool> UpdateEmployeeDetails( string manv, dynamic fieldsToUpdate)
         {
             try
             {
@@ -152,7 +152,7 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi cập nhật nhân viên cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi cập nhật nhân viên cho : " + ex.Message);
             }
         }
 
@@ -162,7 +162,7 @@ namespace SchoolManagerApp.src.Service
             return validColumns.Contains(columnName);
         }
 
-        public async Task<bool> DeleteEmployee(string username, string maNv)
+        public async Task<bool> DeleteEmployee( string maNv)
         {
             try
             {
@@ -176,7 +176,7 @@ namespace SchoolManagerApp.src.Service
             }
             catch (Exception ex)
             {
-                throw new ServerError($"Lỗi khi xóa nhân viên cho {username}: " + ex.Message);
+                throw new ServerError($"Lỗi khi xóa nhân viên cho: " + ex.Message);
             }
         }
     }

@@ -17,11 +17,11 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho role_gv
-        public async Task<IEnumerable<MOMON>> GETPersonalTeachingAssignmentsForLecturer(string username)
+        public async Task<IEnumerable<MOMON>> GETPersonalTeachingAssignmentsForLecturer( )
         {
             try
             {
-                return await _momonService.GETPersonalTeachingAssignmentsForLecturer(username);
+                return await _momonService.GETPersonalTeachingAssignmentsForLecturer();
             }
             catch (BaseError)
             {
@@ -34,11 +34,11 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho role_nvpdt
-        public async Task<IEnumerable<MOMON>> GETCurrentTeachingAssignments(string username)
+        public async Task<IEnumerable<MOMON>> GETCurrentTeachingAssignments( )
         {
             try
             {
-                return await _momonService.GETCurrentTeachingAssignments(username);
+                return await _momonService.GETCurrentTeachingAssignments();
             }
             catch (BaseError)
             {
@@ -50,11 +50,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> InsertNewTeachingAssignment(string username, MOMON momon)
+        public async Task<bool> InsertNewTeachingAssignment(  MOMON momon)
         {
             try
             {
-                return await _momonService.InsertNewTeachingAssignment(username, momon);
+                return await _momonService.InsertNewTeachingAssignment( momon);
             }
             catch (BaseError)
             {
@@ -66,11 +66,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> UpdateTeachingAssignmentDetails(string username, string maMm, dynamic fieldsToUpdate)
+        public async Task<bool> UpdateTeachingAssignmentDetails( string maMm, dynamic fieldsToUpdate)
         {
             try
             {
-                return await _momonService.UpdateTeachingAssignmentDetails(username, maMm, fieldsToUpdate);
+                return await _momonService.UpdateTeachingAssignmentDetails( maMm, fieldsToUpdate);
             }
             catch (BaseError)
             {
@@ -82,11 +82,11 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> DeleteTeachingAssignment(string username, string maMm)
+        public async Task<bool> DeleteTeachingAssignment(  string maMm)
         {
             try
             {
-                return await _momonService.DeleteTeachingAssignment(username, maMm);
+                return await _momonService.DeleteTeachingAssignment( maMm);
             }
             catch (BaseError)
             {
@@ -99,11 +99,11 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho role_trgdv
-        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsInManagedUnit(string username)
+        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsInManagedUnit( )
         {
             try
             {
-                return await _momonService.GETTeachingAssignmentsInManagedUnit(username);
+                return await _momonService.GETTeachingAssignmentsInManagedUnit();
             }
             catch (BaseError)
             {
@@ -116,11 +116,11 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho role_sv
-        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsForDepartment(string username)
+        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsForDepartment( )
         {
             try
             {
-                return await _momonService.GETTeachingAssignmentsForDepartment(username);
+                return await _momonService.GETTeachingAssignmentsForDepartment();
             }
             catch (BaseError)
             {
