@@ -31,34 +31,49 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> UpdateSinhVien(SinhVien sv, List<string> columnsToUpdate)
+        public async Task<bool> UpdateSinhVien(string masv, dynamic fieldsToUpdate)
         {
             try
             {
-                string setClause = string.Join(", ", columnsToUpdate.Select(col => $"{col} = :{col}"));
+                var expandoDict = (IDictionary<string, object>)fieldsToUpdate;
+                var setClauses = new List<string>();
+                var parameters = new DynamicParameters();
 
-                string query = $"UPDATE ADMIN.SINHVIEN SET {setClause} WHERE MASV = :MASV ";
+                parameters.Add("MASV", masv);
 
-                var rowsAffected = await _dbService.Connection.ExecuteAsync(query, sv);
-                await _dbService.Connection.ExecuteAsync("COMMIT");
-                if (rowsAffected == 0)
+                foreach (var field in expandoDict)
                 {
-                    return false;
+                    string columnName = field.Key.ToUpper();
+                    if (!IsValidSinhVienColumn(columnName))
+                    {
+                        throw new ArgumentException($"Trường {columnName} không hợp lệ.");
+                    }
+
+                    setClauses.Add($"{columnName} = :{columnName}");
+                    parameters.Add(columnName, field.Value);
                 }
 
+                string query = $@"
+            UPDATE ADMIN.SINHVIEN
+            SET {string.Join(", ", setClauses)}
+            WHERE MASV = :MASV";
 
-                return true;
+                int rowsAffected = await _dbService.Connection.ExecuteAsync(query, parameters);
+                return rowsAffected > 0;
             }
             catch (OracleException ex)
             {
-                await _dbService.Connection.ExecuteAsync("ROLLBACK");
                 throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi cập nhật sinh viên: " + ex.Message);
             }
         }
         public async Task<bool> Insert(SinhVien sv)
         {
-            string query = @"INSERT INTO ADMIN.SINHVIEN (MASV, HOTEN, DCHI, DT, MAKHOA, TINHTRANG) 
-                             VALUES (:MASV, :HOTEN, :DCHI, :DT, :MAKHOA, :TINHTRANG)";
+            string query = @"INSERT INTO ADMIN.SINHVIEN (MASV, HOTEN, DCHI, DT, KHOA, TINHTRANG) 
+                             VALUES (:MASV, :HOTEN, :DCHI, :DT, :KHOA, :TINHTRANG)";
             try
             {
                 await _dbService.Connection.ExecuteAsync(query, sv);
@@ -72,7 +87,7 @@ namespace SchoolManagerApp.src.Service
         }
         public async Task<bool> Delete(string masv)
         {
- 
+
             string query = "DELETE FROM ADMIN.SINHVIEN WHERE MASV = :MASV";
             try
             {
@@ -83,6 +98,15 @@ namespace SchoolManagerApp.src.Service
             {
                 throw ErrorMapper.MapOracleException(ex);
             }
+        }
+    private bool IsValidSinhVienColumn(string columnName)
+        {
+            var validColumns = new HashSet<string>
+    {
+        "HOTEN", "PHAI", "NGSINH", "DCHI", "DT", "KHOA", "TINHTRANG"
+    };
+
+            return validColumns.Contains(columnName);
         }
     }
 }

@@ -1,164 +1,138 @@
-﻿using Dapper;
-using SchoolManagerApp.src.Controller;
-using SchoolManagerApp.src.Models;
+﻿using SchoolManagerApp.src.Controller;
 using SchoolManagerApp.src.Service;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using System;
+using Dapper;
+using System.Dynamic;
 
-namespace SchoolManagerApp.src.Test
+public class SinhVienTestSuite
 {
-    public class SinhVienTestSuite
+    private readonly SinhVienController _controller;
+    private readonly string _username;
+
+    public SinhVienTestSuite(string username, string password)
     {
-        private readonly SinhVienController _controller;
+        _username = username;
+        var dbService = DatabaseService.GetInstance(username, password);
 
-        public SinhVienTestSuite(string username, string password)
+        _controller = new SinhVienController(dbService);
+    }
+
+    public async Task RunAllTests()
+    {
+        Console.WriteLine("===== TEST CHO USER: " + _username + " =====\n");
+
+        await TestSelectAll();
+        await TestUpdateDiaChi();
+        await TestUpdateTinhTrang();
+        await TestUpdateInfoOfOtherStudent();
+        await TestInsertSinhVien();
+        await TestDeleteSinhVien();
+
+        Console.WriteLine("===== KET THUC TEST =====\n");
+    }
+
+    private async Task TestSelectAll()//Full sin
+    {
+        try
         {
-            var dbService = DatabaseService.GetInstance(username, password); // tạo kết nối mới theo user
-            _controller = new SinhVienController(dbService); // truyền vào đây
+            var result = await _controller.GetAll();
+            Console.WriteLine("[PASS] SELECT danh sach SV: " + result.AsList().Count + " dong\n");
         }
-
-        public async Task RunAllTests()
+        catch (Exception ex)
         {
-            Console.WriteLine("===== TEST CHO USER: " + " =====\n");
-
-            await TestSelectAll();
-            await TestUpdateDiaChi();
-            await TestUpdateTinhTrang();
-            await TestUpdateInfoOfOtherStudent();
-            await TestInsertSinhVien();
-            await TestDeleteSinhVien();
-
-            Console.WriteLine("===== KET THUC TEST =====\n");
+            Console.WriteLine("[FAIL] SELECT danh sach SV: " + ex.Message + "\n");
         }
+    }
 
-        // Kiểm tra Select tất cả sinh viên
-        private async Task TestSelectAll()
+    private async Task TestUpdateDiaChi()
+    {
+        try
+        {
+            dynamic fields = new ExpandoObject();
+            fields.DCHI = "Dia chi moi dynamic";
+            fields.DT = "0911222333";
+
+            var ok = await _controller.UpdateSinhVien("SV001", fields);
+            Console.WriteLine(ok ? "[PASS] UPDATE dynamic DCHI, DT\n" : "[FAIL] UPDATE dynamic DCHI, DT khong thanh cong\n");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("[FAIL] UPDATE dynamic DCHI, DT: " + ex.Message + "\n");
+        }
+    }
+
+    private async Task TestUpdateInfoOfOtherStudent()
+    {
         {
             try
             {
-                var result = await _controller.GetAll();
-                Console.WriteLine("[PASS] SELECT danh sach SV: " + result.AsList().Count + " dong\n");
+                dynamic fields = new ExpandoObject();
+                fields.DCHI = "Dia chi moi";
+                fields.DT = "0911222333";
+
+                var ok = await _controller.UpdateSinhVien("SV004", fields);
+                Console.WriteLine(ok ? "[FAIL] Cap nhat SV khac thanh cong (sai)\n" : "[PASS] SV khong duoc sua SV khac\n");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("[FAIL] SELECT danh sach SV: " + ex.Message + "\n");
+                Console.WriteLine("[PASS] SV khong duoc sua SV khac: " + ex.Message + "\n");
             }
         }
+    }
 
-        // Kiểm tra Cập nhật địa chỉ cho sinh viên
-        private async Task TestUpdateDiaChi()
+    private async Task TestUpdateTinhTrang()
+    {
+        try
         {
-            try
-            {
-                var ok = await _controller.UpdateSinhVien(new SinhVien
-                {
-                    MASV = "SV1",
-                    DCHI = "Dia chi moi",
-                    DT = "0911222333"
-                }, new List<string> { "DCHI", "DT" });
+            dynamic fields = new ExpandoObject();
+            fields.TINHTRANG = "Dang hoc";
 
-                Console.WriteLine(ok ? "[PASS] UPDATE DCHI, DT\n" : "[FAIL] UPDATE DCHI, DT khong thanh cong\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[FAIL] UPDATE DCHI, DT: " + ex.Message + "\n");
-            }
+            var ok = await _controller.UpdateSinhVien("SV001", fields);
+            Console.WriteLine(ok ? "[PASS] UPDATE TINHTRANG thanh cong\n" : "[FAIL] UPDATE TINHTRANG khong thanh cong\n");
         }
-
-        // Kiểm tra cập nhật thông tin sinh viên khác
-        private async Task TestUpdateInfoOfOtherStudent()
+        catch (Exception ex)
         {
-            try
-            {
-                var ok = await _controller.UpdateSinhVien(new SinhVien
-                {
-                    MASV = "SV2",
-                    DCHI = "Dia chi moi",
-                    DT = "0911222333"
-                }, new List<string> { "DCHI", "DT" });
-
-                Console.WriteLine(ok ? "[FAIL] Cap nhat thong tin sinh vien khac thanh cong (khong dung)" : "[PASS] Cap nhat thong tin sinh vien khac bi tu choi\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[PASS] Cap nhat thong tin sinh vien khac bi tu choi: " + ex.Message + "\n");
-            }
+            Console.WriteLine("[FAIL] UPDATE TINHTRANG: " + ex.Message + "\n");
         }
+    }
 
-        private async Task TestUpdateHoten()
+    private async Task TestInsertSinhVien()
+    {
+        try
         {
-            try
+            var sv = new SinhVien
             {
-                var ok = await _controller.UpdateSinhVien(new SinhVien
-                {
-                    MASV = "SV1",
-                    HOTEN = "Nguyen Thi Mai"
-                }, new List<string> { "HOTEN" });
+                MASV = "SV_TEST",
+                HOTEN = "Sinh Vien Test",
+                DCHI = "Test DC",
+                DT = "0909090909",
+                KHOA = "HOA",
+                TINHTRANG = null
+            };
 
-                Console.WriteLine(ok ? "[PASS] UPDATE HOTEN\n" : "[FAIL] UPDATE HOTEN khong thanh cong\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[FAIL] UPDATE HOTEN: " + ex.Message + "\n");
-            }
+            var ok = await _controller.Insert(sv);
+
+            Console.WriteLine(ok ? "[PASS] INSERT sinh vien\n" : "[FAIL] INSERT sinh vien khong thanh cong\n");
         }
-
-        private async Task TestUpdateTinhTrang()
+        catch (Exception ex)
         {
-            try
-            {
-                var ok = await _controller.UpdateSinhVien(new SinhVien
-                {
-                    MASV = "SV1",
-                    TINHTRANG = "Dang hoc"
-                }, new List<string> { "TINHTRANG" });
-
-                Console.WriteLine(ok ? "[PASS] UPDATE TINHTRANG cho sv1 thanh cong\n" : "[FAIL] UPDATE TINHTRANG cho sv1 khong thanh cong\n");
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[FAIL] UPDATE TINHTRANG cho sv1: " + ex.Message + "\n");
-            }
+            Console.WriteLine("[FAIL] INSERT sinh vien: " + ex.Message + "\n");
         }
+    }
 
 
-        // Kiểm tra Insert sinh viên
-        private async Task TestInsertSinhVien()
+    private async Task TestDeleteSinhVien()
+    {
+        try
         {
-            try
-            {
-                var ok = await _controller.Insert(new SinhVien
-                {
-                    MASV = "SV_TEST",
-                    HOTEN = "Sinh Vien Test",
-                    DCHI = "Test DC",
-                    DT = "0909090909",
-                    MAKHOA = "KH01",
-                    TINHTRANG = null
-                });
-                Console.WriteLine(ok ? "[PASS] INSERT sinh vien\n" : "[FAIL] INSERT sinh vien khong thanh cong\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[FAIL] INSERT sinh vien: " + ex.Message + "\n");
-            }
+            var ok = await _controller.Delete("SV_TEST");
+            Console.WriteLine(ok ? "[PASS] DELETE sinh vien\n" : "[FAIL] DELETE sinh vien khong thanh cong\n");
         }
-
-        // Kiểm tra Delete sinh viên
-        private async Task TestDeleteSinhVien()
+        catch (Exception ex)
         {
-            try
-            {
-                var ok = await _controller.Delete("SV_TEST");
-                Console.WriteLine(ok ? "[PASS] DELETE sinh vien\n" : "[FAIL] DELETE sinh vien khong thanh cong\n");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[FAIL] DELETE sinh vien: " + ex.Message + "\n");
-            }
+            Console.WriteLine("[FAIL] DELETE sinh vien: " + ex.Message + "\n");
         }
     }
 }

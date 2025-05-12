@@ -31,18 +31,18 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Cập nhật thông tin sinh viên (theo các cột lựa chọn)
-        public async Task<bool> UpdateSinhVien(SinhVien sv, List<string> columnsToUpdate)
+        public async Task<bool> UpdateSinhVien(string masv, dynamic fieldsToUpdate)
         {
             try
             {
-                return await _svService.UpdateSinhVien(sv, columnsToUpdate);
+                return await _svService.UpdateSinhVien(masv, fieldsToUpdate);
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi khi cập nhật sinh viên
                 throw new Exception("Không thể cập nhật sinh viên: " + ex.Message);
             }
         }
+
 
         // Thêm sinh viên mới
         public async Task<bool> Insert(SinhVien sv)

@@ -20,7 +20,7 @@ namespace SchoolManagerApp
 #if CONSOLE_TEST
             // Login
             Console.Write("Enter username: ");
-            string username = "SV1"; //Console.ReadLine();
+            string username = "NV012"; //Console.ReadLine();
 
             Console.Write("Enter password: ");
             string password = "123"; // Console.ReadLine();
@@ -31,7 +31,7 @@ namespace SchoolManagerApp
                 Console.WriteLine("Login thành công!");
             else
                 Console.WriteLine("Login thất bại!");
-            var testSinhVien = new SinhVienTestSuite("SV1", "123"); // user, password
+            var testSinhVien = new SinhVienTestSuite(username, password); // user, password
             testSinhVien.RunAllTests().GetAwaiter().GetResult();
 
 #else
