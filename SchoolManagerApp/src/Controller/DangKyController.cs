@@ -84,15 +84,28 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Danh sách sinh viên giáo viên phụ trách
-        public async Task<IEnumerable<DangKy>> GetListStudentOfGV()
+        public async Task<IEnumerable<DangKy>> GetListStudentOfGV(string mamm)
         {
             try
             {
-                return await _dkService.GetListStudentOfGV();
+                return await _dkService.GetListStudentOfGV(mamm);
             }
             catch (Exception ex)
             {
                 throw new Exception("Không thể lấy danh sách sinh viên của giáo viên phụ trách: " + ex.Message);
+            }
+        }
+
+        // NV PDT update sinh viên
+        public async Task<int> UpdateSV(string maSV, string maMM, string newMAMM)
+        {
+            try
+            {
+                return await _dkService.UpdateSV(maSV, maMM, newMAMM);
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
             }
         }
     }

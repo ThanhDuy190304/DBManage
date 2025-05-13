@@ -33,10 +33,13 @@ namespace SchoolManagerApp.src.Test
             //await TestGetClass();
 
             // NV002 123
-            await TestUpdatePoint();
+            //await TestUpdatePoint();
 
             // NV001 123
             //await TestGetListStudentOfGV();
+
+            // NVPDT: NV012 123
+            await TestUpdateSV();
 
             Console.WriteLine("===== KET THUC TEST =====\n");
         }
@@ -112,7 +115,7 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var result = await _controller.GetListStudentOfGV();
+                var result = await _controller.GetListStudentOfGV("MM001");
                 foreach (var item in result)
                 {
                     Console.WriteLine($"MASV: {item.MASV}, MAMM: {item.MAMM}");
@@ -121,6 +124,20 @@ namespace SchoolManagerApp.src.Test
             catch (Exception ex)
             {
                 Console.WriteLine("[FAIL] SELECT danh sach SV cua Gv phu trach: " + ex.Message + "\n");
+            }
+        }
+
+        // Test update thông tin đăng kí của sinh viên
+        private async Task TestUpdateSV()
+        {
+            try
+            {
+                var result = await _controller.UpdateSV("SV005", "MM002", "MM003");
+                Console.WriteLine("[SUCCESS] UPDATE du lieu thanh cong: " + result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("[FAIL] UPDATE du lieu: " + ex.Message + "\n");
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿// Program.cs
 // Program.cs
-//#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
+#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
 
 using System;
 using System.Linq;
@@ -24,7 +24,7 @@ namespace SchoolManagerApp
 #if CONSOLE_TEST
             // Login
             Console.Write("Enter username: ");
-            string username = "NV006"; //Console.ReadLine();
+            string username = "NV012"; //Console.ReadLine();
 
             Console.Write("Enter password: ");
             string password = "123"; // Console.ReadLine();
@@ -35,6 +35,8 @@ namespace SchoolManagerApp
                 Console.WriteLine("Login thành công!");
             else
                 Console.WriteLine("Login thất bại!");
+            var test = new TestCau4(username, password); // user, password
+            test.RunAllTests().GetAwaiter().GetResult();
 
 #else
             // GUI mode (WinForms)
