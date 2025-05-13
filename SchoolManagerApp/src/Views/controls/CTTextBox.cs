@@ -120,6 +120,12 @@ namespace SchoolManagerApp.src.Views.controls
             set { borderFocusColor = value; }
         }
 
+        [Category("Custom Styles")]
+        public bool ReadOnly
+        {
+            get => textBox1.ReadOnly;
+            set => textBox1.ReadOnly = value;
+        }
         //Overridden methods
 
         protected override void OnPaint(PaintEventArgs e)

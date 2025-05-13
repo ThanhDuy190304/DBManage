@@ -28,34 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ctTextBox11 = new SchoolManagerApp.src.Views.controls.CTTextBoxIcon();
+            this.sidebar = new SchoolManagerApp.src.Views.partials.NVCB_sidebar();
+            this.contentPanel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // ctTextBox11
+            // sidebar
             // 
-            this.ctTextBox11.BorderColor = System.Drawing.Color.DimGray;
-            this.ctTextBox11.BorderRadius = 20;
-            this.ctTextBox11.BorderSize = 4;
-            this.ctTextBox11.FocusBorderColor = System.Drawing.Color.Blue;
-            this.ctTextBox11.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.ctTextBox11.IconColor = System.Drawing.Color.LightGray;
-            this.ctTextBox11.IconSize = 20;
-            this.ctTextBox11.Location = new System.Drawing.Point(276, 98);
-            this.ctTextBox11.Name = "ctTextBox11";
-            this.ctTextBox11.Size = new System.Drawing.Size(315, 36);
-            this.ctTextBox11.TabIndex = 0;
-            this.ctTextBox11.Text = "ctTextBox11";
-            this.ctTextBox11.TextBackColor = System.Drawing.Color.White;
-            this.ctTextBox11.TextForeColor = System.Drawing.Color.Black;
-            this.ctTextBox11.TextValue = "";
-            this.ctTextBox11.UseSystemPasswordChar = false;
+            this.sidebar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.sidebar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sidebar.Location = new System.Drawing.Point(-2, 2);
+            this.sidebar.Name = "sidebar";
+            this.sidebar.Size = new System.Drawing.Size(227, 449);
+            this.sidebar.TabIndex = 0;
+            // 
+            // contentPanel
+            // 
+            this.contentPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contentPanel.Location = new System.Drawing.Point(231, 2);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Padding = new System.Windows.Forms.Padding(4);
+            this.contentPanel.Size = new System.Drawing.Size(898, 449);
+            this.contentPanel.TabIndex = 1;
             // 
             // NVCBMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ctTextBox11);
+            this.ClientSize = new System.Drawing.Size(1141, 450);
+            this.Controls.Add(this.contentPanel);
+            this.Controls.Add(this.sidebar);
             this.Name = "NVCBMain";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -64,6 +68,7 @@
 
         #endregion
 
-        private controls.CTTextBoxIcon ctTextBox11;
+        private partials.NVCB_sidebar sidebar;
+        private System.Windows.Forms.Panel contentPanel;
     }
 }

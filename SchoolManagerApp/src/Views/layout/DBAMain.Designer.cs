@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.contentPanel = new System.Windows.Forms.Panel();
-            this.sidebar = new SchoolManagerApp.src.Views.partials.sidebar();
+            this.sidebar = new SchoolManagerApp.src.Views.partials.DBAsidebar();
             this.SuspendLayout();
             // 
             // contentPanel
@@ -67,6 +67,6 @@
         #endregion
 
         private System.Windows.Forms.Panel contentPanel;
-        private partials.sidebar sidebar;
+        private partials.DBAsidebar sidebar;
     }
 }

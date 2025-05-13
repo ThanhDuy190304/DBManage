@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace SchoolManagerApp.src.Service
 {
-    internal abstract class BaseService<T>
+    internal abstract class BaseService
     {
         protected readonly DatabaseService _dbService;
         protected BaseService()
         {
             _dbService = DatabaseService.GetInstance("", "");
         }
-        public abstract Task<IEnumerable<T>> GetAll();
-        public abstract Task<bool> Delete(string id);
+    
     }
 }

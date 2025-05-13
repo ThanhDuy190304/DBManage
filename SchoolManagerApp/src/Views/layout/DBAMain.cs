@@ -37,6 +37,11 @@ namespace SchoolManagerApp.src.Views.layout
         {
             LogOut();
         }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            LogOut();
+        }
 
         private void HandleSidebarResize(bool isCollapsed)
         {

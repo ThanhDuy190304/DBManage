@@ -1,6 +1,6 @@
 ﻿namespace SchoolManagerApp.src.Views.partials
 {
-    partial class sidebar
+    partial class DBAsidebar
     {
         /// <summary> 
         /// Required designer variable.

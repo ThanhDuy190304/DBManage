@@ -49,6 +49,12 @@ namespace SchoolManagerApp.src.Service
                 if (_connection.State != ConnectionState.Open)
                 {
                     _connection.Open();
+                    using (var command = _connection.CreateCommand())
+                    {
+                        command.CommandText = "BEGIN ADMIN.user_role_pkg.set_user_role; END;";
+                        command.CommandType = CommandType.Text;
+                        command.ExecuteNonQuery();
+                    }
                 }
             }
             catch (OracleException ex)
@@ -56,6 +62,7 @@ namespace SchoolManagerApp.src.Service
                 throw ErrorMapper.MapOracleException(ex);
             }
         }
+
         public bool IsUserDBA()
         {
             string query = "SELECT COUNT(1) FROM SESSION_ROLES WHERE ROLE = 'DBA'";
@@ -80,6 +87,21 @@ namespace SchoolManagerApp.src.Service
                 _connection.Close();
             }
             _instance = null;
+        }
+        public void ExecuteSetUserRole()
+        {
+            try
+            {
+                OpenConnection();
+                string query = "BEGIN ADMIN.user_role_pkg.set_user_role; END;";
+                _connection.Execute(query);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi thực thi thủ tục: " + ex.Message);
+                throw;
+            }
         }
         public OracleConnection Connection => _connection;
     }

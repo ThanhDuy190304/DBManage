@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.partials
 {
-    public partial class sidebar : UserControl
+    public partial class DBAsidebar : UserControl
     {
         private int expandedWidth = 250;
         private int collapsedWidth = 40;
@@ -19,7 +19,7 @@ namespace SchoolManagerApp.src.Views.partials
         public Action<UserControl> OnPageChange;
         public event Action<bool> OnSidebarCollapsedChanged;
 
-        public sidebar()
+        public DBAsidebar()
         {
             InitializeComponent();
         }

@@ -8,14 +8,13 @@ using SchoolManagerApp.src.utils;
 
 namespace SchoolManagerApp.src.Service
 {
-    internal class UserService : BaseService<DBA_USERS>
+    internal class UserService : BaseService
     {
         private DBA_PrivilegeService _privilegeService;
         public UserService()
         {
             _privilegeService = new DBA_PrivilegeService(_dbService);
         }
-        override
          public async Task<IEnumerable<DBA_USERS>> GetAll()
         {
             try
@@ -69,7 +68,6 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        override
         public async Task<bool> Delete(string username)
         {
             string query = $"DROP USER {username}";

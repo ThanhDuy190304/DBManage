@@ -18,7 +18,7 @@ namespace SchoolManagerApp.src.Controller
             try
             {
                 _dbService = DatabaseService.GetInstance(username, password);
-                _dbService.OpenConnection();
+                _dbService.ExecuteSetUserRole();
                 return true;
             }
             catch (BaseError)
@@ -32,6 +32,7 @@ namespace SchoolManagerApp.src.Controller
         }
 
         public string IsCurrentUserRole()
+
         {
             if (_dbService == null)
             {
@@ -53,7 +54,6 @@ namespace SchoolManagerApp.src.Controller
             
             return null;            
         }
-
 
         public void Logout()
         {

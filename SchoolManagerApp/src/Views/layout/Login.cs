@@ -18,6 +18,7 @@ namespace SchoolManagerApp.src.Views.layout
     {
         internal AuthController _authController;
         public string CurrentUserRole { get; private set; } = "";
+    
 
         public Login()
         {

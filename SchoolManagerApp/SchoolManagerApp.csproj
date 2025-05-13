@@ -108,6 +108,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Controller\AuthController.cs" />
+    <Compile Include="src\Controller\MomonController.cs" />
+    <Compile Include="src\Controller\NhanVienController.cs" />
     <Compile Include="src\Controller\UserController.cs" />
     <Compile Include="src\Controller\RoleController.cs" />
     <Compile Include="src\Models\DBA_COL_PRIVS.cs" />
@@ -115,7 +117,13 @@
     <Compile Include="src\Models\DBA_TAB_PRIVS .cs" />
     <Compile Include="src\Models\DBA_ROLES.cs" />
     <Compile Include="src\Models\DBA_USERS.cs" />
+    <Compile Include="src\Models\Momon.cs" />
+    <Compile Include="src\Models\Nhanvien.cs" />
     <Compile Include="src\Service\DBA_PrivilegeService.cs" />
+    <Compile Include="src\Service\MomonService.cs" />
+    <Compile Include="src\Service\NhanVienService.cs" />
+    <Compile Include="src\Test\TestMomonController.cs" />
+    <Compile Include="src\Test\TestNhanVienController.cs" />
     <Compile Include="src\utils\Error.cs" />
     <Compile Include="src\utils\ErrorMapper.cs" />
     <Compile Include="src\Views\controls\CTButton.cs">
@@ -139,43 +147,43 @@
     <Compile Include="src\Views\controls\CTTextBox.Designer.cs">
       <DependentUpon>CTTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\AlterPasswordForm.cs">
+    <Compile Include="src\Views\forms\DBA\AlterPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\AlterPasswordForm.Designer.cs">
+    <Compile Include="src\Views\forms\DBA\AlterPasswordForm.Designer.cs">
       <DependentUpon>AlterPasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\GrantPrivilegeForm.cs">
+    <Compile Include="src\Views\forms\DBA\GrantPrivilegeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\GrantPrivilegeForm.Designer.cs">
+    <Compile Include="src\Views\forms\DBA\GrantPrivilegeForm.Designer.cs">
       <DependentUpon>GrantPrivilegeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\GrantRoleForm.cs">
+    <Compile Include="src\Views\forms\DBA\GrantRoleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\GrantRoleForm.Designer.cs">
+    <Compile Include="src\Views\forms\DBA\GrantRoleForm.Designer.cs">
       <DependentUpon>GrantRoleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\RevokePrivilgeForm.cs">
+    <Compile Include="src\Views\forms\DBA\RevokePrivilgeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\RevokePrivilgeForm.Designer.cs">
+    <Compile Include="src\Views\forms\DBA\RevokePrivilgeForm.Designer.cs">
       <DependentUpon>RevokePrivilgeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\RevokeRoleOfUser.cs">
+    <Compile Include="src\Views\forms\DBA\RevokeRoleOfUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\RevokeRoleOfUser.Designer.cs">
+    <Compile Include="src\Views\forms\DBA\RevokeRoleOfUser.Designer.cs">
       <DependentUpon>RevokeRoleOfUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\RolePrivilegeManageForm.cs">
+    <Compile Include="src\Views\forms\DBA\RolePrivilegeManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\RolePrivilegeManageForm.Designer.cs">
+    <Compile Include="src\Views\forms\DBA\RolePrivilegeManageForm.Designer.cs">
       <DependentUpon>RolePrivilegeManageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\UserPrivilegeManageForm.cs">
+    <Compile Include="src\Views\forms\DBA\UserPrivilegeManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Views\layout\BaseMain.cs">
@@ -200,13 +208,43 @@
     <Compile Include="src\Views\layout\DBAMain.Designer.cs">
       <DependentUpon>DBAMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\forms\CreateForm.cs">
+    <Compile Include="src\Views\forms\DBA\CreateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Views\forms\CreateForm.Designer.cs">
+    <Compile Include="src\Views\forms\DBA\CreateForm.Designer.cs">
       <DependentUpon>CreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\RolesPage.cs">
+    <Compile Include="src\Views\pages\NVCB\SubjectsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\pages\NVCB\SubjectsPage.Designer.cs">
+      <DependentUpon>SubjectsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\pages\NVCB\EmpsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\pages\NVCB\EmpsPage.Designer.cs">
+      <DependentUpon>EmpsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\pages\NVCB\ProfilePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\pages\NVCB\ProfilePage.Designer.cs">
+      <DependentUpon>ProfilePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\pages\NVCB\StudentsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\pages\NVCB\StudentsPage.Designer.cs">
+      <DependentUpon>StudentsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\partials\NVCB_sidebar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\partials\NVCB_sidebar.Designer.cs">
+      <DependentUpon>NVCB_sidebar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\pages\DBA\RolesPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -216,41 +254,41 @@
     <Compile Include="src\Views\controls\CTTableRow.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Views\partials\sidebar.cs">
+    <Compile Include="src\Views\partials\DBAsidebar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Views\partials\sidebar.Designer.cs">
-      <DependentUpon>sidebar.cs</DependentUpon>
+    <Compile Include="src\Views\partials\DBAsidebar.Designer.cs">
+      <DependentUpon>DBAsidebar.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\UsersPage.cs">
+    <Compile Include="src\Views\pages\DBA\UsersPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Views\UsersPage.Designer.cs">
+    <Compile Include="src\Views\pages\DBA\UsersPage.Designer.cs">
       <DependentUpon>UsersPage.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Test\TestRoleController.cs" />
     <EmbeddedResource Include="src\Views\controls\CTTextBox.resx">
       <DependentUpon>CTTextBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\AlterPasswordForm.resx">
+    <EmbeddedResource Include="src\Views\forms\DBA\AlterPasswordForm.resx">
       <DependentUpon>AlterPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\GrantPrivilegeForm.resx">
+    <EmbeddedResource Include="src\Views\forms\DBA\GrantPrivilegeForm.resx">
       <DependentUpon>GrantPrivilegeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\GrantRoleForm.resx">
+    <EmbeddedResource Include="src\Views\forms\DBA\GrantRoleForm.resx">
       <DependentUpon>GrantRoleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\RevokePrivilgeForm.resx">
+    <EmbeddedResource Include="src\Views\forms\DBA\RevokePrivilgeForm.resx">
       <DependentUpon>RevokePrivilgeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\RevokeRoleOfUser.resx">
+    <EmbeddedResource Include="src\Views\forms\DBA\RevokeRoleOfUser.resx">
       <DependentUpon>RevokeRoleOfUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\RolePrivilegeManageForm.resx">
+    <EmbeddedResource Include="src\Views\forms\DBA\RolePrivilegeManageForm.resx">
       <DependentUpon>RolePrivilegeManageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\UserPrivilegeManageForm.resx">
+    <EmbeddedResource Include="src\Views\forms\DBA\UserPrivilegeManageForm.resx">
       <DependentUpon>UserPrivilegeManageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\layout\NVCBMain.resx">
@@ -262,10 +300,25 @@
     <EmbeddedResource Include="src\Views\layout\DBAMain.resx">
       <DependentUpon>DBAMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\forms\CreateForm.resx">
+    <EmbeddedResource Include="src\Views\forms\DBA\CreateForm.resx">
       <DependentUpon>CreateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\RolesPage.resx">
+    <EmbeddedResource Include="src\Views\pages\NVCB\StudentsPage.resx">
+      <DependentUpon>StudentsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\pages\NVCB\SubjectsPage.resx">
+      <DependentUpon>SubjectsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\pages\NVCB\EmpsPage.resx">
+      <DependentUpon>EmpsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\pages\NVCB\ProfilePage.resx">
+      <DependentUpon>ProfilePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\partials\NVCB_sidebar.resx">
+      <DependentUpon>NVCB_sidebar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\pages\DBA\RolesPage.resx">
       <DependentUpon>RolesPage.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="src\Service\BaseService.cs" />
@@ -281,10 +334,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="src\Views\partials\sidebar.resx">
-      <DependentUpon>sidebar.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\partials\DBAsidebar.resx">
+      <DependentUpon>DBAsidebar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\UsersPage.resx">
+    <EmbeddedResource Include="src\Views\pages\DBA\UsersPage.resx">
       <DependentUpon>UsersPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
@@ -308,7 +361,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\Views\forms\NVCB\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>

@@ -8,14 +8,13 @@ using SchoolManagerApp.src.utils;
 
 namespace SchoolManagerApp.src.Service
 {
-    internal class RoleService : BaseService<DBA_ROLES>
+    internal class RoleService : BaseService
     {
         private readonly DBA_PrivilegeService _privilegeService;
         public RoleService()
         {
             _privilegeService = new DBA_PrivilegeService(_dbService);
         }
-        override
         public async Task<IEnumerable<DBA_ROLES>> GetAll()
         {
             try
@@ -84,7 +83,7 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        override
+        
         public async Task<bool> Delete(string name)
         {
             string query = $"DROP ROLE {name}";
@@ -132,12 +131,13 @@ namespace SchoolManagerApp.src.Service
             bool withGrantOption = false)
         {
             return await _privilegeService.GrantPermission(roleName, objectType, objectName, privilege, columns, withGrantOption);
-        
+
         }
 
         public async Task<bool> RevokeTablePrivilege(string roleName, string objectName, string privilege)
         {
             return await _privilegeService.RevokeTablePrivilege(roleName, objectName, privilege);
         }
+        
     }
 }
