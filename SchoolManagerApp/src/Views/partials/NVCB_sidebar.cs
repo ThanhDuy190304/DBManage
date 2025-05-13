@@ -70,11 +70,16 @@ namespace SchoolManagerApp.src.Views.partials
             OnPageChange?.Invoke(new pages.NVCB.StudentsPage());
 
         }
+        private void RegistrationsButton_Click(object sender, EventArgs e)
+        {
+            OnPageChange?.Invoke(new pages.NVCB.RegistrationsPage());
+
+        }
         private void LogoutButton_Click(object sender, EventArgs e)
         {
             OnLogout?.Invoke();
         }
 
-       
+      
     }
 }

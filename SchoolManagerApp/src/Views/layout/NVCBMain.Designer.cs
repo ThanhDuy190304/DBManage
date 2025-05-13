@@ -50,14 +50,14 @@
             this.contentPanel.Location = new System.Drawing.Point(231, 2);
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.Padding = new System.Windows.Forms.Padding(4);
-            this.contentPanel.Size = new System.Drawing.Size(898, 449);
+            this.contentPanel.Size = new System.Drawing.Size(904, 449);
             this.contentPanel.TabIndex = 1;
             // 
             // NVCBMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1141, 450);
+            this.ClientSize = new System.Drawing.Size(1147, 450);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.sidebar);
             this.Name = "NVCBMain";

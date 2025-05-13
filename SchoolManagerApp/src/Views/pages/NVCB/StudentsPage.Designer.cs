@@ -83,7 +83,7 @@
             this.StudentsOneDepTab.Padding = new System.Windows.Forms.Padding(3);
             this.StudentsOneDepTab.Size = new System.Drawing.Size(760, 325);
             this.StudentsOneDepTab.TabIndex = 1;
-            this.StudentsOneDepTab.Text = "Sinh viên cùng khoa";
+            this.StudentsOneDepTab.Text = "Sinh viên trong khoa";
             this.StudentsOneDepTab.UseVisualStyleBackColor = true;
             // 
             // TableStudentsOneDepPanel

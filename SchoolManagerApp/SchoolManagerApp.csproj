@@ -108,10 +108,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\Controller\AuthController.cs" />
+    <Compile Include="src\Controller\DangKyController.cs" />
+    <Compile Include="src\Controller\SinhVienController.cs" />
     <Compile Include="src\Controller\MomonController.cs" />
     <Compile Include="src\Controller\NhanVienController.cs" />
     <Compile Include="src\Controller\UserController.cs" />
     <Compile Include="src\Controller\RoleController.cs" />
+    <Compile Include="src\Models\DangKy.cs" />
     <Compile Include="src\Models\DBA_COL_PRIVS.cs" />
     <Compile Include="src\Models\DBA_ROLE_PRIVS.cs" />
     <Compile Include="src\Models\DBA_TAB_PRIVS .cs" />
@@ -119,11 +122,15 @@
     <Compile Include="src\Models\DBA_USERS.cs" />
     <Compile Include="src\Models\Momon.cs" />
     <Compile Include="src\Models\Nhanvien.cs" />
+    <Compile Include="src\Models\SinhVien.cs" />
+    <Compile Include="src\Service\DangKyService.cs" />
     <Compile Include="src\Service\DBA_PrivilegeService.cs" />
     <Compile Include="src\Service\MomonService.cs" />
     <Compile Include="src\Service\NhanVienService.cs" />
     <Compile Include="src\Test\TestMomonController.cs" />
     <Compile Include="src\Test\TestNhanVienController.cs" />
+    <Compile Include="src\Service\SinhVienService.cs" />
+    <Compile Include="src\Test\TestCau4.cs" />
     <Compile Include="src\utils\Error.cs" />
     <Compile Include="src\utils\ErrorMapper.cs" />
     <Compile Include="src\Views\controls\CTButton.cs">
@@ -214,11 +221,11 @@
     <Compile Include="src\Views\forms\DBA\CreateForm.Designer.cs">
       <DependentUpon>CreateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\pages\NVCB\CoursesPage.cs">
+    <Compile Include="src\Views\pages\NVCB\RegistrationsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Views\pages\NVCB\CoursesPage.Designer.cs">
-      <DependentUpon>CoursesPage.cs</DependentUpon>
+    <Compile Include="src\Views\pages\NVCB\RegistrationsPage.Designer.cs">
+      <DependentUpon>RegistrationsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\pages\NVCB\SubjectsPage.cs">
       <SubType>UserControl</SubType>
@@ -309,8 +316,8 @@
     <EmbeddedResource Include="src\Views\forms\DBA\CreateForm.resx">
       <DependentUpon>CreateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\pages\NVCB\CoursesPage.resx">
-      <DependentUpon>CoursesPage.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\pages\NVCB\RegistrationsPage.resx">
+      <DependentUpon>RegistrationsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\pages\NVCB\StudentsPage.resx">
       <DependentUpon>StudentsPage.cs</DependentUpon>

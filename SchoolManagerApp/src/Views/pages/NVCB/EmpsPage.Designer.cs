@@ -30,8 +30,8 @@
         {
             this.EmpsTabControl = new System.Windows.Forms.TabControl();
             this.AllEmpsTab = new System.Windows.Forms.TabPage();
-            this.EmpsOneDepTab = new System.Windows.Forms.TabPage();
             this.TableAllEmpsPanel = new System.Windows.Forms.Panel();
+            this.EmpsOneDepTab = new System.Windows.Forms.TabPage();
             this.TableEmpsOneDepPanel = new System.Windows.Forms.Panel();
             this.EmpsTabControl.SuspendLayout();
             this.AllEmpsTab.SuspendLayout();
@@ -63,18 +63,6 @@
             this.AllEmpsTab.Text = "Tất cả nhân viên";
             this.AllEmpsTab.UseVisualStyleBackColor = true;
             // 
-            // EmpsOneDepTab
-            // 
-            this.EmpsOneDepTab.Controls.Add(this.TableEmpsOneDepPanel);
-            this.EmpsOneDepTab.Font = new System.Drawing.Font("Calibri", 13F);
-            this.EmpsOneDepTab.Location = new System.Drawing.Point(4, 22);
-            this.EmpsOneDepTab.Name = "EmpsOneDepTab";
-            this.EmpsOneDepTab.Padding = new System.Windows.Forms.Padding(3);
-            this.EmpsOneDepTab.Size = new System.Drawing.Size(760, 325);
-            this.EmpsOneDepTab.TabIndex = 1;
-            this.EmpsOneDepTab.Text = "Nhân viên cùng bộ phận";
-            this.EmpsOneDepTab.UseVisualStyleBackColor = true;
-            // 
             // TableAllEmpsPanel
             // 
             this.TableAllEmpsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -85,6 +73,18 @@
             this.TableAllEmpsPanel.Name = "TableAllEmpsPanel";
             this.TableAllEmpsPanel.Size = new System.Drawing.Size(694, 250);
             this.TableAllEmpsPanel.TabIndex = 4;
+            // 
+            // EmpsOneDepTab
+            // 
+            this.EmpsOneDepTab.Controls.Add(this.TableEmpsOneDepPanel);
+            this.EmpsOneDepTab.Font = new System.Drawing.Font("Calibri", 13F);
+            this.EmpsOneDepTab.Location = new System.Drawing.Point(4, 22);
+            this.EmpsOneDepTab.Name = "EmpsOneDepTab";
+            this.EmpsOneDepTab.Padding = new System.Windows.Forms.Padding(3);
+            this.EmpsOneDepTab.Size = new System.Drawing.Size(760, 325);
+            this.EmpsOneDepTab.TabIndex = 1;
+            this.EmpsOneDepTab.Text = "Nhân viên cùng đơn vị";
+            this.EmpsOneDepTab.UseVisualStyleBackColor = true;
             // 
             // TableEmpsOneDepPanel
             // 

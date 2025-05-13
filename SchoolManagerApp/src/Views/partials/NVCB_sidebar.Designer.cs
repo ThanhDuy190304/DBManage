@@ -37,6 +37,7 @@
             this.LogoutButton = new SchoolManagerApp.Controls.CTButton();
             this.CourseButton = new SchoolManagerApp.Controls.CTButton();
             this.StudentsButton = new SchoolManagerApp.Controls.CTButton();
+            this.RegistrationsButton = new SchoolManagerApp.Controls.CTButton();
             this.SuspendLayout();
             // 
             // rightArrow
@@ -254,10 +255,42 @@
             this.StudentsButton.UseVisualStyleBackColor = false;
             this.StudentsButton.Click += new System.EventHandler(this.StudentsButton_Click);
             // 
+            // RegistrationsButton
+            // 
+            this.RegistrationsButton.BackColor = System.Drawing.Color.Transparent;
+            this.RegistrationsButton.BackgroundColor = System.Drawing.Color.Transparent;
+            this.RegistrationsButton.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.RegistrationsButton.BorderRadius = 0;
+            this.RegistrationsButton.BorderSize = 0;
+            this.RegistrationsButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RegistrationsButton.FlatAppearance.BorderSize = 0;
+            this.RegistrationsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RegistrationsButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegistrationsButton.ForeColor = System.Drawing.Color.Black;
+            this.RegistrationsButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.RegistrationsButton.HoverIconColor = System.Drawing.Color.MediumBlue;
+            this.RegistrationsButton.HoverTextColor = System.Drawing.Color.MediumBlue;
+            this.RegistrationsButton.IconChar = FontAwesome.Sharp.IconChar.BookOpen;
+            this.RegistrationsButton.IconColor = System.Drawing.Color.Black;
+            this.RegistrationsButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.RegistrationsButton.IconSize = 24;
+            this.RegistrationsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RegistrationsButton.Location = new System.Drawing.Point(11, 271);
+            this.RegistrationsButton.Name = "RegistrationsButton";
+            this.RegistrationsButton.Size = new System.Drawing.Size(201, 41);
+            this.RegistrationsButton.TabIndex = 17;
+            this.RegistrationsButton.Text = "Danh sách đăng ký môn";
+            this.RegistrationsButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.RegistrationsButton.TextColor = System.Drawing.Color.Black;
+            this.RegistrationsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.RegistrationsButton.UseVisualStyleBackColor = false;
+            this.RegistrationsButton.Click += new System.EventHandler(this.RegistrationsButton_Click);
+            // 
             // NVCB_sidebar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.RegistrationsButton);
             this.Controls.Add(this.StudentsButton);
             this.Controls.Add(this.CourseButton);
             this.Controls.Add(this.EmpsButton);
@@ -285,5 +318,6 @@
         private Controls.CTButton EmpsButton;
         private Controls.CTButton CourseButton;
         private Controls.CTButton StudentsButton;
+        private Controls.CTButton RegistrationsButton;
     }
 }

@@ -35,22 +35,6 @@ namespace SchoolManagerApp
                 Console.WriteLine("Login thành công!");
             else
                 Console.WriteLine("Login thất bại!");
-            //Test NVCB -- NV008
-            //Test TRGDV -- NV001
-            //Test NV TCHC -- NV011
-            //var testNhanVien = new TestNhanVienController(username, password);
-            //testNhanVien.RunAllTests().GetAwaiter().GetResult();
-
-
-
-            //Test GV -- NV006
-            //Test NVPDT -- NV012
-            //Test TRGDV -- NV005
-            //Test SV -- SV001
-            var testMOMON = new TestMomonController(username, password);
-            testMOMON.RunAllTests().GetAwaiter().GetResult();
-
-
 
 #else
             // GUI mode (WinForms)

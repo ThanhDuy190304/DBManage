@@ -32,7 +32,6 @@ namespace SchoolManagerApp.src.Controller
         }
 
         public string IsCurrentUserRole()
-
         {
             if (_dbService == null)
             {

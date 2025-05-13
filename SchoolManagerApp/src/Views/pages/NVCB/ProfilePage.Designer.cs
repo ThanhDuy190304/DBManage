@@ -45,6 +45,12 @@
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
+            this.iconButton8 = new FontAwesome.Sharp.IconButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
+            this.iconButton9 = new FontAwesome.Sharp.IconButton();
+            this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
@@ -57,12 +63,6 @@
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.flowButtomLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SaveAndCancelButtonLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
-            this.iconButton8 = new FontAwesome.Sharp.IconButton();
-            this.label3 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
-            this.iconButton9 = new FontAwesome.Sharp.IconButton();
-            this.label4 = new System.Windows.Forms.Label();
             this.SaveButton = new SchoolManagerApp.Controls.CTButton();
             this.CancelButton = new SchoolManagerApp.Controls.CTButton();
             this.EmpCodeTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
@@ -80,6 +80,8 @@
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
+            this.flowLayoutPanel10.SuspendLayout();
+            this.flowLayoutPanel11.SuspendLayout();
             this.flowLayoutPanel5.SuspendLayout();
             this.flowLayoutPanel8.SuspendLayout();
             this.flowLayoutPanel7.SuspendLayout();
@@ -87,8 +89,6 @@
             this.flowLayoutPanel9.SuspendLayout();
             this.flowButtomLayoutPanel.SuspendLayout();
             this.SaveAndCancelButtonLayoutPanel.SuspendLayout();
-            this.flowLayoutPanel10.SuspendLayout();
-            this.flowLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // EmpCodeLabel
@@ -125,12 +125,10 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 16F);
-            this.label2.Location = new System.Drawing.Point(408, 37);
+            this.label2.Location = new System.Drawing.Point(360, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(175, 27);
             this.label2.TabIndex = 8;
@@ -231,6 +229,8 @@
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.flowLayoutPanel2.AutoScroll = true;
             this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel3);
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel1);
@@ -242,10 +242,10 @@
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel6);
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel9);
             this.flowLayoutPanel2.Controls.Add(this.flowButtomLayoutPanel);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(131, 87);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(83, 87);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(739, 350);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(743, 350);
             this.flowLayoutPanel2.TabIndex = 23;
             // 
             // flowLayoutPanel3
@@ -302,6 +302,82 @@
             this.iconButton1.TabStop = false;
             this.iconButton1.Text = "\r\n\r\n";
             this.iconButton1.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel10
+            // 
+            this.flowLayoutPanel10.Controls.Add(this.iconButton8);
+            this.flowLayoutPanel10.Controls.Add(this.label3);
+            this.flowLayoutPanel10.Controls.Add(this.ctTextBox1);
+            this.flowLayoutPanel10.Location = new System.Drawing.Point(8, 47);
+            this.flowLayoutPanel10.Margin = new System.Windows.Forms.Padding(6);
+            this.flowLayoutPanel10.Name = "flowLayoutPanel10";
+            this.flowLayoutPanel10.Padding = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel10.Size = new System.Drawing.Size(351, 44);
+            this.flowLayoutPanel10.TabIndex = 28;
+            // 
+            // iconButton8
+            // 
+            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.VenusMars;
+            this.iconButton8.IconColor = System.Drawing.Color.Black;
+            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton8.IconSize = 20;
+            this.iconButton8.Location = new System.Drawing.Point(5, 8);
+            this.iconButton8.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.iconButton8.Name = "iconButton8";
+            this.iconButton8.Size = new System.Drawing.Size(38, 27);
+            this.iconButton8.TabIndex = 25;
+            this.iconButton8.TabStop = false;
+            this.iconButton8.Text = "\r\n\r\n";
+            this.iconButton8.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 13F);
+            this.label3.Location = new System.Drawing.Point(50, 8);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 22);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Giới tính         ";
+            // 
+            // flowLayoutPanel11
+            // 
+            this.flowLayoutPanel11.Controls.Add(this.iconButton9);
+            this.flowLayoutPanel11.Controls.Add(this.label4);
+            this.flowLayoutPanel11.Controls.Add(this.BirthTextBox);
+            this.flowLayoutPanel11.Location = new System.Drawing.Point(373, 66);
+            this.flowLayoutPanel11.Margin = new System.Windows.Forms.Padding(6);
+            this.flowLayoutPanel11.Name = "flowLayoutPanel11";
+            this.flowLayoutPanel11.Padding = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel11.Size = new System.Drawing.Size(351, 44);
+            this.flowLayoutPanel11.TabIndex = 29;
+            // 
+            // iconButton9
+            // 
+            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.CandyCane;
+            this.iconButton9.IconColor = System.Drawing.Color.Black;
+            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton9.IconSize = 20;
+            this.iconButton9.Location = new System.Drawing.Point(5, 8);
+            this.iconButton9.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.iconButton9.Name = "iconButton9";
+            this.iconButton9.Size = new System.Drawing.Size(38, 27);
+            this.iconButton9.TabIndex = 26;
+            this.iconButton9.TabStop = false;
+            this.iconButton9.Text = "\r\n\r\n";
+            this.iconButton9.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 13F);
+            this.label4.Location = new System.Drawing.Point(50, 8);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 22);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Ngày sinh      ";
             // 
             // flowLayoutPanel5
             // 
@@ -440,8 +516,8 @@
             // 
             // flowButtomLayoutPanel
             // 
+            this.flowButtomLayoutPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.flowButtomLayoutPanel.Controls.Add(this.EditButton);
-            this.flowButtomLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowButtomLayoutPanel.Location = new System.Drawing.Point(10, 290);
             this.flowButtomLayoutPanel.Margin = new System.Windows.Forms.Padding(6);
             this.flowButtomLayoutPanel.Name = "flowButtomLayoutPanel";
@@ -458,82 +534,6 @@
             this.SaveAndCancelButtonLayoutPanel.Size = new System.Drawing.Size(307, 45);
             this.SaveAndCancelButtonLayoutPanel.TabIndex = 25;
             this.SaveAndCancelButtonLayoutPanel.Visible = false;
-            // 
-            // flowLayoutPanel10
-            // 
-            this.flowLayoutPanel10.Controls.Add(this.iconButton8);
-            this.flowLayoutPanel10.Controls.Add(this.label3);
-            this.flowLayoutPanel10.Controls.Add(this.ctTextBox1);
-            this.flowLayoutPanel10.Location = new System.Drawing.Point(8, 47);
-            this.flowLayoutPanel10.Margin = new System.Windows.Forms.Padding(6);
-            this.flowLayoutPanel10.Name = "flowLayoutPanel10";
-            this.flowLayoutPanel10.Padding = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanel10.Size = new System.Drawing.Size(351, 44);
-            this.flowLayoutPanel10.TabIndex = 28;
-            // 
-            // iconButton8
-            // 
-            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.VenusMars;
-            this.iconButton8.IconColor = System.Drawing.Color.Black;
-            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton8.IconSize = 20;
-            this.iconButton8.Location = new System.Drawing.Point(5, 8);
-            this.iconButton8.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.iconButton8.Name = "iconButton8";
-            this.iconButton8.Size = new System.Drawing.Size(38, 27);
-            this.iconButton8.TabIndex = 25;
-            this.iconButton8.TabStop = false;
-            this.iconButton8.Text = "\r\n\r\n";
-            this.iconButton8.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 13F);
-            this.label3.Location = new System.Drawing.Point(50, 8);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 22);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Giới tính         ";
-            // 
-            // flowLayoutPanel11
-            // 
-            this.flowLayoutPanel11.Controls.Add(this.iconButton9);
-            this.flowLayoutPanel11.Controls.Add(this.label4);
-            this.flowLayoutPanel11.Controls.Add(this.BirthTextBox);
-            this.flowLayoutPanel11.Location = new System.Drawing.Point(373, 66);
-            this.flowLayoutPanel11.Margin = new System.Windows.Forms.Padding(6);
-            this.flowLayoutPanel11.Name = "flowLayoutPanel11";
-            this.flowLayoutPanel11.Padding = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanel11.Size = new System.Drawing.Size(351, 44);
-            this.flowLayoutPanel11.TabIndex = 29;
-            // 
-            // iconButton9
-            // 
-            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.CandyCane;
-            this.iconButton9.IconColor = System.Drawing.Color.Black;
-            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton9.IconSize = 20;
-            this.iconButton9.Location = new System.Drawing.Point(5, 8);
-            this.iconButton9.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Size = new System.Drawing.Size(38, 27);
-            this.iconButton9.TabIndex = 26;
-            this.iconButton9.TabStop = false;
-            this.iconButton9.Text = "\r\n\r\n";
-            this.iconButton9.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 13F);
-            this.label4.Location = new System.Drawing.Point(50, 8);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 22);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Ngày sinh      ";
             // 
             // SaveButton
             // 
@@ -840,7 +840,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.EmpCodeValue);
             this.Name = "ProfilePage";
-            this.Size = new System.Drawing.Size(1006, 476);
+            this.Size = new System.Drawing.Size(958, 476);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
@@ -848,6 +848,10 @@
             this.flowLayoutPanel3.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
+            this.flowLayoutPanel10.ResumeLayout(false);
+            this.flowLayoutPanel10.PerformLayout();
+            this.flowLayoutPanel11.ResumeLayout(false);
+            this.flowLayoutPanel11.PerformLayout();
             this.flowLayoutPanel5.ResumeLayout(false);
             this.flowLayoutPanel5.PerformLayout();
             this.flowLayoutPanel8.ResumeLayout(false);
@@ -860,10 +864,6 @@
             this.flowLayoutPanel9.PerformLayout();
             this.flowButtomLayoutPanel.ResumeLayout(false);
             this.SaveAndCancelButtonLayoutPanel.ResumeLayout(false);
-            this.flowLayoutPanel10.ResumeLayout(false);
-            this.flowLayoutPanel10.PerformLayout();
-            this.flowLayoutPanel11.ResumeLayout(false);
-            this.flowLayoutPanel11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
