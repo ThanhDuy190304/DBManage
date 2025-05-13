@@ -40,34 +40,42 @@
             this.DepartmentLabel = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconEmpCode = new FontAwesome.Sharp.IconButton();
-            this.FullNameTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.EmpCodeTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.GenderTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.SalaryTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.PhoneTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.AllowanceTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.RoleTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
-            this.DepartmentTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowButtomLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.EditButton = new SchoolManagerApp.Controls.CTButton();
             this.SaveAndCancelButtonLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
+            this.iconButton8 = new FontAwesome.Sharp.IconButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
+            this.iconButton9 = new FontAwesome.Sharp.IconButton();
+            this.label4 = new System.Windows.Forms.Label();
             this.SaveButton = new SchoolManagerApp.Controls.CTButton();
             this.CancelButton = new SchoolManagerApp.Controls.CTButton();
+            this.EmpCodeTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.FullNameTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.GenderTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.ctTextBox1 = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.BirthTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.SalaryTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.PhoneTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.AllowanceTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.RoleTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.DepartmentTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.EditButton = new SchoolManagerApp.Controls.CTButton();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -79,6 +87,8 @@
             this.flowLayoutPanel9.SuspendLayout();
             this.flowButtomLayoutPanel.SuspendLayout();
             this.SaveAndCancelButtonLayoutPanel.SuspendLayout();
+            this.flowLayoutPanel10.SuspendLayout();
+            this.flowLayoutPanel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // EmpCodeLabel
@@ -109,9 +119,9 @@
             this.label1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(4);
-            this.label1.Size = new System.Drawing.Size(83, 30);
+            this.label1.Size = new System.Drawing.Size(107, 30);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Họ tên    ";
+            this.label1.Text = "Họ tên          ";
             // 
             // label2
             // 
@@ -120,7 +130,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 16F);
-            this.label2.Location = new System.Drawing.Point(408, 60);
+            this.label2.Location = new System.Drawing.Point(408, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(175, 27);
             this.label2.TabIndex = 8;
@@ -144,9 +154,9 @@
             this.SalaryLabel.Location = new System.Drawing.Point(50, 8);
             this.SalaryLabel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
             this.SalaryLabel.Name = "SalaryLabel";
-            this.SalaryLabel.Size = new System.Drawing.Size(84, 22);
+            this.SalaryLabel.Size = new System.Drawing.Size(108, 22);
             this.SalaryLabel.TabIndex = 11;
-            this.SalaryLabel.Text = "Lương       ";
+            this.SalaryLabel.Text = "Lương             ";
             // 
             // RoleLabel
             // 
@@ -166,9 +176,9 @@
             this.AllowanceLabel.Location = new System.Drawing.Point(50, 8);
             this.AllowanceLabel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
             this.AllowanceLabel.Name = "AllowanceLabel";
-            this.AllowanceLabel.Size = new System.Drawing.Size(83, 22);
+            this.AllowanceLabel.Size = new System.Drawing.Size(107, 22);
             this.AllowanceLabel.TabIndex = 15;
-            this.AllowanceLabel.Text = "Phụ cấp    ";
+            this.AllowanceLabel.Text = "Phụ cấp          ";
             // 
             // PhoneLabel
             // 
@@ -188,9 +198,9 @@
             this.DepartmentLabel.Location = new System.Drawing.Point(50, 8);
             this.DepartmentLabel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
             this.DepartmentLabel.Name = "DepartmentLabel";
-            this.DepartmentLabel.Size = new System.Drawing.Size(83, 22);
+            this.DepartmentLabel.Size = new System.Drawing.Size(107, 22);
             this.DepartmentLabel.TabIndex = 19;
-            this.DepartmentLabel.Text = "Mã đơn vị";
+            this.DepartmentLabel.Text = "Mã đơn vị      ";
             // 
             // flowLayoutPanel1
             // 
@@ -219,42 +229,23 @@
             this.iconEmpCode.Text = "\r\n\r\n";
             this.iconEmpCode.UseVisualStyleBackColor = true;
             // 
-            // FullNameTextBox
-            // 
-            this.FullNameTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.FullNameTextBox.BorderColor = System.Drawing.SystemColors.Control;
-            this.FullNameTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
-            this.FullNameTextBox.BorderSize = 0;
-            this.FullNameTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.FullNameTextBox.ForeColor = System.Drawing.Color.Black;
-            this.FullNameTextBox.Location = new System.Drawing.Point(141, 6);
-            this.FullNameTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.FullNameTextBox.Multiline = false;
-            this.FullNameTextBox.Name = "FullNameTextBox";
-            this.FullNameTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.FullNameTextBox.PasswordChar = false;
-            this.FullNameTextBox.ReadOnly = true;
-            this.FullNameTextBox.Size = new System.Drawing.Size(173, 31);
-            this.FullNameTextBox.TabIndex = 27;
-            this.FullNameTextBox.Texts = "Null";
-            this.FullNameTextBox.UnderlinedStyle = false;
-            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel3);
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel1);
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel4);
+            this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel11);
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel5);
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel8);
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel7);
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel6);
             this.flowLayoutPanel2.Controls.Add(this.flowLayoutPanel9);
             this.flowLayoutPanel2.Controls.Add(this.flowButtomLayoutPanel);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(131, 110);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(131, 87);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(739, 297);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(739, 350);
             this.flowLayoutPanel2.TabIndex = 23;
             // 
             // flowLayoutPanel3
@@ -284,31 +275,12 @@
             this.iconButton5.Text = "\r\n\r\n";
             this.iconButton5.UseVisualStyleBackColor = true;
             // 
-            // EmpCodeTextBox
-            // 
-            this.EmpCodeTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.EmpCodeTextBox.BorderColor = System.Drawing.SystemColors.Control;
-            this.EmpCodeTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
-            this.EmpCodeTextBox.BorderSize = 0;
-            this.EmpCodeTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.EmpCodeTextBox.ForeColor = System.Drawing.Color.Black;
-            this.EmpCodeTextBox.Location = new System.Drawing.Point(166, 6);
-            this.EmpCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.EmpCodeTextBox.Multiline = false;
-            this.EmpCodeTextBox.Name = "EmpCodeTextBox";
-            this.EmpCodeTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.EmpCodeTextBox.PasswordChar = false;
-            this.EmpCodeTextBox.ReadOnly = true;
-            this.EmpCodeTextBox.Size = new System.Drawing.Size(173, 31);
-            this.EmpCodeTextBox.TabIndex = 26;
-            this.EmpCodeTextBox.Texts = "Null";
-            this.EmpCodeTextBox.UnderlinedStyle = false;
-            // 
             // flowLayoutPanel4
             // 
             this.flowLayoutPanel4.Controls.Add(this.iconButton1);
             this.flowLayoutPanel4.Controls.Add(this.GenderLabel);
             this.flowLayoutPanel4.Controls.Add(this.GenderTextBox);
+            this.flowLayoutPanel4.Controls.Add(this.flowLayoutPanel10);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(10, 66);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
@@ -331,32 +303,12 @@
             this.iconButton1.Text = "\r\n\r\n";
             this.iconButton1.UseVisualStyleBackColor = true;
             // 
-            // GenderTextBox
-            // 
-            this.GenderTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.GenderTextBox.BorderColor = System.Drawing.SystemColors.Control;
-            this.GenderTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
-            this.GenderTextBox.BorderSize = 0;
-            this.GenderTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.GenderTextBox.ForeColor = System.Drawing.Color.Black;
-            this.GenderTextBox.Location = new System.Drawing.Point(165, 6);
-            this.GenderTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.GenderTextBox.Multiline = false;
-            this.GenderTextBox.Name = "GenderTextBox";
-            this.GenderTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.GenderTextBox.PasswordChar = false;
-            this.GenderTextBox.ReadOnly = true;
-            this.GenderTextBox.Size = new System.Drawing.Size(173, 31);
-            this.GenderTextBox.TabIndex = 27;
-            this.GenderTextBox.Texts = "Null";
-            this.GenderTextBox.UnderlinedStyle = false;
-            // 
             // flowLayoutPanel5
             // 
             this.flowLayoutPanel5.Controls.Add(this.iconButton3);
             this.flowLayoutPanel5.Controls.Add(this.SalaryLabel);
             this.flowLayoutPanel5.Controls.Add(this.SalaryTextBox);
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(373, 66);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(10, 122);
             this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel5.Name = "flowLayoutPanel5";
             this.flowLayoutPanel5.Padding = new System.Windows.Forms.Padding(2);
@@ -378,32 +330,12 @@
             this.iconButton3.Text = "\r\n\r\n";
             this.iconButton3.UseVisualStyleBackColor = true;
             // 
-            // SalaryTextBox
-            // 
-            this.SalaryTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.SalaryTextBox.BorderColor = System.Drawing.SystemColors.Control;
-            this.SalaryTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
-            this.SalaryTextBox.BorderSize = 0;
-            this.SalaryTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.SalaryTextBox.ForeColor = System.Drawing.Color.Black;
-            this.SalaryTextBox.Location = new System.Drawing.Point(142, 6);
-            this.SalaryTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.SalaryTextBox.Multiline = false;
-            this.SalaryTextBox.Name = "SalaryTextBox";
-            this.SalaryTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.SalaryTextBox.PasswordChar = false;
-            this.SalaryTextBox.ReadOnly = true;
-            this.SalaryTextBox.Size = new System.Drawing.Size(173, 31);
-            this.SalaryTextBox.TabIndex = 28;
-            this.SalaryTextBox.Texts = "Null";
-            this.SalaryTextBox.UnderlinedStyle = false;
-            // 
             // flowLayoutPanel8
             // 
             this.flowLayoutPanel8.Controls.Add(this.iconButton2);
             this.flowLayoutPanel8.Controls.Add(this.PhoneLabel);
             this.flowLayoutPanel8.Controls.Add(this.PhoneTextBox);
-            this.flowLayoutPanel8.Location = new System.Drawing.Point(10, 122);
+            this.flowLayoutPanel8.Location = new System.Drawing.Point(373, 122);
             this.flowLayoutPanel8.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel8.Name = "flowLayoutPanel8";
             this.flowLayoutPanel8.Padding = new System.Windows.Forms.Padding(2);
@@ -425,32 +357,12 @@
             this.iconButton2.Text = "\r\n\r\n";
             this.iconButton2.UseVisualStyleBackColor = true;
             // 
-            // PhoneTextBox
-            // 
-            this.PhoneTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.PhoneTextBox.BorderColor = System.Drawing.SystemColors.Control;
-            this.PhoneTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
-            this.PhoneTextBox.BorderSize = 0;
-            this.PhoneTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.PhoneTextBox.ForeColor = System.Drawing.Color.Black;
-            this.PhoneTextBox.Location = new System.Drawing.Point(164, 6);
-            this.PhoneTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.PhoneTextBox.Multiline = false;
-            this.PhoneTextBox.Name = "PhoneTextBox";
-            this.PhoneTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.PhoneTextBox.PasswordChar = false;
-            this.PhoneTextBox.ReadOnly = true;
-            this.PhoneTextBox.Size = new System.Drawing.Size(173, 31);
-            this.PhoneTextBox.TabIndex = 28;
-            this.PhoneTextBox.Texts = "Null";
-            this.PhoneTextBox.UnderlinedStyle = false;
-            // 
             // flowLayoutPanel7
             // 
             this.flowLayoutPanel7.Controls.Add(this.iconButton4);
             this.flowLayoutPanel7.Controls.Add(this.AllowanceLabel);
             this.flowLayoutPanel7.Controls.Add(this.AllowanceTextBox);
-            this.flowLayoutPanel7.Location = new System.Drawing.Point(373, 122);
+            this.flowLayoutPanel7.Location = new System.Drawing.Point(10, 178);
             this.flowLayoutPanel7.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel7.Name = "flowLayoutPanel7";
             this.flowLayoutPanel7.Padding = new System.Windows.Forms.Padding(2);
@@ -472,32 +384,12 @@
             this.iconButton4.Text = "\r\n\r\n";
             this.iconButton4.UseVisualStyleBackColor = true;
             // 
-            // AllowanceTextBox
-            // 
-            this.AllowanceTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.AllowanceTextBox.BorderColor = System.Drawing.SystemColors.Control;
-            this.AllowanceTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
-            this.AllowanceTextBox.BorderSize = 0;
-            this.AllowanceTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.AllowanceTextBox.ForeColor = System.Drawing.Color.Black;
-            this.AllowanceTextBox.Location = new System.Drawing.Point(141, 6);
-            this.AllowanceTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.AllowanceTextBox.Multiline = false;
-            this.AllowanceTextBox.Name = "AllowanceTextBox";
-            this.AllowanceTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.AllowanceTextBox.PasswordChar = false;
-            this.AllowanceTextBox.ReadOnly = true;
-            this.AllowanceTextBox.Size = new System.Drawing.Size(173, 31);
-            this.AllowanceTextBox.TabIndex = 29;
-            this.AllowanceTextBox.Texts = "Null";
-            this.AllowanceTextBox.UnderlinedStyle = false;
-            // 
             // flowLayoutPanel6
             // 
             this.flowLayoutPanel6.Controls.Add(this.iconButton6);
             this.flowLayoutPanel6.Controls.Add(this.RoleLabel);
             this.flowLayoutPanel6.Controls.Add(this.RoleTextBox);
-            this.flowLayoutPanel6.Location = new System.Drawing.Point(10, 178);
+            this.flowLayoutPanel6.Location = new System.Drawing.Point(373, 178);
             this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
             this.flowLayoutPanel6.Padding = new System.Windows.Forms.Padding(2);
@@ -519,32 +411,12 @@
             this.iconButton6.Text = "\r\n\r\n";
             this.iconButton6.UseVisualStyleBackColor = true;
             // 
-            // RoleTextBox
-            // 
-            this.RoleTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.RoleTextBox.BorderColor = System.Drawing.SystemColors.Control;
-            this.RoleTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
-            this.RoleTextBox.BorderSize = 0;
-            this.RoleTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.RoleTextBox.ForeColor = System.Drawing.Color.Black;
-            this.RoleTextBox.Location = new System.Drawing.Point(164, 6);
-            this.RoleTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.RoleTextBox.Multiline = false;
-            this.RoleTextBox.Name = "RoleTextBox";
-            this.RoleTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.RoleTextBox.PasswordChar = false;
-            this.RoleTextBox.ReadOnly = true;
-            this.RoleTextBox.Size = new System.Drawing.Size(173, 31);
-            this.RoleTextBox.TabIndex = 29;
-            this.RoleTextBox.Texts = "Null";
-            this.RoleTextBox.UnderlinedStyle = false;
-            // 
             // flowLayoutPanel9
             // 
             this.flowLayoutPanel9.Controls.Add(this.iconButton7);
             this.flowLayoutPanel9.Controls.Add(this.DepartmentLabel);
             this.flowLayoutPanel9.Controls.Add(this.DepartmentTextBox);
-            this.flowLayoutPanel9.Location = new System.Drawing.Point(373, 178);
+            this.flowLayoutPanel9.Location = new System.Drawing.Point(10, 234);
             this.flowLayoutPanel9.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
             this.flowLayoutPanel9.Padding = new System.Windows.Forms.Padding(2);
@@ -566,68 +438,16 @@
             this.iconButton7.Text = "\r\n\r\n";
             this.iconButton7.UseVisualStyleBackColor = true;
             // 
-            // DepartmentTextBox
-            // 
-            this.DepartmentTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.DepartmentTextBox.BorderColor = System.Drawing.SystemColors.Control;
-            this.DepartmentTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
-            this.DepartmentTextBox.BorderSize = 0;
-            this.DepartmentTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.DepartmentTextBox.ForeColor = System.Drawing.Color.Black;
-            this.DepartmentTextBox.Location = new System.Drawing.Point(141, 6);
-            this.DepartmentTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.DepartmentTextBox.Multiline = false;
-            this.DepartmentTextBox.Name = "DepartmentTextBox";
-            this.DepartmentTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.DepartmentTextBox.PasswordChar = false;
-            this.DepartmentTextBox.ReadOnly = true;
-            this.DepartmentTextBox.Size = new System.Drawing.Size(173, 31);
-            this.DepartmentTextBox.TabIndex = 29;
-            this.DepartmentTextBox.Texts = "Null";
-            this.DepartmentTextBox.UnderlinedStyle = false;
-            // 
             // flowButtomLayoutPanel
             // 
             this.flowButtomLayoutPanel.Controls.Add(this.EditButton);
             this.flowButtomLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowButtomLayoutPanel.Location = new System.Drawing.Point(10, 234);
+            this.flowButtomLayoutPanel.Location = new System.Drawing.Point(10, 290);
             this.flowButtomLayoutPanel.Margin = new System.Windows.Forms.Padding(6);
             this.flowButtomLayoutPanel.Name = "flowButtomLayoutPanel";
             this.flowButtomLayoutPanel.Padding = new System.Windows.Forms.Padding(200, 2, 290, 2);
             this.flowButtomLayoutPanel.Size = new System.Drawing.Size(714, 49);
             this.flowButtomLayoutPanel.TabIndex = 28;
-            // 
-            // EditButton
-            // 
-            this.EditButton.BackColor = System.Drawing.Color.Transparent;
-            this.EditButton.BackgroundColor = System.Drawing.Color.Transparent;
-            this.EditButton.BorderColor = System.Drawing.Color.Blue;
-            this.EditButton.BorderRadius = 3;
-            this.EditButton.BorderSize = 2;
-            this.EditButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.EditButton.FlatAppearance.BorderSize = 0;
-            this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditButton.Font = new System.Drawing.Font("Calibri", 13F);
-            this.EditButton.ForeColor = System.Drawing.Color.Black;
-            this.EditButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.EditButton.HoverIconColor = System.Drawing.Color.Blue;
-            this.EditButton.HoverTextColor = System.Drawing.Color.Blue;
-            this.EditButton.IconChar = FontAwesome.Sharp.IconChar.Edit;
-            this.EditButton.IconColor = System.Drawing.Color.Black;
-            this.EditButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.EditButton.IconSize = 24;
-            this.EditButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.EditButton.Location = new System.Drawing.Point(203, 5);
-            this.EditButton.Name = "EditButton";
-            this.EditButton.Padding = new System.Windows.Forms.Padding(120, 0, 0, 0);
-            this.EditButton.Size = new System.Drawing.Size(328, 40);
-            this.EditButton.TabIndex = 1;
-            this.EditButton.Text = "Sửa";
-            this.EditButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.EditButton.TextColor = System.Drawing.Color.Black;
-            this.EditButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.EditButton.UseVisualStyleBackColor = false;
-            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // SaveAndCancelButtonLayoutPanel
             // 
@@ -638,6 +458,82 @@
             this.SaveAndCancelButtonLayoutPanel.Size = new System.Drawing.Size(307, 45);
             this.SaveAndCancelButtonLayoutPanel.TabIndex = 25;
             this.SaveAndCancelButtonLayoutPanel.Visible = false;
+            // 
+            // flowLayoutPanel10
+            // 
+            this.flowLayoutPanel10.Controls.Add(this.iconButton8);
+            this.flowLayoutPanel10.Controls.Add(this.label3);
+            this.flowLayoutPanel10.Controls.Add(this.ctTextBox1);
+            this.flowLayoutPanel10.Location = new System.Drawing.Point(8, 47);
+            this.flowLayoutPanel10.Margin = new System.Windows.Forms.Padding(6);
+            this.flowLayoutPanel10.Name = "flowLayoutPanel10";
+            this.flowLayoutPanel10.Padding = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel10.Size = new System.Drawing.Size(351, 44);
+            this.flowLayoutPanel10.TabIndex = 28;
+            // 
+            // iconButton8
+            // 
+            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.VenusMars;
+            this.iconButton8.IconColor = System.Drawing.Color.Black;
+            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton8.IconSize = 20;
+            this.iconButton8.Location = new System.Drawing.Point(5, 8);
+            this.iconButton8.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.iconButton8.Name = "iconButton8";
+            this.iconButton8.Size = new System.Drawing.Size(38, 27);
+            this.iconButton8.TabIndex = 25;
+            this.iconButton8.TabStop = false;
+            this.iconButton8.Text = "\r\n\r\n";
+            this.iconButton8.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 13F);
+            this.label3.Location = new System.Drawing.Point(50, 8);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 22);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Giới tính         ";
+            // 
+            // flowLayoutPanel11
+            // 
+            this.flowLayoutPanel11.Controls.Add(this.iconButton9);
+            this.flowLayoutPanel11.Controls.Add(this.label4);
+            this.flowLayoutPanel11.Controls.Add(this.BirthTextBox);
+            this.flowLayoutPanel11.Location = new System.Drawing.Point(373, 66);
+            this.flowLayoutPanel11.Margin = new System.Windows.Forms.Padding(6);
+            this.flowLayoutPanel11.Name = "flowLayoutPanel11";
+            this.flowLayoutPanel11.Padding = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel11.Size = new System.Drawing.Size(351, 44);
+            this.flowLayoutPanel11.TabIndex = 29;
+            // 
+            // iconButton9
+            // 
+            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.CandyCane;
+            this.iconButton9.IconColor = System.Drawing.Color.Black;
+            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton9.IconSize = 20;
+            this.iconButton9.Location = new System.Drawing.Point(5, 8);
+            this.iconButton9.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.iconButton9.Name = "iconButton9";
+            this.iconButton9.Size = new System.Drawing.Size(38, 27);
+            this.iconButton9.TabIndex = 26;
+            this.iconButton9.TabStop = false;
+            this.iconButton9.Text = "\r\n\r\n";
+            this.iconButton9.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 13F);
+            this.label4.Location = new System.Drawing.Point(50, 8);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 22);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Ngày sinh      ";
             // 
             // SaveButton
             // 
@@ -703,6 +599,238 @@
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // EmpCodeTextBox
+            // 
+            this.EmpCodeTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.EmpCodeTextBox.BorderColor = System.Drawing.SystemColors.Control;
+            this.EmpCodeTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
+            this.EmpCodeTextBox.BorderSize = 0;
+            this.EmpCodeTextBox.Font = new System.Drawing.Font("Calibri", 13F);
+            this.EmpCodeTextBox.ForeColor = System.Drawing.Color.Black;
+            this.EmpCodeTextBox.Location = new System.Drawing.Point(166, 6);
+            this.EmpCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.EmpCodeTextBox.Multiline = false;
+            this.EmpCodeTextBox.Name = "EmpCodeTextBox";
+            this.EmpCodeTextBox.Padding = new System.Windows.Forms.Padding(4);
+            this.EmpCodeTextBox.PasswordChar = false;
+            this.EmpCodeTextBox.ReadOnly = true;
+            this.EmpCodeTextBox.Size = new System.Drawing.Size(173, 31);
+            this.EmpCodeTextBox.TabIndex = 26;
+            this.EmpCodeTextBox.Texts = "Null";
+            this.EmpCodeTextBox.UnderlinedStyle = false;
+            // 
+            // FullNameTextBox
+            // 
+            this.FullNameTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.FullNameTextBox.BorderColor = System.Drawing.SystemColors.Control;
+            this.FullNameTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
+            this.FullNameTextBox.BorderSize = 0;
+            this.FullNameTextBox.Font = new System.Drawing.Font("Calibri", 13F);
+            this.FullNameTextBox.ForeColor = System.Drawing.Color.Black;
+            this.FullNameTextBox.Location = new System.Drawing.Point(165, 6);
+            this.FullNameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.FullNameTextBox.Multiline = false;
+            this.FullNameTextBox.Name = "FullNameTextBox";
+            this.FullNameTextBox.Padding = new System.Windows.Forms.Padding(4);
+            this.FullNameTextBox.PasswordChar = false;
+            this.FullNameTextBox.ReadOnly = true;
+            this.FullNameTextBox.Size = new System.Drawing.Size(173, 31);
+            this.FullNameTextBox.TabIndex = 27;
+            this.FullNameTextBox.Texts = "Null";
+            this.FullNameTextBox.UnderlinedStyle = false;
+            // 
+            // GenderTextBox
+            // 
+            this.GenderTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.GenderTextBox.BorderColor = System.Drawing.SystemColors.Control;
+            this.GenderTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
+            this.GenderTextBox.BorderSize = 0;
+            this.GenderTextBox.Font = new System.Drawing.Font("Calibri", 13F);
+            this.GenderTextBox.ForeColor = System.Drawing.Color.Black;
+            this.GenderTextBox.Location = new System.Drawing.Point(165, 6);
+            this.GenderTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.GenderTextBox.Multiline = false;
+            this.GenderTextBox.Name = "GenderTextBox";
+            this.GenderTextBox.Padding = new System.Windows.Forms.Padding(4);
+            this.GenderTextBox.PasswordChar = false;
+            this.GenderTextBox.ReadOnly = true;
+            this.GenderTextBox.Size = new System.Drawing.Size(173, 31);
+            this.GenderTextBox.TabIndex = 27;
+            this.GenderTextBox.Texts = "Null";
+            this.GenderTextBox.UnderlinedStyle = false;
+            // 
+            // ctTextBox1
+            // 
+            this.ctTextBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.ctTextBox1.BorderColor = System.Drawing.SystemColors.Control;
+            this.ctTextBox1.BorderFocusColor = System.Drawing.SystemColors.Control;
+            this.ctTextBox1.BorderSize = 0;
+            this.ctTextBox1.Font = new System.Drawing.Font("Calibri", 13F);
+            this.ctTextBox1.ForeColor = System.Drawing.Color.Black;
+            this.ctTextBox1.Location = new System.Drawing.Point(165, 6);
+            this.ctTextBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.ctTextBox1.Multiline = false;
+            this.ctTextBox1.Name = "ctTextBox1";
+            this.ctTextBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.ctTextBox1.PasswordChar = false;
+            this.ctTextBox1.ReadOnly = true;
+            this.ctTextBox1.Size = new System.Drawing.Size(173, 31);
+            this.ctTextBox1.TabIndex = 27;
+            this.ctTextBox1.Texts = "Null";
+            this.ctTextBox1.UnderlinedStyle = false;
+            // 
+            // BirthTextBox
+            // 
+            this.BirthTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.BirthTextBox.BorderColor = System.Drawing.SystemColors.Control;
+            this.BirthTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
+            this.BirthTextBox.BorderSize = 0;
+            this.BirthTextBox.Font = new System.Drawing.Font("Calibri", 13F);
+            this.BirthTextBox.ForeColor = System.Drawing.Color.Black;
+            this.BirthTextBox.Location = new System.Drawing.Point(162, 6);
+            this.BirthTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.BirthTextBox.Multiline = false;
+            this.BirthTextBox.Name = "BirthTextBox";
+            this.BirthTextBox.Padding = new System.Windows.Forms.Padding(4);
+            this.BirthTextBox.PasswordChar = false;
+            this.BirthTextBox.ReadOnly = true;
+            this.BirthTextBox.Size = new System.Drawing.Size(173, 31);
+            this.BirthTextBox.TabIndex = 28;
+            this.BirthTextBox.Texts = "Null";
+            this.BirthTextBox.UnderlinedStyle = false;
+            // 
+            // SalaryTextBox
+            // 
+            this.SalaryTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.SalaryTextBox.BorderColor = System.Drawing.SystemColors.Control;
+            this.SalaryTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
+            this.SalaryTextBox.BorderSize = 0;
+            this.SalaryTextBox.Font = new System.Drawing.Font("Calibri", 13F);
+            this.SalaryTextBox.ForeColor = System.Drawing.Color.Black;
+            this.SalaryTextBox.Location = new System.Drawing.Point(166, 6);
+            this.SalaryTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.SalaryTextBox.Multiline = false;
+            this.SalaryTextBox.Name = "SalaryTextBox";
+            this.SalaryTextBox.Padding = new System.Windows.Forms.Padding(4);
+            this.SalaryTextBox.PasswordChar = false;
+            this.SalaryTextBox.ReadOnly = true;
+            this.SalaryTextBox.Size = new System.Drawing.Size(173, 31);
+            this.SalaryTextBox.TabIndex = 28;
+            this.SalaryTextBox.Texts = "Null";
+            this.SalaryTextBox.UnderlinedStyle = false;
+            // 
+            // PhoneTextBox
+            // 
+            this.PhoneTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.PhoneTextBox.BorderColor = System.Drawing.SystemColors.Control;
+            this.PhoneTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
+            this.PhoneTextBox.BorderSize = 0;
+            this.PhoneTextBox.Font = new System.Drawing.Font("Calibri", 13F);
+            this.PhoneTextBox.ForeColor = System.Drawing.Color.Black;
+            this.PhoneTextBox.Location = new System.Drawing.Point(164, 6);
+            this.PhoneTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.PhoneTextBox.Multiline = false;
+            this.PhoneTextBox.Name = "PhoneTextBox";
+            this.PhoneTextBox.Padding = new System.Windows.Forms.Padding(4);
+            this.PhoneTextBox.PasswordChar = false;
+            this.PhoneTextBox.ReadOnly = true;
+            this.PhoneTextBox.Size = new System.Drawing.Size(173, 31);
+            this.PhoneTextBox.TabIndex = 28;
+            this.PhoneTextBox.Texts = "Null";
+            this.PhoneTextBox.UnderlinedStyle = false;
+            // 
+            // AllowanceTextBox
+            // 
+            this.AllowanceTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.AllowanceTextBox.BorderColor = System.Drawing.SystemColors.Control;
+            this.AllowanceTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
+            this.AllowanceTextBox.BorderSize = 0;
+            this.AllowanceTextBox.Font = new System.Drawing.Font("Calibri", 13F);
+            this.AllowanceTextBox.ForeColor = System.Drawing.Color.Black;
+            this.AllowanceTextBox.Location = new System.Drawing.Point(165, 6);
+            this.AllowanceTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.AllowanceTextBox.Multiline = false;
+            this.AllowanceTextBox.Name = "AllowanceTextBox";
+            this.AllowanceTextBox.Padding = new System.Windows.Forms.Padding(4);
+            this.AllowanceTextBox.PasswordChar = false;
+            this.AllowanceTextBox.ReadOnly = true;
+            this.AllowanceTextBox.Size = new System.Drawing.Size(173, 31);
+            this.AllowanceTextBox.TabIndex = 29;
+            this.AllowanceTextBox.Texts = "Null";
+            this.AllowanceTextBox.UnderlinedStyle = false;
+            // 
+            // RoleTextBox
+            // 
+            this.RoleTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.RoleTextBox.BorderColor = System.Drawing.SystemColors.Control;
+            this.RoleTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
+            this.RoleTextBox.BorderSize = 0;
+            this.RoleTextBox.Font = new System.Drawing.Font("Calibri", 13F);
+            this.RoleTextBox.ForeColor = System.Drawing.Color.Black;
+            this.RoleTextBox.Location = new System.Drawing.Point(164, 6);
+            this.RoleTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.RoleTextBox.Multiline = false;
+            this.RoleTextBox.Name = "RoleTextBox";
+            this.RoleTextBox.Padding = new System.Windows.Forms.Padding(4);
+            this.RoleTextBox.PasswordChar = false;
+            this.RoleTextBox.ReadOnly = true;
+            this.RoleTextBox.Size = new System.Drawing.Size(173, 31);
+            this.RoleTextBox.TabIndex = 29;
+            this.RoleTextBox.Texts = "Null";
+            this.RoleTextBox.UnderlinedStyle = false;
+            // 
+            // DepartmentTextBox
+            // 
+            this.DepartmentTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.DepartmentTextBox.BorderColor = System.Drawing.SystemColors.Control;
+            this.DepartmentTextBox.BorderFocusColor = System.Drawing.SystemColors.Control;
+            this.DepartmentTextBox.BorderSize = 0;
+            this.DepartmentTextBox.Font = new System.Drawing.Font("Calibri", 13F);
+            this.DepartmentTextBox.ForeColor = System.Drawing.Color.Black;
+            this.DepartmentTextBox.Location = new System.Drawing.Point(165, 6);
+            this.DepartmentTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.DepartmentTextBox.Multiline = false;
+            this.DepartmentTextBox.Name = "DepartmentTextBox";
+            this.DepartmentTextBox.Padding = new System.Windows.Forms.Padding(4);
+            this.DepartmentTextBox.PasswordChar = false;
+            this.DepartmentTextBox.ReadOnly = true;
+            this.DepartmentTextBox.Size = new System.Drawing.Size(173, 31);
+            this.DepartmentTextBox.TabIndex = 29;
+            this.DepartmentTextBox.Texts = "Null";
+            this.DepartmentTextBox.UnderlinedStyle = false;
+            // 
+            // EditButton
+            // 
+            this.EditButton.BackColor = System.Drawing.Color.Transparent;
+            this.EditButton.BackgroundColor = System.Drawing.Color.Transparent;
+            this.EditButton.BorderColor = System.Drawing.Color.Blue;
+            this.EditButton.BorderRadius = 3;
+            this.EditButton.BorderSize = 2;
+            this.EditButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EditButton.FlatAppearance.BorderSize = 0;
+            this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditButton.Font = new System.Drawing.Font("Calibri", 13F);
+            this.EditButton.ForeColor = System.Drawing.Color.Black;
+            this.EditButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.EditButton.HoverIconColor = System.Drawing.Color.Blue;
+            this.EditButton.HoverTextColor = System.Drawing.Color.Blue;
+            this.EditButton.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.EditButton.IconColor = System.Drawing.Color.Black;
+            this.EditButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.EditButton.IconSize = 24;
+            this.EditButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.EditButton.Location = new System.Drawing.Point(203, 5);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Padding = new System.Windows.Forms.Padding(120, 0, 0, 0);
+            this.EditButton.Size = new System.Drawing.Size(328, 40);
+            this.EditButton.TabIndex = 1;
+            this.EditButton.Text = "Sửa";
+            this.EditButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EditButton.TextColor = System.Drawing.Color.Black;
+            this.EditButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.EditButton.UseVisualStyleBackColor = false;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
+            // 
             // ProfilePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -732,6 +860,10 @@
             this.flowLayoutPanel9.PerformLayout();
             this.flowButtomLayoutPanel.ResumeLayout(false);
             this.SaveAndCancelButtonLayoutPanel.ResumeLayout(false);
+            this.flowLayoutPanel10.ResumeLayout(false);
+            this.flowLayoutPanel10.PerformLayout();
+            this.flowLayoutPanel11.ResumeLayout(false);
+            this.flowLayoutPanel11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -778,5 +910,13 @@
         private controls.CTTextBox SalaryTextBox;
         private controls.CTTextBox AllowanceTextBox;
         private controls.CTTextBox DepartmentTextBox;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
+        private FontAwesome.Sharp.IconButton iconButton8;
+        private System.Windows.Forms.Label label3;
+        private controls.CTTextBox ctTextBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
+        private FontAwesome.Sharp.IconButton iconButton9;
+        private System.Windows.Forms.Label label4;
+        private controls.CTTextBox BirthTextBox;
     }
 }

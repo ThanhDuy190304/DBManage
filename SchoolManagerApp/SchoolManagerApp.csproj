@@ -214,6 +214,12 @@
     <Compile Include="src\Views\forms\DBA\CreateForm.Designer.cs">
       <DependentUpon>CreateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\pages\NVCB\CoursesPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\pages\NVCB\CoursesPage.Designer.cs">
+      <DependentUpon>CoursesPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\pages\NVCB\SubjectsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\forms\DBA\CreateForm.resx">
       <DependentUpon>CreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\pages\NVCB\CoursesPage.resx">
+      <DependentUpon>CoursesPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\pages\NVCB\StudentsPage.resx">
       <DependentUpon>StudentsPage.cs</DependentUpon>
