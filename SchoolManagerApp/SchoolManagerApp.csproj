@@ -142,6 +142,9 @@
     <Compile Include="src\Views\controls\CTComboBox.Designer.cs">
       <DependentUpon>CTComboBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\controls\CTTable_v2.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Views\controls\CTTextBoxIcon.cs">
       <SubType>Component</SubType>
     </Compile>

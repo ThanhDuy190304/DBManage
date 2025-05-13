@@ -31,25 +31,6 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-        public async Task<bool> UpdatePhoneNumberForNVCB( string newDT)
-        {
-
-            try
-            {
-                string query = "UPDATE ADMIN.V_THONGTINCANHAN_NHANVIEN SET DT = :newDT";
-                int rowsAffected = await _dbService.Connection.ExecuteAsync(query, new { newDT });
-                return rowsAffected > 0;
-            }
-            catch (OracleException ex)
-            {
-                throw ErrorMapper.MapOracleException(ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ServerError($"Lỗi khi cập nhật số điện thoại cho : " + ex.Message);
-            }
-        }
-
         // --------------------------- Chức năng cho ROLE_TRGDV (Trưởng đơn vị) ---------------------------
 
         public async Task<IEnumerable<NHANVIEN>> GETEmployeesInManagedUnitTRGDV()

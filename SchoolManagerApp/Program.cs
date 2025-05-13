@@ -1,5 +1,4 @@
 ﻿// Program.cs
-// Program.cs
 //#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
 
 using System;

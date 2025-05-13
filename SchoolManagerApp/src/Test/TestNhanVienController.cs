@@ -32,7 +32,6 @@ namespace SchoolManagerApp.src.Test
             Console.WriteLine("===== TEST CHO USER: " + _username + " =====\n");
             //NVCB -- NV008
             await TestSelectByRole();
-            await TestUpdateSoDienThoai();
             //TRGDV -- NV001
             await TestSelectNhanVienTrongDonVi();
             //NV TCHC -- NV011
@@ -95,21 +94,7 @@ namespace SchoolManagerApp.src.Test
                 Console.WriteLine("[FAIL] SELECT TAT CA NHANVIEN: " + ex.Message + "\n");
             }
         }
-
-        // Hàm kiểm tra quyền cập nhật số điện thoại (tất cả vai trò đều có quyền này)
-        private async Task TestUpdateSoDienThoai()
-        {
-            try
-            {
-                var ok = await _controller.UpdatePhoneNumberForNVCB( "0911111111");
-                Console.WriteLine(ok ? "[PASS] UPDATE SO DIEN THOAI\n" : "[FAIL] UPDATE SO DIEN THOAI khong thanh cong\n");
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[FAIL] UPDATE SO DIEN THOAI: " + ex.Message + "\n");
-            }
-        }
+        
 
         // Hàm kiểm tra quyền thêm, cập nhật, xóa nhân viên (chỉ ROLE_NV_TCHC)
         private async Task TestInsertUpdateDeleteNhanVien()
