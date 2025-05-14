@@ -120,9 +120,9 @@
             this.ReloadButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.ReloadButton.IconSize = 24;
             this.ReloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReloadButton.Location = new System.Drawing.Point(720, 449);
+            this.ReloadButton.Location = new System.Drawing.Point(731, 449);
             this.ReloadButton.Name = "ReloadButton";
-            this.ReloadButton.Size = new System.Drawing.Size(99, 40);
+            this.ReloadButton.Size = new System.Drawing.Size(88, 40);
             this.ReloadButton.TabIndex = 2;
             this.ReloadButton.Text = "Reload";
             this.ReloadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -152,9 +152,9 @@
             this.CreateEmpButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.CreateEmpButton.IconSize = 24;
             this.CreateEmpButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CreateEmpButton.Location = new System.Drawing.Point(669, 24);
+            this.CreateEmpButton.Location = new System.Drawing.Point(686, 24);
             this.CreateEmpButton.Name = "CreateEmpButton";
-            this.CreateEmpButton.Size = new System.Drawing.Size(150, 40);
+            this.CreateEmpButton.Size = new System.Drawing.Size(133, 40);
             this.CreateEmpButton.TabIndex = 3;
             this.CreateEmpButton.Text = "Tạo nhân viên";
             this.CreateEmpButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

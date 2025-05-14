@@ -20,6 +20,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
         public UpdateEmp(NHANVIEN emp)
         {
             InitializeComponent();
+            this.AcceptButton = this.SaveButton;
             this._nvController = new NhanVienController();
             this._emp = emp;
             InitializeEmp();

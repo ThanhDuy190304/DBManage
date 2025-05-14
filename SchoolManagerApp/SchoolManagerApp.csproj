@@ -209,6 +209,12 @@
     <Compile Include="src\Views\forms\NVCB\CreateCourse.Designer.cs">
       <DependentUpon>CreateCourse.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\forms\NVCB\CreateRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\CreateRegistration.Designer.cs">
+      <DependentUpon>CreateRegistration.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\forms\NVCB\UpdateCourse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +226,12 @@
     </Compile>
     <Compile Include="src\Views\forms\NVCB\UpdateEmp.Designer.cs">
       <DependentUpon>UpdateEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\UpdateGrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\UpdateGrade.Designer.cs">
+      <DependentUpon>UpdateGrade.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\layout\BaseMain.cs">
       <SubType>Form</SubType>
@@ -338,11 +350,17 @@
     <EmbeddedResource Include="src\Views\forms\NVCB\CreateCourse.resx">
       <DependentUpon>CreateCourse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\NVCB\CreateRegistration.resx">
+      <DependentUpon>CreateRegistration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\forms\NVCB\UpdateCourse.resx">
       <DependentUpon>UpdateCourse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\forms\NVCB\UpdateEmp.resx">
       <DependentUpon>UpdateEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\NVCB\UpdateGrade.resx">
+      <DependentUpon>UpdateGrade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\layout\NVCBMain.resx">
       <DependentUpon>NVCBMain.cs</DependentUpon>

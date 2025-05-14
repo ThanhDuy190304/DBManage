@@ -59,7 +59,7 @@
             this.YearTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowButtomLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SaveAndCancelButtonLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.ctButton1 = new SchoolManagerApp.Controls.CTButton();
+            this.SaveButton = new SchoolManagerApp.Controls.CTButton();
             this.CancelButton = new SchoolManagerApp.Controls.CTButton();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
@@ -502,44 +502,44 @@
             // 
             // SaveAndCancelButtonLayoutPanel
             // 
-            this.SaveAndCancelButtonLayoutPanel.Controls.Add(this.ctButton1);
+            this.SaveAndCancelButtonLayoutPanel.Controls.Add(this.SaveButton);
             this.SaveAndCancelButtonLayoutPanel.Controls.Add(this.CancelButton);
             this.SaveAndCancelButtonLayoutPanel.Location = new System.Drawing.Point(23, 5);
             this.SaveAndCancelButtonLayoutPanel.Name = "SaveAndCancelButtonLayoutPanel";
             this.SaveAndCancelButtonLayoutPanel.Size = new System.Drawing.Size(307, 45);
             this.SaveAndCancelButtonLayoutPanel.TabIndex = 26;
             // 
-            // ctButton1
+            // SaveButton
             // 
-            this.ctButton1.BackColor = System.Drawing.Color.Transparent;
-            this.ctButton1.BackgroundColor = System.Drawing.Color.Transparent;
-            this.ctButton1.BorderColor = System.Drawing.Color.Blue;
-            this.ctButton1.BorderRadius = 3;
-            this.ctButton1.BorderSize = 2;
-            this.ctButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ctButton1.FlatAppearance.BorderSize = 0;
-            this.ctButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ctButton1.Font = new System.Drawing.Font("Calibri", 13F);
-            this.ctButton1.ForeColor = System.Drawing.Color.Black;
-            this.ctButton1.HoverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.ctButton1.HoverIconColor = System.Drawing.Color.Blue;
-            this.ctButton1.HoverTextColor = System.Drawing.Color.Blue;
-            this.ctButton1.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.ctButton1.IconColor = System.Drawing.Color.Black;
-            this.ctButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ctButton1.IconSize = 20;
-            this.ctButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ctButton1.Location = new System.Drawing.Point(3, 3);
-            this.ctButton1.Name = "ctButton1";
-            this.ctButton1.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.ctButton1.Size = new System.Drawing.Size(147, 40);
-            this.ctButton1.TabIndex = 24;
-            this.ctButton1.Text = "Lưu";
-            this.ctButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ctButton1.TextColor = System.Drawing.Color.Black;
-            this.ctButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ctButton1.UseVisualStyleBackColor = false;
-            this.ctButton1.Click += new System.EventHandler(this.SaveButton_Click);
+            this.SaveButton.BackColor = System.Drawing.Color.Transparent;
+            this.SaveButton.BackgroundColor = System.Drawing.Color.Transparent;
+            this.SaveButton.BorderColor = System.Drawing.Color.Blue;
+            this.SaveButton.BorderRadius = 3;
+            this.SaveButton.BorderSize = 2;
+            this.SaveButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SaveButton.FlatAppearance.BorderSize = 0;
+            this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveButton.Font = new System.Drawing.Font("Calibri", 13F);
+            this.SaveButton.ForeColor = System.Drawing.Color.Black;
+            this.SaveButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.SaveButton.HoverIconColor = System.Drawing.Color.Blue;
+            this.SaveButton.HoverTextColor = System.Drawing.Color.Blue;
+            this.SaveButton.IconChar = FontAwesome.Sharp.IconChar.Check;
+            this.SaveButton.IconColor = System.Drawing.Color.Black;
+            this.SaveButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.SaveButton.IconSize = 20;
+            this.SaveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.SaveButton.Location = new System.Drawing.Point(3, 3);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.SaveButton.Size = new System.Drawing.Size(147, 40);
+            this.SaveButton.TabIndex = 24;
+            this.SaveButton.Text = "Lưu";
+            this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SaveButton.TextColor = System.Drawing.Color.Black;
+            this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // CancelButton
             // 
@@ -638,7 +638,7 @@
         private controls.CTTextBox YearTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowButtomLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel SaveAndCancelButtonLayoutPanel;
-        private Controls.CTButton ctButton1;
+        private Controls.CTButton SaveButton;
         private Controls.CTButton CancelButton;
     }
 }

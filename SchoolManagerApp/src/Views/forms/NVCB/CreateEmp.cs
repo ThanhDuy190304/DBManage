@@ -19,6 +19,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
         {
             InitializeComponent();
             _nvController = new NhanVienController();
+            this.AcceptButton = this.SaveButton;
         }
         private void ResetEmpForm()
         {

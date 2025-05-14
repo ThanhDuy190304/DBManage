@@ -20,6 +20,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
         {
             InitializeComponent();
             _mmController = new MomonController();
+            this.AcceptButton = this.SaveButton;
         }
 
         private void ResetEmpForm()

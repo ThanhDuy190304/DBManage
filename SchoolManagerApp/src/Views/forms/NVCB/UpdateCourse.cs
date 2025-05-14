@@ -23,6 +23,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
             InitializeComponent();
             _mmController = new MomonController();
             this._course = course;
+            this.AcceptButton = this.SaveButton;
             InitializeCourse();
         }
         private void InitializeCourse()
