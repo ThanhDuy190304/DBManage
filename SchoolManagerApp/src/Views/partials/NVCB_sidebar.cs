@@ -63,7 +63,7 @@ namespace SchoolManagerApp.src.Views.partials
 
         private void CourseButton_Click(object sender, EventArgs e)
         {
-            OnPageChange?.Invoke(new pages.NVCB.SubjectsPage());
+            OnPageChange?.Invoke(new pages.NVCB.CoursesPage());
         }
         private void StudentsButton_Click(object sender, EventArgs e)
         {

@@ -1,13 +1,12 @@
-﻿using SchoolManagerApp.Controls;
+﻿using FontAwesome.Sharp;
 using SchoolManagerApp.src.Controller;
+using SchoolManagerApp.src.Views.controls;
+using SchoolManagerApp.src.Views.forms.NVCB;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.pages.NVCB
@@ -54,7 +53,7 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                 r.MADV
                     }).ToList();
 
-                var table = new CTTable(columnDefinitions, data, null, false);
+                var table = new CTTable_v2(columnDefinitions, data);
                 table.Dock = DockStyle.Fill;
                 this.TableEmpsOneDepPanel.Controls.Add(table);
             }
@@ -102,7 +101,14 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                 r.MADV
                     }).ToList();
 
-                var table = new CTTable(columnDefinitions, data, null, false);
+                var buttonMatrix = emps.Select(emp => new Control[]
+                {
+                    EditAEmpButton(emp),
+                    DeleteAEmpButton(emp.MANV),
+                }).ToArray();
+
+                var table = new CTTable_v2(columnDefinitions, data, buttonMatrix);
+
                 table.Dock = DockStyle.Fill;
                 this.TableAllEmpsPanel.Controls.Add(table);
             }
@@ -118,6 +124,86 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
 
         }
 
+        private async void HandleDeleteEmp(string empCode)
+        {
+            try
+            {
+                await this._empController.DeleteEmployee(empCode);
+                MessageBox.Show($"Đã xoá nhân viên {empCode} thành công.", "Thành công",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi xoá nhân viên: {ex.Message}", "Lỗi",
+                             MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private Control DeleteAEmpButton(string empCode)
+        {
+            // Nút thao tác
+            IconButton trashButton = new IconButton()
+            {
+                IconChar = IconChar.Trash,
+                IconColor = Color.Red,
+                IconSize = 20,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+                Text = "",
+                Cursor = Cursors.Hand,
+            };
+            trashButton.FlatAppearance.BorderSize = 0;
+            trashButton.Size = new Size(24, 24);
+            trashButton.Click += (sender, e) =>
+            {
+                HandleDeleteEmp(empCode); 
+            };
+
+            return trashButton;
+        }
+
+        private void ReloadButton_Click(object sender, EventArgs e)
+        {
+            this.TableAllEmpsPanel.Controls.Clear();
+            this.TableEmpsOneDepPanel.Controls.Clear();
+
+            InitializeEmpsHasOneDepartmentTable();
+            InitializeAllEmpsTable();
+        }
+
+        private void CreateEmpButton_Click(object sender, EventArgs e)
+        {
+            CreateEmp createEmpForm = new CreateEmp();
+            createEmpForm.ShowDialog();
+        }
+
+
+        private void HandleEditEmp(NHANVIEN emp)
+        {
+            UpdateEmp updateEmpForm = new UpdateEmp(emp);
+            updateEmpForm.ShowDialog();
+        }
+        private Control EditAEmpButton(NHANVIEN emp)
+        {
+            // Nút thao tác
+            IconButton editButton = new IconButton()
+            {
+                IconChar = IconChar.Edit,
+                IconColor = Color.Blue,
+                IconSize = 20,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+                Text = "",
+                Cursor = Cursors.Hand,
+            };
+            editButton.FlatAppearance.BorderSize = 0;
+            editButton.Size = new Size(24, 24);
+            editButton.Click += (sender, e) =>
+            {
+                HandleEditEmp(emp);
+            };
+
+            return editButton;
+        }
     }
 
 }

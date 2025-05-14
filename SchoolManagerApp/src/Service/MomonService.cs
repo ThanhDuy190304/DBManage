@@ -13,13 +13,13 @@ namespace SchoolManagerApp.src.Service
     {
       
         // --------------------------- Chức năng cho ROLE_GV (Giảng viên) ---------------------------
-        public async Task<IEnumerable<MOMON>> GETPersonalTeachingAssignmentsForLecturer()
+        public async Task<IEnumerable<MOMON_HOCPHAN>> GETPersonalTeachingAssignmentsForLecturer()
         {
 
             try
             {
                 string query = "SELECT * FROM ADMIN.V_PHANCONG_CUAMINH_MOMON";
-                return await _dbService.Connection.QueryAsync<MOMON>(query);
+                return await _dbService.Connection.QueryAsync<MOMON_HOCPHAN>(query);
             }
             catch (OracleException ex)
             {
@@ -32,13 +32,13 @@ namespace SchoolManagerApp.src.Service
         }
 
         // --------------------------- Chức năng cho ROLE_NVPDT (Nhân viên phòng đào tạo) ---------------------------
-        public async Task<IEnumerable<MOMON>> GETCurrentTeachingAssignments()
+        public async Task<IEnumerable<MOMON_HOCPHAN>> GETCurrentTeachingAssignments()
         {
 
             try
             {
                 string query = "SELECT * FROM ADMIN.V_HocKi_NamHoc_HienTai_MOMON";
-                return await _dbService.Connection.QueryAsync<MOMON>(query);
+                return await _dbService.Connection.QueryAsync<MOMON_HOCPHAN>(query);
             }
             catch (OracleException ex)
             {
@@ -115,8 +115,6 @@ namespace SchoolManagerApp.src.Service
 
         public async Task<bool> DeleteTeachingAssignment( string maMm)
         {
-
-
             try
             {
                 string query = "DELETE FROM ADMIN.V_HocKi_NamHoc_HienTai_MOMON WHERE MAMM = :MaMm";
@@ -134,12 +132,12 @@ namespace SchoolManagerApp.src.Service
         }
 
         // --------------------------- Chức năng cho ROLE_TRGDV (Trưởng đơn vị) ---------------------------
-        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsInManagedUnit()
+        public async Task<IEnumerable<MOMON_HOCPHAN>> GETTeachingAssignmentsInManagedUnit()
         {
             try
             {
                 string query = "SELECT * FROM ADMIN.v_phancong_trong_donvi_momon";
-                return await _dbService.Connection.QueryAsync<MOMON>(query);
+                return await _dbService.Connection.QueryAsync<MOMON_HOCPHAN>(query);
             }
             catch (OracleException ex)
             {

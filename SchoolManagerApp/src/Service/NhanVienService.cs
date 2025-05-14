@@ -14,6 +14,25 @@ namespace SchoolManagerApp.src.Service
     {
 
         // --------------------------- Chức năng cho ROLE_NVCB (Nhân viên cơ bản) ---------------------------
+        public async Task<bool> UpdatePhoneNumberForNVCB(string newDT)
+        {
+
+            try
+            {
+                string query = "UPDATE ADMIN.V_THONGTINCANHAN_NHANVIEN SET DT = :newDT";
+                int rowsAffected = await _dbService.Connection.ExecuteAsync(query, new { newDT });
+                return rowsAffected > 0;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError($"Lỗi khi cập nhật số điện thoại cho : " + ex.Message);
+            }
+        }
+
         public async Task<NHANVIEN> GETPersonalInformationForNVCB()
         {
             try

@@ -1,5 +1,6 @@
 ﻿using SchoolManagerApp.Controls;
 using SchoolManagerApp.src.Controller;
+using SchoolManagerApp.src.Views.controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,7 +47,7 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                 r.DIEMTK.ToString(),
                 }).ToList();
 
-                var table = new CTTable(columnDefinitions, data, null, false);
+                var table = new CTTable_v2(columnDefinitions, data);
                 table.Dock = DockStyle.Fill;
                 this.TableAllRetristrationsPanel.Controls.Add(table);
             }

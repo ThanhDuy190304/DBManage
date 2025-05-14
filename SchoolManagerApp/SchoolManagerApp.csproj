@@ -121,6 +121,7 @@
     <Compile Include="src\Models\DBA_ROLES.cs" />
     <Compile Include="src\Models\DBA_USERS.cs" />
     <Compile Include="src\Models\Momon.cs" />
+    <Compile Include="src\Models\MOMON_HOCPHAN.cs" />
     <Compile Include="src\Models\Nhanvien.cs" />
     <Compile Include="src\Models\SinhVien.cs" />
     <Compile Include="src\Service\DangKyService.cs" />
@@ -196,6 +197,30 @@
     <Compile Include="src\Views\forms\DBA\UserPrivilegeManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="src\Views\forms\NVCB\CreateEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\CreateEmp.Designer.cs">
+      <DependentUpon>CreateEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\CreateCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\CreateCourse.Designer.cs">
+      <DependentUpon>CreateCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\UpdateCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\UpdateCourse.Designer.cs">
+      <DependentUpon>UpdateCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\UpdateEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\UpdateEmp.Designer.cs">
+      <DependentUpon>UpdateEmp.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\layout\BaseMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,11 +255,11 @@
     <Compile Include="src\Views\pages\NVCB\RegistrationsPage.Designer.cs">
       <DependentUpon>RegistrationsPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\pages\NVCB\SubjectsPage.cs">
+    <Compile Include="src\Views\pages\NVCB\CoursesPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Views\pages\NVCB\SubjectsPage.Designer.cs">
-      <DependentUpon>SubjectsPage.cs</DependentUpon>
+    <Compile Include="src\Views\pages\NVCB\CoursesPage.Designer.cs">
+      <DependentUpon>CoursesPage.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\pages\NVCB\EmpsPage.cs">
       <SubType>UserControl</SubType>
@@ -307,6 +332,18 @@
     <EmbeddedResource Include="src\Views\forms\DBA\UserPrivilegeManageForm.resx">
       <DependentUpon>UserPrivilegeManageForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\NVCB\CreateEmp.resx">
+      <DependentUpon>CreateEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\NVCB\CreateCourse.resx">
+      <DependentUpon>CreateCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\NVCB\UpdateCourse.resx">
+      <DependentUpon>UpdateCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\NVCB\UpdateEmp.resx">
+      <DependentUpon>UpdateEmp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\layout\NVCBMain.resx">
       <DependentUpon>NVCBMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -325,8 +362,8 @@
     <EmbeddedResource Include="src\Views\pages\NVCB\StudentsPage.resx">
       <DependentUpon>StudentsPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\pages\NVCB\SubjectsPage.resx">
-      <DependentUpon>SubjectsPage.cs</DependentUpon>
+    <EmbeddedResource Include="src\Views\pages\NVCB\CoursesPage.resx">
+      <DependentUpon>CoursesPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\pages\NVCB\EmpsPage.resx">
       <DependentUpon>EmpsPage.cs</DependentUpon>
@@ -380,9 +417,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\Views\forms\NVCB\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>

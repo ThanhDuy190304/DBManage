@@ -149,17 +149,47 @@ namespace SchoolManagerApp.src.Service
         }
 
         // Danh sách sinh viên giáo viên phụ trách
-        public async Task<IEnumerable<DangKy>> GetListStudentOfGV()
+        public async Task<IEnumerable<DangKy>> GetListStudentOfGV(string mamm)
         {
             try
             {
-                string query = "select m.magv, d.mamm, d.masv, m.HK, m.NAM From ADMIN.DANGKY d Join ADMIN.MOMON m On m.mamm = d.mamm";
-                return await _dbService.Connection.QueryAsync<DangKy>(query);
+                string query = @"SELECT m.magv, d.mamm, d.masv, m.HK, m.NAM 
+                         FROM ADMIN.DANGKY d 
+                         JOIN ADMIN.MOMON m ON m.mamm = d.mamm 
+                         WHERE d.mamm = :mamm";
+
+                var parameters = new { mamm };
+                return await _dbService.Connection.QueryAsync<DangKy>(query, parameters);
             }
             catch (OracleException ex)
             {
                 throw ErrorMapper.MapOracleException(ex);
             }
         }
+
+
+        // update du lieu dang ky cua sinh vien cua NV PDT
+        public async Task<int> UpdateSV(string maSV, string maMM, string newMAMM)
+        {
+            try
+            {
+                string query = @"
+            UPDATE ADMIN.DANGKY
+            SET MAMM = :newMAMM
+            WHERE MASV = :MASV AND MAMM = :MAMM";
+                var parameters = new
+                {
+                    newMAMM,
+                    MASV = maSV,
+                    MAMM = maMM
+                };
+                return await _dbService.Connection.ExecuteAsync(query, parameters);
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+        }
+
     }
 }

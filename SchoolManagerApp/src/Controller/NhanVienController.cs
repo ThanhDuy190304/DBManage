@@ -17,6 +17,22 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho RL_NVCB
+        public async Task<bool> UpdatePhoneNumberForNVCB(string newDT)
+        {
+            try
+            {
+                return await _nhanVienService.UpdatePhoneNumberForNVCB(newDT);
+            }
+            catch (BaseError)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new ServerError("Lỗi không xác định: " + ex.Message);
+            }
+        }
+
         public async Task<NHANVIEN> GETPersonalInformationForNVCB()
         {
             try

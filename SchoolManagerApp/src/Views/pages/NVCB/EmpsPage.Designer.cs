@@ -33,6 +33,8 @@
             this.TableAllEmpsPanel = new System.Windows.Forms.Panel();
             this.EmpsOneDepTab = new System.Windows.Forms.TabPage();
             this.TableEmpsOneDepPanel = new System.Windows.Forms.Panel();
+            this.ReloadButton = new SchoolManagerApp.Controls.CTButton();
+            this.CreateEmpButton = new SchoolManagerApp.Controls.CTButton();
             this.EmpsTabControl.SuspendLayout();
             this.AllEmpsTab.SuspendLayout();
             this.EmpsOneDepTab.SuspendLayout();
@@ -97,10 +99,76 @@
             this.TableEmpsOneDepPanel.Size = new System.Drawing.Size(694, 250);
             this.TableEmpsOneDepPanel.TabIndex = 5;
             // 
+            // ReloadButton
+            // 
+            this.ReloadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReloadButton.BackColor = System.Drawing.Color.White;
+            this.ReloadButton.BackgroundColor = System.Drawing.Color.White;
+            this.ReloadButton.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.BorderRadius = 8;
+            this.ReloadButton.BorderSize = 2;
+            this.ReloadButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ReloadButton.FlatAppearance.BorderSize = 0;
+            this.ReloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReloadButton.Font = new System.Drawing.Font("Calibri", 12F);
+            this.ReloadButton.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.ReloadButton.HoverIconColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.HoverTextColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.IconChar = FontAwesome.Sharp.IconChar.RotateForward;
+            this.ReloadButton.IconColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ReloadButton.IconSize = 24;
+            this.ReloadButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ReloadButton.Location = new System.Drawing.Point(720, 449);
+            this.ReloadButton.Name = "ReloadButton";
+            this.ReloadButton.Size = new System.Drawing.Size(99, 40);
+            this.ReloadButton.TabIndex = 2;
+            this.ReloadButton.Text = "Reload";
+            this.ReloadButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ReloadButton.TextColor = System.Drawing.Color.RoyalBlue;
+            this.ReloadButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ReloadButton.UseVisualStyleBackColor = false;
+            this.ReloadButton.Click += new System.EventHandler(this.ReloadButton_Click);
+            // 
+            // CreateEmpButton
+            // 
+            this.CreateEmpButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateEmpButton.BackColor = System.Drawing.Color.White;
+            this.CreateEmpButton.BackgroundColor = System.Drawing.Color.White;
+            this.CreateEmpButton.BorderColor = System.Drawing.Color.Green;
+            this.CreateEmpButton.BorderRadius = 8;
+            this.CreateEmpButton.BorderSize = 2;
+            this.CreateEmpButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CreateEmpButton.FlatAppearance.BorderSize = 0;
+            this.CreateEmpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CreateEmpButton.Font = new System.Drawing.Font("Calibri", 12F);
+            this.CreateEmpButton.ForeColor = System.Drawing.Color.Green;
+            this.CreateEmpButton.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.CreateEmpButton.HoverIconColor = System.Drawing.Color.Green;
+            this.CreateEmpButton.HoverTextColor = System.Drawing.Color.Green;
+            this.CreateEmpButton.IconChar = FontAwesome.Sharp.IconChar.Plus;
+            this.CreateEmpButton.IconColor = System.Drawing.Color.Green;
+            this.CreateEmpButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CreateEmpButton.IconSize = 24;
+            this.CreateEmpButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.CreateEmpButton.Location = new System.Drawing.Point(669, 24);
+            this.CreateEmpButton.Name = "CreateEmpButton";
+            this.CreateEmpButton.Size = new System.Drawing.Size(150, 40);
+            this.CreateEmpButton.TabIndex = 3;
+            this.CreateEmpButton.Text = "Tạo nhân viên";
+            this.CreateEmpButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CreateEmpButton.TextColor = System.Drawing.Color.Green;
+            this.CreateEmpButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.CreateEmpButton.UseVisualStyleBackColor = false;
+            this.CreateEmpButton.Click += new System.EventHandler(this.CreateEmpButton_Click);
+            // 
             // EmpsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CreateEmpButton);
+            this.Controls.Add(this.ReloadButton);
             this.Controls.Add(this.EmpsTabControl);
             this.Name = "EmpsPage";
             this.Size = new System.Drawing.Size(897, 517);
@@ -118,5 +186,7 @@
         private System.Windows.Forms.TabPage EmpsOneDepTab;
         private System.Windows.Forms.Panel TableAllEmpsPanel;
         private System.Windows.Forms.Panel TableEmpsOneDepPanel;
+        private Controls.CTButton ReloadButton;
+        private Controls.CTButton CreateEmpButton;
     }
 }
