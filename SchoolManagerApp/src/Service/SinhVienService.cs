@@ -1,90 +1,123 @@
-﻿using System;
+﻿using Dapper;
+using Oracle.ManagedDataAccess.Client;
+using SchoolManagerApp.src.Models;
+using SchoolManagerApp.src.utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dapper;
-using Oracle.ManagedDataAccess.Client;
-using SchoolManagerApp.src.Models;
+
 
 namespace SchoolManagerApp.src.Service
 {
-    public class SinhVienService
+    internal class SinhVienService : BaseService
     {
-        private readonly DatabaseService _dbService;
 
-        public SinhVienService(DatabaseService dbService)
-        {
-            _dbService = dbService;
-        }
-
-        // Lấy danh sách sinh viên
-        public async Task<IEnumerable<SinhVien>> GetAllSinhVien()
+        public async Task<IEnumerable<SINHVIEN>> GetAll()
         {
             try
             {
                 string query = "SELECT * FROM ADMIN.SINHVIEN";
-                return await _dbService.Connection.QueryAsync<SinhVien>(query);
+                return await _dbService.Connection.QueryAsync<SINHVIEN>(query);
             }
             catch (OracleException ex)
             {
-                throw new Exception("Không thể lấy danh sách sinh viên: " + ex.Message);
+                throw ErrorMapper.MapOracleException(ex);
             }
         }
 
-
-        // Thêm sinh viên
-        public async Task<int> InsertSinhVien(SinhVien sv)
+        public async Task<SINHVIEN> GetAStuInf()
         {
             try
             {
-                string query = @"
-                    INSERT INTO ADMIN.SINHVIEN (MASV, HOTEN, DCHI, DT, MAKHOA, TINHTRANG)
-                    VALUES (:MASV, :HOTEN, :DCHI, :DT, :MAKHOA, :TINHTRANG)";
+                string query = "SELECT * FROM ADMIN.SINHVIEN";
+                var students = await _dbService.Connection.QueryAsync<SINHVIEN>(query);
+                var firstStudent = students.FirstOrDefault();
 
-                return await _dbService.Connection.ExecuteAsync(query, sv);
+                return firstStudent;
             }
             catch (OracleException ex)
             {
-                throw new Exception("Lỗi khi thêm sinh viên: " + ex.Message);
+                throw ErrorMapper.MapOracleException(ex);
             }
         }
 
-        // Xóa sinh viên
-        public async Task<int> DeleteSinhVien(string maSV)
+        public async Task<bool> UpdateSinhVien(string masv, dynamic fieldsToUpdate)
         {
             try
             {
-                string query = "DELETE FROM ADMIN.SINHVIEN WHERE MASV = :MASV";
+                var expandoDict = (IDictionary<string, object>)fieldsToUpdate;
+                var setClauses = new List<string>();
+                var parameters = new DynamicParameters();
 
-                return await _dbService.Connection.ExecuteAsync(query, new { MASV = maSV });
+                parameters.Add("MASV", masv);
+
+                foreach (var field in expandoDict)
+                {
+                    string columnName = field.Key.ToUpper();
+                    if (!IsValidSinhVienColumn(columnName))
+                    {
+                        throw new ArgumentException($"Trường {columnName} không hợp lệ.");
+                    }
+
+                    setClauses.Add($"{columnName} = :{columnName}");
+                    parameters.Add(columnName, field.Value);
+                }
+
+                string query = $@"
+            UPDATE ADMIN.SINHVIEN
+            SET {string.Join(", ", setClauses)}
+            WHERE MASV = :MASV";
+
+                int rowsAffected = await _dbService.Connection.ExecuteAsync(query, parameters);
+                return rowsAffected > 0;
             }
             catch (OracleException ex)
             {
-                throw new Exception("Lỗi khi xóa sinh viên: " + ex.Message);
+                throw ErrorMapper.MapOracleException(ex);
             }
-        }
-
-        // Cập nhật sinh viên
-        public async Task<int> UpdateSinhVien(SinhVien sv)
-        {
-            try
-            {
-                string query = @"
-                    UPDATE ADMIN.SINHVIEN
-                    SET HOTEN = :HOTEN,
-                        DCHI = :DCHI,
-                        DT = :DT,
-                        MAKHOA = :MAKHOA,
-                        TINHTRANG = :TINHTRANG
-                    WHERE MASV = :MASV";
-
-                return await _dbService.Connection.ExecuteAsync(query, sv);
-            }
-            catch (OracleException ex)
+            catch (Exception ex)
             {
                 throw new Exception("Lỗi khi cập nhật sinh viên: " + ex.Message);
             }
         }
+        public async Task<bool> Insert(SINHVIEN sv)
+        {
+            string query = @"INSERT INTO ADMIN.SINHVIEN (MASV, HOTEN, DCHI, DT, KHOA, TINHTRANG) 
+                             VALUES (:MASV, :HOTEN, :DCHI, :DT, :KHOA, :TINHTRANG)";
+            try
+            {
+                await _dbService.Connection.ExecuteAsync(query, sv);
+
+                return true;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+        }
+        public async Task<bool> Delete(string masv)
+        {
+
+            string query = "DELETE FROM ADMIN.SINHVIEN WHERE MASV = :MASV";
+            try
+            {
+                await _dbService.Connection.ExecuteAsync(query, new { MASV = masv });
+                return true;
+            }
+            catch (OracleException ex)
+            {
+                throw ErrorMapper.MapOracleException(ex);
+            }
+        }
+    private bool IsValidSinhVienColumn(string columnName)
+    {
+        var validColumns = new HashSet<string>
+        {
+            "HOTEN", "PHAI", "NGSINH", "DCHI", "DT", "KHOA", "TINHTRANG"
+        };
+        return validColumns.Contains(columnName);
+    }
     }
 }

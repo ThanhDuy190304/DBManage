@@ -42,7 +42,7 @@ namespace SchoolManagerApp.src.Service
             return _instance;
         }
 
-        public void OpenConnection()
+        private void OpenConnection()
         {
             try
             {
@@ -78,6 +78,37 @@ namespace SchoolManagerApp.src.Service
         {
             string query = "SELECT COUNT(1) FROM SESSION_ROLES WHERE ROLE = 'ROLE_SV'";
             return _connection.ExecuteScalar<int>(query) > 0;
+        }
+
+        public string GetExtended_NVCB_Role()
+        {
+            string sql = @"
+            SELECT ROLE
+            FROM SESSION_ROLES
+            WHERE ROLE IN (
+                'ROLE_GV',
+                'ROLE_NV_TCHC',
+                'ROLE_TRGDV',
+                'ROLE_NV_PDT',
+                'ROLE_NV_PKT',
+                'ROLE_NV_PCTSV'
+            )";
+
+            var roles = _connection.ExecuteScalar<string>(sql);
+            var priorityRoles = new List<string> { "ROLE_GV", "ROLE_TRGDV", "ROLE_NV_TCHC", "ROLE_NV_PDT", "ROLE_NV_PKT", "ROLE_NV_PCTSV" };
+
+            foreach (var pr in priorityRoles)
+            {
+                if (roles.Contains(pr))
+                    return pr;  
+            }
+            return "ROLE_NVCB"; 
+        }
+
+
+        public string GetUserName()
+        {
+            return _connection.ExecuteScalar<string>("SELECT USER FROM dual");
         }
 
         public void CloseConnection()

@@ -29,8 +29,8 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                 var emps = await this._empController.GETEmployeesInManagedUnitTRGDV();
                 var columnDefinitions = new Dictionary<string, int>()
                 {
-                    { "MANV", 100 },
-                    { "HOTEN", 150 },
+                    { "MANV", 130 },
+                    { "HOTEN", 200 },
                     { "PHAI", 60 },
                     { "NGSINH", 100 },
                     { "LUONG", 100 },
@@ -77,8 +77,8 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                 var emps = await this._empController.GETAllEmployees();
                 var columnDefinitions = new Dictionary<string, int>()
                 {
-                    { "MANV", 100 },
-                    { "HOTEN", 150 },
+                    { "MANV", 130 },
+                    { "HOTEN", 200 },
                     { "PHAI", 60 },
                     { "NGSINH", 100 },
                     { "LUONG", 100 },

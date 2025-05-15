@@ -1,6 +1,4 @@
-﻿using SchoolManagerApp.Controls;
-using SchoolManagerApp.src.Views.controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,25 +10,21 @@ using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.partials
 {
-    public partial class NVCB_sidebar : UserControl
+    public partial class SV_sidebar : UserControl
     {
-        private int expandedWidth = 265;
+        private int expandedWidth = 280;
         private int collapsedWidth = 40;
         public event Action OnLogout;
         public Action<UserControl> OnPageChange;
         public event Action<bool> OnSidebarCollapsedChanged;
-
-
-        public NVCB_sidebar()
+        public SV_sidebar()
         {
             InitializeComponent();
         }
-
-        public void setEmpAndRoleLabel(string empCode, string role)
+        public void setStuCodeLabel(string stuCode)
         {
-            this.EmpCode_And_Role_Label.Text = empCode + " - " + role;
+            this.StudentCode_Label.Text = stuCode;
         }
-
         private void rightArrow_Click(object sender, EventArgs e)
         {
             foreach (Control control in this.Controls)
@@ -59,38 +53,24 @@ namespace SchoolManagerApp.src.Views.partials
             OnSidebarCollapsedChanged?.Invoke(true);
         }
 
-
-        private void ProfilePage_Click(object sender, EventArgs e)
-        {
-            OnPageChange?.Invoke(new pages.NVCB.ProfilePage());
-        }
-        private void EmpsButton_Click(object sender, EventArgs e)
-        {
-            OnPageChange?.Invoke(new pages.NVCB.EmpsPage());
-
-        }
-        private void CourseButton_Click(object sender, EventArgs e)
-        {
-            OnPageChange?.Invoke(new pages.NVCB.CoursesPage());
-        }
-        private void StudentsButton_Click(object sender, EventArgs e)
-        {
-            OnPageChange?.Invoke(new pages.NVCB.StudentsPage());
-        }
-        private void RegistrationsButton_Click(object sender, EventArgs e)
-        {
-            OnPageChange?.Invoke(new pages.NVCB.RegistrationsPage());
-        }
         private void LogoutButton_Click(object sender, EventArgs e)
         {
             OnLogout?.Invoke();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void ProfileTab_Click(object sender, EventArgs e)
         {
-
+            OnPageChange?.Invoke(new pages.SV.ProfilePage());
         }
 
-       
+        private void CoursesTab_Click(object sender, EventArgs e)
+        {
+            OnPageChange?.Invoke(new pages.SV.CoursesPage());
+        }
+
+        private void RegistrationsTab_Click(object sender, EventArgs e)
+        {
+            OnPageChange?.Invoke(new pages.SV.RegistrationsPage());
+        }
     }
 }

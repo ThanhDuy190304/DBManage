@@ -6,37 +6,36 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.forms.NVCB
 {
-    public partial class CreateEmp : Form
+    public partial class CreateStudent : Form
     {
-        private NhanVienController _empController;
-        public CreateEmp()
+        private readonly SinhVienController _stuController = new SinhVienController();
+
+        public CreateStudent()
         {
             InitializeComponent();
-            _empController = new NhanVienController();
             this.AcceptButton = this.SaveButton;
         }
         private void ResetEmpForm()
         {
-            this.EmpCodeTextBox.Texts = "";
+            this.StuCodeTextBox.Texts = "";
             this.FullNameTextBox.Texts = "";
             this.GenderTextBox.Texts = "";
             this.BirthTextBox.Texts = "";
-            this.RoleTextBox.Texts = "";
-            this.SalaryTextBox.Texts = "";
-            this.AllowanceTextBox.Texts = "";
+            this.AddressTextBox.Texts = "";
             this.PhoneTextBox.Texts = "";
             this.DepTextBox.Texts = "";
         }
 
         private async void SaveButton_Click(object sender, EventArgs e)
         {
-            string empCode = this.EmpCodeTextBox.Texts;
+            string stuCode = this.StuCodeTextBox.Texts;
             string fullName = this.FullNameTextBox.Texts;
             string gender = this.GenderTextBox.Texts;
             DateTime birth = DateTime.ParseExact(
@@ -45,29 +44,33 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
                 CultureInfo.InvariantCulture,
                 DateTimeStyles.None
             );
-            string role = this.RoleTextBox.Texts;
-            decimal salary = decimal.Parse(this.SalaryTextBox.Texts);
-            decimal allowance = decimal.Parse(this.AllowanceTextBox.Texts);
+            string address = this.AddressTextBox.Texts;
             string phone = this.PhoneTextBox.Texts;
             string department = this.DepTextBox.Texts;
 
-            NHANVIEN newEmp = new NHANVIEN { MANV = empCode, HOTEN = fullName, PHAI = gender, NGSINH = birth, 
-                VAITRO = role, LUONG = salary, PHUCAP = allowance, DT = phone, MADV = department };
+            SINHVIEN newStu = new SINHVIEN
+            {
+                MASV = stuCode,
+                HOTEN = fullName,
+                PHAI = gender,
+                NGSINH = birth,
+                DCHI = address,
+                DT = phone,
+                KHOA = department,
+            };
 
             try
             {
-                await _empController.InsertNewEmployee(newEmp);
-                MessageBox.Show($"Đã tạo nhân viên {empCode} thành công.", "Thành công",
+                await _stuController.Insert(newStu);
+                MessageBox.Show($"Đã tạo sinh viên {stuCode} thành công.", "Thành công",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.ResetEmpForm();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show($"Lỗi khi tạo nhân viên: {ex.Message}", "Lỗi",
+                MessageBox.Show($"Lỗi khi tạo sinh viên: {ex.Message}", "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-    
     }
 }

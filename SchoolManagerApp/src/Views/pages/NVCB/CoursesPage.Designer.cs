@@ -1,4 +1,6 @@
-﻿namespace SchoolManagerApp.src.Views.pages.NVCB
+﻿using SchoolManagerApp.Controls;
+
+namespace SchoolManagerApp.src.Views.pages.NVCB
 {
     partial class CoursesPage
     {

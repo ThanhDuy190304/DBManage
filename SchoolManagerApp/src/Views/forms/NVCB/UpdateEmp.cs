@@ -45,37 +45,78 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
             dynamic updateData = new ExpandoObject();
             var dict = (IDictionary<string, object>)updateData;
 
-            if (this.EmpCodeTextBox.Texts.Trim() != _emp.MANV)
-                dict["MANV"] = this.EmpCodeTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.EmpCodeTextBox.Texts) &&
+                this.EmpCodeTextBox.Texts.Trim() != _emp.MANV)
+            {
+                dict["MANV"] = this.EmpCodeTextBox.Texts.Trim();
+            }
 
-            if (this.FullNameTextBox.Texts.Trim() != _emp.HOTEN)
-                dict["HOTEN"] = this.FullNameTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.FullNameTextBox.Texts) &&
+                this.FullNameTextBox.Texts.Trim() != _emp.HOTEN)
+            {
+                dict["HOTEN"] = this.FullNameTextBox.Texts.Trim();
+            }
 
-            if (this.GenderTextBox.Texts.Trim() != _emp.PHAI)
-                dict["PHAI"] = this.GenderTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.GenderTextBox.Texts) &&
+                this.GenderTextBox.Texts.Trim() != _emp.PHAI)
+            {
+                dict["PHAI"] = this.GenderTextBox.Texts.Trim();
+            }
 
-            if (this.BirthTextBox.Texts.Trim() != _emp.NGSINH.ToString("dd/MM/yyyy"))
-                dict["NGSINH"] = DateTime.ParseExact(this.BirthTextBox.Texts, "d/M/yyyy", CultureInfo.InvariantCulture);
+            if (!string.IsNullOrWhiteSpace(this.BirthTextBox.Texts))
+            {
+                if (DateTime.TryParseExact(this.BirthTextBox.Texts.Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out var newDate))
+                {
+                    if (newDate != _emp.NGSINH.Date)
+                    {
+                        dict["NGSINH"] = newDate;
+                    }
+                }
+            }
 
-            if (this.RoleTextBox.Texts.Trim() != _emp.VAITRO)
-                dict["VAITRO"] = this.RoleTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.RoleTextBox.Texts) &&
+                this.RoleTextBox.Texts.Trim() != _emp.VAITRO)
+            {
+                dict["VAITRO"] = this.RoleTextBox.Texts.Trim();
+            }
 
-            if (this.SalaryTextBox.Texts.Trim() != _emp.LUONG.ToString())
-                dict["LUONG"] = decimal.Parse(this.SalaryTextBox.Texts);
+            if (!string.IsNullOrWhiteSpace(this.SalaryTextBox.Texts) &&
+                decimal.TryParse(this.SalaryTextBox.Texts.Trim(), out var newSalary) &&
+                newSalary != _emp.LUONG)
+            {
+                dict["LUONG"] = newSalary;
+            }
 
-            if (this.AllowanceTextBox.Texts.Trim() != _emp.PHUCAP.ToString())
-                dict["PHUCAP"] = decimal.Parse(this.AllowanceTextBox.Texts);
+            if (!string.IsNullOrWhiteSpace(this.AllowanceTextBox.Texts) &&
+                decimal.TryParse(this.AllowanceTextBox.Texts.Trim(), out var newAllowance) &&
+                newAllowance != _emp.PHUCAP)
+            {
+                dict["PHUCAP"] = newAllowance;
+            }
 
-            if (this.PhoneTextBox.Texts.Trim() != _emp.DT)
-                dict["DT"] = this.PhoneTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.PhoneTextBox.Texts) &&
+                this.PhoneTextBox.Texts.Trim() != _emp.DT)
+            {
+                dict["DT"] = this.PhoneTextBox.Texts.Trim();
+            }
 
-            if (this.DepTextBox.Texts.Trim() != _emp.MADV)
-                dict["MADV"] = this.DepTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.DepTextBox.Texts) &&
+                this.DepTextBox.Texts.Trim() != _emp.MADV)
+            {
+                dict["MADV"] = this.DepTextBox.Texts.Trim();
+            }
 
             if (dict.Count > 0)
             {
-                await _nvController.UpdateEmployeeDetails(_emp.MANV, updateData);
-                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    await _nvController.UpdateEmployeeDetails(_emp.MANV, updateData);
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi cập nhật: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {

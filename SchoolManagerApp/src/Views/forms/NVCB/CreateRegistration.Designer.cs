@@ -92,7 +92,6 @@
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Padding = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel4.Size = new System.Drawing.Size(351, 44);
-            this.flowLayoutPanel4.TabIndex = 2;
             // 
             // iconButton1
             // 
@@ -117,7 +116,6 @@
             this.GenderLabel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
             this.GenderLabel.Name = "GenderLabel";
             this.GenderLabel.Size = new System.Drawing.Size(109, 22);
-            this.GenderLabel.TabIndex = 1;
             this.GenderLabel.Text = "Mã sinh viên  ";
             // 
             // StuCodeTextBox
@@ -232,7 +230,6 @@
             this.label2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(108, 22);
-            this.label2.TabIndex = 2;
             this.label2.Text = "Mã nhân viên";
             // 
             // flowLayoutPanel3
@@ -245,7 +242,6 @@
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Padding = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel3.Size = new System.Drawing.Size(351, 44);
-            this.flowLayoutPanel3.TabIndex = 0;
             // 
             // iconButton5
             // 
@@ -270,7 +266,6 @@
             this.EmpCodeLabel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
             this.EmpCodeLabel.Name = "EmpCodeLabel";
             this.EmpCodeLabel.Size = new System.Drawing.Size(111, 22);
-            this.EmpCodeLabel.TabIndex = 1;
             this.EmpCodeLabel.Text = "Mã môn          ";
             // 
             // CourseCodeTextBox
@@ -328,7 +323,7 @@
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.SaveButton.Size = new System.Drawing.Size(176, 40);
-            this.SaveButton.TabIndex = 9;
+            this.SaveButton.TabIndex = 2;
             this.SaveButton.Text = "Xác nhận";
             this.SaveButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.SaveButton.TextColor = System.Drawing.Color.Black;

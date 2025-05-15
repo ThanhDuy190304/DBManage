@@ -49,19 +49,19 @@ namespace SchoolManagerApp
                 if (loginForm.ShowDialog() != DialogResult.OK)
                     break;
 
-                string role = loginForm.CurrentUserRole;
                 BaseMain mainForm = null;
 
-                if (role.Equals("DBA", StringComparison.OrdinalIgnoreCase))
+                if (authController.GetCurrentBasicRole().Equals("DBA", StringComparison.OrdinalIgnoreCase))
                 {
                     mainForm = new DBAMain();
                 }
-                else if (role.Equals("ROLE_NVCB", StringComparison.OrdinalIgnoreCase))
+                else if (authController.GetCurrentBasicRole().Equals("ROLE_NVCB", StringComparison.OrdinalIgnoreCase))
                 {
-                    mainForm = new NVCBMain();
+                    mainForm = new NVCBMain(authController.GetUserName(), authController.GetExtended_NVCB_Role());
                 }
-                else if (role.Equals("ROLE_SV", StringComparison.OrdinalIgnoreCase))
+                else if (authController.GetCurrentBasicRole().Equals("ROLE_SV", StringComparison.OrdinalIgnoreCase))
                 {
+                    mainForm = new SVMain(authController.GetUserName());
                 }
 
                 if (mainForm == null)

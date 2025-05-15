@@ -12,12 +12,12 @@ namespace SchoolManagerApp.src.Service
 {
     internal class DangKyService : BaseService
     {
-        public async Task<IEnumerable<DangKy>> GetPoint()
+        public async Task<IEnumerable<DANGKY>> GetPoint()
         {
             try
             {
                 string query = "SELECT * FROM ADMIN.DANGKY";
-                return await _dbService.Connection.QueryAsync<DangKy>(query);
+                return await _dbService.Connection.QueryAsync<DANGKY>(query);
             }
             catch (OracleException ex)
             {
@@ -130,26 +130,8 @@ namespace SchoolManagerApp.src.Service
             }
         }
 
-
-
-
-
-        // Danh sách lớp giáo viên phụ trách
-        public async Task<IEnumerable<MOMON>> GetListClass()
-        {
-            try
-            {
-                string query = "SELECT * FROM ADMIN.MOMON";
-                return await _dbService.Connection.QueryAsync<MOMON>(query);
-            }
-            catch (OracleException ex)
-            {
-                throw ErrorMapper.MapOracleException(ex);
-            }
-        }
-
         // Danh sách sinh viên giáo viên phụ trách
-        public async Task<IEnumerable<DangKy>> GetListStudentOfGV(string mamm)
+        public async Task<IEnumerable<DANGKY>> GetListStudentOfGV(string mamm)
         {
             try
             {
@@ -159,7 +141,7 @@ namespace SchoolManagerApp.src.Service
                          WHERE d.mamm = :mamm";
 
                 var parameters = new { mamm };
-                return await _dbService.Connection.QueryAsync<DangKy>(query, parameters);
+                return await _dbService.Connection.QueryAsync<DANGKY>(query, parameters);
             }
             catch (OracleException ex)
             {

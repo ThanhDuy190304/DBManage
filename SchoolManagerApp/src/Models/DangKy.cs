@@ -1,7 +1,7 @@
 ﻿
 namespace SchoolManagerApp.src.Models
 {
-    public class DangKy
+    public class DANGKY
     {
         public string MASV { get; set; } 
         public string MAMM { get; set; } 

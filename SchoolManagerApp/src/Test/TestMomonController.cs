@@ -22,8 +22,6 @@ namespace SchoolManagerApp.src.Test
         public TestMomonController(string username, string password)
         {
             _username = username;
-             var dbService = DatabaseService.GetInstance(username, password);
-            dbService.OpenConnection();
             _controller = new MomonController();
             _momonService = new MomonService(); // Khởi tạo MomonService
         }

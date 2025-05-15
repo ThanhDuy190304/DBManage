@@ -1,36 +1,34 @@
-﻿using SchoolManagerApp.src.Controller;
-using SchoolManagerApp.src.Views.pages.NVCB;
+﻿using SchoolManagerApp.src.Views.pages.SV;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SchoolManagerApp.src.Views.layout
 {
-    public partial class NVCBMain : BaseMain
+    public partial class SVMain : BaseMain
     {
-        public NVCBMain(string empCode, string role)
+        public SVMain(string stuCode)
         {
             InitializeComponent();
-            this.sidebar.setEmpAndRoleLabel(empCode, role);
+            this.sidebar.setStuCodeLabel(stuCode);
             sidebar.OnLogout += HandleLogOut;
             sidebar.OnPageChange = LoadPage;
             sidebar.OnSidebarCollapsedChanged += HandleSidebarResize;
             LoadPage(new ProfilePage());
         }
-
         private void LoadPage(UserControl page)
         {
             contentPanel.Controls.Clear();
             page.Dock = DockStyle.Fill;
             contentPanel.Controls.Add(page);
         }
-
         private void HandleLogOut()
         {
             LogOut();
@@ -48,5 +46,6 @@ namespace SchoolManagerApp.src.Views.layout
             contentPanel.Width = this.ClientSize.Width - sidebarWidth;
         }
 
+     
     }
 }

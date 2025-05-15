@@ -31,12 +31,8 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public string IsCurrentUserRole()
+        public string GetCurrentBasicRole()
         {
-            if (_dbService == null)
-            {
-                throw new ServerError("Chưa đăng nhập.");
-            }
             if (_dbService.IsUserDBA())
             {
                 return "DBA";
@@ -49,9 +45,18 @@ namespace SchoolManagerApp.src.Controller
             else if (_dbService.IsUserNVCB())
             {
                 return "ROLE_NVCB";
-            }
-            
+            }            
             return null;            
+        }
+
+        public string GetExtended_NVCB_Role()
+        {
+            return _dbService.GetExtended_NVCB_Role();
+        }
+
+        public string GetUserName()
+        {
+            return _dbService.GetUserName();
         }
 
         public void Logout()

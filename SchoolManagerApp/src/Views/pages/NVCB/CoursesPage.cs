@@ -2,8 +2,8 @@
 using SchoolManagerApp.Controls;
 using SchoolManagerApp.src.Controller;
 using SchoolManagerApp.src.Models;
-using SchoolManagerApp.src.Views.controls;
 using SchoolManagerApp.src.Views.forms.NVCB;
+using SchoolManagerApp.src.Views.controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,11 +18,10 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
 {
     public partial class CoursesPage : UserControl
     {
-        private MomonController _mmController;
+        private readonly MomonController _mmController = new MomonController();
         public CoursesPage()
         {
             InitializeComponent();
-            _mmController = new MomonController();
             InitializeAllCurrentCoursesTable();
             InitializeCoursesIsAssignedToEmpTable();
             InitializeCoursesIsAssignedToEmpThatOneDepartmentTable();
@@ -35,12 +34,13 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                 var courses = await this._mmController.GETCurrentTeachingAssignments();
                 var columnDefinitions = new Dictionary<string, int>()
                 {
-                    { "MAMM", 120 },
-                    { "MAHP", 120 },
-                    { "MAGV", 120 },
+                    { "MAMM", 100 },
+                    { "MAHP", 100 },
+                    { "MAGV", 100 },
                     { "HK", 80 },
                     { "NAM", 100 },
-                    { "TENHP", 200 },
+                    { "TENHP", 270 },
+                    { "MADV", 100 },
                     { "SOTC", 60 },
                     { "STLT", 60 },
                     { "STTH", 60 }
@@ -93,15 +93,15 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
             try
             {
                 var courses = await this._mmController.GETPersonalTeachingAssignmentsForLecturer();
-
                 var columnDefinitions = new Dictionary<string, int>()
                 {
-                    { "MAMM", 120 },
-                    { "MAHP", 120 },
-                    { "MAGV", 120 },
+                    { "MAMM", 100 },
+                    { "MAHP", 100 },
+                    { "MAGV", 100 },
                     { "HK", 80 },
                     { "NAM", 100 },
-                    { "TENHP", 200 },
+                    { "TENHP", 270 },
+                    { "MADV", 100 },
                     { "SOTC", 60 },
                     { "STLT", 60 },
                     { "STTH", 60 }
@@ -114,12 +114,18 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                     r.HK,
                     r.NAM,
                     r.TENHP,
+                    r.MADV,
                     r.SOTC.ToString(),
                     r.STLT.ToString(),
                     r.STTH.ToString()
                 }).ToList();
 
-                var table = new CTTable_v2(columnDefinitions, data);
+                var buttonMatrix = courses.Select(course => new Control[]
+                {                  
+                    ViewGradeTableButton(course.MAMM)
+                }).ToArray();
+
+                var table = new CTTable_v2(columnDefinitions, data, buttonMatrix);
                 table.Dock = DockStyle.Fill;
                 this.TableCoursesIsAssignedToEmpPanel.Controls.Add(table);
             }
@@ -142,12 +148,13 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                 var courses = await this._mmController.GETTeachingAssignmentsInManagedUnit();
                 var columnDefinitions = new Dictionary<string, int>()
                 {
-                    { "MAMM", 120 },
-                    { "MAHP", 120 },
-                    { "MAGV", 120 },
+                    { "MAMM", 100 },
+                    { "MAHP", 100 },
+                    { "MAGV", 100 },
                     { "HK", 80 },
                     { "NAM", 100 },
-                    { "TENHP", 200 },
+                    { "TENHP", 270 },
+                    { "MADV", 100 },
                     { "SOTC", 60 },
                     { "STLT", 60 },
                     { "STTH", 60 }
@@ -244,7 +251,6 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
 
         private Control EditAEmpButton(MOMON course)
         {
-            // Nút thao tác
             IconButton editButton = new IconButton()
             {
                 IconChar = IconChar.Edit,
@@ -263,6 +269,32 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
             };
 
             return editButton;
+        }
+        private void HandleViewGrade(string courseCode)
+        {
+            ViewGradeOfCourse viewGradeCourseForm = new ViewGradeOfCourse(courseCode);
+            viewGradeCourseForm.ShowDialog();
+        }
+
+        private Control ViewGradeTableButton(string courseCode)
+        {
+            IconButton viewButton = new IconButton()
+            {
+                IconChar = IconChar.Eye,
+                IconColor = Color.Blue,
+                IconSize = 20,
+                FlatStyle = FlatStyle.Flat,
+                BackColor = Color.Transparent,
+                Text = "",
+                Cursor = Cursors.Hand,
+            };
+            viewButton.FlatAppearance.BorderSize = 0;
+            viewButton.Size = new Size(24, 24);
+            viewButton.Click += (sender, e) =>
+            {
+                HandleViewGrade(courseCode);
+            };
+            return viewButton;
         }
     }
 }

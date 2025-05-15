@@ -17,6 +17,7 @@ namespace SchoolManagerApp.src.Models
         public int SOTC { get; set; }
         public int STLT { get; set; }
         public int STTH { get; set; }
+        public string MADV { get; set; }
 
     }
 }

@@ -39,20 +39,35 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
             dynamic updateData = new ExpandoObject();
             var dict = (IDictionary<string, object>)updateData;
 
-            if (this.CourseCodeTextBox.Texts.Trim() != _course.MAMM)
-                dict["MAMM"] = this.CourseCodeTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.CourseCodeTextBox.Texts) &&
+                this.CourseCodeTextBox.Texts.Trim() != _course.MAMM)
+            {
+                dict["MAMM"] = this.CourseCodeTextBox.Texts.Trim();
+            }
 
-            if (this.EmpCodeTextBox.Texts.Trim() != _course.MAGV)
-                dict["MAGV"] = this.EmpCodeTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.EmpCodeTextBox.Texts) &&
+                this.EmpCodeTextBox.Texts.Trim() != _course.MAGV)
+            {
+                dict["MAGV"] = this.EmpCodeTextBox.Texts.Trim();
+            }
 
-            if (this.YearTextBox.Texts.Trim() != _course.NAM)
-                dict["NAM"] = this.YearTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.YearTextBox.Texts) &&
+                this.YearTextBox.Texts.Trim() != _course.NAM)
+            {
+                dict["NAM"] = this.YearTextBox.Texts.Trim();
+            }
 
-            if (this.SemesterTextBox.Texts.Trim() != _course.HK)
-                dict["HK"] = this.SemesterTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.SemesterTextBox.Texts) &&
+                this.SemesterTextBox.Texts.Trim() != _course.HK)
+            {
+                dict["HK"] = this.SemesterTextBox.Texts.Trim();
+            }
 
-            if (this.SubjectCodeTextBox.Texts.Trim() != _course.MAHP)
-                dict["MAHP"] = this.SubjectCodeTextBox.Texts;
+            if (!string.IsNullOrWhiteSpace(this.SubjectCodeTextBox.Texts) &&
+                this.SubjectCodeTextBox.Texts.Trim() != _course.MAHP)
+            {
+                dict["MAHP"] = this.SubjectCodeTextBox.Texts.Trim();
+            }
 
             if (dict.Count > 0)
             {

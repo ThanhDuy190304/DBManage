@@ -16,10 +16,7 @@ namespace SchoolManagerApp.src.Views.layout
 {
     public partial class Login : Form
     {
-        internal AuthController _authController;
-        public string CurrentUserRole { get; private set; } = "";
-    
-
+        internal AuthController _authController;    
         public Login()
         {
             InitializeComponent();
@@ -176,7 +173,6 @@ namespace SchoolManagerApp.src.Views.layout
                 if (loginSuccess)
                 {
                     this.DialogResult = DialogResult.OK;
-                    this.CurrentUserRole = this._authController.IsCurrentUserRole();
                 }
             }
             catch (Exception ex)

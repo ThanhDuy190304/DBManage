@@ -20,7 +20,7 @@ namespace SchoolManagerApp.src.Controller
             _dkService = new DangKyService();
         }
 
-        public async Task<IEnumerable<DangKy>> GetPoint()
+        public async Task<IEnumerable<DANGKY>> GetPoint()
         {
             try
             {
@@ -69,22 +69,8 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-
-        // Danh sách lớp giáo viên phụ trách
-        public async Task<IEnumerable<MOMON>> GetListClass()
-        {
-            try
-            {
-                return await _dkService.GetListClass();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Không thể lấy danh sách điểm của sinh viên: " + ex.Message);
-            }
-        }
-
         // Danh sách sinh viên giáo viên phụ trách
-        public async Task<IEnumerable<DangKy>> GetListStudentOfGV(string mamm)
+        public async Task<IEnumerable<DANGKY>> GetListStudentOfGV(string mamm)
         {
             try
             {

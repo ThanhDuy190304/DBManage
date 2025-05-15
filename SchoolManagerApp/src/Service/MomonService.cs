@@ -150,13 +150,13 @@ namespace SchoolManagerApp.src.Service
         }
 
         // --------------------------- Chức năng cho ROLE_SV (Sinh viên) ---------------------------
-        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsForDepartment()
+        public async Task<IEnumerable<MOMON_HOCPHAN>> GETTeachingAssignmentsForDepartment()
         {
 
             try
             {
                 string query = "SELECT * FROM ADMIN.v_momon_lienquan_hocphan_thuoc_donvi_momon";
-                return await _dbService.Connection.QueryAsync<MOMON>(query);
+                return await _dbService.Connection.QueryAsync<MOMON_HOCPHAN>(query);
             }
             catch (OracleException ex)
             {

@@ -16,13 +16,12 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
 {
     public partial class ProfilePage : UserControl
     {
-        private NhanVienController _nvController;
+        private readonly NhanVienController _nvController = new NhanVienController();
 
         private NHANVIEN _emp;
         public ProfilePage()
         {
             InitializeComponent();
-            _nvController = new NhanVienController();
             GetProfile();
             this.flowButtomLayoutPanel.Controls.Add(this.SaveAndCancelButtonLayoutPanel);
         }
@@ -81,15 +80,7 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
         {
             this.SaveAndCancelButtonLayoutPanel.Visible = false;
             this.EditButton.Visible = true;
-            SetTextBoxToRead(this.EmpCodeTextBox);
-            SetTextBoxToRead(this.GenderTextBox);
             SetTextBoxToRead(this.PhoneTextBox);
-            SetTextBoxToRead(this.RoleTextBox);
-            SetTextBoxToRead(this.BirthTextBox);
-            SetTextBoxToRead(this.FullNameTextBox);
-            SetTextBoxToRead(this.SalaryTextBox);
-            SetTextBoxToRead(this.AllowanceTextBox);
-            SetTextBoxToRead(this.DepartmentTextBox);
         }
 
         private void updateUI()
@@ -103,10 +94,8 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
             this.SalaryTextBox.Texts = _emp.LUONG.ToString();
             this.AllowanceTextBox.Texts = _emp.PHUCAP.ToString();
             this.DepartmentTextBox.Texts = _emp.MADV;
-
         }
       
-        
         private async void GetProfile()
         {
             try
@@ -114,7 +103,7 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                 _emp = await _nvController.GETPersonalInformationForNVCB();
                 updateUI();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"{ex.Message}", "Lỗi lấy thông tin cá nhân",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);

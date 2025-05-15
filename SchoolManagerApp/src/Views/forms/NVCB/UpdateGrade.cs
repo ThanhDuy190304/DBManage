@@ -15,8 +15,8 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
     public partial class UpdateGrade : Form
     {
         private DangKyController _dkController;
-        private readonly DangKy _regis;
-        public UpdateGrade(DangKy dk)
+        private readonly DANGKY _regis;
+        public UpdateGrade(DANGKY dk)
         {
             InitializeComponent();
             this.AcceptButton = this.SaveButton;

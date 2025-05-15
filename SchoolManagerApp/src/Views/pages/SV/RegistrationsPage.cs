@@ -1,5 +1,4 @@
 ﻿using FontAwesome.Sharp;
-using SchoolManagerApp.Controls;
 using SchoolManagerApp.src.Controller;
 using SchoolManagerApp.src.Models;
 using SchoolManagerApp.src.Views.controls;
@@ -14,17 +13,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SchoolManagerApp.src.Views.pages.NVCB
+namespace SchoolManagerApp.src.Views.pages.SV
 {
     public partial class RegistrationsPage : UserControl
     {
-        private DangKyController _registrationController;
+        private readonly DangKyController _registrationController = new DangKyController();
+
         public RegistrationsPage()
         {
             InitializeComponent();
-            _registrationController = new DangKyController();
             InitializeAllRegistrationsTable();
         }
+
         private async void InitializeAllRegistrationsTable()
         {
             try
@@ -50,7 +50,6 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                 r.DIEMTK.ToString(),
                 }).ToList();
 
-
                 var buttonMatrix = registrations.Select(regis => new Control[]
                 {
                     EditGradeButton(regis),
@@ -72,6 +71,19 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
             }
 
         }
+
+        private void CreateEmpButton_Click(object sender, EventArgs e)
+        {
+            CreateRegistration createRegistrationForm = new CreateRegistration();
+            createRegistrationForm.ShowDialog();
+        }
+
+        private void ReloadButton_Click(object sender, EventArgs e)
+        {
+            this.TableAllRetristrationsPanel.Controls.Clear();
+            InitializeAllRegistrationsTable();
+        }
+
         private async void HandleDeleteRegistration(string stuCode, string courseCode)
         {
             try
@@ -108,17 +120,6 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
             };
 
             return trashButton;
-        }
-        private void ReloadButton_Click(object sender, EventArgs e)
-        {
-            this.TableAllRetristrationsPanel.Controls.Clear();
-            InitializeAllRegistrationsTable();
-        }
-
-        private void CreateEmpButton_Click(object sender, EventArgs e)
-        {
-            CreateRegistration createRegistrationForm = new CreateRegistration();
-            createRegistrationForm.ShowDialog();
         }
 
         private void HandleEditGrade(DANGKY regis)

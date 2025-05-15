@@ -22,7 +22,6 @@ namespace SchoolManagerApp.src.Test
         public TestNhanVienController(string username, string password)
         {
             _username = username;
-            var dbService = DatabaseService.GetInstance(username, password);
             _controller = new NhanVienController();
             _nhanVienService = new NhanVienService();
         }

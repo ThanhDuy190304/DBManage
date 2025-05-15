@@ -7,8 +7,6 @@ using FontAwesome.Sharp;
 using System.Windows.Documents;
 using System.Collections.Generic;
 using System.Windows.Controls;
-
-using Panel = System.Windows.Forms.Panel;
 using Label = System.Windows.Forms.Label;
 
 namespace SchoolManagerApp.Controls

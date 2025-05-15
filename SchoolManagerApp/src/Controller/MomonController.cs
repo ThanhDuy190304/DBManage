@@ -116,7 +116,7 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho role_sv
-        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsForDepartment( )
+        public async Task<IEnumerable<MOMON_HOCPHAN>> GETTeachingAssignmentsForDepartment( )
         {
             try
             {

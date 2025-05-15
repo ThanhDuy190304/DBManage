@@ -18,9 +18,8 @@ namespace SchoolManagerApp.src.Test
      
         public TestCau4(string username, string password)
         {
-            var dbService = DatabaseService.GetInstance(username, password); // tạo kết nối mới theo user
             _controller = new DangKyController(); // truyền vào đây
-            _controllerSV = new SinhVienController(dbService);
+            _controllerSV = new SinhVienController();
         }
 
         public async Task RunAllTests()
@@ -73,23 +72,6 @@ namespace SchoolManagerApp.src.Test
             catch (Exception ex)
             {
                 Console.WriteLine("[FAIL] UPDATE diem: " + ex.Message + "\n");
-            }
-        }
-
-        // Xem danh sách lớp giáo viên phụ trách
-        private async Task TestGetClass()
-        {
-            try
-            {
-                var result = await _controller.GetListClass();
-                foreach (var item in result)
-                {
-                    Console.WriteLine($"MAMM: {item.MAMM}, MAHP: {item.MAHP}, MAGV: {item.MAGV}, HK: {item.HK}, NAM: {item.NAM} ");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("[FAIL] SELECT danh sach SV: " + ex.Message + "\n");
             }
         }
 

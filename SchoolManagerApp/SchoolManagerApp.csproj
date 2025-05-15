@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -114,7 +116,7 @@
     <Compile Include="src\Controller\NhanVienController.cs" />
     <Compile Include="src\Controller\UserController.cs" />
     <Compile Include="src\Controller\RoleController.cs" />
-    <Compile Include="src\Models\DangKy.cs" />
+    <Compile Include="src\Models\DANGKY.cs" />
     <Compile Include="src\Models\DBA_COL_PRIVS.cs" />
     <Compile Include="src\Models\DBA_ROLE_PRIVS.cs" />
     <Compile Include="src\Models\DBA_TAB_PRIVS .cs" />
@@ -122,12 +124,13 @@
     <Compile Include="src\Models\DBA_USERS.cs" />
     <Compile Include="src\Models\Momon.cs" />
     <Compile Include="src\Models\MOMON_HOCPHAN.cs" />
-    <Compile Include="src\Models\Nhanvien.cs" />
-    <Compile Include="src\Models\SinhVien.cs" />
+    <Compile Include="src\Models\NHANVIEN.cs" />
+    <Compile Include="src\Models\SINHVIEN.cs" />
     <Compile Include="src\Service\DangKyService.cs" />
     <Compile Include="src\Service\DBA_PrivilegeService.cs" />
     <Compile Include="src\Service\MomonService.cs" />
     <Compile Include="src\Service\NhanVienService.cs" />
+    <Compile Include="src\Test\SinhVienTestSuite.cs" />
     <Compile Include="src\Test\TestMomonController.cs" />
     <Compile Include="src\Test\TestNhanVienController.cs" />
     <Compile Include="src\Service\SinhVienService.cs" />
@@ -215,6 +218,18 @@
     <Compile Include="src\Views\forms\NVCB\CreateRegistration.Designer.cs">
       <DependentUpon>CreateRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\forms\NVCB\CreateStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\CreateStudent.Designer.cs">
+      <DependentUpon>CreateStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\ViewGradeOfCourse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\ViewGradeOfCourse.Designer.cs">
+      <DependentUpon>ViewGradeOfCourse.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\forms\NVCB\UpdateCourse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,8 +248,20 @@
     <Compile Include="src\Views\forms\NVCB\UpdateGrade.Designer.cs">
       <DependentUpon>UpdateGrade.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\forms\NVCB\UpdateStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\forms\NVCB\UpdateStudent.Designer.cs">
+      <DependentUpon>UpdateStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\layout\BaseMain.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\layout\SVMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\layout\SVMain.Designer.cs">
+      <DependentUpon>SVMain.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\layout\NVCBMain.cs">
       <SubType>Form</SubType>
@@ -291,6 +318,24 @@
     <Compile Include="src\Views\pages\NVCB\StudentsPage.Designer.cs">
       <DependentUpon>StudentsPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\pages\SV\CoursesPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\pages\SV\CoursesPage.Designer.cs">
+      <DependentUpon>CoursesPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\pages\SV\ProfilePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\pages\SV\ProfilePage.Designer.cs">
+      <DependentUpon>ProfilePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\pages\SV\RegistrationsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\pages\SV\RegistrationsPage.Designer.cs">
+      <DependentUpon>RegistrationsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\partials\NVCB_sidebar.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -320,6 +365,12 @@
       <DependentUpon>UsersPage.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Test\TestRoleController.cs" />
+    <Compile Include="src\Views\partials\SV_sidebar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\partials\SV_sidebar.Designer.cs">
+      <DependentUpon>SV_sidebar.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="src\Views\controls\CTTextBox.resx">
       <DependentUpon>CTTextBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +404,12 @@
     <EmbeddedResource Include="src\Views\forms\NVCB\CreateRegistration.resx">
       <DependentUpon>CreateRegistration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\NVCB\CreateStudent.resx">
+      <DependentUpon>CreateStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\NVCB\ViewGradeOfCourse.resx">
+      <DependentUpon>ViewGradeOfCourse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\forms\NVCB\UpdateCourse.resx">
       <DependentUpon>UpdateCourse.cs</DependentUpon>
     </EmbeddedResource>
@@ -361,6 +418,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\forms\NVCB\UpdateGrade.resx">
       <DependentUpon>UpdateGrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\forms\NVCB\UpdateStudent.resx">
+      <DependentUpon>UpdateStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\layout\NVCBMain.resx">
       <DependentUpon>NVCBMain.cs</DependentUpon>
@@ -373,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\forms\DBA\CreateForm.resx">
       <DependentUpon>CreateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\layout\SVMain.resx">
+      <DependentUpon>SVMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\pages\NVCB\RegistrationsPage.resx">
       <DependentUpon>RegistrationsPage.cs</DependentUpon>
@@ -388,6 +451,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\pages\NVCB\ProfilePage.resx">
       <DependentUpon>ProfilePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\pages\SV\CoursesPage.resx">
+      <DependentUpon>CoursesPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\pages\SV\ProfilePage.resx">
+      <DependentUpon>ProfilePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\pages\SV\RegistrationsPage.resx">
+      <DependentUpon>RegistrationsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\partials\NVCB_sidebar.resx">
       <DependentUpon>NVCB_sidebar.cs</DependentUpon>
@@ -413,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\pages\DBA\UsersPage.resx">
       <DependentUpon>UsersPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\partials\SV_sidebar.resx">
+      <DependentUpon>SV_sidebar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
