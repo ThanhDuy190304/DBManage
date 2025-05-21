@@ -146,7 +146,7 @@ namespace SchoolManagerApp.src.Test
         {
             try
             {
-                var momon = new MOMON { MAMM = "MM0016", MAHP = "HP004", MAGV = "NV001", HK = "3", NAM = "2025" };
+                var momon = new MoMon { MAMM = "MM0016", MAHP = "HP004", MAGV = "NV001", HK = "3", NAM = "2025" };
                 var ok = await _controller.InsertNewTeachingAssignment( momon);
                 Console.WriteLine(ok ? "[PASS] INSERT MOMON\n" : "[FAIL] INSERT MOMON khong thanh cong\n");
 

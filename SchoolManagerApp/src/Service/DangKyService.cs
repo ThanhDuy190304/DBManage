@@ -135,12 +135,12 @@ namespace SchoolManagerApp.src.Service
 
 
         // Danh sách lớp giáo viên phụ trách
-        public async Task<IEnumerable<MOMON>> GetListClass()
+        public async Task<IEnumerable<MoMon>> GetListClass()
         {
             try
             {
                 string query = "SELECT * FROM ADMIN.MOMON";
-                return await _dbService.Connection.QueryAsync<MOMON>(query);
+                return await _dbService.Connection.QueryAsync<MoMon>(query);
             }
             catch (OracleException ex)
             {

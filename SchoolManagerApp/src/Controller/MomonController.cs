@@ -17,7 +17,7 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho role_gv
-        public async Task<IEnumerable<MOMON>> GETPersonalTeachingAssignmentsForLecturer( )
+        public async Task<IEnumerable<MoMon>> GETPersonalTeachingAssignmentsForLecturer( )
         {
             try
             {
@@ -34,7 +34,7 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho role_nvpdt
-        public async Task<IEnumerable<MOMON>> GETCurrentTeachingAssignments( )
+        public async Task<IEnumerable<MoMon>> GETCurrentTeachingAssignments( )
         {
             try
             {
@@ -50,7 +50,7 @@ namespace SchoolManagerApp.src.Controller
             }
         }
 
-        public async Task<bool> InsertNewTeachingAssignment(  MOMON momon)
+        public async Task<bool> InsertNewTeachingAssignment(  MoMon momon)
         {
             try
             {
@@ -99,7 +99,7 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho role_trgdv
-        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsInManagedUnit( )
+        public async Task<IEnumerable<MoMon>> GETTeachingAssignmentsInManagedUnit( )
         {
             try
             {
@@ -116,7 +116,7 @@ namespace SchoolManagerApp.src.Controller
         }
 
         // Chức năng cho role_sv
-        public async Task<IEnumerable<MOMON>> GETTeachingAssignmentsForDepartment( )
+        public async Task<IEnumerable<MoMon>> GETTeachingAssignmentsForDepartment( )
         {
             try
             {

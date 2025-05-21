@@ -24,7 +24,7 @@ namespace SchoolManagerApp
 #if CONSOLE_TEST
             // Login
             Console.Write("Enter username: ");
-            string username = "NV012"; //Console.ReadLine();
+            string username = "NV001"; //Console.ReadLine();
 
             Console.Write("Enter password: ");
             string password = "123"; // Console.ReadLine();
@@ -35,7 +35,7 @@ namespace SchoolManagerApp
                 Console.WriteLine("Login thành công!");
             else
                 Console.WriteLine("Login thất bại!");
-            var test = new TestCau4(username, password); // user, password
+            var test = new TestOLS(username, password); // user, password
             test.RunAllTests().GetAwaiter().GetResult();
 
 #else

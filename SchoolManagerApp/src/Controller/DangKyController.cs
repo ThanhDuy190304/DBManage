@@ -71,7 +71,7 @@ namespace SchoolManagerApp.src.Controller
 
 
         // Danh sách lớp giáo viên phụ trách
-        public async Task<IEnumerable<MOMON>> GetListClass()
+        public async Task<IEnumerable<MoMon>> GetListClass()
         {
             try
             {
