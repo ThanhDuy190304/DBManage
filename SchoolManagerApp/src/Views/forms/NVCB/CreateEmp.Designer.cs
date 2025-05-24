@@ -40,7 +40,7 @@
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.GenderLabel = new System.Windows.Forms.Label();
-            this.GenderTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.GenderComboBox = new SchoolManagerApp.src.Views.controls.CTComboBox();
             this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton8 = new FontAwesome.Sharp.IconButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,11 +64,11 @@
             this.flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.RoleLabel = new System.Windows.Forms.Label();
-            this.RoleTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.RoleComboBox = new SchoolManagerApp.src.Views.controls.CTComboBox();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.DepartmentLabel = new System.Windows.Forms.Label();
-            this.DepTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.DepComboBox = new SchoolManagerApp.src.Views.controls.CTComboBox();
             this.flowButtomLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SaveButton = new SchoolManagerApp.Controls.CTButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -228,7 +228,7 @@
             // 
             this.flowLayoutPanel4.Controls.Add(this.iconButton1);
             this.flowLayoutPanel4.Controls.Add(this.GenderLabel);
-            this.flowLayoutPanel4.Controls.Add(this.GenderTextBox);
+            this.flowLayoutPanel4.Controls.Add(this.GenderComboBox);
             this.flowLayoutPanel4.Controls.Add(this.flowLayoutPanel10);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(10, 66);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(6);
@@ -263,32 +263,34 @@
             this.GenderLabel.TabIndex = 9;
             this.GenderLabel.Text = "Giới tính         ";
             // 
-            // GenderTextBox
+            // GenderComboBox
             // 
-            this.GenderTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.GenderTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.GenderTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.GenderTextBox.BorderSize = 0;
-            this.GenderTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.GenderTextBox.ForeColor = System.Drawing.Color.Black;
-            this.GenderTextBox.Location = new System.Drawing.Point(165, 6);
-            this.GenderTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.GenderTextBox.Multiline = false;
-            this.GenderTextBox.Name = "GenderTextBox";
-            this.GenderTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.GenderTextBox.PasswordChar = false;
-            this.GenderTextBox.ReadOnly = false;
-            this.GenderTextBox.Size = new System.Drawing.Size(173, 31);
-            this.GenderTextBox.TabIndex = 2;
-            this.GenderTextBox.Texts = "";
-            this.GenderTextBox.UnderlinedStyle = false;
+            this.GenderComboBox.BackColor = System.Drawing.Color.White;
+            this.GenderComboBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.GenderComboBox.BorderSize = 1;
+            this.GenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.GenderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.GenderComboBox.ForeColor = System.Drawing.Color.DimGray;
+            this.GenderComboBox.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.GenderComboBox.Items.AddRange(new object[] {
+            "F",
+            "M"});
+            this.GenderComboBox.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.GenderComboBox.ListTextColor = System.Drawing.Color.DimGray;
+            this.GenderComboBox.Location = new System.Drawing.Point(164, 5);
+            this.GenderComboBox.MinimumSize = new System.Drawing.Size(173, 31);
+            this.GenderComboBox.Name = "GenderComboBox";
+            this.GenderComboBox.Padding = new System.Windows.Forms.Padding(1);
+            this.GenderComboBox.Size = new System.Drawing.Size(173, 31);
+            this.GenderComboBox.TabIndex = 14;
+            this.GenderComboBox.Texts = "";
             // 
             // flowLayoutPanel10
             // 
             this.flowLayoutPanel10.Controls.Add(this.iconButton8);
             this.flowLayoutPanel10.Controls.Add(this.label3);
             this.flowLayoutPanel10.Controls.Add(this.ctTextBox1);
-            this.flowLayoutPanel10.Location = new System.Drawing.Point(8, 47);
+            this.flowLayoutPanel10.Location = new System.Drawing.Point(8, 45);
             this.flowLayoutPanel10.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel10.Name = "flowLayoutPanel10";
             this.flowLayoutPanel10.Padding = new System.Windows.Forms.Padding(2);
@@ -577,7 +579,7 @@
             // 
             this.flowLayoutPanel6.Controls.Add(this.iconButton6);
             this.flowLayoutPanel6.Controls.Add(this.RoleLabel);
-            this.flowLayoutPanel6.Controls.Add(this.RoleTextBox);
+            this.flowLayoutPanel6.Controls.Add(this.RoleComboBox);
             this.flowLayoutPanel6.Location = new System.Drawing.Point(373, 178);
             this.flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel6.Name = "flowLayoutPanel6";
@@ -611,31 +613,36 @@
             this.RoleLabel.TabIndex = 13;
             this.RoleLabel.Text = "Vai trò            ";
             // 
-            // RoleTextBox
+            // RoleComboBox
             // 
-            this.RoleTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.RoleTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.RoleTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.RoleTextBox.BorderSize = 0;
-            this.RoleTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.RoleTextBox.ForeColor = System.Drawing.Color.Black;
-            this.RoleTextBox.Location = new System.Drawing.Point(164, 6);
-            this.RoleTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.RoleTextBox.Multiline = false;
-            this.RoleTextBox.Name = "RoleTextBox";
-            this.RoleTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.RoleTextBox.PasswordChar = false;
-            this.RoleTextBox.ReadOnly = false;
-            this.RoleTextBox.Size = new System.Drawing.Size(173, 31);
-            this.RoleTextBox.TabIndex = 7;
-            this.RoleTextBox.Texts = "";
-            this.RoleTextBox.UnderlinedStyle = false;
+            this.RoleComboBox.BackColor = System.Drawing.Color.White;
+            this.RoleComboBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.RoleComboBox.BorderSize = 1;
+            this.RoleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.RoleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.RoleComboBox.ForeColor = System.Drawing.Color.DimGray;
+            this.RoleComboBox.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.RoleComboBox.Items.AddRange(new object[] {
+            "GV",
+            "NV PDT",
+            "NV PKT",
+            "NV PCTSV",
+            "NV TCHC"});
+            this.RoleComboBox.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.RoleComboBox.ListTextColor = System.Drawing.Color.DimGray;
+            this.RoleComboBox.Location = new System.Drawing.Point(163, 5);
+            this.RoleComboBox.MinimumSize = new System.Drawing.Size(173, 31);
+            this.RoleComboBox.Name = "RoleComboBox";
+            this.RoleComboBox.Padding = new System.Windows.Forms.Padding(1);
+            this.RoleComboBox.Size = new System.Drawing.Size(173, 31);
+            this.RoleComboBox.TabIndex = 13;
+            this.RoleComboBox.Texts = "";
             // 
             // flowLayoutPanel9
             // 
             this.flowLayoutPanel9.Controls.Add(this.iconButton7);
             this.flowLayoutPanel9.Controls.Add(this.DepartmentLabel);
-            this.flowLayoutPanel9.Controls.Add(this.DepTextBox);
+            this.flowLayoutPanel9.Controls.Add(this.DepComboBox);
             this.flowLayoutPanel9.Location = new System.Drawing.Point(10, 234);
             this.flowLayoutPanel9.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
@@ -669,25 +676,33 @@
             this.DepartmentLabel.TabIndex = 1;
             this.DepartmentLabel.Text = "Mã đơn vị      ";
             // 
-            // DepTextBox
+            // DepComboBox
             // 
-            this.DepTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.DepTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.DepTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.DepTextBox.BorderSize = 0;
-            this.DepTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.DepTextBox.ForeColor = System.Drawing.Color.Black;
-            this.DepTextBox.Location = new System.Drawing.Point(165, 6);
-            this.DepTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.DepTextBox.Multiline = false;
-            this.DepTextBox.Name = "DepTextBox";
-            this.DepTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.DepTextBox.PasswordChar = false;
-            this.DepTextBox.ReadOnly = false;
-            this.DepTextBox.Size = new System.Drawing.Size(173, 31);
-            this.DepTextBox.TabIndex = 8;
-            this.DepTextBox.Texts = "";
-            this.DepTextBox.UnderlinedStyle = false;
+            this.DepComboBox.BackColor = System.Drawing.Color.White;
+            this.DepComboBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.DepComboBox.BorderSize = 1;
+            this.DepComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.DepComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.DepComboBox.ForeColor = System.Drawing.Color.DimGray;
+            this.DepComboBox.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.DepComboBox.Items.AddRange(new object[] {
+            "HOA",
+            "LY",
+            "TOAN",
+            "CNTT",
+            "PDT",
+            "TCHC",
+            "PKT",
+            "CTSV"});
+            this.DepComboBox.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.DepComboBox.ListTextColor = System.Drawing.Color.DimGray;
+            this.DepComboBox.Location = new System.Drawing.Point(164, 5);
+            this.DepComboBox.MinimumSize = new System.Drawing.Size(173, 31);
+            this.DepComboBox.Name = "DepComboBox";
+            this.DepComboBox.Padding = new System.Windows.Forms.Padding(1);
+            this.DepComboBox.Size = new System.Drawing.Size(173, 31);
+            this.DepComboBox.TabIndex = 14;
+            this.DepComboBox.Texts = "";
             // 
             // flowButtomLayoutPanel
             // 
@@ -817,13 +832,13 @@
         private System.Windows.Forms.FlowLayoutPanel flowButtomLayoutPanel;
         private Controls.CTButton SaveButton;
         private controls.CTTextBox FullNameTextBox;
-        private controls.CTTextBox GenderTextBox;
         private controls.CTTextBox BirthTextBox;
         private controls.CTTextBox SalaryTextBox;
         private controls.CTTextBox PhoneTextBox;
         private controls.CTTextBox AllowanceTextBox;
-        private controls.CTTextBox RoleTextBox;
-        private controls.CTTextBox DepTextBox;
         private System.Windows.Forms.Label label2;
+        private controls.CTComboBox RoleComboBox;
+        private controls.CTComboBox GenderComboBox;
+        private controls.CTComboBox DepComboBox;
     }
 }

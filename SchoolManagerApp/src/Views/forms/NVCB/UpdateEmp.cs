@@ -30,13 +30,13 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
         {
             this.EmpCodeTextBox.Texts = this._emp.MANV;
             this.FullNameTextBox.Texts = this._emp.HOTEN;
-            this.GenderTextBox.Texts = this._emp.PHAI;
+            this.GenderComboBox.Texts = this._emp.PHAI;
             this.BirthTextBox.Texts = this._emp.NGSINH.ToString("dd/MM/yyyy");
-            this.RoleTextBox.Texts = this._emp.VAITRO;
+            this.RoleComboBox.Texts = this._emp.VAITRO;
             this.SalaryTextBox.Texts = this._emp.LUONG.ToString();
             this.AllowanceTextBox.Texts = this._emp.PHUCAP.ToString();
             this.PhoneTextBox.Texts = this._emp.DT;
-            this.DepTextBox.Texts = this._emp.MADV;
+            this.DepComboBox.Texts = this._emp.MADV;
         }
 
 
@@ -57,10 +57,10 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
                 dict["HOTEN"] = this.FullNameTextBox.Texts.Trim();
             }
 
-            if (!string.IsNullOrWhiteSpace(this.GenderTextBox.Texts) &&
-                this.GenderTextBox.Texts.Trim() != _emp.PHAI)
+            if (!string.IsNullOrWhiteSpace(this.GenderComboBox.Texts) &&
+                this.GenderComboBox.Texts.Trim() != _emp.PHAI)
             {
-                dict["PHAI"] = this.GenderTextBox.Texts.Trim();
+                dict["PHAI"] = this.GenderComboBox.Texts.Trim();
             }
 
             if (!string.IsNullOrWhiteSpace(this.BirthTextBox.Texts))
@@ -74,10 +74,10 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(this.RoleTextBox.Texts) &&
-                this.RoleTextBox.Texts.Trim() != _emp.VAITRO)
+            if (!string.IsNullOrWhiteSpace(this.RoleComboBox.Texts) &&
+                this.RoleComboBox.Texts.Trim() != _emp.VAITRO)
             {
-                dict["VAITRO"] = this.RoleTextBox.Texts.Trim();
+                dict["VAITRO"] = this.RoleComboBox.Texts.Trim();
             }
 
             if (!string.IsNullOrWhiteSpace(this.SalaryTextBox.Texts) &&
@@ -100,10 +100,10 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
                 dict["DT"] = this.PhoneTextBox.Texts.Trim();
             }
 
-            if (!string.IsNullOrWhiteSpace(this.DepTextBox.Texts) &&
-                this.DepTextBox.Texts.Trim() != _emp.MADV)
+            if (!string.IsNullOrWhiteSpace(this.DepComboBox.Texts) &&
+                this.DepComboBox.Texts.Trim() != _emp.MADV)
             {
-                dict["MADV"] = this.DepTextBox.Texts.Trim();
+                dict["MADV"] = this.DepComboBox.Texts.Trim();
             }
 
             if (dict.Count > 0)
@@ -129,5 +129,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
         {
             InitializeEmp();
         }
+
+       
     }
 }

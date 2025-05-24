@@ -28,10 +28,10 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
         {
             this.StuCodeTextBox.Texts = this._student.MASV;
             this.FullNameTextBox.Texts = this._student.HOTEN;
-            this.GenderTextBox.Texts = this._student.PHAI;
+            this.GenderComboBox.Texts = this._student.PHAI;
             this.BirthTextBox.Texts = this._student.NGSINH.ToString("dd/MM/yyyy");
             this.PhoneTextBox.Texts = this._student.DT;
-            this.DepTextBox.Texts = this._student.KHOA;
+            this.DepComboBox.Texts = this._student.KHOA;
             this.AddressTextBox.Texts = this._student.DCHI;
             this.CancelStatusIconButton_Click(null, EventArgs.Empty);
         }
@@ -76,10 +76,10 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
                 dict["HOTEN"] = this.FullNameTextBox.Texts.Trim();
             }
 
-            if (!string.IsNullOrWhiteSpace(this.GenderTextBox.Texts) &&
-                this.GenderTextBox.Texts.Trim() != _student.PHAI)
+            if (!string.IsNullOrWhiteSpace(this.GenderComboBox.Texts) &&
+                this.GenderComboBox.Texts.Trim() != _student.PHAI)
             {
-                dict["PHAI"] = this.GenderTextBox.Texts.Trim();
+                dict["PHAI"] = this.GenderComboBox.Texts.Trim();
             }
 
             if (!string.IsNullOrWhiteSpace(this.AddressTextBox.Texts) &&
@@ -100,10 +100,10 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
                 dict["DT"] = this.PhoneTextBox.Texts.Trim();
             }
 
-            if (!string.IsNullOrWhiteSpace(this.DepTextBox.Texts) &&
-                this.DepTextBox.Texts.Trim() != _student.KHOA)
+            if (!string.IsNullOrWhiteSpace(this.DepComboBox.Texts) &&
+                this.DepComboBox.Texts.Trim() != _student.KHOA)
             {
-                dict["KHOA"] = this.DepTextBox.Texts.Trim();
+                dict["KHOA"] = this.DepComboBox.Texts.Trim();
             }
 
             if (!string.IsNullOrWhiteSpace(this.StatusTextBox.Texts) &&
@@ -135,6 +135,6 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
             InitializeStu();
         }
 
-        
+       
     }
 }

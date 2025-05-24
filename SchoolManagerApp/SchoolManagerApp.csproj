@@ -318,6 +318,12 @@
     <Compile Include="src\Views\pages\NVCB\StudentsPage.Designer.cs">
       <DependentUpon>StudentsPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\pages\SharedPage\NotificationPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\pages\SharedPage\NotificationPage.Designer.cs">
+      <DependentUpon>NotificationPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\pages\SV\CoursesPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -451,6 +457,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\pages\NVCB\ProfilePage.resx">
       <DependentUpon>ProfilePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\pages\SharedPage\NotificationPage.resx">
+      <DependentUpon>NotificationPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\pages\SV\CoursesPage.resx">
       <DependentUpon>CoursesPage.cs</DependentUpon>

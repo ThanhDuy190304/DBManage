@@ -37,6 +37,7 @@
             this.CoursesTab = new SchoolManagerApp.Controls.CTButton();
             this.ProfileTab = new SchoolManagerApp.Controls.CTButton();
             this.LogoutButton = new SchoolManagerApp.Controls.CTButton();
+            this.NotificationTab = new SchoolManagerApp.Controls.CTButton();
             this.SuspendLayout();
             // 
             // StudentCode_Label
@@ -233,10 +234,41 @@
             this.LogoutButton.UseVisualStyleBackColor = false;
             this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
+            // NotificationTab
+            // 
+            this.NotificationTab.BackColor = System.Drawing.Color.Transparent;
+            this.NotificationTab.BackgroundColor = System.Drawing.Color.Transparent;
+            this.NotificationTab.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.NotificationTab.BorderRadius = 0;
+            this.NotificationTab.BorderSize = 0;
+            this.NotificationTab.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NotificationTab.FlatAppearance.BorderSize = 0;
+            this.NotificationTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NotificationTab.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotificationTab.ForeColor = System.Drawing.Color.Black;
+            this.NotificationTab.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.NotificationTab.HoverIconColor = System.Drawing.Color.MediumBlue;
+            this.NotificationTab.HoverTextColor = System.Drawing.Color.MediumBlue;
+            this.NotificationTab.IconChar = FontAwesome.Sharp.IconChar.Bell;
+            this.NotificationTab.IconColor = System.Drawing.Color.Black;
+            this.NotificationTab.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.NotificationTab.IconSize = 24;
+            this.NotificationTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NotificationTab.Location = new System.Drawing.Point(16, 249);
+            this.NotificationTab.Name = "NotificationTab";
+            this.NotificationTab.Size = new System.Drawing.Size(201, 41);
+            this.NotificationTab.TabIndex = 28;
+            this.NotificationTab.Text = "Thông báo";
+            this.NotificationTab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.NotificationTab.TextColor = System.Drawing.Color.Black;
+            this.NotificationTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.NotificationTab.UseVisualStyleBackColor = false;
+            // 
             // SV_sidebar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.NotificationTab);
             this.Controls.Add(this.RegistrationsTab);
             this.Controls.Add(this.CoursesTab);
             this.Controls.Add(this.ProfileTab);
@@ -264,5 +296,6 @@
         private Controls.CTButton ProfileTab;
         private Controls.CTButton CoursesTab;
         private Controls.CTButton RegistrationsTab;
+        private Controls.CTButton NotificationTab;
     }
 }

@@ -28,7 +28,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
             this.EmpCodeTextBox.Texts = "";
             this.CourseCodeTextBox.Texts = "";
             this.SubjectCodeTextBox.Texts = "";
-            this.SemesterTextBox.Texts = "";
+            this.SemesterComboBox.Texts = "";
             this.YearTextBox.Texts = "";
         }
 
@@ -37,7 +37,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
             string courseCode = this.CourseCodeTextBox.Texts;
             string empCode = this.EmpCodeTextBox.Texts;
             string subjectCode = this.SubjectCodeTextBox.Texts;
-            string semester = this.SemesterTextBox.Texts;
+            string semester = this.SemesterComboBox.Texts;
             string year = this.YearTextBox.Texts;
 
             MOMON newCourse = new MOMON{ MAGV = empCode, MAMM = courseCode, MAHP = subjectCode, HK = semester, NAM = year};
@@ -54,5 +54,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
     }
 }

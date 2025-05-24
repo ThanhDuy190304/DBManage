@@ -41,7 +41,7 @@
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.GenderLabel = new System.Windows.Forms.Label();
-            this.GenderTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.GenderComboBox = new SchoolManagerApp.src.Views.controls.CTComboBox();
             this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton8 = new FontAwesome.Sharp.IconButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -57,11 +57,11 @@
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.DepartmentLabel = new System.Windows.Forms.Label();
-            this.DepTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.StatusFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.label2 = new System.Windows.Forms.Label();
             this.StatusTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.CancelStatusIconButton = new FontAwesome.Sharp.IconButton();
             this.EditStatusIconButton = new FontAwesome.Sharp.IconButton();
             this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
@@ -71,7 +71,7 @@
             this.SaveAndCancelButtonLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SaveButton = new SchoolManagerApp.Controls.CTButton();
             this.CancelButton = new SchoolManagerApp.Controls.CTButton();
-            this.CancelStatusIconButton = new FontAwesome.Sharp.IconButton();
+            this.DepComboBox = new SchoolManagerApp.src.Views.controls.CTComboBox();
             this.flowLayoutPanel2.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -239,7 +239,7 @@
             // 
             this.flowLayoutPanel4.Controls.Add(this.iconButton1);
             this.flowLayoutPanel4.Controls.Add(this.GenderLabel);
-            this.flowLayoutPanel4.Controls.Add(this.GenderTextBox);
+            this.flowLayoutPanel4.Controls.Add(this.GenderComboBox);
             this.flowLayoutPanel4.Controls.Add(this.flowLayoutPanel10);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(10, 66);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(6);
@@ -274,32 +274,37 @@
             this.GenderLabel.TabIndex = 9;
             this.GenderLabel.Text = "Giới tính       ";
             // 
-            // GenderTextBox
+            // GenderComboBox
             // 
-            this.GenderTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.GenderTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.GenderTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.GenderTextBox.BorderSize = 0;
-            this.GenderTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.GenderTextBox.ForeColor = System.Drawing.Color.Black;
-            this.GenderTextBox.Location = new System.Drawing.Point(157, 6);
-            this.GenderTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.GenderTextBox.Multiline = false;
-            this.GenderTextBox.Name = "GenderTextBox";
-            this.GenderTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.GenderTextBox.PasswordChar = false;
-            this.GenderTextBox.ReadOnly = false;
-            this.GenderTextBox.Size = new System.Drawing.Size(173, 31);
-            this.GenderTextBox.TabIndex = 2;
-            this.GenderTextBox.Texts = "";
-            this.GenderTextBox.UnderlinedStyle = false;
+            this.GenderComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "F",
+            "M"});
+            this.GenderComboBox.BackColor = System.Drawing.Color.White;
+            this.GenderComboBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.GenderComboBox.BorderSize = 1;
+            this.GenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.GenderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.GenderComboBox.ForeColor = System.Drawing.Color.DimGray;
+            this.GenderComboBox.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.GenderComboBox.Items.AddRange(new object[] {
+            "F",
+            "M"});
+            this.GenderComboBox.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.GenderComboBox.ListTextColor = System.Drawing.Color.DimGray;
+            this.GenderComboBox.Location = new System.Drawing.Point(156, 5);
+            this.GenderComboBox.MinimumSize = new System.Drawing.Size(173, 31);
+            this.GenderComboBox.Name = "GenderComboBox";
+            this.GenderComboBox.Padding = new System.Windows.Forms.Padding(1);
+            this.GenderComboBox.Size = new System.Drawing.Size(173, 31);
+            this.GenderComboBox.TabIndex = 15;
+            this.GenderComboBox.Texts = "";
             // 
             // flowLayoutPanel10
             // 
             this.flowLayoutPanel10.Controls.Add(this.iconButton8);
             this.flowLayoutPanel10.Controls.Add(this.label3);
             this.flowLayoutPanel10.Controls.Add(this.ctTextBox1);
-            this.flowLayoutPanel10.Location = new System.Drawing.Point(8, 47);
+            this.flowLayoutPanel10.Location = new System.Drawing.Point(8, 45);
             this.flowLayoutPanel10.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel10.Name = "flowLayoutPanel10";
             this.flowLayoutPanel10.Padding = new System.Windows.Forms.Padding(2);
@@ -472,7 +477,7 @@
             // 
             this.flowLayoutPanel9.Controls.Add(this.iconButton7);
             this.flowLayoutPanel9.Controls.Add(this.DepartmentLabel);
-            this.flowLayoutPanel9.Controls.Add(this.DepTextBox);
+            this.flowLayoutPanel9.Controls.Add(this.DepComboBox);
             this.flowLayoutPanel9.Location = new System.Drawing.Point(373, 122);
             this.flowLayoutPanel9.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
@@ -505,26 +510,6 @@
             this.DepartmentLabel.Size = new System.Drawing.Size(107, 22);
             this.DepartmentLabel.TabIndex = 1;
             this.DepartmentLabel.Text = "Khoa               ";
-            // 
-            // DepTextBox
-            // 
-            this.DepTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.DepTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.DepTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.DepTextBox.BorderSize = 0;
-            this.DepTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.DepTextBox.ForeColor = System.Drawing.Color.Black;
-            this.DepTextBox.Location = new System.Drawing.Point(165, 6);
-            this.DepTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.DepTextBox.Multiline = false;
-            this.DepTextBox.Name = "DepTextBox";
-            this.DepTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.DepTextBox.PasswordChar = false;
-            this.DepTextBox.ReadOnly = false;
-            this.DepTextBox.Size = new System.Drawing.Size(173, 31);
-            this.DepTextBox.TabIndex = 8;
-            this.DepTextBox.Texts = "";
-            this.DepTextBox.UnderlinedStyle = false;
             // 
             // StatusFlowLayoutPanel
             // 
@@ -585,6 +570,25 @@
             this.StatusTextBox.TabIndex = 5;
             this.StatusTextBox.Texts = "";
             this.StatusTextBox.UnderlinedStyle = false;
+            // 
+            // CancelStatusIconButton
+            // 
+            this.CancelStatusIconButton.BackColor = System.Drawing.Color.Transparent;
+            this.CancelStatusIconButton.ForeColor = System.Drawing.Color.Transparent;
+            this.CancelStatusIconButton.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.CancelStatusIconButton.IconColor = System.Drawing.Color.Red;
+            this.CancelStatusIconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.CancelStatusIconButton.IconSize = 16;
+            this.CancelStatusIconButton.Location = new System.Drawing.Point(337, 8);
+            this.CancelStatusIconButton.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.CancelStatusIconButton.Name = "CancelStatusIconButton";
+            this.CancelStatusIconButton.Size = new System.Drawing.Size(38, 27);
+            this.CancelStatusIconButton.TabIndex = 7;
+            this.CancelStatusIconButton.TabStop = false;
+            this.CancelStatusIconButton.Text = "\r\n\r\n";
+            this.CancelStatusIconButton.UseVisualStyleBackColor = false;
+            this.CancelStatusIconButton.Visible = false;
+            this.CancelStatusIconButton.Click += new System.EventHandler(this.CancelStatusIconButton_Click);
             // 
             // EditStatusIconButton
             // 
@@ -746,24 +750,38 @@
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // CancelStatusIconButton
+            // DepComboBox
             // 
-            this.CancelStatusIconButton.BackColor = System.Drawing.Color.Transparent;
-            this.CancelStatusIconButton.ForeColor = System.Drawing.Color.Transparent;
-            this.CancelStatusIconButton.IconChar = FontAwesome.Sharp.IconChar.X;
-            this.CancelStatusIconButton.IconColor = System.Drawing.Color.Red;
-            this.CancelStatusIconButton.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.CancelStatusIconButton.IconSize = 16;
-            this.CancelStatusIconButton.Location = new System.Drawing.Point(337, 8);
-            this.CancelStatusIconButton.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.CancelStatusIconButton.Name = "CancelStatusIconButton";
-            this.CancelStatusIconButton.Size = new System.Drawing.Size(38, 27);
-            this.CancelStatusIconButton.TabIndex = 7;
-            this.CancelStatusIconButton.TabStop = false;
-            this.CancelStatusIconButton.Text = "\r\n\r\n";
-            this.CancelStatusIconButton.UseVisualStyleBackColor = false;
-            this.CancelStatusIconButton.Visible = false;
-            this.CancelStatusIconButton.Click += new System.EventHandler(this.CancelStatusIconButton_Click);
+            this.DepComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "HOA",
+            "LY",
+            "TOAN",
+            "CNTT"});
+            this.DepComboBox.BackColor = System.Drawing.Color.White;
+            this.DepComboBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.DepComboBox.BorderSize = 1;
+            this.DepComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.DepComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.DepComboBox.ForeColor = System.Drawing.Color.DimGray;
+            this.DepComboBox.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.DepComboBox.Items.AddRange(new object[] {
+            "HOA",
+            "LY",
+            "TOAN",
+            "CNTT",
+            "PDT",
+            "HC",
+            "PKT",
+            "PCTSV"});
+            this.DepComboBox.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.DepComboBox.ListTextColor = System.Drawing.Color.DimGray;
+            this.DepComboBox.Location = new System.Drawing.Point(164, 5);
+            this.DepComboBox.MinimumSize = new System.Drawing.Size(173, 31);
+            this.DepComboBox.Name = "DepComboBox";
+            this.DepComboBox.Padding = new System.Windows.Forms.Padding(1);
+            this.DepComboBox.Size = new System.Drawing.Size(173, 31);
+            this.DepComboBox.TabIndex = 13;
+            this.DepComboBox.Texts = "";
             // 
             // UpdateStudent
             // 
@@ -816,7 +834,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Label GenderLabel;
-        private controls.CTTextBox GenderTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
         private FontAwesome.Sharp.IconButton iconButton8;
         private System.Windows.Forms.Label label3;
@@ -832,7 +849,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private FontAwesome.Sharp.IconButton iconButton7;
         private System.Windows.Forms.Label DepartmentLabel;
-        private controls.CTTextBox DepTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private FontAwesome.Sharp.IconButton iconButton3;
         private System.Windows.Forms.Label SalaryLabel;
@@ -847,5 +863,7 @@
         private controls.CTTextBox StatusTextBox;
         private FontAwesome.Sharp.IconButton EditStatusIconButton;
         private FontAwesome.Sharp.IconButton CancelStatusIconButton;
+        private controls.CTComboBox GenderComboBox;
+        private controls.CTComboBox DepComboBox;
     }
 }

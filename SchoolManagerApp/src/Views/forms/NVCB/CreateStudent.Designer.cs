@@ -41,7 +41,7 @@
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.GenderLabel = new System.Windows.Forms.Label();
-            this.GenderTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.GenderComboBox = new SchoolManagerApp.src.Views.controls.CTComboBox();
             this.flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton8 = new FontAwesome.Sharp.IconButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,10 +50,6 @@
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
             this.BirthTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.SalaryLabel = new System.Windows.Forms.Label();
-            this.AddressTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.PhoneLabel = new System.Windows.Forms.Label();
@@ -61,7 +57,11 @@
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.DepartmentLabel = new System.Windows.Forms.Label();
-            this.DepTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.DepComboBox = new SchoolManagerApp.src.Views.controls.CTComboBox();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.SalaryLabel = new System.Windows.Forms.Label();
+            this.AddressTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
             this.flowButtomLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SaveButton = new SchoolManagerApp.Controls.CTButton();
             this.flowLayoutPanel2.SuspendLayout();
@@ -70,9 +70,9 @@
             this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanel10.SuspendLayout();
             this.flowLayoutPanel11.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
             this.flowLayoutPanel8.SuspendLayout();
             this.flowLayoutPanel9.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
             this.flowButtomLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -228,7 +228,7 @@
             // 
             this.flowLayoutPanel4.Controls.Add(this.iconButton1);
             this.flowLayoutPanel4.Controls.Add(this.GenderLabel);
-            this.flowLayoutPanel4.Controls.Add(this.GenderTextBox);
+            this.flowLayoutPanel4.Controls.Add(this.GenderComboBox);
             this.flowLayoutPanel4.Controls.Add(this.flowLayoutPanel10);
             this.flowLayoutPanel4.Location = new System.Drawing.Point(10, 66);
             this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(6);
@@ -263,32 +263,39 @@
             this.GenderLabel.TabIndex = 9;
             this.GenderLabel.Text = "Giới tính       ";
             // 
-            // GenderTextBox
+            // GenderComboBox
             // 
-            this.GenderTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.GenderTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.GenderTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.GenderTextBox.BorderSize = 0;
-            this.GenderTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.GenderTextBox.ForeColor = System.Drawing.Color.Black;
-            this.GenderTextBox.Location = new System.Drawing.Point(157, 6);
-            this.GenderTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.GenderTextBox.Multiline = false;
-            this.GenderTextBox.Name = "GenderTextBox";
-            this.GenderTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.GenderTextBox.PasswordChar = false;
-            this.GenderTextBox.ReadOnly = false;
-            this.GenderTextBox.Size = new System.Drawing.Size(173, 31);
-            this.GenderTextBox.TabIndex = 2;
-            this.GenderTextBox.Texts = "";
-            this.GenderTextBox.UnderlinedStyle = false;
+            this.GenderComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "F",
+            "M"});
+            this.GenderComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.GenderComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.GenderComboBox.BackColor = System.Drawing.Color.White;
+            this.GenderComboBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.GenderComboBox.BorderSize = 1;
+            this.GenderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.GenderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.GenderComboBox.ForeColor = System.Drawing.Color.DimGray;
+            this.GenderComboBox.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.GenderComboBox.Items.AddRange(new object[] {
+            "F",
+            "M"});
+            this.GenderComboBox.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.GenderComboBox.ListTextColor = System.Drawing.Color.DimGray;
+            this.GenderComboBox.Location = new System.Drawing.Point(156, 5);
+            this.GenderComboBox.MinimumSize = new System.Drawing.Size(173, 31);
+            this.GenderComboBox.Name = "GenderComboBox";
+            this.GenderComboBox.Padding = new System.Windows.Forms.Padding(1);
+            this.GenderComboBox.Size = new System.Drawing.Size(173, 31);
+            this.GenderComboBox.TabIndex = 14;
+            this.GenderComboBox.Texts = "";
             // 
             // flowLayoutPanel10
             // 
             this.flowLayoutPanel10.Controls.Add(this.iconButton8);
             this.flowLayoutPanel10.Controls.Add(this.label3);
             this.flowLayoutPanel10.Controls.Add(this.ctTextBox1);
-            this.flowLayoutPanel10.Location = new System.Drawing.Point(8, 47);
+            this.flowLayoutPanel10.Location = new System.Drawing.Point(8, 45);
             this.flowLayoutPanel10.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel10.Name = "flowLayoutPanel10";
             this.flowLayoutPanel10.Padding = new System.Windows.Forms.Padding(2);
@@ -399,64 +406,6 @@
             this.BirthTextBox.Texts = "";
             this.BirthTextBox.UnderlinedStyle = false;
             // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.Controls.Add(this.iconButton3);
-            this.flowLayoutPanel5.Controls.Add(this.SalaryLabel);
-            this.flowLayoutPanel5.Controls.Add(this.AddressTextBox);
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(10, 178);
-            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(6);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Padding = new System.Windows.Forms.Padding(2);
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(714, 44);
-            this.flowLayoutPanel5.TabIndex = 4;
-            // 
-            // iconButton3
-            // 
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.LocationArrow;
-            this.iconButton3.IconColor = System.Drawing.Color.Black;
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.IconSize = 20;
-            this.iconButton3.Location = new System.Drawing.Point(5, 8);
-            this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(38, 27);
-            this.iconButton3.TabIndex = 0;
-            this.iconButton3.TabStop = false;
-            this.iconButton3.Text = "\r\n\r\n";
-            this.iconButton3.UseVisualStyleBackColor = true;
-            // 
-            // SalaryLabel
-            // 
-            this.SalaryLabel.AutoSize = true;
-            this.SalaryLabel.Font = new System.Drawing.Font("Calibri", 13F);
-            this.SalaryLabel.Location = new System.Drawing.Point(50, 8);
-            this.SalaryLabel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
-            this.SalaryLabel.Name = "SalaryLabel";
-            this.SalaryLabel.Size = new System.Drawing.Size(99, 22);
-            this.SalaryLabel.TabIndex = 1;
-            this.SalaryLabel.Text = "Địa chỉ          ";
-            // 
-            // AddressTextBox
-            // 
-            this.AddressTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.AddressTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.AddressTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.AddressTextBox.BorderSize = 0;
-            this.AddressTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.AddressTextBox.ForeColor = System.Drawing.Color.Black;
-            this.AddressTextBox.Location = new System.Drawing.Point(157, 6);
-            this.AddressTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.AddressTextBox.Multiline = false;
-            this.AddressTextBox.Name = "AddressTextBox";
-            this.AddressTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.AddressTextBox.PasswordChar = false;
-            this.AddressTextBox.ReadOnly = false;
-            this.AddressTextBox.Size = new System.Drawing.Size(545, 31);
-            this.AddressTextBox.TabIndex = 4;
-            this.AddressTextBox.Texts = "";
-            this.AddressTextBox.UnderlinedStyle = false;
-            // 
             // flowLayoutPanel8
             // 
             this.flowLayoutPanel8.Controls.Add(this.iconButton2);
@@ -519,7 +468,7 @@
             // 
             this.flowLayoutPanel9.Controls.Add(this.iconButton7);
             this.flowLayoutPanel9.Controls.Add(this.DepartmentLabel);
-            this.flowLayoutPanel9.Controls.Add(this.DepTextBox);
+            this.flowLayoutPanel9.Controls.Add(this.DepComboBox);
             this.flowLayoutPanel9.Location = new System.Drawing.Point(373, 122);
             this.flowLayoutPanel9.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel9.Name = "flowLayoutPanel9";
@@ -553,25 +502,92 @@
             this.DepartmentLabel.TabIndex = 1;
             this.DepartmentLabel.Text = "Khoa               ";
             // 
-            // DepTextBox
+            // DepComboBox
             // 
-            this.DepTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.DepTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.DepTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.DepTextBox.BorderSize = 0;
-            this.DepTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.DepTextBox.ForeColor = System.Drawing.Color.Black;
-            this.DepTextBox.Location = new System.Drawing.Point(165, 6);
-            this.DepTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.DepTextBox.Multiline = false;
-            this.DepTextBox.Name = "DepTextBox";
-            this.DepTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.DepTextBox.PasswordChar = false;
-            this.DepTextBox.ReadOnly = false;
-            this.DepTextBox.Size = new System.Drawing.Size(173, 31);
-            this.DepTextBox.TabIndex = 8;
-            this.DepTextBox.Texts = "";
-            this.DepTextBox.UnderlinedStyle = false;
+            this.DepComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "HOA",
+            "LY",
+            "TOAN",
+            "CNTT"});
+            this.DepComboBox.BackColor = System.Drawing.Color.White;
+            this.DepComboBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.DepComboBox.BorderSize = 1;
+            this.DepComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.DepComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.DepComboBox.ForeColor = System.Drawing.Color.DimGray;
+            this.DepComboBox.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.DepComboBox.Items.AddRange(new object[] {
+            "HOA",
+            "LY",
+            "TOAN",
+            "CNTT"});
+            this.DepComboBox.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.DepComboBox.ListTextColor = System.Drawing.Color.DimGray;
+            this.DepComboBox.Location = new System.Drawing.Point(164, 5);
+            this.DepComboBox.MinimumSize = new System.Drawing.Size(173, 31);
+            this.DepComboBox.Name = "DepComboBox";
+            this.DepComboBox.Padding = new System.Windows.Forms.Padding(1);
+            this.DepComboBox.Size = new System.Drawing.Size(173, 31);
+            this.DepComboBox.TabIndex = 12;
+            this.DepComboBox.Texts = "";
+            // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.iconButton3);
+            this.flowLayoutPanel5.Controls.Add(this.SalaryLabel);
+            this.flowLayoutPanel5.Controls.Add(this.AddressTextBox);
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(10, 178);
+            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(6);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Padding = new System.Windows.Forms.Padding(2);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(714, 44);
+            this.flowLayoutPanel5.TabIndex = 4;
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.LocationArrow;
+            this.iconButton3.IconColor = System.Drawing.Color.Black;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.IconSize = 20;
+            this.iconButton3.Location = new System.Drawing.Point(5, 8);
+            this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Size = new System.Drawing.Size(38, 27);
+            this.iconButton3.TabIndex = 0;
+            this.iconButton3.TabStop = false;
+            this.iconButton3.Text = "\r\n\r\n";
+            this.iconButton3.UseVisualStyleBackColor = true;
+            // 
+            // SalaryLabel
+            // 
+            this.SalaryLabel.AutoSize = true;
+            this.SalaryLabel.Font = new System.Drawing.Font("Calibri", 13F);
+            this.SalaryLabel.Location = new System.Drawing.Point(50, 8);
+            this.SalaryLabel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
+            this.SalaryLabel.Name = "SalaryLabel";
+            this.SalaryLabel.Size = new System.Drawing.Size(99, 22);
+            this.SalaryLabel.TabIndex = 1;
+            this.SalaryLabel.Text = "Địa chỉ          ";
+            // 
+            // AddressTextBox
+            // 
+            this.AddressTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.AddressTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.AddressTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.AddressTextBox.BorderSize = 0;
+            this.AddressTextBox.Font = new System.Drawing.Font("Calibri", 13F);
+            this.AddressTextBox.ForeColor = System.Drawing.Color.Black;
+            this.AddressTextBox.Location = new System.Drawing.Point(157, 6);
+            this.AddressTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.AddressTextBox.Multiline = false;
+            this.AddressTextBox.Name = "AddressTextBox";
+            this.AddressTextBox.Padding = new System.Windows.Forms.Padding(4);
+            this.AddressTextBox.PasswordChar = false;
+            this.AddressTextBox.ReadOnly = false;
+            this.AddressTextBox.Size = new System.Drawing.Size(545, 31);
+            this.AddressTextBox.TabIndex = 4;
+            this.AddressTextBox.Texts = "";
+            this.AddressTextBox.UnderlinedStyle = false;
             // 
             // flowButtomLayoutPanel
             // 
@@ -637,12 +653,12 @@
             this.flowLayoutPanel10.PerformLayout();
             this.flowLayoutPanel11.ResumeLayout(false);
             this.flowLayoutPanel11.PerformLayout();
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
             this.flowLayoutPanel8.ResumeLayout(false);
             this.flowLayoutPanel8.PerformLayout();
             this.flowLayoutPanel9.ResumeLayout(false);
             this.flowLayoutPanel9.PerformLayout();
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
             this.flowButtomLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -664,7 +680,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private FontAwesome.Sharp.IconButton iconButton1;
         private System.Windows.Forms.Label GenderLabel;
-        private controls.CTTextBox GenderTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
         private FontAwesome.Sharp.IconButton iconButton8;
         private System.Windows.Forms.Label label3;
@@ -684,8 +699,9 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private FontAwesome.Sharp.IconButton iconButton7;
         private System.Windows.Forms.Label DepartmentLabel;
-        private controls.CTTextBox DepTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowButtomLayoutPanel;
         private Controls.CTButton SaveButton;
+        private controls.CTComboBox DepComboBox;
+        private controls.CTComboBox GenderComboBox;
     }
 }

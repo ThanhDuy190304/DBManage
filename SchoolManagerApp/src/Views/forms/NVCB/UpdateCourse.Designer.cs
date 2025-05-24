@@ -52,7 +52,7 @@
             this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.SemesterTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.SemesterComboBox = new SchoolManagerApp.src.Views.controls.CTComboBox();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.YearLabel = new System.Windows.Forms.Label();
@@ -377,7 +377,7 @@
             // 
             this.flowLayoutPanel11.Controls.Add(this.iconButton9);
             this.flowLayoutPanel11.Controls.Add(this.label4);
-            this.flowLayoutPanel11.Controls.Add(this.SemesterTextBox);
+            this.flowLayoutPanel11.Controls.Add(this.SemesterComboBox);
             this.flowLayoutPanel11.Location = new System.Drawing.Point(10, 178);
             this.flowLayoutPanel11.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel11.Name = "flowLayoutPanel11";
@@ -411,25 +411,32 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Học kì              ";
             // 
-            // SemesterTextBox
+            // SemesterComboBox
             // 
-            this.SemesterTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.SemesterTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.SemesterTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.SemesterTextBox.BorderSize = 0;
-            this.SemesterTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.SemesterTextBox.ForeColor = System.Drawing.Color.Black;
-            this.SemesterTextBox.Location = new System.Drawing.Point(169, 6);
-            this.SemesterTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.SemesterTextBox.Multiline = false;
-            this.SemesterTextBox.Name = "SemesterTextBox";
-            this.SemesterTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.SemesterTextBox.PasswordChar = false;
-            this.SemesterTextBox.ReadOnly = false;
-            this.SemesterTextBox.Size = new System.Drawing.Size(173, 31);
-            this.SemesterTextBox.TabIndex = 3;
-            this.SemesterTextBox.Texts = "";
-            this.SemesterTextBox.UnderlinedStyle = false;
+            this.SemesterComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "1",
+            "2",
+            "3"});
+            this.SemesterComboBox.BackColor = System.Drawing.Color.White;
+            this.SemesterComboBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.SemesterComboBox.BorderSize = 1;
+            this.SemesterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.SemesterComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.SemesterComboBox.ForeColor = System.Drawing.Color.DimGray;
+            this.SemesterComboBox.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.SemesterComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.SemesterComboBox.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.SemesterComboBox.ListTextColor = System.Drawing.Color.DimGray;
+            this.SemesterComboBox.Location = new System.Drawing.Point(168, 5);
+            this.SemesterComboBox.MinimumSize = new System.Drawing.Size(173, 31);
+            this.SemesterComboBox.Name = "SemesterComboBox";
+            this.SemesterComboBox.Padding = new System.Windows.Forms.Padding(1);
+            this.SemesterComboBox.Size = new System.Drawing.Size(173, 31);
+            this.SemesterComboBox.TabIndex = 14;
+            this.SemesterComboBox.Texts = "";
             // 
             // flowLayoutPanel9
             // 
@@ -631,7 +638,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
         private FontAwesome.Sharp.IconButton iconButton9;
         private System.Windows.Forms.Label label4;
-        private controls.CTTextBox SemesterTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private FontAwesome.Sharp.IconButton iconButton7;
         private System.Windows.Forms.Label YearLabel;
@@ -640,5 +646,6 @@
         private System.Windows.Forms.FlowLayoutPanel SaveAndCancelButtonLayoutPanel;
         private Controls.CTButton SaveButton;
         private Controls.CTButton CancelButton;
+        private controls.CTComboBox SemesterComboBox;
     }
 }

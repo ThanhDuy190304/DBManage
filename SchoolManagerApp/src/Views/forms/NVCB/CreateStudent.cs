@@ -26,18 +26,18 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
         {
             this.StuCodeTextBox.Texts = "";
             this.FullNameTextBox.Texts = "";
-            this.GenderTextBox.Texts = "";
+            this.GenderComboBox.Texts = "";
             this.BirthTextBox.Texts = "";
             this.AddressTextBox.Texts = "";
             this.PhoneTextBox.Texts = "";
-            this.DepTextBox.Texts = "";
+            this.DepComboBox.Texts = "";
         }
 
         private async void SaveButton_Click(object sender, EventArgs e)
         {
             string stuCode = this.StuCodeTextBox.Texts;
             string fullName = this.FullNameTextBox.Texts;
-            string gender = this.GenderTextBox.Texts;
+            string gender = this.GenderComboBox.Texts;
             DateTime birth = DateTime.ParseExact(
                 this.BirthTextBox.Texts,
                 new[] { "d/M/yyyy", "dd/MM/yyyy" },
@@ -46,7 +46,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
             );
             string address = this.AddressTextBox.Texts;
             string phone = this.PhoneTextBox.Texts;
-            string department = this.DepTextBox.Texts;
+            string department = this.DepComboBox.Texts;
 
             SINHVIEN newStu = new SINHVIEN
             {
@@ -72,5 +72,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+     
     }
 }

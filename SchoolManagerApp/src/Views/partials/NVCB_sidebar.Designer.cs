@@ -39,6 +39,7 @@
             this.StudentsTab = new SchoolManagerApp.Controls.CTButton();
             this.RegistrationsTab = new SchoolManagerApp.Controls.CTButton();
             this.EmpCode_And_Role_Label = new System.Windows.Forms.Label();
+            this.NotificationTab = new SchoolManagerApp.Controls.CTButton();
             this.SuspendLayout();
             // 
             // rightArrow
@@ -299,11 +300,42 @@
             this.EmpCode_And_Role_Label.TabIndex = 18;
             this.EmpCode_And_Role_Label.Text = "NULL";
             // 
+            // NotificationTab
+            // 
+            this.NotificationTab.BackColor = System.Drawing.Color.Transparent;
+            this.NotificationTab.BackgroundColor = System.Drawing.Color.Transparent;
+            this.NotificationTab.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.NotificationTab.BorderRadius = 0;
+            this.NotificationTab.BorderSize = 0;
+            this.NotificationTab.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NotificationTab.FlatAppearance.BorderSize = 0;
+            this.NotificationTab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NotificationTab.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotificationTab.ForeColor = System.Drawing.Color.Black;
+            this.NotificationTab.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.NotificationTab.HoverIconColor = System.Drawing.Color.MediumBlue;
+            this.NotificationTab.HoverTextColor = System.Drawing.Color.MediumBlue;
+            this.NotificationTab.IconChar = FontAwesome.Sharp.IconChar.Bell;
+            this.NotificationTab.IconColor = System.Drawing.Color.Black;
+            this.NotificationTab.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.NotificationTab.IconSize = 24;
+            this.NotificationTab.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.NotificationTab.Location = new System.Drawing.Point(11, 336);
+            this.NotificationTab.Name = "NotificationTab";
+            this.NotificationTab.Size = new System.Drawing.Size(201, 41);
+            this.NotificationTab.TabIndex = 29;
+            this.NotificationTab.Text = "Thông báo";
+            this.NotificationTab.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.NotificationTab.TextColor = System.Drawing.Color.Black;
+            this.NotificationTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.NotificationTab.UseVisualStyleBackColor = false;
+            // 
             // NVCB_sidebar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.NotificationTab);
             this.Controls.Add(this.EmpCode_And_Role_Label);
             this.Controls.Add(this.RegistrationsTab);
             this.Controls.Add(this.StudentsTab);
@@ -335,5 +367,6 @@
         private Controls.CTButton StudentsTab;
         private Controls.CTButton RegistrationsTab;
         private System.Windows.Forms.Label EmpCode_And_Role_Label;
+        private Controls.CTButton NotificationTab;
     }
 }

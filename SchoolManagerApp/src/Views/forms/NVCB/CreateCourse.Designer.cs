@@ -51,7 +51,7 @@
             this.flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.SemesterTextBox = new SchoolManagerApp.src.Views.controls.CTTextBox();
+            this.SemesterComboBox = new SchoolManagerApp.src.Views.controls.CTComboBox();
             this.flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.YearLabel = new System.Windows.Forms.Label();
@@ -97,6 +97,7 @@
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Padding = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel3.Size = new System.Drawing.Size(351, 44);
+            this.flowLayoutPanel3.TabIndex = 0;
             // 
             // iconButton5
             // 
@@ -108,6 +109,7 @@
             this.iconButton5.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Size = new System.Drawing.Size(38, 27);
+            this.iconButton5.TabIndex = 0;
             this.iconButton5.TabStop = false;
             this.iconButton5.Text = "\r\n\r\n";
             this.iconButton5.UseVisualStyleBackColor = true;
@@ -120,6 +122,7 @@
             this.EmpCodeLabel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
             this.EmpCodeLabel.Name = "EmpCodeLabel";
             this.EmpCodeLabel.Size = new System.Drawing.Size(111, 22);
+            this.EmpCodeLabel.TabIndex = 1;
             this.EmpCodeLabel.Text = "Mã môn          ";
             // 
             // CourseCodeTextBox
@@ -152,6 +155,7 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(351, 44);
+            this.flowLayoutPanel1.TabIndex = 1;
             // 
             // iconEmpCode
             // 
@@ -212,6 +216,7 @@
             this.flowLayoutPanel4.Name = "flowLayoutPanel4";
             this.flowLayoutPanel4.Padding = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel4.Size = new System.Drawing.Size(351, 44);
+            this.flowLayoutPanel4.TabIndex = 2;
             // 
             // iconButton1
             // 
@@ -223,6 +228,7 @@
             this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(38, 27);
+            this.iconButton1.TabIndex = 0;
             this.iconButton1.TabStop = false;
             this.iconButton1.Text = "\r\n\r\n";
             this.iconButton1.UseVisualStyleBackColor = true;
@@ -235,6 +241,7 @@
             this.GenderLabel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 4);
             this.GenderLabel.Name = "GenderLabel";
             this.GenderLabel.Size = new System.Drawing.Size(112, 22);
+            this.GenderLabel.TabIndex = 1;
             this.GenderLabel.Text = "Mã nhân viên ";
             // 
             // EmpCodeTextBox
@@ -253,6 +260,7 @@
             this.EmpCodeTextBox.PasswordChar = false;
             this.EmpCodeTextBox.ReadOnly = false;
             this.EmpCodeTextBox.Size = new System.Drawing.Size(173, 31);
+            this.EmpCodeTextBox.TabIndex = 2;
             this.EmpCodeTextBox.Texts = "";
             this.EmpCodeTextBox.UnderlinedStyle = false;
             // 
@@ -266,6 +274,7 @@
             this.flowLayoutPanel10.Name = "flowLayoutPanel10";
             this.flowLayoutPanel10.Padding = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel10.Size = new System.Drawing.Size(351, 44);
+            this.flowLayoutPanel10.TabIndex = 3;
             // 
             // iconButton8
             // 
@@ -354,7 +363,7 @@
             // 
             this.flowLayoutPanel11.Controls.Add(this.iconButton9);
             this.flowLayoutPanel11.Controls.Add(this.label4);
-            this.flowLayoutPanel11.Controls.Add(this.SemesterTextBox);
+            this.flowLayoutPanel11.Controls.Add(this.SemesterComboBox);
             this.flowLayoutPanel11.Location = new System.Drawing.Point(10, 178);
             this.flowLayoutPanel11.Margin = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel11.Name = "flowLayoutPanel11";
@@ -388,25 +397,32 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Học kì              ";
             // 
-            // SemesterTextBox
+            // SemesterComboBox
             // 
-            this.SemesterTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.SemesterTextBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.SemesterTextBox.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.SemesterTextBox.BorderSize = 0;
-            this.SemesterTextBox.Font = new System.Drawing.Font("Calibri", 13F);
-            this.SemesterTextBox.ForeColor = System.Drawing.Color.Black;
-            this.SemesterTextBox.Location = new System.Drawing.Point(169, 6);
-            this.SemesterTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.SemesterTextBox.Multiline = false;
-            this.SemesterTextBox.Name = "SemesterTextBox";
-            this.SemesterTextBox.Padding = new System.Windows.Forms.Padding(4);
-            this.SemesterTextBox.PasswordChar = false;
-            this.SemesterTextBox.ReadOnly = false;
-            this.SemesterTextBox.Size = new System.Drawing.Size(173, 31);
-            this.SemesterTextBox.TabIndex = 3;
-            this.SemesterTextBox.Texts = "";
-            this.SemesterTextBox.UnderlinedStyle = false;
+            this.SemesterComboBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "1",
+            "2",
+            "3"});
+            this.SemesterComboBox.BackColor = System.Drawing.Color.White;
+            this.SemesterComboBox.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.SemesterComboBox.BorderSize = 1;
+            this.SemesterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.SemesterComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.SemesterComboBox.ForeColor = System.Drawing.Color.DimGray;
+            this.SemesterComboBox.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.SemesterComboBox.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.SemesterComboBox.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.SemesterComboBox.ListTextColor = System.Drawing.Color.DimGray;
+            this.SemesterComboBox.Location = new System.Drawing.Point(168, 5);
+            this.SemesterComboBox.MinimumSize = new System.Drawing.Size(173, 31);
+            this.SemesterComboBox.Name = "SemesterComboBox";
+            this.SemesterComboBox.Padding = new System.Windows.Forms.Padding(1);
+            this.SemesterComboBox.Size = new System.Drawing.Size(173, 31);
+            this.SemesterComboBox.TabIndex = 13;
+            this.SemesterComboBox.Texts = "";
             // 
             // flowLayoutPanel9
             // 
@@ -565,7 +581,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
         private FontAwesome.Sharp.IconButton iconButton9;
         private System.Windows.Forms.Label label4;
-        private controls.CTTextBox SemesterTextBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private FontAwesome.Sharp.IconButton iconButton7;
         private System.Windows.Forms.Label YearLabel;
@@ -584,5 +599,6 @@
         private FontAwesome.Sharp.IconButton iconButton10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
+        private controls.CTComboBox SemesterComboBox;
     }
 }

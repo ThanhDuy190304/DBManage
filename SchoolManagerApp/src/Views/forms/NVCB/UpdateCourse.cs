@@ -31,7 +31,7 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
             this.CourseCodeTextBox.Texts = this._course.MAMM;
             this.EmpCodeTextBox.Texts = this._course.MAGV;
             this.YearTextBox.Texts = this._course.NAM;
-            this.SemesterTextBox.Texts = this._course.HK;
+            this.SemesterComboBox.Texts = this._course.HK;
             this.SubjectCodeTextBox.Texts = this._course.MAHP;
         }
         private async void SaveButton_Click(object sender, EventArgs e)
@@ -57,10 +57,10 @@ namespace SchoolManagerApp.src.Views.forms.NVCB
                 dict["NAM"] = this.YearTextBox.Texts.Trim();
             }
 
-            if (!string.IsNullOrWhiteSpace(this.SemesterTextBox.Texts) &&
-                this.SemesterTextBox.Texts.Trim() != _course.HK)
+            if (!string.IsNullOrWhiteSpace(this.SemesterComboBox.Texts) &&
+                this.SemesterComboBox.Texts.Trim() != _course.HK)
             {
-                dict["HK"] = this.SemesterTextBox.Texts.Trim();
+                dict["HK"] = this.SemesterComboBox.Texts.Trim();
             }
 
             if (!string.IsNullOrWhiteSpace(this.SubjectCodeTextBox.Texts) &&
