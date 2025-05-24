@@ -8,6 +8,7 @@ namespace SchoolManagerApp.src.Models
 {
     public class ThongBao
     {
+        public string ID { get; set; }
         public string NOIDUNG { get; set; }
     }
 }

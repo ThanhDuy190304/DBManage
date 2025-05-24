@@ -100,7 +100,6 @@
             this.label1.Size = new System.Drawing.Size(87, 23);
             this.label1.TabIndex = 12;
             this.label1.Text = "Nhân viên";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // EmpsTab
             // 
@@ -329,6 +328,7 @@
             this.NotificationTab.TextColor = System.Drawing.Color.Black;
             this.NotificationTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.NotificationTab.UseVisualStyleBackColor = false;
+            this.NotificationTab.Click += new System.EventHandler(this.NotificationTab_Click);
             // 
             // NVCB_sidebar
             // 

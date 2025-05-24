@@ -72,5 +72,10 @@ namespace SchoolManagerApp.src.Views.partials
         {
             OnPageChange?.Invoke(new pages.SV.RegistrationsPage());
         }
+
+        private void NotificationTab_Click(object sender, EventArgs e)
+        {
+            OnPageChange?.Invoke(new pages.SharedPage.NotificationPage());
+        }
     }
 }

@@ -86,11 +86,9 @@ namespace SchoolManagerApp.src.Views.partials
             OnLogout?.Invoke();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void NotificationTab_Click(object sender, EventArgs e)
         {
-
+            OnPageChange?.Invoke(new pages.SharedPage.NotificationPage());
         }
-
-       
     }
 }

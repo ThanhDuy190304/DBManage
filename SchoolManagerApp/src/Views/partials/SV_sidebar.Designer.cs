@@ -263,6 +263,7 @@
             this.NotificationTab.TextColor = System.Drawing.Color.Black;
             this.NotificationTab.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.NotificationTab.UseVisualStyleBackColor = false;
+            this.NotificationTab.Click += new System.EventHandler(this.NotificationTab_Click);
             // 
             // SV_sidebar
             // 
