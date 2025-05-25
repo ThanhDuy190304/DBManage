@@ -53,6 +53,7 @@ namespace SchoolManagerApp.src.Views.pages.NVCB
                     r.HK,
                     r.NAM,
                     r.TENHP,
+                    r.MADV,
                     r.SOTC.ToString(),
                     r.STLT.ToString(),
                     r.STTH.ToString()
