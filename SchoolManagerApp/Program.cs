@@ -1,5 +1,5 @@
 ﻿// Program.cs
-//#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
+#define CONSOLE_TEST // ← Đổi giữa CONSOLE_TEST và GUI
 
 using System;
 using System.Linq;
@@ -21,21 +21,33 @@ namespace SchoolManagerApp
         static void Main()
         {
 #if CONSOLE_TEST
+            //// Login
+            //Console.Write("Enter username: ");
+            //string username = "sys"; //Console.ReadLine();
+
+            //Console.Write("Enter password: ");
+            //string password = "admin"; // Console.ReadLine();
+
+            //var test = new TestSysAudit(username, password); // user, password
+            //test.RunAllTests().GetAwaiter().GetResult();
+
+
+
             // Login
             Console.Write("Enter username: ");
-            string username = "NV012"; //Console.ReadLine();
-git
+            string username2 = "admin"; //Console.ReadLine();
+
             Console.Write("Enter password: ");
-            string password = "123"; // Console.ReadLine();
+            string password2 = "Admin123"; // Console.ReadLine();
 
             var controllerAuth = new AuthController();
 
-            if (controllerAuth.Login(username, password))
+            if (controllerAuth.Login(username2, password2))
                 Console.WriteLine("Login thành công!");
             else
                 Console.WriteLine("Login thất bại!");
-            var test = new TestCau4(username, password); // user, password
-            test.RunAllTests().GetAwaiter().GetResult();
+            var test2 = new TestAudit(username2, password2); // user, password
+            test2.RunAllAuditTests().GetAwaiter().GetResult();
 
 #else
             // GUI mode (WinForms)

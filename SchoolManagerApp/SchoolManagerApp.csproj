@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{33C21E9A-EE62-40C4-B814-0A7D5E1BA4C6}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>SchoolManagerApp</RootNamespace>
     <AssemblyName>SchoolManagerApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -109,12 +109,14 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\Controller\AuditController.cs" />
     <Compile Include="src\Controller\AuthController.cs" />
     <Compile Include="src\Controller\DangKyController.cs" />
     <Compile Include="src\Controller\OLSController.cs" />
     <Compile Include="src\Controller\SinhVienController.cs" />
     <Compile Include="src\Controller\MomonController.cs" />
     <Compile Include="src\Controller\NhanVienController.cs" />
+    <Compile Include="src\Controller\SysController.cs" />
     <Compile Include="src\Controller\UserController.cs" />
     <Compile Include="src\Controller\RoleController.cs" />
     <Compile Include="src\Models\DANGKY.cs" />
@@ -123,9 +125,12 @@
     <Compile Include="src\Models\DBA_TAB_PRIVS .cs" />
     <Compile Include="src\Models\DBA_ROLES.cs" />
     <Compile Include="src\Models\DBA_USERS.cs" />
+    <Compile Include="src\Models\FGAAuditRecord.cs" />
     <Compile Include="src\Models\Momon.cs" />
     <Compile Include="src\Models\MOMON_HOCPHAN.cs" />
     <Compile Include="src\Models\NHANVIEN.cs" />
+    <Compile Include="src\Models\StandardAuditRecord.cs" />
+    <Compile Include="src\Service\AuditService.cs" />
     <Compile Include="src\Service\OLSService.cs" />
     <Compile Include="src\Models\SINHVIEN.cs" />
     <Compile Include="src\Models\ThongBao.cs" />
@@ -133,11 +138,15 @@
     <Compile Include="src\Service\DBA_PrivilegeService.cs" />
     <Compile Include="src\Service\MomonService.cs" />
     <Compile Include="src\Service\NhanVienService.cs" />
+    <Compile Include="src\Service\SysDatabaseService.cs" />
+    <Compile Include="src\Service\SysService.cs" />
     <Compile Include="src\Test\SinhVienTestSuite.cs" />
+    <Compile Include="src\Test\TestAudit.cs" />
     <Compile Include="src\Test\TestMomonController.cs" />
     <Compile Include="src\Test\TestNhanVienController.cs" />
     <Compile Include="src\Service\SinhVienService.cs" />
     <Compile Include="src\Test\TestCau4.cs" />
+    <Compile Include="src\Test\TestSysAudit.cs" />
     <Compile Include="src\utils\Error.cs" />
     <Compile Include="src\utils\ErrorMapper.cs" />
     <Compile Include="src\Views\controls\CTButton.cs">
