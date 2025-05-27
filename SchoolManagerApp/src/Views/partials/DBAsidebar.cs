@@ -1,4 +1,6 @@
 ﻿using SchoolManagerApp.src.Controller;
+using SchoolManagerApp.src.Views.pages;
+using SchoolManagerApp.src.Views.pages.DBA;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +41,15 @@ namespace SchoolManagerApp.src.Views.partials
         {
             OnPageChange?.Invoke(new UsersPage());
         }
+        private void PolicyPage_Click(object sender, EventArgs e)
+        {
+            OnPageChange?.Invoke(new PolicyPage());
 
+        }
+        private void AuditPage_Click(object sender, EventArgs e)
+        {
+            OnPageChange?.Invoke(new AuditPage());
+        }
         private void leftArrow_Click(object sender, EventArgs e)
         {
             foreach (Control control in this.Controls)
@@ -73,5 +83,7 @@ namespace SchoolManagerApp.src.Views.partials
         {
             OnLogout?.Invoke();
         }
+
+       
     }
 }

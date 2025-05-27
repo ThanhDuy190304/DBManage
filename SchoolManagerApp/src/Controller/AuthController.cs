@@ -17,6 +17,7 @@ namespace SchoolManagerApp.src.Controller
         {
             try
             {
+
                 _dbService = DatabaseService.GetInstance(username, password);
                 _dbService.ExecuteSetUserRole();
                 return true;

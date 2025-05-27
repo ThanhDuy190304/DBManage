@@ -35,6 +35,8 @@
             this.RolesPage = new SchoolManagerApp.Controls.CTButton();
             this.label1 = new System.Windows.Forms.Label();
             this.ctButton1 = new SchoolManagerApp.Controls.CTButton();
+            this.PolicyPage = new SchoolManagerApp.Controls.CTButton();
+            this.AuditPage = new SchoolManagerApp.Controls.CTButton();
             this.SuspendLayout();
             // 
             // panel1
@@ -190,12 +192,76 @@
             this.ctButton1.UseVisualStyleBackColor = false;
             this.ctButton1.Click += new System.EventHandler(this.Logout_Click);
             // 
-            // sidebar
+            // PolicyPage
+            // 
+            this.PolicyPage.BackColor = System.Drawing.Color.Transparent;
+            this.PolicyPage.BackgroundColor = System.Drawing.Color.Transparent;
+            this.PolicyPage.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.PolicyPage.BorderRadius = 0;
+            this.PolicyPage.BorderSize = 0;
+            this.PolicyPage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PolicyPage.FlatAppearance.BorderSize = 0;
+            this.PolicyPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PolicyPage.Font = new System.Drawing.Font("Calibri", 12F);
+            this.PolicyPage.ForeColor = System.Drawing.Color.Black;
+            this.PolicyPage.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.PolicyPage.HoverIconColor = System.Drawing.Color.MediumBlue;
+            this.PolicyPage.HoverTextColor = System.Drawing.Color.MediumBlue;
+            this.PolicyPage.IconChar = FontAwesome.Sharp.IconChar.Sliders;
+            this.PolicyPage.IconColor = System.Drawing.Color.Black;
+            this.PolicyPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.PolicyPage.IconSize = 24;
+            this.PolicyPage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PolicyPage.Location = new System.Drawing.Point(21, 176);
+            this.PolicyPage.Name = "PolicyPage";
+            this.PolicyPage.Size = new System.Drawing.Size(201, 41);
+            this.PolicyPage.TabIndex = 8;
+            this.PolicyPage.Text = "Quản lý policies";
+            this.PolicyPage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.PolicyPage.TextColor = System.Drawing.Color.Black;
+            this.PolicyPage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.PolicyPage.UseVisualStyleBackColor = false;
+            this.PolicyPage.Click += new System.EventHandler(this.PolicyPage_Click);
+            // 
+            // AuditPage
+            // 
+            this.AuditPage.BackColor = System.Drawing.Color.Transparent;
+            this.AuditPage.BackgroundColor = System.Drawing.Color.Transparent;
+            this.AuditPage.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.AuditPage.BorderRadius = 0;
+            this.AuditPage.BorderSize = 0;
+            this.AuditPage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AuditPage.FlatAppearance.BorderSize = 0;
+            this.AuditPage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AuditPage.Font = new System.Drawing.Font("Calibri", 12F);
+            this.AuditPage.ForeColor = System.Drawing.Color.Black;
+            this.AuditPage.HoverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.AuditPage.HoverIconColor = System.Drawing.Color.MediumBlue;
+            this.AuditPage.HoverTextColor = System.Drawing.Color.MediumBlue;
+            this.AuditPage.IconChar = FontAwesome.Sharp.IconChar.Ad;
+            this.AuditPage.IconColor = System.Drawing.Color.Black;
+            this.AuditPage.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.AuditPage.IconSize = 24;
+            this.AuditPage.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AuditPage.Location = new System.Drawing.Point(21, 223);
+            this.AuditPage.Name = "AuditPage";
+            this.AuditPage.Size = new System.Drawing.Size(201, 41);
+            this.AuditPage.TabIndex = 9;
+            this.AuditPage.Text = "Quản lý audit";
+            this.AuditPage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AuditPage.TextColor = System.Drawing.Color.Black;
+            this.AuditPage.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.AuditPage.UseVisualStyleBackColor = false;
+            this.AuditPage.Click += new System.EventHandler(this.AuditPage_Click);
+            // 
+            // DBAsidebar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.AuditPage);
+            this.Controls.Add(this.PolicyPage);
             this.Controls.Add(this.ctButton1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rightArrow);
@@ -203,7 +269,7 @@
             this.Controls.Add(this.UsersPage);
             this.Controls.Add(this.RolesPage);
             this.Controls.Add(this.panel1);
-            this.Name = "sidebar";
+            this.Name = "DBAsidebar";
             this.Size = new System.Drawing.Size(243, 392);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -218,5 +284,7 @@
         private FontAwesome.Sharp.IconButton rightArrow;
         private System.Windows.Forms.Label label1;
         private Controls.CTButton ctButton1;
+        private Controls.CTButton PolicyPage;
+        private Controls.CTButton AuditPage;
     }
 }

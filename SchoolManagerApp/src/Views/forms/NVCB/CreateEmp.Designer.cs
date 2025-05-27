@@ -745,6 +745,7 @@
             this.SaveButton.TextColor = System.Drawing.Color.Black;
             this.SaveButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SaveButton.UseVisualStyleBackColor = false;
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // label2
             // 
