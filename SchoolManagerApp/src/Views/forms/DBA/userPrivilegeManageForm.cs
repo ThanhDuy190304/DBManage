@@ -109,7 +109,7 @@ namespace SchoolManagerApp.src.Views.forms
 
                 var table = new CTTable(columnDefinitions, data, null, false);
                 table.Dock = DockStyle.Fill;
-                this.ColPrivilegeManagePanel.Controls.Add(table);
+                this.TablePrivilegeManagePanel.Controls.Add(table);
             }
             catch (Exception ex)
             {
@@ -149,7 +149,7 @@ namespace SchoolManagerApp.src.Views.forms
                 var table = new CTTable(columnDefinitions, data, null, false);
                 table.Dock = DockStyle.Fill;
 
-                this.TablePrivilegeManagePanel.Controls.Add(table);
+                this.ColPrivilegeManagePanel.Controls.Add(table);
             }
             catch (Exception ex)
             {
@@ -197,7 +197,7 @@ namespace SchoolManagerApp.src.Views.forms
             this.TablePrivilegeManagePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.TablePrivilegeManagePanel.Location = new System.Drawing.Point(42, 40);
             this.TablePrivilegeManagePanel.Name = "TablePrivilegeManagePanel";
-            this.TablePrivilegeManagePanel.Size = new System.Drawing.Size(758, 250);
+            this.TablePrivilegeManagePanel.Size = new System.Drawing.Size(828, 250);
             this.TablePrivilegeManagePanel.TabIndex = 3;
             // 
             // GrantedRolePanel
@@ -220,10 +220,10 @@ namespace SchoolManagerApp.src.Views.forms
             this.tabUserPriviligesControl.Controls.Add(this.tabColPriviliges);
             this.tabUserPriviligesControl.Controls.Add(this.tabRolePriviliges);
             this.tabUserPriviligesControl.Font = new System.Drawing.Font("Calibri", 13F);
-            this.tabUserPriviligesControl.Location = new System.Drawing.Point(121, 71);
+            this.tabUserPriviligesControl.Location = new System.Drawing.Point(51, 71);
             this.tabUserPriviligesControl.Name = "tabUserPriviligesControl";
             this.tabUserPriviligesControl.SelectedIndex = 0;
-            this.tabUserPriviligesControl.Size = new System.Drawing.Size(854, 366);
+            this.tabUserPriviligesControl.Size = new System.Drawing.Size(924, 366);
             this.tabUserPriviligesControl.TabIndex = 8;
             // 
             // tabTablePriviliges
@@ -234,7 +234,7 @@ namespace SchoolManagerApp.src.Views.forms
             this.tabTablePriviliges.Location = new System.Drawing.Point(4, 30);
             this.tabTablePriviliges.Name = "tabTablePriviliges";
             this.tabTablePriviliges.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTablePriviliges.Size = new System.Drawing.Size(846, 332);
+            this.tabTablePriviliges.Size = new System.Drawing.Size(916, 332);
             this.tabTablePriviliges.TabIndex = 0;
             this.tabTablePriviliges.Text = "Quyền trên bảng";
             this.tabTablePriviliges.UseVisualStyleBackColor = true;

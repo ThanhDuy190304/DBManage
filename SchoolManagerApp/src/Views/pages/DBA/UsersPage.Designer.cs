@@ -38,9 +38,9 @@
             this.tablePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tablePanel.Location = new System.Drawing.Point(38, 130);
+            this.tablePanel.Location = new System.Drawing.Point(38, 110);
             this.tablePanel.Name = "tablePanel";
-            this.tablePanel.Size = new System.Drawing.Size(808, 317);
+            this.tablePanel.Size = new System.Drawing.Size(808, 337);
             this.tablePanel.TabIndex = 3;
             // 
             // ReloadButton
