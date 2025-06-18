@@ -10,6 +10,35 @@ using System.Data.Common;
 using SchoolManagerApp.src.utils;
 using Dapper;
 
+/*
+SYNOPSIS: Module DatabaseService quản lý kết nối và xác thực với Oracle Database.
+FUNCTIONS:
+
+- GetInstance(): Khởi tạo singleton instance của DatabaseService.
+
+- OpenConnection(): Mở kết nối database và thiết lập role người dùng.
+
+- IsUserDBA(): Kiểm tra role DBA.
+
+- IsUserNVCB(): Kiểm tra role nhân viên cơ bản.
+
+- IsUserSinhVien(): Kiểm tra role sinh viên.
+
+- GetExtended_NVCB_Role(): Xác định role chi tiết của nhân viên.
+
+- GetUserName(): Lấy tên user hiện tại.
+
+- CloseConnection(): Đóng kết nối database.
+
+- ExecuteSetUserRole(): Thực thi procedure thiết lập role.
+GLOBAL VARIABLES:
+
+- _instance: Instance duy nhất của DatabaseService.
+
+- _lock: Object dùng để lock khi khởi tạo instance.
+
+- _connection: Kết nối Oracle database.
+*/
 namespace SchoolManagerApp.src.Service
 {
     public class DatabaseService

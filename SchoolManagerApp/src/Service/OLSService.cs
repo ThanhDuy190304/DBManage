@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 using Dapper;
 using Oracle.ManagedDataAccess.Client;
 using SchoolManagerApp.src.Models;
-
+/*
+SYNOPSIS: Module OLSService cung cấp các dịch vụ liên quan đến hệ thống OLS (Online Learning System).
+FUNCTIONS:
+- GetNotify(): Lấy danh sách thông báo từ hệ thống.
+GLOBAL VARIABLES:
+- Kế thừa _dbService từ BaseService để thao tác với database.
+*/
 namespace SchoolManagerApp.src.Service
 {
     internal class OLSService : BaseService

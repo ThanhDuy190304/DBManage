@@ -5,7 +5,18 @@ using SchoolManagerApp.src.utils;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+/*
+SYNOPSIS: Module PolicyService cung cấp các dịch vụ quản lý chính sách bảo mật (VPD và Audit) trong Oracle Database.
+FUNCTIONS:
+- GetVPDPoliciesByObjectName(): Lấy danh sách chính sách VPD theo tên bảng.
+- SetVPDPolicyState(): Bật/tắt chính sách VPD.
+- GetAuditPolicies(): Lấy tất cả chính sách audit.
+- DisableAuditPolicy(): Tắt chính sách audit.
+- EnableAuditPolicy(): Bật chính sách audit.
+GLOBAL VARIABLES:
+- _dbService: Kế thừa từ BaseService để thao tác với database.
+- _privilegeService: Service quản lý quyền (DBA_PrivilegeService).
+*/
 namespace SchoolManagerApp.src.Service
 {
     internal class PolicyService : BaseService

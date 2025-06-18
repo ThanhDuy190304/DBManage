@@ -8,6 +8,27 @@ using Oracle.ManagedDataAccess.Client;
 using SchoolManagerApp.src.Models;
 using SchoolManagerApp.src.utils;
 
+/*
+SYNOPSIS: Module DangKyService cung cấp các dịch vụ quản lý đăng ký học phần và điểm của sinh viên.
+FUNCTIONS:
+
+- GetPoint(): Lấy toàn bộ dữ liệu từ bảng DANGKY.
+
+- InsertHocPhan(string maSV, string maMM): Thêm mới học phần cho sinh viên.
+
+- DeleteHocPhan(string maSV, string maMM): Xóa học phần của sinh viên.
+
+- UpdateHocPhan(string maSV, string maMM, double? diemTH, double? diemQT, double? diemCK, double? diemTK): Cập nhật điểm các thành phần (DIEMTH, DIEMQT, DIEMCK, DIEMTK) cho sinh viên.
+
+- GetListStudentOfGV(string mamm): Lấy danh sách sinh viên của giáo viên phụ trách.
+
+- UpdateSV(string maSV, string maMM, string newMAMM): Cập nhật mã môn học cho sinh viên (dành cho NV PDT).
+GLOBAL VARIABLES:
+
+- Kế thừa _dbService từ BaseService để thao tác với database.
+
+- Sử dụng ErrorMapper để xử lý lỗi Oracle.
+*/
 namespace SchoolManagerApp.src.Service
 {
     internal class DangKyService : BaseService

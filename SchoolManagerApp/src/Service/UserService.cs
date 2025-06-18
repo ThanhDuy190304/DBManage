@@ -5,7 +5,27 @@ using SchoolManagerApp.src.Models;
 using Dapper;
 using Oracle.ManagedDataAccess.Client;
 using SchoolManagerApp.src.utils;
-
+/*
+SYNOPSIS: Module UserService cung cấp các dịch vụ quản lý user trong Oracle Database.
+FUNCTIONS:
+- GetAll(): Lấy danh sách tất cả user không phải của hệ thống.
+- GetByUsername(): Lấy thông tin user theo username.
+- GetRoleByName(): Lấy danh sách role của user.
+- Delete(): Xóa user.
+- CreateUser(): Tạo user mới.
+- UpdateUserPassword(): Cập nhật mật khẩu user.
+- GetPrivilegeOnTableByName(): Lấy quyền trên bảng của user.
+- GetPrivilegeOnColByName(): Lấy quyền trên cột của user.
+- GrantPermission(): Cấp quyền cho user.
+- RevokeTablePrivilege(): Thu hồi quyền trên bảng của user.
+- RevokeRole(): Thu hồi role từ user.
+- GrantRole(): Cấp role cho user.
+- LockAccount(): Khóa tài khoản user.
+- UnLockAccount(): Mở khóa tài khoản user.
+GLOBAL VARIABLES:
+- _dbService: Kế thừa từ BaseService để thao tác với database.
+- _privilegeService: Service quản lý quyền (DBA_PrivilegeService).
+*/
 namespace SchoolManagerApp.src.Service
 {
     internal class UserService : BaseService

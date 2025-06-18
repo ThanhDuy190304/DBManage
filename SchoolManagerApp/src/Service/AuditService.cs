@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
@@ -9,6 +10,16 @@ using Oracle.ManagedDataAccess.Client;
 using SchoolManagerApp.src.Models;
 using SchoolManagerApp.src.utils;
 
+/*
+SYNOPSIS: Module AuditService cung cấp các dịch vụ truy vấn dữ liệu audit từ Oracle Database.
+FUNCTIONS:
+- GetStandardAuditDataAsync(): Lấy dữ liệu audit tiêu chuẩn từ bảng DBA_AUDIT_TRAIL.
+- GetStandardAuditSessions(): Truy vấn thông tin audit phiên từ bảng DBA_AUDIT_SESSION.
+- GetFGAAuditDataAsync(): Lấy dữ liệu Fine-Grained Audit với tùy chọn lọc theo policy name.
+GLOBAL VARIABLES:
+- Kế thừa _dbService từ BaseService để thao tác với database.
+- Sử dụng ErrorMapper để xử lý lỗi Oracle.
+*/
 namespace SchoolManagerApp.src.Service
 {
     internal class AuditService : BaseService

@@ -7,6 +7,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/*
+SYNOPSIS: Module DBA_PrivilegeService cung cấp các dịch vụ quản lý quyền trong Oracle Database.
+FUNCTIONS:
+- GetPrivilegeOnTableByName(): Lấy danh sách quyền trên bảng của user/role.
+- GetPrivilegeOnColByName(): Lấy danh sách quyền trên cột của user/role.
+- GrantPermission(): Cấp quyền trên đối tượng database.
+- RevokeTablePrivilege(): Thu hồi quyền trên đối tượng databas.
+GLOBAL VARIABLES:
+- _dbService: Đối tượng DatabaseService để thao tác với database.
+*/
 
 namespace SchoolManagerApp.src.Service
 {

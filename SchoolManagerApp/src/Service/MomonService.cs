@@ -6,7 +6,20 @@ using Dapper;
 using Oracle.ManagedDataAccess.Client;
 using SchoolManagerApp.src.Models;
 using SchoolManagerApp.src.utils;
-
+/*
+SYNOPSIS: Module MomonService cung cấp các dịch vụ quản lý phân công giảng dạy theo từng vai trò người dùng.
+FUNCTIONS:
+- GETPersonalTeachingAssignmentsForLecturer(): Lấy phân công giảng dạy cá nhân (ROLE_GV).
+- GETCurrentTeachingAssignments(): Lấy danh sách phân công hiện tại (ROLE_NVPDT).
+- InsertNewTeachingAssignment(): Thêm phân công giảng dạy mới (ROLE_NVPDT).
+- UpdateTeachingAssignmentDetails(): Cập nhật thông tin phân công (ROLE_NVPDT).
+- DeleteTeachingAssignment(): Xóa phân công giảng dạy (ROLE_NVPDT).
+- GETTeachingAssignmentsInManagedUnit(): Lấy phân công trong đơn vị quản lý (ROLE_TRGDV).
+- GETTeachingAssignmentsForDepartment(): Lấy phân công liên quan đến khoa (ROLE_SV).
+GLOBAL VARIABLES:
+- Kế thừa _dbService từ BaseService để thao tác với database.
+- Sử dụng ErrorMapper để xử lý lỗi Oracle.
+*/
 namespace SchoolManagerApp.src.Service
 {
     internal class MomonService : BaseService

@@ -8,7 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+/*
+SYNOPSIS: Module SinhVienService cung cấp các dịch vụ quản lý thông tin sinh viên.
+FUNCTIONS:
+- GetAll(): Lấy danh sách tất cả sinh viên.
+- GetAStuInf(): Lấy thông tin của một sinh viên.
+- UpdateSinhVien(): Cập nhật thông tin sinh viên.
+- Insert(): Thêm sinh viên mới.
+- Delete(): Xóa sinh viên.
+GLOBAL VARIABLES:
+- Kế thừa _dbService từ BaseService để thao tác với database.
+*/ 
 namespace SchoolManagerApp.src.Service
 {
     internal class SinhVienService : BaseService

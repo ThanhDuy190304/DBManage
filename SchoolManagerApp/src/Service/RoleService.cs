@@ -5,7 +5,22 @@ using SchoolManagerApp.src.Models;
 using Dapper;
 using Oracle.ManagedDataAccess.Client;
 using SchoolManagerApp.src.utils;
-
+/*
+SYNOPSIS: Module RoleService cung cấp các dịch vụ quản lý role và quyền trong Oracle Database.
+FUNCTIONS:
+- GetAll(): Lấy danh sách các role không phải của hệ thống.
+- GetPrivilegeOnTableByName(): Lấy quyền trên bảng của role.
+- GetPrivilegeOnColByName(): Lấy quyền trên cột của role.
+- UpdatePassword(): Cập nhật mật khẩu cho role.
+- RemoveAuthentication(): Xóa xác thực của role.
+- Delete(): Xóa role.
+- Create(): Tạo role mới.
+- GrantPermission(): Cấp quyền cho role.
+- RevokeTablePrivilege(): Thu hồi quyền trên bảng của role.
+GLOBAL VARIABLES:
+- _dbService: Kế thừa từ BaseService để thao tác với database.
+- _privilegeService: Service quản lý quyền (DBA_PrivilegeService).
+*/
 namespace SchoolManagerApp.src.Service
 {
     internal class RoleService : BaseService

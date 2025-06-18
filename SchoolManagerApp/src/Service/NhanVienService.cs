@@ -7,7 +7,20 @@ using Oracle.ManagedDataAccess.Client;
 using SchoolManagerApp.src.Models;
 using SchoolManagerApp.src.utils;
 using System.Dynamic;
-
+/*
+SYNOPSIS: Module NhanVienService cung cấp các dịch vụ quản lý nhân viên theo từng vai trò người dùng.
+FUNCTIONS:
+- UpdatePhoneNumberForNVCB(): Cập nhật số điện thoại (ROLE_NVCB).
+- GETPersonalInformationForNVCB(): Lấy thông tin cá nhân (ROLE_NVCB).
+- GETEmployeesInManagedUnitTRGDV(): Lấy danh sách nhân viên trong đơn vị (ROLE_TRGDV).
+- GETAllEmployees(): Lấy tất cả nhân viên (ROLE_NV_TCHC).
+- InsertNewEmployee(): Thêm nhân viên mới (ROLE_NV_TCHC).
+- UpdateEmployeeDetails(): Cập nhật thông tin nhân viên (ROLE_NV_TCHC).
+- DeleteEmployee(): Xóa nhân viên (ROLE_NV_TCHC).
+GLOBAL VARIABLES:
+- Kế thừa _dbService từ BaseService để thao tác với database.
+- Sử dụng ErrorMapper để xử lý lỗi Oracle.
+*/
 namespace SchoolManagerApp.src.Service
 {
     internal class NhanVienService : BaseService
